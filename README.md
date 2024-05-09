@@ -409,3 +409,11 @@ are currently either public domain or MIT).
 
 All other code in this repository is dual-licensed under [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) and under the conditions of [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
 
+
+```
+// build raccoon
+python3 build_everything.py raccoon --platform=nucleo-l4r5zi
+// flash with openocd
+openocd -f st_nucleo_l4r5.cfg -c "program bin/crypto_sign_raccoon_ref_testvectors.hex verify reset exit"
+python3 hostside/host_unidirectional.py
+```
