@@ -15,14 +15,21 @@
 int
 crypto_sign_keypair(  unsigned char *pk, unsigned char *sk)
 {
-    racc_core_keygen(pk, sk); //  generate keypair
+#if defined(MEM_OPT) || defined(MEM_OPT1)
+    return racc_core_keygen(pk, sk); //  generate keypair
+#else
+    racc_pk_t r_pk; //  internal-format public key
+    racc_sk_t r_sk; //  internal-format secret key
+
+    racc_core_keygen(&r_pk, &r_sk); //  generate keypair
 
     //  serialize
     if (CRYPTO_PUBLICKEYBYTES != racc_encode_pk(pk, &r_pk) ||
         CRYPTO_SECRETKEYBYTES != racc_encode_sk(sk, &r_sk))
         return -1;
 
-    return  0;
+    return 0;
+#endif
 }
 
 //  Sign a message: sm is the signed message, m is the original message,

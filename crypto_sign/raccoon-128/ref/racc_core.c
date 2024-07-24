@@ -14,6 +14,20 @@
 #include "randombytes.h"
 #include "mask_random.h"
 
+#define XDEBUG 1
+#ifdef XDEBUG
+#include "hal.h"
+#include <stdio.h>
+static void printbytes(const unsigned char *x, unsigned long long xlen)
+{
+    char outs[2 * xlen + 1];
+    unsigned long long i;
+    for (i = 0; i < xlen; i++)
+        sprintf(outs + 2 * i, "%02X", x[i]);
+    outs[2 * xlen] = 0;
+    hal_send_str(outs);
+}
+#endif
 
 //  ExpandA(): Use domain separated XOF to create matrix elements
 
@@ -272,7 +286,8 @@ void racc_core_keygen(racc_pk_t *pk, racc_sk_t *sk)
 
     //  --- 1.  seed <- {0,1}^kappa
     randombytes(pk->a_seed, RACC_AS_SZ);
-
+    hal_send_str("pl-seed=\n");
+    printbytes(pk->a_seed, RACC_AS_SZ);
     for (i = 0; i < RACC_ELL; i++) {
 
         //  --- 3.  [[s]] <- ell * ZeroEncoding(d)
@@ -285,6 +300,8 @@ void racc_core_keygen(racc_pk_t *pk, racc_sk_t *sk)
             polyr_fntt(sk->s[i][j]);
         }
     }
+    hal_send_str("sk=\n");
+    printbytes(sk->s[i][j], 512);
 
     for (i = 0; i < RACC_K; i++) {
 
@@ -304,7 +321,7 @@ void racc_core_keygen(racc_pk_t *pk, racc_sk_t *sk)
 
         //  --- 6.  [[t]] <- AddRepNoise([[t]], ut, rep)
         add_rep_noise( mt, i, RACC_UT, &mrg);
-
+        
         //  --- 7.  t := Decode([[t]])
         racc_decode(pk->t[i], mt);
 

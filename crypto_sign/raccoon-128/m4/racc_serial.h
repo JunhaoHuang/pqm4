@@ -30,11 +30,19 @@ extern "C" {
 //  Encode public key "pk" to bytes "b". Return length in bytes.
 size_t racc_encode_pk(uint8_t *b, const racc_pk_t *pk);
 
+#if defined(MEM_OPT) || defined(MEM_OPT1)
+size_t racc_encode_pk_k(uint8_t *b, const int64_t *t, size_t l);
+#endif
+
 //  Decode a public key from "b" to "pk". Return length in bytes.
 size_t racc_decode_pk(racc_pk_t *pk, const uint8_t *b);
 
 //  Encode secret key "sk" to bytes "b". Return length in bytes.
 size_t racc_encode_sk(uint8_t *b, const racc_sk_t *sk);
+
+#if defined(MEM_OPT) || defined(MEM_OPT1)
+size_t racc_encode_sk_l(uint8_t *b, const int64_t s[RACC_D][RACC_N], size_t i, size_t lk, size_t ls);
+#endif
 
 //  Decode a secret key from "b" to "sk". Return length in bytes.
 size_t racc_decode_sk(racc_sk_t *sk, const uint8_t *b);

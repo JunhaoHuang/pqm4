@@ -111,6 +111,12 @@ size_t racc_encode_pk(uint8_t *b, const racc_pk_t *pk)
     return l;
 }
 
+#if defined(MEM_OPT) || defined(MEM_OPT1)
+size_t racc_encode_pk_k(uint8_t *b, const int64_t *t, size_t l){
+    l += inline_encode_bits(b + l, t, RACC_Q_BITS - RACC_NUT);
+    return l;
+}
+#endif
 //  Decode a public key from "b" to "pk". Return length in bytes.
 
 size_t racc_decode_pk(racc_pk_t *pk, const uint8_t *b)
@@ -135,8 +141,50 @@ size_t racc_decode_pk(racc_pk_t *pk, const uint8_t *b)
     return l;
 }
 
-//  Encode secret key "sk" to bytes "b". Return length in bytes.
 
+#if defined(MEM_OPT) || defined(MEM_OPT1)
+//  Encode D-share of the i-th polynomial "s" of RACC_ELL-degree "sk" to bytes "b". Return length in bytes.
+
+size_t racc_encode_sk_l(uint8_t *b, const int64_t s[RACC_D][RACC_N], size_t i, size_t lk, size_t ls)
+{
+    size_t j;
+    uint8_t buf[RACC_MK_SZ + 8];
+    int64_t r[RACC_N], s0[RACC_N];
+
+    //  make a copy of share 0
+    polyr_copy(s0, s[0]);
+    polyr2_join(s0, MONT_D2Q1, MONT_D2Q2);
+
+    memset(buf, 0x00, 8); //   domain header template
+    buf[0] = 'K';
+    buf[1] = i; // update domain header
+
+    //  shares 1, 2, ..., d-1
+    for (j = 1; j < RACC_D; j++)
+    {
+        memcpy(buf + 8, b + lk, RACC_MK_SZ); // store in secret key
+        lk += RACC_MK_SZ;
+
+        //  XOF( 'K' || index i || share j || key_j )
+
+        buf[2] = j;
+
+        xof_sample_q(r, buf, RACC_MK_SZ + 8);
+        polyr_subq(s0, s0, r); //    s0 <- s0 - r
+        polyr_copy(r, s[j]);
+        polyr2_join(r, MONT_D2Q1, MONT_D2Q2);
+        polyr_addq(s0, s0, r); //    s0 <- s0 + s_j
+    }
+
+    //  encode the zeroth share (in full)
+    ls += inline_encode_bits(b + ls, s0, RACC_Q_BITS);
+
+    return ls;
+}
+
+#else
+
+//  Encode secret key "sk" to bytes "b". Return length in bytes.
 size_t racc_encode_sk(uint8_t *b, const racc_sk_t *sk)
 {
     size_t i, j, l;
@@ -148,44 +196,55 @@ size_t racc_encode_sk(uint8_t *b, const racc_sk_t *sk)
     l = racc_encode_pk(b, &sk->pk);
 
     //  make a copy of share 0
-    for (i = 0; i < RACC_ELL; i++) {
+    for (i = 0; i < RACC_ELL; i++)
+    {
         polyr_copy(s0[i], sk->s[i][0]);
         polyr2_join(s0[i], MONT_D2Q1, MONT_D2Q2);
     }
 
-    memset(buf, 0x00, 8);  //   domain header template
+    memset(buf, 0x00, 8); //   domain header template
     buf[0] = 'K';
 
     //  shares 1, 2, ..., d-1
-    for (j = 1; j < RACC_D; j++) {
+    for (j = 1; j < RACC_D; j++)
+    {
 
-        randombytes(b + l, RACC_MK_SZ);    //   key_j
-        memcpy(buf + 8, b + l, RACC_MK_SZ);  // store in secret key
+        randombytes(b + l, RACC_MK_SZ);     //   key_j
+        memcpy(buf + 8, b + l, RACC_MK_SZ); // store in secret key
         l += RACC_MK_SZ;
 
         //  XOF( 'K' || index i || share j || key_j )
-        for (i = 0; i < RACC_ELL; i++) {
-            buf[1] = i;  // update domain header
+        for (i = 0; i < RACC_ELL; i++)
+        {
+            buf[1] = i; // update domain header
             buf[2] = j;
 
             xof_sample_q(r, buf, RACC_MK_SZ + 8);
-            polyr_subq(s0[i], s0[i], r);  //    s0 <- s0 - r
+            polyr_subq(s0[i], s0[i], r); //    s0 <- s0 - r
             polyr_copy(t, sk->s[i][j]);
             polyr2_join(t, MONT_D2Q1, MONT_D2Q2);
-            polyr_addq(s0[i], s0[i], t);  //    s0 <- s0 + s_j
+            polyr_addq(s0[i], s0[i], t); //    s0 <- s0 + s_j
         }
     }
 
     //  encode the zeroth share (in full)
-    for (i = 0; i < RACC_ELL; i++) {
+    for (i = 0; i < RACC_ELL; i++)
+    {
         l += inline_encode_bits(b + l, s0[i], RACC_Q_BITS);
     }
 
     return l;
 }
+#endif
 
+#if defined(MEM_OPT) || defined(MEM_OPT1)
+
+size_t racc_decode_sk(uint8_t *pk, , const uint8_t *b){
+    
+}
+
+#else
 //  Decode secret key "sk" to bytes "b". Return length in bytes.
-
 size_t racc_decode_sk(racc_sk_t *sk, const uint8_t *b)
 {
     size_t i, j, l;
@@ -226,6 +285,7 @@ size_t racc_decode_sk(racc_sk_t *sk, const uint8_t *b)
 
     return l;
 }
+#endif
 
 //  macro for encoding n bits from y
 //  (note -- returns from function on overflow)
@@ -245,10 +305,10 @@ size_t racc_decode_sk(racc_sk_t *sk, const uint8_t *b)
     }                           \
 }
 
-//  Encode signature "sig" to "*b" of max "b_sz" bytes. Return length in
-//  bytes or zero in case of overflow.
+    //  Encode signature "sig" to "*b" of max "b_sz" bytes. Return length in
+    //  bytes or zero in case of overflow.
 
-size_t racc_encode_sig(uint8_t *b, size_t b_sz, const racc_sig_t *sig)
+    size_t racc_encode_sig(uint8_t *b, size_t b_sz, const racc_sig_t *sig)
 {
     size_t i, j, k, l, n;
     int64_t x, y, s;

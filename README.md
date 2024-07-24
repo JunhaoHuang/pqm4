@@ -412,8 +412,8 @@ All other code in this repository is dual-licensed under [Apache-2.0](https://ww
 
 ```
 // build raccoon
-python3 build_everything.py raccoon --platform=nucleo-l4r5zi
+python3 build_everything.py raccoon-128 --platform=nucleo-l4r5zi
 // flash with openocd
-openocd -f st_nucleo_l4r5.cfg -c "program bin/crypto_sign_raccoon_ref_testvectors.hex verify reset exit"
+openocd -f st_nucleo_l4r5.cfg -c "program bin/crypto_sign_raccoon-128_ref_testvectors.hex verify reset exit"
 python3 hostside/host_unidirectional.py
 ```

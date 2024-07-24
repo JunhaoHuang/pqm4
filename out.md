@@ -5,9 +5,8 @@
 ## Signature Schemes
 | scheme | implementation | key generation [cycles] | sign [cycles] | verify [cycles] |
 | ------ | -------------- | ----------------------- | ------------- | --------------- |
-| dilithium3 (104 executions) | clean | AVG: 2,980,238 <br /> MIN: 2,979,134 <br /> MAX: 2,981,607 | AVG: 10,717,925 <br /> MIN: 4,610,607 <br /> MAX: 40,585,081 | AVG: 3,097,926 <br /> MIN: 3,097,615 <br /> MAX: 3,098,346 |
-| dilithium3 (104 executions) | m4f | AVG: 2,395,161 <br /> MIN: 2,394,205 <br /> MAX: 2,396,206 | AVG: 5,564,511 <br /> MIN: 2,795,761 <br /> MAX: 15,698,138 | AVG: 2,290,616 <br /> MIN: 2,290,360 <br /> MAX: 2,291,025 |
-| dilithium3 (104 executions) | m4plant | AVG: 2,395,302 <br /> MIN: 2,394,217 <br /> MAX: 2,396,457 | AVG: 5,512,466 <br /> MIN: 2,776,816 <br /> MAX: 19,142,633 | AVG: 2,290,618 <br /> MIN: 2,290,201 <br /> MAX: 2,290,910 |
+| raccoon-128 (3 executions) | m4 | AVG: 46,916,594 <br /> MIN: 36,404,005 <br /> MAX: 67,921,710 | AVG: 60,926,017 <br /> MIN: 60,887,395 <br /> MAX: 60,956,313 | AVG: 16,362,391 <br /> MIN: 16,323,974 <br /> MAX: 16,382,487 |
+| raccoon-128 (3 executions) | ref | AVG: 46,018,003 <br /> MIN: 45,988,572 <br /> MAX: 46,054,226 | AVG: 85,219,344 <br /> MIN: 85,191,150 <br /> MAX: 85,256,221 | AVG: 21,820,157 <br /> MIN: 21,760,436 <br /> MAX: 21,872,297 |
 # Memory Evaluation
 ## Key Encapsulation Schemes
 | Scheme | Implementation | Key Generation [bytes] | Encapsulation [bytes] | Decapsulation [bytes] |
@@ -15,9 +14,8 @@
 ## Signature Schemes
 | Scheme | Implementation | Key Generation [bytes] | Sign [bytes] | Verify [bytes] |
 | ------ | -------------- | ---------------------- | ------------ | -------------- |
-| dilithium3 | clean | 60,812 | 79,560 | 57,700 |
-| dilithium3 | m4f | 60,836 | 68,976 | 57,832 |
-| dilithium3 | m4plant | 60,836 | 68,868 | 57,832 |
+| raccoon-128 | m4 | 127,300 | 377,292 | 111,312 |
+| raccoon-128 | ref | 164,252 | 377,292 | 111,960 |
 # Hashing Evaluation
 ## Key Encapsulation Schemes
 | Scheme | Implementation | Key Generation [%] | Encapsulation [%] | Decapsulation [%] |
@@ -25,9 +23,8 @@
 ## Signature Schemes
 | Scheme | Implementation | Key Generation [%] | Sign [%] | Verify [%] |
 | ------ | -------------- | ------------------ | -------- | ---------- |
-| dilithium3 | clean | 66.3% | 32.5% | 58.9% |
-| dilithium3 | m4f | 82.3% | 60.7% | 79.6% |
-| dilithium3 | m4plant | 82.3% | 60.3% | 79.6% |
+| raccoon-128 | m4 | 50.2% | 57.7% | 50.2% |
+| raccoon-128 | ref | 0.0% | 0.0% | 0.0% |
 # Size Evaluation
 ## Key Encapsulation Schemes
 | Scheme | Implementation | .text [bytes] | .data [bytes] | .bss [bytes] | Total [bytes] |
@@ -35,6 +32,5 @@
 ## Signature Schemes
 | Scheme | Implementation | .text [bytes] | .data [bytes] | .bss [bytes] | Total [bytes] |
 | ------ | -------------- | ------------- | ------------- | ------------ | ------------- |
-| dilithium3 | clean | 7,372 | 0 | 0 | 7,372 |
-| dilithium3 | m4f | 20,008 | 0 | 0 | 20,008 |
-| dilithium3 | m4plant | 18,488 | 0 | 0 | 18,488 |
+| raccoon-128 | m4 | 14,956 | 0 | 0 | 14,956 |
+| raccoon-128 | ref | 17,768 | 0 | 0 | 17,768 |

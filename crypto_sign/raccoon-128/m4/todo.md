@@ -14,11 +14,12 @@
    5. add_rep_noise, racc_decode, racc_refresh: on-the-fly mt, vi; add_rep_noise难搞，涉及randombytes顺序问题
 5. racc_core_sign:
    1. matrix `ma` is used twice. regenerate or large matrix? $4kl=80,140,252$
-   2. matrix `mr` $l\times D$ matrix; $l$-degree polynomial vector each with D shares.
-   3. matrix `mw` 1 poly with D shares
-   4. `vw` $k$-degree polynomial vector
-   5. `vz` $l$-degree polynomial vector
-   6. `u` and `c_poly` use small poly mul?
+   2. `sk`: $4ld=532, 668, 932$ for $d=32$
+   3. matrix `mr` $l\times D$ matrix; $l$-degree polynomial vector each with D shares. It is used twice too. $4ld=532, 668, 932$ for $d=32$
+   4. matrix `mw` 1 poly with D shares; $4d=32$ for $d=32$
+   5. `vw` $k$-degree polynomial vector; $4k$
+   6. `vz` $l$-degree polynomial vector; $4l$
+   7. `u` and `c_poly` use small poly mul?; $4$
 6. racc_core_verify:
    1. `aij` has been optimized.
    2. `c_poly` use small poly mul? : It has RACC_W $\pm 1$: 19, 31, 44
@@ -31,6 +32,15 @@
 2. In order to enable high-order masking, we also need to stream the variale with `d`-shares. `sk` with 32-share can be upto **KiB.
 - 修改RACC_D相关的函数，使得RACC_D相关的变量on-the-fly。
   - zero_encoding: 这个得D个多项式一起参与，如何修改使其on-the-fly？
-  - add_rep_noise: 
+  - add_rep_noise: done: with a buf to precompute the randombytes.
   - encode_sk
   - decode_sk
+3. racc_core_sign
+- on-the-fly matrix `A`
+- on-the-fly (de-)serialization of `sig` and `sk`
+- on-the-fly `vw, rz`
+- 
+**In term of Performance**
+1. `round_shift_r` assembly
+2. `poly_split` assembly
+3. 
