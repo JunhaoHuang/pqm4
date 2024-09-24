@@ -9,6 +9,65 @@
     smlal \tmp, \a, \tmp2, \Q
 .endm
 
+// conditional addition if a is negative number
+.macro mont32_cadd_asm a, m, tmp
+    and \tmp, \m, \a, asr #31
+    add \a, \tmp
+.endm
+
+.macro mont32_csub_asm a, m, tmp
+    sub \a, \m
+    and \tmp, \m, \a, asr #31
+    add \a, \tmp
+.endm
+
+.macro mont64_csub_asm aLo, aHi, mLo, mHi, tmp, tmp2
+    subs \aLo, \aLo, \mLo
+    sbc \aHi, \aHi, \mHi
+    and \tmp, \mLo, \aHi, asr #31
+    and \tmp2, \mHi, \aHi, asr #31
+    adds \aLo, \aLo, \tmp
+    adc \aHi, \aHi, \tmp2
+.endm
+
+// aLo and aHi are modified, result in aHi. need more instruction to achieve in-place
+.macro montgomery_redc_v1 aLo, aHi, Qprime1, Q1, Qprime2, Q2, tmp, tmp2, tmp3
+    mul \tmp, \aLo, \Qprime2
+    mov \tmp2, \aLo
+    mov \tmp3, \aHi 
+    smlal \aLo, \aHi, \tmp, \Q2// res in aHi
+    mul \tmp, \aLo, \Qprime1
+    smlal \tmp2, \tmp3, \tmp, \Q1 //we need res in aLo
+    mov \aLo, \tmp3
+.endm
+
+// verified & in-place; here we use q^-1 mod 2^32 for in-place implementation
+.macro montgomery_redc_v2 aLo, aHi, Qprime1, Q1, Qprime2, Q2, tmp, tmp2
+    mul \tmp, \aLo, \Qprime1
+    mul \tmp2, \aLo, \Qprime2 // aLo can be reused now.
+    smmul \tmp, \tmp, \Q1
+    smmul \tmp2, \tmp2, \Q2
+    sub \aLo, \aHi, \tmp
+    sub \aHi, \aHi, \tmp2
+.endm
+
+// here we use q^-1 mod 2^32 for in-place implementation; the results are -aLo and -aHi
+.macro montgomery_redc_v3 aLo, aHi, Qprime1, Q1, Qprime2, Q2, tmp, tmp2
+    mul \tmp, \aLo, \Qprime1
+    mul \tmp2, \aLo, \Qprime2 // aLo can be reused now.
+    neg.w \aHi, \aHi
+    smmla \aLo, \tmp, \Q1, \aHi
+    smmla \aHi, \tmp2, \Q2, \aHi
+.endm
+
+// use -Q1, -Q2 and smmla; use q^-1, q; not working; minor difference
+.macro montgomery_redc_v4 aLo, aHi, Qprime1, Q1, Qprime2, Q2, tmp, tmp2
+    mul \tmp, \aLo, \Qprime1
+    mul \tmp2, \aLo, \Qprime2 // aLo can be reused now.
+    smmls \aLo, \tmp, \Q1, \aHi 
+    smmls \aHi, \tmp2, \Q2, \aHi
+.endm
+
 // 2
 .macro addSub1 c0, c1
     add.w \c0, \c1
@@ -33,26 +92,6 @@
     sub.w \c3, \c2, \c3, lsl #1
     sub.w \c5, \c4, \c5, lsl #1
     sub.w \c7, \c6, \c7, lsl #1
-.endm
-
-.macro _2_layer_CT_32 c0, c1, c2, c3, zeta0, zeta1, zeta2, Qprime, Q, tmp, tmp2
-    montgomery_mul_32 \c2, \zeta0, \Qprime, \Q, \tmp, \tmp2
-    montgomery_mul_32 \c3, \zeta0, \Qprime, \Q, \tmp, \tmp2
-    addSub2 \c0, \c2, \c1, \c3
-
-    montgomery_mul_32 \c1, \zeta1, \Qprime, \Q, \tmp, \tmp2
-    montgomery_mul_32 \c3, \zeta2, \Qprime, \Q, \tmp, \tmp2
-    addSub2 \c0, \c1, \c2, \c3
-.endm
-
-.macro _2_layer_inv_CT_32 c0, c1, c2, c3, zeta0, zeta1, zeta2, Qprime, Q, tmp, tmp2
-    montgomery_mul_32 \c1, \zeta0, \Qprime, \Q, \tmp, \tmp2
-    montgomery_mul_32 \c3, \zeta0, \Qprime, \Q, \tmp, \tmp2
-    addSub2 \c0, \c1, \c2, \c3
-
-    montgomery_mul_32 \c2, \zeta1, \Qprime, \Q, \tmp, \tmp2
-    montgomery_mul_32 \c3, \zeta2, \Qprime, \Q, \tmp, \tmp2
-    addSub2 \c0, \c2, \c1, \c3
 .endm
 
 .macro _3_layer_CT_32 c0, c1, c2, c3, c4, c5, c6, c7, xi0, xi1, xi2, xi3, xi4, xi5, xi6, twiddle, Qprime, Q, tmp, tmp2
@@ -107,6 +146,26 @@
     vmov.w \twiddle, \xi6
     montgomery_mul_32 \c7, \twiddle, \Qprime, \Q, \tmp, \tmp2
     addSub4 \c0, \c4, \c1, \c5, \c2, \c6, \c3, \c7
+.endm
+
+
+.macro _3_layer_inv_twist_CT_32 c0, c1, c2, c3, c4, c5, c6, c7, xi0, xi1, xi2, xi3, xi4, xi5, xi6, xi7, twiddle, Qprime, Q, tmp, tmp2
+    vmov \twiddle, \xi0 
+    montgomery_mul_32 \c0, \twiddle, \Qprime, \Q, \tmp, \tmp2
+    vmov \twiddle, \xi1
+    montgomery_mul_32 \c1, \twiddle, \Qprime, \Q, \tmp, \tmp2
+    vmov \twiddle, \xi2
+    montgomery_mul_32 \c2, \twiddle, \Qprime, \Q, \tmp, \tmp2
+    vmov \twiddle, \xi3
+    montgomery_mul_32 \c3, \twiddle, \Qprime, \Q, \tmp, \tmp2
+    vmov \twiddle, \xi4
+    montgomery_mul_32 \c4, \twiddle, \Qprime, \Q, \tmp, \tmp2
+    vmov \twiddle, \xi5
+    montgomery_mul_32 \c5, \twiddle, \Qprime, \Q, \tmp, \tmp2
+    vmov \twiddle, \xi6
+    montgomery_mul_32 \c6, \twiddle, \Qprime, \Q, \tmp, \tmp2
+    vmov \twiddle, \xi7
+    montgomery_mul_32 \c7, \twiddle, \Qprime, \Q, \tmp, \tmp2
 .endm
 
 /************************************************************

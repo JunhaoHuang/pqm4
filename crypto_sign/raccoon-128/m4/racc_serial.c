@@ -282,6 +282,7 @@ size_t racc_decode_sk(racc_sk_t *sk, const uint8_t *b)
             polyr2_split(sk->s[i][j]);
         }
     }
+    
 
     return l;
 }

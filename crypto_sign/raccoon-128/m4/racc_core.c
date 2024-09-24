@@ -19,8 +19,7 @@
 #ifdef XDEBUG
 #include <stdio.h>
 #include "hal.h"
-    static void
-    printbytes(const unsigned char *x, unsigned long long xlen)
+static void printbytes(const unsigned char *x, unsigned long long xlen)
 {
     char outs[2 * xlen + 1];
     unsigned long long i;
@@ -523,8 +522,6 @@ void racc_core_keygen(racc_pk_t *pk, racc_sk_t *sk)
             polyr_fntt(sk->s[i][j]);
         }
     }
-    hal_send_str("sk=\n");
-    printbytes(sk->s[i][j],512);
 
     for (i = 0; i < RACC_K; i++)
     {

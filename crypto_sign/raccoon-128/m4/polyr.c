@@ -8,6 +8,7 @@
 
 #include "polyr.h"
 #include "mont64.h"
+#include "mont32.h"
 
 //  === Polynomial API
 

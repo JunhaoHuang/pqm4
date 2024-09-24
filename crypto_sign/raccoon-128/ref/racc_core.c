@@ -286,8 +286,7 @@ void racc_core_keygen(racc_pk_t *pk, racc_sk_t *sk)
 
     //  --- 1.  seed <- {0,1}^kappa
     randombytes(pk->a_seed, RACC_AS_SZ);
-    hal_send_str("pl-seed=\n");
-    printbytes(pk->a_seed, RACC_AS_SZ);
+
     for (i = 0; i < RACC_ELL; i++) {
 
         //  --- 3.  [[s]] <- ell * ZeroEncoding(d)
@@ -300,8 +299,6 @@ void racc_core_keygen(racc_pk_t *pk, racc_sk_t *sk)
             polyr_fntt(sk->s[i][j]);
         }
     }
-    hal_send_str("sk=\n");
-    printbytes(sk->s[i][j], 512);
 
     for (i = 0; i < RACC_K; i++) {
 
