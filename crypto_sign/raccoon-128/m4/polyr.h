@@ -27,11 +27,9 @@ void polyr_sub(int64_t *r, const int64_t *a, const int64_t *b);
 
 //  Add polynomials mod q:  r = a + b  (mod q).
 void polyr_addq(int64_t *r, const int64_t *a, const int64_t *b);
-void polyr_ntt_addq(int64_t *r, const int64_t *a, const int64_t *b);
 
 //  Subtract polynomials mod q:  r = a - b  (mod q).
 void polyr_subq(int64_t *r, const int64_t *a, const int64_t *b);
-void polyr_ntt_subq(int64_t *r, const int64_t *a, const int64_t *b);
 
 //  Add polynomials:  r = a + b, conditionally subtract m on overflow
 void polyr_addm(int64_t *r, const int64_t *a, const int64_t *b, int64_t m);
@@ -41,6 +39,8 @@ void polyr_subm(int64_t *r, const int64_t *a, const int64_t *b, int64_t m);
 
 //  Negate a polynomial mod m:  r = -a, add m on underflow.
 void polyr_negm(int64_t *r, int64_t *a, int64_t m);
+
+void polyr_neg(int64_t *r, int64_t *a);
 
 //  Left shift:  r = a << sh, conditionally subtract m on overflow.
 void polyr_shlm(int64_t *r, const int64_t *a, size_t sh, int64_t m);
@@ -57,6 +57,7 @@ void polyr_center(int64_t *r, const int64_t *a, int64_t m);
 //  Move from range -m <= x < m to non-negative range 0 <= x < m.
 void polyr_nonneg(int64_t *r, const int64_t *a, int64_t m);
 
+void polyr_reduce(int64_t *r, const int64_t *a);
 //  Scalar multiplication:  r = a * c,  Montgomery reduction.
 void polyr_ntt_smul(int64_t *r, const int64_t *a, int32_t c1, int32_t c2);
 

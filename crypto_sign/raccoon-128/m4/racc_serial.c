@@ -175,13 +175,17 @@ size_t racc_encode_sk_l(uint8_t *b, const int64_t s[RACC_D][RACC_N], size_t i, s
         polyr2_join(r, MONT_D2Q1, MONT_D2Q2);
         polyr_addq(s0, s0, r); //    s0 <- s0 + s_j
     }
-
+    // polyr_reduce(s0,s0);
     //  encode the zeroth share (in full)
     ls += inline_encode_bits(b + ls, s0, RACC_Q_BITS);
 
     return ls;
 }
 
+size_t racc_decode_sk(uint8_t *pk, , const uint8_t *b)
+{
+    
+}
 #else
 
 //  Encode secret key "sk" to bytes "b". Return length in bytes.
@@ -226,7 +230,7 @@ size_t racc_encode_sk(uint8_t *b, const racc_sk_t *sk)
             polyr_addq(s0[i], s0[i], t); //    s0 <- s0 + s_j
         }
     }
-
+    // polyr_reduce(s0[i], s0[i]);
     //  encode the zeroth share (in full)
     for (i = 0; i < RACC_ELL; i++)
     {
@@ -235,15 +239,7 @@ size_t racc_encode_sk(uint8_t *b, const racc_sk_t *sk)
 
     return l;
 }
-#endif
 
-#if defined(MEM_OPT) || defined(MEM_OPT1)
-
-size_t racc_decode_sk(uint8_t *pk, , const uint8_t *b){
-    
-}
-
-#else
 //  Decode secret key "sk" to bytes "b". Return length in bytes.
 size_t racc_decode_sk(racc_sk_t *sk, const uint8_t *b)
 {
@@ -253,36 +249,40 @@ size_t racc_decode_sk(racc_sk_t *sk, const uint8_t *b)
     //  decode public key
     l = racc_decode_pk(&sk->pk, b);
 
-    memset(buf, 0x00, 8);  //   domain header template
+    memset(buf, 0x00, 8); //   domain header template
     buf[0] = 'K';
 
     //  expand shares 1, 2, ..., d-1 from keys
-    for (j = 1; j < RACC_D; j++) {
+    for (j = 1; j < RACC_D; j++)
+    {
 
         //  copy key
         memcpy(buf + 8, b + l, RACC_MK_SZ);
         l += RACC_MK_SZ;
 
         //  XOF( 'K' || i || share j || key_j )
-        for (i = 0; i < RACC_ELL; i++) {
-            buf[1] = i;  // update domain header
+        for (i = 0; i < RACC_ELL; i++)
+        {
+            buf[1] = i; // update domain header
             buf[2] = j;
             xof_sample_q(sk->s[i][j], buf, RACC_MK_SZ + 8);
         }
     }
 
     //  decode the zeroth share (in full)
-    for (i = 0; i < RACC_ELL; i++) {
+    for (i = 0; i < RACC_ELL; i++)
+    {
         l += inline_decode_bits(sk->s[i][0], b + l, RACC_Q_BITS, false);
     }
 
     //  convert S
-    for (i = 0; i < RACC_ELL; i++) {
-        for (j = 0; j < RACC_D; j++) {
+    for (i = 0; i < RACC_ELL; i++)
+    {
+        for (j = 0; j < RACC_D; j++)
+        {
             polyr2_split(sk->s[i][j]);
         }
     }
-    
 
     return l;
 }
@@ -306,10 +306,10 @@ size_t racc_decode_sk(racc_sk_t *sk, const uint8_t *b)
     }                           \
 }
 
-    //  Encode signature "sig" to "*b" of max "b_sz" bytes. Return length in
-    //  bytes or zero in case of overflow.
+//  Encode signature "sig" to "*b" of max "b_sz" bytes. Return length in
+//  bytes or zero in case of overflow.
 
-    size_t racc_encode_sig(uint8_t *b, size_t b_sz, const racc_sig_t *sig)
+size_t racc_encode_sig(uint8_t *b, size_t b_sz, const racc_sig_t *sig)
 {
     size_t i, j, k, l, n;
     int64_t x, y, s;

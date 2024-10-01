@@ -14,7 +14,7 @@
 #include "randombytes.h"
 #include "mask_random.h"
 
-#define XDEBUG 1
+// #define XDEBUG 1
 #ifdef XDEBUG
 #include "hal.h"
 #include <stdio.h>

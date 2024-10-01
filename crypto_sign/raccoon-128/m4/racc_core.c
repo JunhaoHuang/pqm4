@@ -15,9 +15,10 @@
 #include "mask_random.h"
 #include "racc_serial.h"
 
-#define XDEBUG 1
+// #define XDEBUG 1
 #ifdef XDEBUG
 #include <stdio.h>
+#include "sendfn.h"
 #include "hal.h"
 static void printbytes(const unsigned char *x, unsigned long long xlen)
 {
@@ -27,6 +28,11 @@ static void printbytes(const unsigned char *x, unsigned long long xlen)
         sprintf(outs + 2 * i, "%02X", x[i]);
     outs[2 * xlen] = 0;
     hal_send_str(outs);
+}
+static void print_array_64(uint64_t *x, unsigned long long xlen)
+{
+    for (int i = 0; i < xlen; i++)
+        send_unsignedll(", ", x[i]);
 }
 #endif
 
@@ -60,9 +66,9 @@ static void racc_decode(int64_t r[RACC_N], const int64_t m[RACC_D][RACC_N])
 #else
     int i;
 
-    polyr_addq(r, m[0], m[1]);
+    polyr_add(r, m[0], m[1]);
     for (i = 2; i < RACC_D; i++) {
-        polyr_addq(r, r, m[i]);
+        polyr_add(r, r, m[i]);
     }
 #endif
 }
@@ -76,9 +82,9 @@ static void racc_ntt_decode(int64_t r[RACC_N], const int64_t m[RACC_D][RACC_N])
 #else
     int i;
 
-    polyr_ntt_addq(r, m[0], m[1]);
+    polyr2_add(r, m[0], m[1]);
     for (i = 2; i < RACC_D; i++) {
-        polyr_ntt_addq(r, r, m[i]);
+        polyr2_add(r, r, m[i]);
     }
 #endif
 }
@@ -98,7 +104,7 @@ static void zero_encoding(int64_t z[RACC_D][RACC_N], mask_random_t *mrg)
     //  d = 2
     for (i = 0; i < RACC_D; i += 2) {
         mask_random_poly(mrg, z[i], i);
-        polyr_negm(z[i + 1], z[i], RACC_Q);
+        polyr_neg(z[i + 1], z[i]);
     }
 
     //  d = 4, 8, ..
@@ -107,8 +113,8 @@ static void zero_encoding(int64_t z[RACC_D][RACC_N], mask_random_t *mrg)
         for (i = 0; i < RACC_D; i += 2 * d) {
             for (j = i; j < i + d; j++) {
                 mask_random_poly(mrg, r, j);
-                polyr_addq(z[j], z[j], r);
-                polyr_subq(z[j + d], z[j + d], r);
+                polyr_add(z[j], z[j], r);
+                polyr_sub(z[j + d], z[j + d], r);
             }
         }
         d <<= 1;
@@ -132,7 +138,7 @@ static void racc_refresh(int64_t x[RACC_D][RACC_N], mask_random_t *mrg)
 
     //  --- 2.  return [[x]]' := [[x]] + [[z]]
     for (i = 0; i < RACC_D; i++) {
-        polyr_addq(x[i], x[i], z[i]);
+        polyr_add(x[i], x[i], z[i]);
     }
 #endif
 }
@@ -154,7 +160,7 @@ static void racc_ntt_refresh(int64_t x[RACC_D][RACC_N], mask_random_t *mrg)
     //  --- 2.  return [[x]]' := [[x]] + [[z]]
     for (i = 0; i < RACC_D; i++) {
         polyr2_split(z[i]);
-        polyr_ntt_addq(x[i], x[i], z[i]);
+        polyr2_add(x[i], x[i], z[i]);
     }
 #endif
 }
@@ -189,7 +195,7 @@ static void add_rep_noise(  int64_t vi[RACC_D][RACC_N],
 
             //  --- 6.  v_ij <- v_ij + SampleU(hdr_u, sigma, u)
             xof_sample_u(r, u, buf, RACC_SEC + 8);
-            polyr_addq(vi[j], vi[j], r);
+            polyr_add(vi[j], vi[j], r);
         }
 
         //  --- [[v_i]] <- Refresh([[v_i]])
@@ -227,7 +233,7 @@ static void add_rep_noise_buf(int64_t vi[RACC_D][RACC_N],
 
             //  --- 6.  v_ij <- v_ij + SampleU(hdr_u, sigma, u)
             xof_sample_u(r, u, buf, RACC_SEC + 8);
-            polyr_addq(vi[j], vi[j], r);
+            polyr_add(vi[j], vi[j], r);
         }
 
         //  --- [[v_i]] <- Refresh([[v_i]])
@@ -236,18 +242,18 @@ static void add_rep_noise_buf(int64_t vi[RACC_D][RACC_N],
 }
 #endif
 //  "rounding" shift right
-
-static inline void round_shift_r(int64_t *r, int64_t q, int s)
-{
-    int i;
-    int64_t x, rc;
-
-    rc = 1ll << (s - 1);
-    for (i = 0; i < RACC_N; i++) {
-        x = (r[i] + rc) >> s;
-        r[i] = mont64_csub(x, q);
-    }
-}
+extern void polyr_shrm42_asm(int64_t *r, int32_t q);
+extern void polyr_shrm44_asm(int64_t *r, int32_t q);
+// static void round_shift_r(int64_t *r, int64_t q, int s)
+// {
+//     if(s==RACC_NUT){
+//         polyr_shrm42_asm(r,(int32_t)q);
+//     }
+//     else{
+//         polyr_shrm44_asm(r,(int32_t)q);
+//     }
+    
+// }
 
 //  CheckBounds(sig) -> {OK or FAIL}
 
@@ -394,10 +400,9 @@ int racc_core_keygen(unsigned char *pk, unsigned char *sk)
 
         //  --- 7.  t := Decode([[t]])
         racc_decode(t, mt);
-
+        polyr_reduce(t, t);
         //  --- 8.  t := round( t_m )_q->q_t
-        round_shift_r(t, RACC_QT, RACC_NUT); // 49-42=7-bit
-
+        polyr_shrm42_asm(t, RACC_QT);// 49-42=7-bit
         // --- encode pk on-the-fly
         l_pk = racc_encode_pk_k(pk, t, l_pk);
     }
@@ -436,7 +441,7 @@ int racc_core_keygen(unsigned char *pk, unsigned char *sk)
         zero_encoding(skt[i], &mrg);
 
         //  --- 4.  [[s]] <- AddRepNoise([[s]], ut, rep)
-        add_rep_noise(skt[i], i, RACC_UT, &mrg);
+        add_rep_noise(skt[i], i, RACC_UT, &mrg); //can accept redundancy
 
         for (j = 0; j < RACC_D; j++)
         {
@@ -467,9 +472,9 @@ int racc_core_keygen(unsigned char *pk, unsigned char *sk)
 
         //  --- 7.  t := Decode([[t]])
         racc_decode(t, mt);
-
+        polyr_reduce(t, t);
         //  --- 8.  t := round( t_m )_q->q_t
-        round_shift_r(t, RACC_QT, RACC_NUT); // 49-42=7-bit
+        polyr_shrm42_asm(t, RACC_QT); // 49-42=7-bit
 
         // --- encode pk on-the-fly
         l_pk = racc_encode_pk_k(pk, t, l_pk);
@@ -542,15 +547,16 @@ void racc_core_keygen(racc_pk_t *pk, racc_sk_t *sk)
             }
             polyr_intt(mt[j]);
         }
-
+        // print_array_64(mt[0], 512);
         //  --- 6.  [[t]] <- AddRepNoise([[t]], ut, rep)
         add_rep_noise(mt, i, RACC_UT, &mrg);
 
         //  --- 7.  t := Decode([[t]])
         racc_decode(pk->t[i], mt);
+        polyr_reduce(pk->t[i], pk->t[i]);
 
         //  --- 8.  t := round( t_m )_q->q_t
-        round_shift_r(pk->t[i], RACC_QT, RACC_NUT);
+        polyr_shrm42_asm(pk->t[i], RACC_QT); // 49-42=7-bit
     }
 
     //  --- 9.  return ( (vk := seed, t), sk:= (vk, [[s]]) )
@@ -560,21 +566,23 @@ void racc_core_keygen(racc_pk_t *pk, racc_sk_t *sk)
 
 //  === racc_core_sign ===
 //  Create a detached signature "sig" for digest "mu" using secret key "sk".
-#if defined(MEM_OPT) || defined(MEM_OPT1)
+#if defined(MEM_OPT) 
+
+#elif defined(MEM_OPT1)
 void racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
                     uint8_t *sk)
 {
     int i, j, k;
-    int64_t ma[RACC_N];
+    int64_t ma[RACC_K][RACC_ELL][RACC_N];
     int64_t mr[RACC_ELL][RACC_D][RACC_N];
+    int64_t skt[RACC_ELL][RACC_D][RACC_N];
     int64_t mw[RACC_D][RACC_N];
     int64_t vw[RACC_K][RACC_N];
     int64_t y[RACC_N];
     int64_t vz[RACC_ELL][RACC_N];
     int64_t u[RACC_N], c_poly[RACC_N];
     uint8_t seed[RACC_AS_SZ];
-    
-
+    int32_t l_sk=0;
     bool rsp = false;
     mask_random_t mrg;
 
@@ -584,21 +592,23 @@ void racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
     //  --- 1.  (vk, [[s]]) := [[sk]], (seed, t) := vk      [ caller ]
     //  --- 2.  mu := H( H(vk) || msg )                     [ caller ]
 
+    // --- get pk.a_seed
+    memcpy(seed, sk+l_sk, RACC_AS_SZ);
+    l_sk+=RACC_AS_SZ;
+
     //  --- 3.  A := ExpandA(seed)
     for (i = 0; i < RACC_K; i++)
     {
         for (j = 0; j < RACC_ELL; j++)
         {
-            expand_aij(ma[i][j], i, j, sk->pk.a_seed);
+            expand_aij(ma[i][j], i, j, seed);
         }
     }
 
     do
     {
-
         for (i = 0; i < RACC_ELL; i++)
         {
-
             //  --- 4.  [[r]] <- ZeroEncoding()
             zero_encoding(mr[i], &mrg);
 
@@ -631,9 +641,9 @@ void racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
 
             //  --- 8.  w := Decode([[w]])
             racc_decode(vw[i], mw);
-
+            polyr_reduce(vw[i], vw[i]);
             //  --- 9.  w := round( w )_q->q_w
-            round_shift_r(vw[i], RACC_QW, RACC_NUW);
+            polyr_shrm44_asm(vw[i], RACC_QW);
         }
 
         //  --- 10. c_hash := ChalHash(w, mu)
@@ -686,11 +696,11 @@ void racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
 
             polyr_fntt(u);
             polyr_ntt_cmul(u, u, c_poly);
-            polyr_ntt_subq(y, y, u);
+            polyr2_sub(y, y, u);
             polyr_intt(y);
 
             //  --- 18. h := w - round( y )_q->q_w
-            round_shift_r(y, RACC_QW, RACC_NUW);
+            polyr_shrm44_asm(y, RACC_QW);
             polyr_subm(y, vw[i], y, RACC_QW);
             polyr_center(sig->h[i], y, RACC_QW);
         }
@@ -764,9 +774,10 @@ void racc_core_sign(racc_sig_t *sig, const uint8_t mu[RACC_MU_SZ],
 
             //  --- 8.  w := Decode([[w]])
             racc_decode(vw[i], mw);
+            polyr_reduce(vw[i],vw[i]);
 
             //  --- 9.  w := round( w )_q->q_w
-            round_shift_r(vw[i], RACC_QW, RACC_NUW);
+            polyr_shrm44_asm(vw[i], RACC_QW);
         }
 
         //  --- 10. c_hash := ChalHash(w, mu)
@@ -775,7 +786,7 @@ void racc_core_sign(racc_sig_t *sig, const uint8_t mu[RACC_MU_SZ],
         //  --- 11. c_poly := ChalPoly(c_hash)
         xof_chal_poly(c_poly, sig->ch);
         polyr_fntt(c_poly);
-
+        
         for (i = 0; i < RACC_ELL; i++) {
 
             //  --- 12. [[s]] <- Refresh([[s]])
@@ -815,11 +826,11 @@ void racc_core_sign(racc_sig_t *sig, const uint8_t mu[RACC_MU_SZ],
 
             polyr_fntt(u);
             polyr_ntt_cmul(u, u, c_poly);
-            polyr_ntt_subq(y, y, u);
+            polyr2_sub(y, y, u);
             polyr_intt(y);
 
             //  --- 18. h := w - round( y )_q->q_w
-            round_shift_r(y, RACC_QW, RACC_NUW);
+            polyr_shrm44_asm(y, RACC_QW);
             polyr_subm(y, vw[i], y, RACC_QW);
             polyr_center(sig->h[i], y, RACC_QW);
         }
@@ -884,11 +895,11 @@ bool racc_core_verify(  const racc_sig_t *sig,
         polyr_shlm(u, pk->t[i], RACC_NUT, RACC_Q);  //  .. - p_t * t ..
         polyr_fntt(u);
         polyr_ntt_cmul(u, u, c_poly);               //  .. Cpoly ..
-        polyr_ntt_subq(vw[i], t, u);
+        polyr2_sub(vw[i], t, u);
         polyr_intt(vw[i]);
 
         //  --- 7.  w' = round( y )_q->q_w + h
-        round_shift_r(vw[i], RACC_QW, RACC_NUW);
+        polyr_shrm44_asm(vw[i], RACC_QW);
         polyr_nonneg(u, sig->h[i], RACC_QW);
         polyr_addm(vw[i], vw[i], u, RACC_QW);
     }

@@ -15,10 +15,19 @@
     add \a, \tmp
 .endm
 
-.macro mont32_csub_asm a, m, tmp
-    sub \a, \m
-    and \tmp, \m, \a, asr #31
-    add \a, \tmp
+.macro mont64_sub_asm aLo, aHi, bLo, bHi
+    subs \aLo, \aLo, \bLo
+    sbc \aHi, \aHi, \bHi
+.endm
+
+.macro mont64_add_asm aLo, aHi, bLo, bHi
+    adds \aLo, \aLo, \bLo
+    adc \aHi, \aHi, \bHi
+.endm
+
+.macro mont64_neg_asm aLo, aHi
+    negs \aLo, \aLo
+    sbc \aHi, \aHi, \aHi, lsl #1
 .endm
 
 .macro mont64_csub_asm aLo, aHi, mLo, mHi, tmp, tmp2
@@ -30,13 +39,29 @@
     adc \aHi, \aHi, \tmp2
 .endm
 
+.macro mont64_cadd_asm aLo, aHi, mLo, mHi, tmp, tmp2
+    and \tmp, \mLo, \aHi, asr #31
+    and \tmp2, \mHi, \aHi, asr #31
+    adds \aLo, \aLo, \tmp
+    adc \aHi, \aHi, \tmp2
+.endm
+
+.macro reduce64_asm aLo, aHi, qLo, qHi, tmp, tmp2, tmp3
+    add \tmp, \aHi, #65536
+    asr \tmp, \tmp, #17
+    smull \tmp2, \tmp3, \tmp, \qLo
+    mla \tmp3, \tmp, \qHi, \tmp3
+    subs \aLo, \tmp2
+    sbc \aHi, \tmp3
+.endm
+
 // aLo and aHi are modified, result in aHi. need more instruction to achieve in-place
 .macro montgomery_redc_v1 aLo, aHi, Qprime1, Q1, Qprime2, Q2, tmp, tmp2, tmp3
     mul \tmp, \aLo, \Qprime2
     mov \tmp2, \aLo
     mov \tmp3, \aHi 
     smlal \aLo, \aHi, \tmp, \Q2// res in aHi
-    mul \tmp, \aLo, \Qprime1
+    mul \tmp, \tmp2, \Qprime1
     smlal \tmp2, \tmp3, \tmp, \Q1 //we need res in aLo
     mov \aLo, \tmp3
 .endm

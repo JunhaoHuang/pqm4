@@ -76,5 +76,14 @@ static inline int64_t mont64_csub(int64_t x, int64_t m)
     return r;
 }
 
+// reduction modulo RACC_Q
+static inline int64_t reduce64(int64_t x){
+    int64_t t;
+
+    t = (x + (1ll << 48)) >> 49;
+    t = x - t * RACC_Q;
+    return t;
+}
+
 //  _MONT64_H_
 #endif
