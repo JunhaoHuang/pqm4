@@ -86,7 +86,6 @@ void polyr2_add(int64_t *r, const int64_t *a, const int64_t *b);
 //  2x32 CRT: Subtract polynomials:  r = a - b.
 void polyr2_sub(int64_t *r, const int64_t *a, const int64_t *b);
 
-
 #ifdef __cplusplus
 }
 #endif

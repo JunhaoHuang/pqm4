@@ -1,0 +1,3 @@
+Differences between the two files:
+
+The two files are identical.

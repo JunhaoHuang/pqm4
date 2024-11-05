@@ -48,16 +48,16 @@ typedef struct {
 //  === Core API ===
 
 //  Generate a public-secret keypair ("pk", "sk").
-#if defined(MEM_OPT) || defined(MEM_OPT1)
+#if MEM_OPT>0
 int racc_core_keygen(unsigned char *pk, unsigned char *sk);
 #else
 void racc_core_keygen(racc_pk_t *pk, racc_sk_t *sk);
 #endif
 
 //  Create a detached signature "sig" for digest "mu" using secret key "sk".
-#if defined(MEM_OPT) || defined(MEM_OPT1)
-void racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
-                    uint8_t *sk);
+#if MEM_OPT > 0
+int racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
+                       const uint8_t *sk);
 #else
 void racc_core_sign(racc_sig_t *sig, const uint8_t mu[RACC_MU_SZ],
                     racc_sk_t *sk);

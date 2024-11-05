@@ -15,6 +15,12 @@
     add \a, \tmp
 .endm
 
+.macro mont32_csub_asm a, m, tmp
+    sub \a, \m
+    and \tmp, \m, \a, asr #31
+    add \a, \tmp
+.endm
+
 .macro mont64_sub_asm aLo, aHi, bLo, bHi
     subs \aLo, \aLo, \bLo
     sbc \aHi, \aHi, \bHi
@@ -53,6 +59,18 @@
     mla \tmp3, \tmp, \qHi, \tmp3
     subs \aLo, \tmp2
     sbc \aHi, \tmp3
+.endm
+
+.macro reduce_q1_asm a, q, tmp
+    add \tmp, \a, #8388608
+    asrs \tmp, \tmp, #24
+    mls \a, \tmp, \q, \a
+.endm
+
+.macro reduce_q2_asm a, q, tmp
+    add \tmp, \a, #16777216
+    asrs \tmp, \tmp, #25
+    mls \a, \tmp, \q, \a
 .endm
 
 // aLo and aHi are modified, result in aHi. need more instruction to achieve in-place
@@ -273,5 +291,24 @@
 
     addSub4 \c0, \c4, \c1, \c5, \c2, \c6, \c3, \c7
 .endm
+
+.align 2
+ntt_asm_qinv1:
+.word 4278452225
+.align 2
+ntt_asm_q1:
+.word 16515073
+.align 2
+ntt_asm_qinv2:
+.word 4261675009
+.align 2
+ntt_asm_q2:
+.word 33292289
+.align 2
+ntt_asm_minus_qinv1:
+.word 16515071
+.align 2
+ntt_asm_minus_qinv2:
+.word 33292287
 
 #endif /* MACROS_I */

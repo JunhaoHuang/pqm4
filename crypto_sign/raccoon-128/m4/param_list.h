@@ -20,6 +20,7 @@
 #define RACC_PK_SZ  2256
 #define RACC_SK_SZ  14800
 #define RACC_SIG_SZ 11524
+#define MEM_OPT 0
 #endif
 
 #if defined(RACCOON_128_2)
@@ -42,6 +43,7 @@
 #define RACC_PK_SZ  2256
 #define RACC_SK_SZ  14816
 #define RACC_SIG_SZ 11524
+#define MEM_OPT 0
 #endif
 
 #if defined(RACCOON_128_4)
@@ -64,6 +66,7 @@
 #define RACC_PK_SZ  2256
 #define RACC_SK_SZ  14848
 #define RACC_SIG_SZ 11524
+#define MEM_OPT 0
 #endif
 
 #if defined(RACCOON_128_8)
@@ -86,6 +89,7 @@
 #define RACC_PK_SZ  2256
 #define RACC_SK_SZ  14912
 #define RACC_SIG_SZ 11524
+#define MEM_OPT 0
 #endif
 
 #if defined(RACCOON_128_16)
@@ -108,6 +112,7 @@
 #define RACC_PK_SZ  2256
 #define RACC_SK_SZ  15040
 #define RACC_SIG_SZ 11524
+#define MEM_OPT 1
 #endif
 
 #if defined(RACCOON_128_32)
@@ -130,6 +135,7 @@
 #define RACC_PK_SZ  2256
 #define RACC_SK_SZ  15296
 #define RACC_SIG_SZ 11524
+#define MEM_OPT 2
 #endif
 
 #if defined(RACCOON_192_1)
@@ -152,6 +158,7 @@
 #define RACC_PK_SZ  3160
 #define RACC_SK_SZ  18840
 #define RACC_SIG_SZ 14544
+#define MEM_OPT 0
 #endif
 
 #if defined(RACCOON_192_2)
@@ -174,6 +181,7 @@
 #define RACC_PK_SZ  3160
 #define RACC_SK_SZ  18864
 #define RACC_SIG_SZ 14544
+#define MEM_OPT 0
 #endif
 
 #if defined(RACCOON_192_4)
@@ -196,6 +204,7 @@
 #define RACC_PK_SZ  3160
 #define RACC_SK_SZ  18912
 #define RACC_SIG_SZ 14544
+#define MEM_OPT 0
 #endif
 
 #if defined(RACCOON_192_8)
@@ -218,6 +227,7 @@
 #define RACC_PK_SZ  3160
 #define RACC_SK_SZ  19008
 #define RACC_SIG_SZ 14544
+#define MEM_OPT 1
 #endif
 
 #if defined(RACCOON_192_16)
@@ -240,6 +250,7 @@
 #define RACC_PK_SZ  3160
 #define RACC_SK_SZ  19200
 #define RACC_SIG_SZ 14544
+#define MEM_OPT 2
 #endif
 
 #if defined(RACCOON_192_32)
@@ -262,6 +273,7 @@
 #define RACC_PK_SZ  3160
 #define RACC_SK_SZ  19584
 #define RACC_SIG_SZ 14544
+#define MEM_OPT 2
 #endif
 
 #if defined(RACCOON_256_1)
@@ -284,6 +296,7 @@
 #define RACC_PK_SZ  4064
 #define RACC_SK_SZ  26016
 #define RACC_SIG_SZ 20330
+#define MEM_OPT 0
 #endif
 
 #if defined(RACCOON_256_2)
@@ -306,6 +319,7 @@
 #define RACC_PK_SZ  4064
 #define RACC_SK_SZ  26048
 #define RACC_SIG_SZ 20330
+#define MEM_OPT 0
 #endif
 
 #if defined(RACCOON_256_4)
@@ -328,6 +342,7 @@
 #define RACC_PK_SZ  4064
 #define RACC_SK_SZ  26112
 #define RACC_SIG_SZ 20330
+#define MEM_OPT 1
 #endif
 
 #if defined(RACCOON_256_8)
@@ -350,6 +365,7 @@
 #define RACC_PK_SZ  4064
 #define RACC_SK_SZ  26240
 #define RACC_SIG_SZ 20330
+#define MEM_OPT 2
 #endif
 
 #if defined(RACCOON_256_16)
@@ -372,6 +388,7 @@
 #define RACC_PK_SZ  4064
 #define RACC_SK_SZ  26496
 #define RACC_SIG_SZ 20330
+#define MEM_OPT 2
 #endif
 
 #if defined(RACCOON_256_32)
@@ -394,4 +411,5 @@
 #define RACC_PK_SZ  4064
 #define RACC_SK_SZ  27008
 #define RACC_SIG_SZ 20330
+#define MEM_OPT 2
 #endif

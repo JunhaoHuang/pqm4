@@ -410,19 +410,19 @@ raccoon_invntt:
 .ltorg
 
 
-.align 2
-ntt_asm_minus_qinv1:
-.word 16515071
-.align 2
-ntt_asm_q1:
-.word 16515073
-.align 2
-ntt_asm_minus_qinv2:
-.word 33292287
-
-.align 2
-ntt_asm_q2:
-.word 33292289
+// .align 2
+// ntt_asm_minus_qinv1:
+// .word 16515071
+// .align 2
+// ntt_asm_q1:
+// .word 16515073
+// .align 2
+// ntt_asm_minus_qinv2:
+// .word 33292287
+// 
+// .align 2
+// ntt_asm_q2:
+// .word 33292289
 
 .section .rodata
 .type intt_w1_32_asm, %object

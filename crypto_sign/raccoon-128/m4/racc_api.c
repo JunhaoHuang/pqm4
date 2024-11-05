@@ -9,13 +9,13 @@
 #include "racc_core.h"
 #include "racc_serial.h"
 #include "xof_sample.h"
-
+#include "fips202.h"
 //  Generates a keypair - pk is the public key and sk is the secret key.
 
 int
 crypto_sign_keypair(  unsigned char *pk, unsigned char *sk)
 {
-#if defined(MEM_OPT) || defined(MEM_OPT1)
+#if (MEM_OPT >0)
     return racc_core_keygen(pk, sk); //  generate keypair
 #else
     racc_pk_t r_pk; //  internal-format public key
@@ -40,6 +40,22 @@ crypto_sign(unsigned char *sm, unsigned int *smlen,
             const unsigned char *m, unsigned int mlen,
             const unsigned char *sk)
 {
+#if (MEM_OPT > 0)
+    uint8_t tr[RACC_TR_SZ];
+    uint8_t mu[RACC_MU_SZ];
+    int ret = 0;
+    // set the tr field here
+    shake256(tr, RACC_TR_SZ, sk, CRYPTO_PUBLICKEYBYTES);
+    xof_chal_mu(mu, tr, m, mlen); //  compute mu
+    
+    ret = racc_core_sign(sm, mu, sk); //  create signature
+
+    memcpy(sm + CRYPTO_BYTES, m, mlen);            //  add the message
+
+    *smlen = mlen + CRYPTO_BYTES;
+
+    return ret;
+#else
     racc_sk_t   r_sk;           //  internal-format secret key
     racc_sig_t  r_sig;          //  internal-format signature
     uint8_t mu[RACC_MU_SZ];
@@ -65,6 +81,7 @@ crypto_sign(unsigned char *sm, unsigned int *smlen,
     *smlen = mlen + CRYPTO_BYTES;
 
     return  0;
+#endif
 }
 
 //  Verify a message signature: m is the original message, sm is the signed
@@ -83,21 +100,23 @@ crypto_sign_open(unsigned char *m, unsigned int *mlen,
     //  deserialize public key, signature with a consistency check
     if (smlen < CRYPTO_BYTES ||
         CRYPTO_PUBLICKEYBYTES != racc_decode_pk(&r_pk, pk) ||
-        CRYPTO_BYTES != racc_decode_sig(&r_sig, sm))
-        return -1;
+        CRYPTO_BYTES != racc_decode_sig(&r_sig, sm)){
+            return -1;
+        }
+        
     m_sz = smlen - CRYPTO_BYTES;
 
     //  compute mu
     xof_chal_mu(mu, r_pk.tr, sm + CRYPTO_BYTES, m_sz);
 
     //  verification
-    if (!racc_core_verify(&r_sig, mu, &r_pk))
+    if (!racc_core_verify(&r_sig, mu, &r_pk)){
         return -1;
-
+    }
+        
     //  store the length and move the "opened" message
     memcpy(m, sm + CRYPTO_BYTES, m_sz);
     *mlen = m_sz;
 
     return  0;
 }
-

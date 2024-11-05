@@ -7,12 +7,19 @@
 #include <stdbool.h>
 
 #include "polyr.h"
-
+#include "mont32.h"
 //  2x32 CRT: Split into two-prime representation (in-place).
 extern void polyr2_split_asm(int64_t* v);
 void polyr2_split(int64_t *v)
 {
     polyr2_split_asm(v);
+}
+
+//  2x32 CRT: Split into two-prime representation (in-place). Produce coefficients that are negative of the correct results.
+extern void polyr2_split_neg_asm(int64_t* v);
+void polyr2_split_neg(int64_t *v)
+{
+    polyr2_split_neg_asm(v);
 }
 
 //  2x32 CRT: Join two-prime into 64-bit integer representation (in-place).
@@ -31,11 +38,23 @@ void polyr2_add(int64_t *r, const int64_t *a, const int64_t *b)
     polyr2_add_asm(r,a,b);
 }
 
+extern void polyr2_ntt_addq_asm(int64_t *r, const int64_t *a, const int64_t *b);
+void polyr2_addq(int64_t *r, const int64_t *a, const int64_t *b)
+{
+    polyr2_ntt_addq_asm(r, a, b);
+}
+
 //  2x32 CRT: Subtract polynomials:  r = a - b.
 extern void polyr2_sub_asm(int64_t *r, const int64_t *a, const int64_t *b);
 void polyr2_sub(int64_t *r, const int64_t *a, const int64_t *b)
 {
     polyr2_sub_asm(r,a,b);
+}
+
+void polyr2_neg_asm(int64_t *r, const int64_t *a);
+void polyr2_neg(int64_t *r, const int64_t *a)
+{
+    polyr2_neg_asm(r,a);
 }
 
 //  2x32 CRT: Scalar multiplication:    r = a * c,  Montgomery reduction.
@@ -60,7 +79,12 @@ void polyr_ntt_mula(int64_t *r, const int64_t *a, const int64_t *b,
     polyr_ntt_mula_asm(r, a, b, c);
 }
 
-//  2x32 CRT: Forward NTT (x^n+1). Input is 64-bit, output is 2x32 CRT.
+extern void polyr2_reduce_asm(int64_t *r, const int64_t *a);
+void polyr2_reduce(int64_t *r, const int64_t *a)
+{
+    polyr2_reduce_asm(r,a);
+}
+//  2x32 CRT: Forward NTT (x^n+1). Input is 64-bit, output is 2x32 CRT. Produce coefficients that are negative of the correct results.
 extern void raccoon_ntt(int64_t p[512]);
 void polyr_fntt(int64_t *v)
 {

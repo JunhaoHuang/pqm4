@@ -67,6 +67,75 @@ polyr2_split_asm:
   str.w pol0, [ptr_p], #4*4
 
   pop {R4-R11, PC}
+
+.ltorg
+
+.global polyr2_split_neg_asm
+.type polyr2_split_neg_asm,%function
+.align 2
+polyr2_split_neg_asm:
+  //bind aliases
+  ptr_p     .req R0
+  qinv2     .req R1
+  q         .req R2
+  qinv      .req R3
+  pol4      .req R4
+  pol0      .req R5
+  pol1      .req R6
+  pol2      .req R7
+  pol3      .req R8
+  temp_h    .req R9
+  ctrn      .req R10
+  pol5      .req R11
+  pol6      .req R12
+  temp_l    .req R14
+
+  //preserve registers
+  push {R4-R11, R14}
+
+  //polyr2_split
+  ldr.w qinv, ntt_asm_qinv1
+  ldr.w q, ntt_asm_q1
+  ldr.w qinv2, ntt_asm_qinv2
+  ldr.w pol6, ntt_asm_q2
+  
+  add.w ctrn, ptr_p, #4096-4*4
+  1:
+    ldr.w pol0, [ptr_p]
+    ldr.w pol1, [ptr_p, #4*1]
+    ldr.w pol2, [ptr_p, #4*2]
+    ldr.w pol3, [ptr_p, #4*3]
+    ldr.w pol4, [ptr_p, #4*4]
+    ldr.w pol5, [ptr_p, #4*5]
+
+    montgomery_redc_v3 pol0, pol1, qinv, q, qinv2, pol6, temp_l, temp_h
+    montgomery_redc_v3 pol2, pol3, qinv, q, qinv2, pol6, temp_l, temp_h
+    montgomery_redc_v3 pol4, pol5, qinv, q, qinv2, pol6, temp_l, temp_h
+
+    str.w pol1, [ptr_p, #4*1]
+    str.w pol2, [ptr_p, #4*2]
+    str.w pol3, [ptr_p, #4*3]
+    str.w pol4, [ptr_p, #4*4]
+    str.w pol5, [ptr_p, #4*5]
+    str.w pol0, [ptr_p], #4*6
+  cmp.w ptr_p, ctrn
+  bne 1b
+
+  ldr.w pol0, [ptr_p]
+  ldr.w pol1, [ptr_p, #4*1]
+  ldr.w pol2, [ptr_p, #4*2]
+  ldr.w pol3, [ptr_p, #4*3]
+
+  montgomery_redc_v3 pol0, pol1, qinv, q, qinv2, pol6, temp_l, temp_h
+  montgomery_redc_v3 pol2, pol3, qinv, q, qinv2, pol6, temp_l, temp_h
+
+  str.w pol1, [ptr_p, #4*1]
+  str.w pol2, [ptr_p, #4*2]
+  str.w pol3, [ptr_p, #4*3]
+  str.w pol0, [ptr_p], #4*4
+
+  pop {R4-R11, PC}
+
   // unbind aliases
   .unreq ptr_p
   .unreq qinv2
@@ -211,6 +280,128 @@ polyr2_add_asm:
   bne 1b
   pop {R4-R11, PC}
 
+// void polyr2_ntt_addq(int64_t *r, const int64_t *a, const int64_t *b)
+.global polyr2_ntt_addq_asm
+.type polyr2_ntt_addq_asm,%function
+.align 2
+polyr2_ntt_addq_asm:
+  //bind aliases
+  ptr_p     .req R0
+  ptr_a     .req R1
+  ptr_b     .req R2
+  pol4      .req R3
+  pol5      .req R4
+  pol0      .req R5
+  pol1      .req R6
+  pol2      .req R7
+  pol3      .req R8
+  pol6      .req R9
+  ctrn      .req R10
+  pol7      .req R11
+  q         .req R12
+  qq2       .req R14
+
+  push {R4-R11, R14}
+
+  ldr.w q, ntt_asm_q1
+  ldr.w qq2, ntt_asm_q2
+
+  add.w ctrn, ptr_p, #4096
+  1:
+    ldr.w pol1, [ptr_a, #4*1]
+    ldr.w pol2, [ptr_a, #4*2]
+    ldr.w pol3, [ptr_a, #4*3]
+    ldr.w pol0, [ptr_a], #4*4
+    ldr.w pol5, [ptr_b, #4*1]
+    ldr.w pol6, [ptr_b, #4*2]
+    ldr.w pol7, [ptr_b, #4*3]
+    ldr.w pol4, [ptr_b], #4*4
+
+    add pol0, pol4
+    add pol1, pol5
+    add pol2, pol6
+    add pol3, pol7
+
+    mont32_csub_asm pol0, q, pol4
+    mont32_csub_asm pol2, q, pol4
+    mont32_csub_asm pol1, qq2, pol4
+    mont32_csub_asm pol3, qq2, pol4
+
+    str.w pol1, [ptr_p, #4*1]
+    str.w pol2, [ptr_p, #4*2]
+    str.w pol3, [ptr_p, #4*3]
+    str.w pol0, [ptr_p], #4*4
+
+  cmp.w ptr_p, ctrn
+  bne 1b
+  pop {R4-R11, PC}
+
+.ltorg
+
+
+// void polyr2_reduce(int64_t *r, const int64_t *a)
+.global polyr2_reduce_asm
+.type polyr2_reduce_asm,%function
+.align 2
+polyr2_reduce_asm:
+  //bind aliases
+  ptr_p     .req R0
+  ptr_a     .req R1
+  tmp       .req R2
+  pol4      .req R3
+  pol5      .req R4
+  pol0      .req R5
+  pol1      .req R6
+  pol2      .req R7
+  pol3      .req R8
+  pol6      .req R9
+  ctrn      .req R10
+  pol7      .req R11
+  q         .req R12
+  qq2       .req R14
+
+  push {R4-R11, R14}
+
+  ldr.w q, ntt_asm_q1
+  ldr.w qq2, ntt_asm_q2
+
+  add.w ctrn, ptr_p, #4096
+  1:
+    ldr.w pol1, [ptr_a, #4*1]
+    ldr.w pol2, [ptr_a, #4*2]
+    ldr.w pol3, [ptr_a, #4*3]
+    ldr.w pol4, [ptr_a, #4*4]
+    ldr.w pol5, [ptr_a, #4*5]
+    ldr.w pol6, [ptr_a, #4*6]
+    ldr.w pol7, [ptr_a, #4*7]
+    ldr.w pol0, [ptr_a], #4*8
+
+    reduce_q1_asm pol0, q, tmp
+    reduce_q1_asm pol2, q, tmp
+    reduce_q1_asm pol4, q, tmp
+    reduce_q1_asm pol6, q, tmp
+    reduce_q2_asm pol1, qq2, tmp
+    reduce_q2_asm pol3, qq2, tmp
+    reduce_q2_asm pol5, qq2, tmp
+    reduce_q2_asm pol7, qq2, tmp
+
+    str.w pol1, [ptr_p, #4*1]
+    str.w pol2, [ptr_p, #4*2]
+    str.w pol3, [ptr_p, #4*3]
+    str.w pol4, [ptr_p, #4*4]
+    str.w pol5, [ptr_p, #4*5]
+    str.w pol6, [ptr_p, #4*6]
+    str.w pol7, [ptr_p, #4*7]
+    str.w pol0, [ptr_p], #4*8
+
+  cmp.w ptr_p, ctrn
+  bne 1b
+
+  pop {R4-R11, PC}
+  .unreq tmp
+
+.ltorg
+
 // void polyr2_sub(int64_t *r, const int64_t *a, const int64_t *b)
 .global polyr2_sub_asm
 .type polyr2_sub_asm,%function
@@ -328,11 +519,10 @@ polyr_reduce_asm:
   str.w pol3, [ptr_p, #4*3]
   str.w pol0, [ptr_p], #4*4
 
-
   pop {R4-R11, PC}
-  .unreq tmp
 
 .ltorg
+
 
 // void polyr_sub(int64_t *r, const int64_t *a, const int64_t *b)
 .global polyr_sub_asm
@@ -974,6 +1164,7 @@ polyr_subm_asm:
   .unreq ptr_b
   .unreq qLo    
   .unreq qHi
+  .unreq tmp
 
 // void polyr_shlm42(int64_t *r, const int64_t *a, int64_t m) tailored for 42 in raccoon
 .global polyr_shlm42_asm
@@ -1055,7 +1246,7 @@ polyr_shrm42_asm:
 
   push {R4-R11, R14}
   
-  mov RC, #512 //1<<(s-1)
+  mov RC, #512 //1<<(42-32-1)
   add.w ctrn, ptr_p, #4096
   1:
     ldr.w pol0, [ptr_p]
@@ -1126,7 +1317,7 @@ polyr_shrm44_asm:
 
   push {R4-R11, R14}
   
-  mov RC, #2048 //1<<(s-1)
+  mov RC, #2048 //1<<(44-32-1)
   add.w ctrn, ptr_p, #4096
   1:
     ldr.w pol0, [ptr_p]
@@ -1256,7 +1447,6 @@ polyr_neg_asm:
 
   // ldrd qLo, qHi, [qLo]
   add.w ctrn, ptr_p, #4096
-  vmov s0, ctrn
   1:
     ldr.w pol1, [ptr_a, #4*1]
     ldr.w pol2, [ptr_a, #4*2]
@@ -1280,7 +1470,62 @@ polyr_neg_asm:
     str.w pol6, [ptr_p, #4*6]
     str.w pol7, [ptr_p, #4*7]
     str.w pol0, [ptr_p], #4*8
-  vmov ctrn, s0
+  cmp.w ptr_p, ctrn
+  bne 1b
+  pop {R4-R11, PC}
+
+// void polyr2_neg(int64_t *r, int64_t *a)
+.global polyr2_neg_asm
+.type polyr2_neg_asm,%function
+.align 2
+polyr2_neg_asm:
+  //bind aliases
+  ptr_p     .req R0
+  ptr_a     .req R1
+  qLo       .req R2
+  qHi       .req R3
+  tmp       .req R4
+  pol0      .req R5
+  pol1      .req R6
+  pol2      .req R7
+  pol3      .req R8
+  pol6      .req R9
+  ctrn      .req R10
+  pol7      .req R11
+  pol4      .req R12
+  pol5      .req R14
+
+  push {R4-R11, R14}
+
+  // ldrd qLo, qHi, [qLo]
+  add.w ctrn, ptr_p, #4096
+  1:
+    ldr.w pol1, [ptr_a, #4*1]
+    ldr.w pol2, [ptr_a, #4*2]
+    ldr.w pol3, [ptr_a, #4*3]
+    ldr.w pol4, [ptr_a, #4*4]
+    ldr.w pol5, [ptr_a, #4*5]
+    ldr.w pol6, [ptr_a, #4*6]
+    ldr.w pol7, [ptr_a, #4*7]
+    ldr.w pol0, [ptr_a], #4*8
+
+    neg pol0, pol0
+    neg pol1, pol1
+    neg pol2, pol2
+    neg pol3, pol3
+    neg pol4, pol4
+    neg pol5, pol5
+    neg pol6, pol6
+    neg pol7, pol7
+
+    str.w pol1, [ptr_p, #4*1]
+    str.w pol2, [ptr_p, #4*2]
+    str.w pol3, [ptr_p, #4*3]
+    str.w pol4, [ptr_p, #4*4]
+    str.w pol5, [ptr_p, #4*5]
+    str.w pol6, [ptr_p, #4*6]
+    str.w pol7, [ptr_p, #4*7]
+    str.w pol0, [ptr_p], #4*8
   cmp.w ptr_p, ctrn
   bne 1b
   pop {R4-R11, PC}
@@ -1434,21 +1679,4 @@ polyr_center_asm:
   .unreq qLo    
   .unreq qHi
 
-.align 2
-ntt_asm_qinv1:
-.word 4278452225
-.align 2
-ntt_asm_q1:
-.word 16515073
-.align 2
-ntt_asm_qinv2:
-.word 4261675009
-.align 2
-ntt_asm_q2:
-.word 33292289
-.align 2
-ntt_asm_minus_qinv1:
-.word 16515071
-.align 2
-ntt_asm_minus_qinv2:
-.word 33292287
+

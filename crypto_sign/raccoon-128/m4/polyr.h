@@ -68,7 +68,7 @@ void polyr_ntt_cmul(int64_t *r, const int64_t *a, const int64_t *b);
 void polyr_ntt_mula(int64_t *r, const int64_t *a, const int64_t *b,
                     const int64_t *c);
 
-//  Forward NTT (negacyclic -- evaluate polynomial at factors of x^n+1).
+//  negative Forward NTT (negacyclic -- evaluate polynomial at factors of x^n+1).
 void polyr_fntt(int64_t *v);
 
 //  Reverse NTT (negacyclic -- x^n+1), normalize by 1/(n*r).
@@ -77,6 +77,12 @@ void polyr_intt(int64_t *v);
 //  2x32 CRT: Split into two-prime representation (in-place).
 void polyr2_split(int64_t *v);
 
+//  2x32 CRT: Split into two-prime representation (in-place). Produce coefficients that are negative of the correct results.
+void polyr2_split_neg(int64_t *v);
+
+// barrett reduce for q1 and q2
+void polyr2_reduce(int64_t *r, const int64_t *a);
+
 //  2x32 CRT: Join two-prime into 64-bit integer representation (in-place).
 //  Use scale factors (s1, s2). Normalizes to 0 <= x < q.
 void polyr2_join(int64_t *v, int32_t s1, int32_t s2);
@@ -84,9 +90,14 @@ void polyr2_join(int64_t *v, int32_t s1, int32_t s2);
 //  2x32 CRT: Add polynomials:  r = a + b.
 void polyr2_add(int64_t *r, const int64_t *a, const int64_t *b);
 
+//  2x32 CRT: Add polynomials:  r = a + b mod q1, q2.
+void polyr2_addq(int64_t *r, const int64_t *a, const int64_t *b);
+
 //  2x32 CRT: Subtract polynomials:  r = a - b.
 void polyr2_sub(int64_t *r, const int64_t *a, const int64_t *b);
 
+//  2x32 CRT: negate polynomials:  r = -a.
+void polyr2_neg(int64_t *r, const int64_t *a);
 
 #ifdef __cplusplus
 }
