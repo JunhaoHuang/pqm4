@@ -13,7 +13,7 @@ extern "C" {
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
-
+#include "mask_random.h"
 #include "racc_param.h"
 
 //  === Global namespace prefix
@@ -60,6 +60,13 @@ bool racc_core_verify(  const racc_sig_t *sig,
                         const uint8_t mu[RACC_MU_SZ],
                         const racc_pk_t *pk);
 
+void racc_decode(int64_t r[RACC_N], const int64_t m[RACC_D][RACC_N]);
+void racc_ntt_decode(int64_t r[RACC_N], const int64_t m[RACC_D][RACC_N]);
+void zero_encoding(int64_t z[RACC_D][RACC_N], mask_random_t *mrg);
+void racc_refresh(int64_t x[RACC_D][RACC_N], mask_random_t *mrg);
+void racc_ntt_refresh(int64_t x[RACC_D][RACC_N], mask_random_t *mrg);
+void add_rep_noise(int64_t vi[RACC_D][RACC_N],
+                   int i_v, int u, mask_random_t *mrg);
 #ifdef __cplusplus
 }
 #endif

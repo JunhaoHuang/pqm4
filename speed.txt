@@ -1,0 +1,165 @@
+Processing file: RACC/speed_RACCOON_256_16_m4.txt
+Results for RACC/speed_RACCOON_256_16_m4.txt with 0 elements
+keypair cycles: 0k
+sign cycles: 0k
+verify cycles: 0k
+Processing file: RACC/speed_RACCOON_256_2_m4.txt
+Results for RACC/speed_RACCOON_256_2_m4.txt with 1000 elements
+keypair cycles: 53854k
+sign cycles: 85741k
+verify cycles: 36097k
+Processing file: RACC/speed_RACCOON_256_4_m4.txt
+Results for RACC/speed_RACCOON_256_4_m4.txt with 1000 elements
+keypair cycles: 64766k
+sign cycles: 337280k
+verify cycles: 36194k
+Processing file: RACC/speed_RACCOON_256_8_ref.txt
+Results for RACC/speed_RACCOON_256_8_ref.txt with 1 elements
+keypair cycles: 224690k
+sign cycles: 0k
+verify cycles: 0k
+Processing file: RACC/poly_speed_RACCOON_128_2_ref.txt
+Results for RACC/poly_speed_RACCOON_128_2_ref.txt with 0 elements
+keypair cycles: 0k
+sign cycles: 0k
+verify cycles: 0k
+Processing file: RACC/speed_RACCOON_192_8_m4.txt
+Results for RACC/speed_RACCOON_192_8_m4.txt with 1000 elements
+keypair cycles: 105337k
+sign cycles: 607240k
+verify cycles: 21447k
+Processing file: RACC/speed_RACCOON_128_1_ref.txt
+Results for RACC/speed_RACCOON_128_1_ref.txt with 1000 elements
+keypair cycles: 29073k
+sign cycles: 65719k
+verify cycles: 21851k
+Processing file: RACC/speed_RACCOON_128_1_m4.txt
+Results for RACC/speed_RACCOON_128_1_m4.txt with 1000 elements
+keypair cycles: 19637k
+sign cycles: 39628k
+verify cycles: 13226k
+Processing file: RACC/speed_RACCOON_256_4_ref.txt
+Results for RACC/speed_RACCOON_256_4_ref.txt with 1 elements
+keypair cycles: 105846k
+sign cycles: 0k
+verify cycles: 0k
+Processing file: RACC/speed_RACCOON_192_1_ref.txt
+Results for RACC/speed_RACCOON_192_1_ref.txt with 1000 elements
+keypair cycles: 45518k
+sign cycles: 94450k
+verify cycles: 35862k
+Processing file: RACC/speed_RACCOON_192_32_m4.txt
+Results for RACC/speed_RACCOON_192_32_m4.txt with 0 elements
+keypair cycles: 0k
+sign cycles: 0k
+verify cycles: 0k
+Processing file: RACC/speed_RACCOON_192_8_ref.txt
+Results for RACC/speed_RACCOON_192_8_ref.txt with 1 elements
+keypair cycles: 155083k
+sign cycles: 0k
+verify cycles: 0k
+Processing file: RACC/speed_RACCOON_128_8_m4.txt
+Results for RACC/speed_RACCOON_128_8_m4.txt with 1000 elements
+keypair cycles: 76364k
+sign cycles: 129326k
+verify cycles: 13226k
+Processing file: RACC/poly_speed_RACCOON_128_2_m4.txt
+Results for RACC/poly_speed_RACCOON_128_2_m4.txt with 0 elements
+keypair cycles: 0k
+sign cycles: 0k
+verify cycles: 0k
+Processing file: RACC/speed_RACCOON_128_8_ref.txt
+Results for RACC/speed_RACCOON_128_8_ref.txt with 1000 elements
+keypair cycles: 111445k
+sign cycles: 199892k
+verify cycles: 21852k
+Processing file: RACC/speed_RACCOON_128_2_m4.txt
+Results for RACC/speed_RACCOON_128_2_m4.txt with 1000 elements
+keypair cycles: 22977k
+sign cycles: 43196k
+verify cycles: 13226k
+Processing file: RACC/speed_RACCOON_192_1_m4.txt
+Results for RACC/speed_RACCOON_192_1_m4.txt with 1000 elements
+keypair cycles: 30044k
+sign cycles: 56658k
+verify cycles: 21460k
+Processing file: RACC/speed_RACCOON_192_16_m4.txt
+Results for RACC/speed_RACCOON_192_16_m4.txt with 1 elements
+keypair cycles: 133215k
+sign cycles: 0k
+verify cycles: 0k
+Processing file: RACC/speed_RACCOON_256_1_ref.txt
+Results for RACC/speed_RACCOON_256_1_ref.txt with 1000 elements
+keypair cycles: 73878k
+sign cycles: 124020k
+verify cycles: 60837k
+Processing file: RACC/speed_RACCOON_192_4_ref.txt
+Results for RACC/speed_RACCOON_192_4_ref.txt with 1000 elements
+keypair cycles: 68019k
+sign cycles: 108992k
+verify cycles: 35859k
+Processing file: RACC/speed_RACCOON_192_32_ref.txt
+Results for RACC/speed_RACCOON_192_32_ref.txt with 0 elements
+keypair cycles: 0k
+sign cycles: 0k
+verify cycles: 0k
+Processing file: RACC/speed_RACCOON_192_2_ref.txt
+Results for RACC/speed_RACCOON_192_2_ref.txt with 1000 elements
+keypair cycles: 53705k
+sign cycles: 103777k
+verify cycles: 35858k
+Processing file: RACC/speed_RACCOON_256_2_ref.txt
+Results for RACC/speed_RACCOON_256_2_ref.txt with 1000 elements
+keypair cycles: 85407k
+sign cycles: 136329k
+verify cycles: 60839k
+Processing file: RACC/speed_RACCOON_256_8_m4.txt
+Results for RACC/speed_RACCOON_256_8_m4.txt with 1000 elements
+keypair cycles: 150611k
+sign cycles: 969455k
+verify cycles: 36193k
+Processing file: RACC/speed_RACCOON_128_4_ref.txt
+Results for RACC/speed_RACCOON_128_4_ref.txt with 1000 elements
+keypair cycles: 46043k
+sign cycles: 85151k
+verify cycles: 21849k
+Processing file: RACC/speed_RACCOON_128_2_ref.txt
+Results for RACC/speed_RACCOON_128_2_ref.txt with 1000 elements
+keypair cycles: 35245k
+sign cycles: 72595k
+verify cycles: 21851k
+Processing file: RACC/speed_RACCOON_192_2_m4.txt
+Results for RACC/speed_RACCOON_192_2_m4.txt with 1000 elements
+keypair cycles: 34448k
+sign cycles: 61533k
+verify cycles: 21458k
+Processing file: RACC/speed_RACCOON_128_16_m4.txt
+Results for RACC/speed_RACCOON_128_16_m4.txt with 1000 elements
+keypair cycles: 100786k
+sign cycles: 436475k
+verify cycles: 13284k
+Processing file: RACC/speed_RACCOON_192_16_ref.txt
+Results for RACC/speed_RACCOON_192_16_ref.txt with 1 elements
+keypair cycles: 202531k
+sign cycles: 0k
+verify cycles: 0k
+Processing file: RACC/speed_RACCOON_128_4_m4.txt
+Results for RACC/speed_RACCOON_128_4_m4.txt with 1000 elements
+keypair cycles: 28808k
+sign cycles: 50052k
+verify cycles: 13226k
+Processing file: RACC/speed_RACCOON_256_1_m4.txt
+Results for RACC/speed_RACCOON_256_1_m4.txt with 1000 elements
+keypair cycles: 47631k
+sign cycles: 79214k
+verify cycles: 36098k
+Processing file: RACC/speed_RACCOON_192_4_m4.txt
+Results for RACC/speed_RACCOON_192_4_m4.txt with 1000 elements
+keypair cycles: 42113k
+sign cycles: 67363k
+verify cycles: 21460k
+Processing file: RACC/speed_RACCOON_256_32_m4.txt
+Results for RACC/speed_RACCOON_256_32_m4.txt with 0 elements
+keypair cycles: 0k
+sign cycles: 0k
+verify cycles: 0k

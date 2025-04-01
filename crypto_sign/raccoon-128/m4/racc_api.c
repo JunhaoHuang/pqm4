@@ -15,8 +15,10 @@
 int
 crypto_sign_keypair(  unsigned char *pk, unsigned char *sk)
 {
+    bool ret;
 #if (MEM_OPT >0)
-    return racc_core_keygen(pk, sk); //  generate keypair
+    racc_sk_t r_sk;
+    ret = racc_core_keygen(pk, &r_sk); //  generate keypair
 #else
     racc_pk_t r_pk; //  internal-format public key
     racc_sk_t r_sk; //  internal-format secret key
@@ -24,12 +26,14 @@ crypto_sign_keypair(  unsigned char *pk, unsigned char *sk)
     racc_core_keygen(&r_pk, &r_sk); //  generate keypair
 
     //  serialize
-    if (CRYPTO_PUBLICKEYBYTES != racc_encode_pk(pk, &r_pk) ||
-        CRYPTO_SECRETKEYBYTES != racc_encode_sk(sk, &r_sk))
-        return -1;
-
-    return 0;
+    ret= (CRYPTO_PUBLICKEYBYTES != racc_encode_pk(pk, &r_pk));
 #endif
+    memcpy(sk, pk, CRYPTO_PUBLICKEYBYTES);
+    ret = ret || ((CRYPTO_SECRETKEYBYTES - CRYPTO_PUBLICKEYBYTES) != racc_encode_sk(sk + CRYPTO_PUBLICKEYBYTES, &r_sk));
+    if (ret)
+        return -1;
+    else
+        return 0;
 }
 
 //  Sign a message: sm is the signed message, m is the original message,
@@ -41,14 +45,17 @@ crypto_sign(unsigned char *sm, unsigned int *smlen,
             const unsigned char *sk)
 {
 #if (MEM_OPT > 0)
-    uint8_t tr[RACC_TR_SZ];
+    racc_sk_t r_sk; //  internal-format secret key
     uint8_t mu[RACC_MU_SZ];
     int ret = 0;
-    // set the tr field here
-    shake256(tr, RACC_TR_SZ, sk, CRYPTO_PUBLICKEYBYTES);
-    xof_chal_mu(mu, tr, m, mlen); //  compute mu
-    
-    ret = racc_core_sign(sm, mu, sk); //  create signature
+
+    //  deserialize secret key
+    if (CRYPTO_SECRETKEYBYTES != racc_decode_sk(&r_sk, sk))
+        return -1;
+
+    xof_chal_mu(mu, r_sk.pk.tr, m, mlen); //  compute mu
+
+    ret = racc_core_sign(sm, mu, &r_sk); //  create signature
 
     memcpy(sm + CRYPTO_BYTES, m, mlen);            //  add the message
 

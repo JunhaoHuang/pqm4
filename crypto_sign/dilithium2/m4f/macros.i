@@ -123,10 +123,10 @@
 * Constants:    Qprime = -MOD^{-1} mod^{+-} R, Q = MOD
 *
 * Output:
-*               c4 =  c4 + c1        + (c6 + c3)
-*               c5 = (c4 - c1) w_4   + (c6 + c3) w_8^3
-*               c6 =  c4 + c1        - (c6 + c3)
-*               c7 = (c4 - c1) w_8^3 + (c6 + c3) w_4
+*               c4 =  c4 + c5        + (c6 + c7)
+*               c5 = (c4 - c5) w_4   + (c6 - c7) w_8^3
+*               c6 =  c4 + c5        - (c6 + c7)
+*               c7 = (c4 - c5) w_8^3 + (c6 - c7) w_4
 ************************************************************/
 // 15
 .macro _3_layer_inv_butterfly_light_fast_first c0, c1, c2, c3, c4, c5, c6, c7, xi0, xi1, xi2, xi3, xi4, xi5, xi6, twiddle, Qprime, Q, tmp, tmp2
@@ -136,8 +136,8 @@
     vmov.w \tmp, \xi4
     vmov.w \tmp2, \xi6
 
-    smull.w \c0, \c5, \c1, \tmp
-    smlal.w \c0, \c5, \c3, \tmp2
+    smull.w \c0, \c5, \c1, \tmp //(c4 - c5) w_4
+    smlal.w \c0, \c5, \c3, \tmp2 //(c6 - c7) w_8^3
     mul.w \twiddle, \c0, \Qprime
     smlal.w \c0, \c5, \twiddle, \Q
 

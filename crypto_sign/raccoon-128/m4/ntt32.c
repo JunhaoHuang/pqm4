@@ -79,6 +79,12 @@ void polyr_ntt_mula(int64_t *r, const int64_t *a, const int64_t *b,
     polyr_ntt_mula_asm(r, a, b, c);
 }
 
+extern void polyr2_reduce_q2_asm(int64_t *r, const int64_t *a);
+void polyr2_reduce_q2(int64_t *r, const int64_t *a)
+{
+    polyr2_reduce_q2_asm(r,a);
+}
+
 extern void polyr2_reduce_asm(int64_t *r, const int64_t *a);
 void polyr2_reduce(int64_t *r, const int64_t *a)
 {

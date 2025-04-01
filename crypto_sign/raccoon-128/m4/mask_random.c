@@ -9,6 +9,11 @@
 #include "plat_local.h"
 #include "racc_param.h"
 
+#ifdef PROFILE_HASHING
+#include "hal.h"
+extern unsigned long long hash_cycles;
+#endif
+
 #if RACC_D > 1
 #ifdef MASK_RANDOM_ASCON
 
@@ -82,6 +87,9 @@ static inline uint64_t asconp6_enc(uint64_t s[5], uint64_t pt)
 
 void mask_random_init(mask_random_t *mrg)
 {
+#ifdef PROFILE_HASHING
+  uint64_t t0 = hal_get_time();
+#endif
     //  trivial test vector; see mask_random_selftest()
     const uint8_t key[20] = {
         0,  1,  2,  3,  4,  5,  6,  7,  8,  9,      //  KAT Key: 160-bit
@@ -121,6 +129,10 @@ void mask_random_init(mask_random_t *mrg)
         s[4] ^= get64u_be(key + 12);
         s[4] ^= 1;          //  Domain separation.
     }
+#ifdef PROFILE_HASHING
+    uint64_t t1 = hal_get_time();
+    hash_cycles += (t1-t0);
+#endif
 }
 
 //  get a 64-bit random number
@@ -134,6 +146,9 @@ uint64_t mask_rand64(mask_random_t *mrg, size_t ri)
 
 void mask_random_poly(mask_random_t *mrg, int64_t *r, size_t ri)
 {
+#ifdef PROFILE_HASHING
+  uint64_t t0 = hal_get_time();
+#endif
     size_t i;
     int64_t z;
     uint64_t s[5];
@@ -151,6 +166,10 @@ void mask_random_poly(mask_random_t *mrg, int64_t *r, size_t ri)
 
     //  copy it back
     memcpy(mrg->s[ri], s, sizeof(s));
+#ifdef PROFILE_HASHING
+  uint64_t t1 = hal_get_time();
+  hash_cycles += (t1-t0);
+#endif
 }
 
 //  ASCON: simple deterministic self-test, return nonzero on failure
@@ -183,6 +202,71 @@ int mask_random_selftest()
     }
 
     return fail;
+}
+
+#elif defined(MASK_RANDOM_TRNG)
+
+#include <libopencm3/stm32/rng.h>
+// mask random generation using TRNG.
+void mask_random_init(mask_random_t *mrg)
+{
+#ifdef PROFILE_HASHING
+    uint64_t t0 = hal_get_time();
+#endif
+    rng_enable();
+    rng_interrupt_enable();
+    // mrg->i=0;
+    for(int i=0;i<2;i++){
+        mrg->s.asint32[i]=rng_get_random_blocking();
+    }
+    
+#ifdef PROFILE_HASHING
+    uint64_t t1 = hal_get_time();
+    hash_cycles += (t1 - t0);
+#endif
+}
+
+// void mask_random_cache(mask_random_t *mrg, int index)
+// {
+//     bool ret=false;
+//     int32_t tmp;
+//     while(!ret){
+//         ret=rng_get_random(&tmp);
+//     }
+// }
+
+void mask_random_poly(mask_random_t *mrg, int64_t *r, size_t ri)
+{
+#ifdef PROFILE_HASHING
+  uint64_t t0 = hal_get_time();
+#endif
+    (void)ri;
+
+    size_t i;
+    int64_t z;
+    union
+    {
+        uint64_t asint64;
+        uint32_t asint32[2];   /* data */
+    } random;
+    
+    memcpy(&random, &mrg->s, sizeof(random));
+
+    for (i = 0; i < RACC_N; i++) {
+        do {
+            z = random.asint64 & RACC_QMSK;
+            random.asint32[0] = rng_get_random();
+            random.asint32[1] = rng_get_random();
+        } while (z >= RACC_Q);
+        r[i] = z;
+    }
+
+    //  copy it back
+    memcpy(&mrg->s, &random, sizeof(random));
+#ifdef PROFILE_HASHING
+  uint64_t t1 = hal_get_time();
+  hash_cycles += (t1-t0);
+#endif
 }
 
 #else
@@ -229,6 +313,9 @@ uint64_t mask_rand64(mask_random_t *mrg, size_t ri)
 
 void mask_random_poly(mask_random_t *mrg, int64_t *r, size_t ri)
 {
+#ifdef PROFILE_HASHING
+  uint64_t t0 = hal_get_time();
+#endif
     size_t i;
     int64_t z;
     uint64_t s[2];
@@ -242,12 +329,19 @@ void mask_random_poly(mask_random_t *mrg, int64_t *r, size_t ri)
         r[i] = z;
     }
     memcpy(mrg->s[ri], s, sizeof(s));
+#ifdef PROFILE_HASHING
+  uint64_t t1 = hal_get_time();
+  hash_cycles += (t1-t0);
+#endif
 }
 
 //  Initialize the mask random number generator from physical sources.
 
 void mask_random_init(mask_random_t *mrg)
 {
+#ifdef PROFILE_HASHING
+  uint64_t t0 = hal_get_time();
+#endif
     //  test vector key is default
     const uint8_t key[16] = {
         0xF0, 0xE1, 0xD2, 0xC3, 0xB4, 0xA5, 0x96, 0x87,
@@ -268,6 +362,10 @@ void mask_random_init(mask_random_t *mrg)
         mrg->s[i][0] = get64u_le(key);
         mrg->s[i][1] = get64u_le(key + 8) + (0x0123456789ABCDEF * i);
     }
+#ifdef PROFILE_HASHING
+  uint64_t t1 = hal_get_time();
+  hash_cycles += (t1-t0);
+#endif
 }
 
 //  LFSR127: simple deterministic self-test, return nonzero on failure

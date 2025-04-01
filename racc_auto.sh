@@ -36,9 +36,10 @@ do
 	path="raccoon-${dut:8:3}_${2}"
 	echo ${path}
 	make clean
-	make bin/crypto_sign_${path}_${1}.hex PLATFORM=nucleo-l4r5zi RACCF="-D"$dut""
+	make bin/crypto_sign_${path}_${1}.hex PLATFORM=nucleo-l4r5zi # RACCF="-D"$dut""
 	echo === $logf ===
 	echo "-D"$dut""
 	openocd -f st_nucleo_l4r5.cfg -c "program bin/crypto_sign_${path}_${1}.hex verify reset exit"
+	# st-flash --reset write bin/crypto_sign_${path}_${1}.bin 0x8000000
 	python3 hostside/host_unidirectional.py > $logf
 done

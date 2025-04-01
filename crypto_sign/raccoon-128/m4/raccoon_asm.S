@@ -338,6 +338,69 @@ polyr2_ntt_addq_asm:
 
 .ltorg
 
+// void polyr2_reduce_q2(int64_t *r, const int64_t *a) only perform modular reduction mod q_2
+.global polyr2_reduce_q2_asm
+.type polyr2_reduce_q2_asm,%function
+.align 2
+polyr2_reduce_q2_asm:
+  //bind aliases
+  ptr_p     .req R0
+  ptr_a     .req R1
+  tmp       .req R2
+  pol4      .req R3
+  pol5      .req R4
+  pol0      .req R5
+  pol1      .req R6
+  pol2      .req R7
+  pol3      .req R8
+  pol6      .req R9
+  ctrn      .req R10
+  pol7      .req R11
+  q         .req R12
+  qq2       .req R14
+
+  push {R4-R11, R14}
+
+  ldr.w qq2, ntt_asm_q2
+
+  add.w ptr_p, #4
+  add.w ptr_a, #4
+  add.w ctrn, ptr_p, #4096
+  1:
+    ldr.w pol1, [ptr_a, #8*1]
+    ldr.w pol2, [ptr_a, #8*2]
+    ldr.w pol3, [ptr_a, #8*3]
+    ldr.w pol4, [ptr_a, #8*4]
+    ldr.w pol5, [ptr_a, #8*5]
+    ldr.w pol6, [ptr_a, #8*6]
+    ldr.w pol7, [ptr_a, #8*7]
+    ldr.w pol0, [ptr_a], #8*8
+
+    reduce_q2_asm pol0, qq2 tmp
+    reduce_q2_asm pol1, qq2 tmp
+    reduce_q2_asm pol2, qq2 tmp
+    reduce_q2_asm pol3, qq2 tmp
+    reduce_q2_asm pol4, qq2, tmp
+    reduce_q2_asm pol5, qq2, tmp
+    reduce_q2_asm pol6, qq2, tmp
+    reduce_q2_asm pol7, qq2, tmp
+
+    str.w pol1, [ptr_p, #8*1]
+    str.w pol2, [ptr_p, #8*2]
+    str.w pol3, [ptr_p, #8*3]
+    str.w pol4, [ptr_p, #8*4]
+    str.w pol5, [ptr_p, #8*5]
+    str.w pol6, [ptr_p, #8*6]
+    str.w pol7, [ptr_p, #8*7]
+    str.w pol0, [ptr_p], #8*8
+
+  cmp.w ptr_p, ctrn
+  bne 1b
+
+  pop {R4-R11, PC}
+
+.ltorg
+
 
 // void polyr2_reduce(int64_t *r, const int64_t *a)
 .global polyr2_reduce_asm
@@ -1166,7 +1229,7 @@ polyr_subm_asm:
   .unreq qHi
   .unreq tmp
 
-// void polyr_shlm42(int64_t *r, const int64_t *a, int64_t m) tailored for 42 in raccoon
+// void polyr_shlm42(int64_t *r, const int64_t *a) tailored for 42 in raccoon
 .global polyr_shlm42_asm
 .type polyr_shlm42_asm,%function
 .align 2
@@ -1189,6 +1252,7 @@ polyr_shlm42_asm:
 
   push {R4-R11, R14}
 
+  movs tmp, #0 // all zero
   add.w ctrn, ptr_p, #4096
   1:
     ldr.w pol1, [ptr_a, #4*1]
@@ -1205,16 +1269,14 @@ polyr_shlm42_asm:
     lsls pol5, pol4, #10
     lsls pol7, pol6, #10
 
-    movs pol0, #0 // all zero
-
     str.w pol1, [ptr_p, #4*1]
-    str.w pol0, [ptr_p, #4*2]
+    str.w tmp, [ptr_p, #4*2]
     str.w pol3, [ptr_p, #4*3]
-    str.w pol0, [ptr_p, #4*4]
+    str.w tmp, [ptr_p, #4*4]
     str.w pol5, [ptr_p, #4*5]
-    str.w pol0, [ptr_p, #4*6]
+    str.w tmp, [ptr_p, #4*6]
     str.w pol7, [ptr_p, #4*7]
-    str.w pol0, [ptr_p], #4*8
+    str.w tmp, [ptr_p], #4*8
 
   cmp.w ptr_p, ctrn
   bne 1b
@@ -1246,6 +1308,7 @@ polyr_shrm42_asm:
 
   push {R4-R11, R14}
   
+  mov tmp2, #0
   mov RC, #512 //1<<(42-32-1)
   add.w ctrn, ptr_p, #4096
   1:
@@ -1263,12 +1326,10 @@ polyr_shrm42_asm:
     add pol3, RC
     add pol5, RC
     add pol7, RC
-    
     rsb pol0, q, pol1, asr #10
     rsb pol2, q, pol3, asr #10
     rsb pol4, q, pol5, asr #10
     rsb pol6, q, pol7, asr #10
-
     and tmp, q, pol0, asr #31
     add pol0, tmp
     and tmp, q, pol2, asr #31
@@ -1279,15 +1340,13 @@ polyr_shrm42_asm:
     add pol6, tmp
 
     // pol1, pol3, pol5, pol7 are all 0 now
-    mov pol1, #0
-
-    str.w pol1, [ptr_p, #4*1]
+    str.w tmp2, [ptr_p, #4*1]
     str.w pol2, [ptr_p, #4*2]
-    str.w pol1, [ptr_p, #4*3]
+    str.w tmp2, [ptr_p, #4*3]
     str.w pol4, [ptr_p, #4*4]
-    str.w pol1, [ptr_p, #4*5]
+    str.w tmp2, [ptr_p, #4*5]
     str.w pol6, [ptr_p, #4*6]
-    str.w pol1, [ptr_p, #4*7]
+    str.w tmp2, [ptr_p, #4*7]
     str.w pol0, [ptr_p], #4*8
 
   cmp.w ptr_p, ctrn
@@ -1318,6 +1377,7 @@ polyr_shrm44_asm:
   push {R4-R11, R14}
   
   mov RC, #2048 //1<<(44-32-1)
+  mov tmp2, #0
   add.w ctrn, ptr_p, #4096
   1:
     ldr.w pol0, [ptr_p]
@@ -1333,12 +1393,10 @@ polyr_shrm44_asm:
     add pol3, RC
     add pol5, RC
     add pol7, RC
-    
     rsb pol0, q, pol1, asr #12
     rsb pol2, q, pol3, asr #12
     rsb pol4, q, pol5, asr #12
     rsb pol6, q, pol7, asr #12
-
     and tmp, q, pol0, asr #31
     add pol0, tmp
     and tmp, q, pol2, asr #31
@@ -1348,16 +1406,13 @@ polyr_shrm44_asm:
     and tmp, q, pol6, asr #31
     add pol6, tmp
 
-    // pol1, pol3, pol5, pol7 are all 0 now
-    mov pol1, #0
-
-    str.w pol1, [ptr_p, #4*1]
+    str.w tmp2, [ptr_p, #4*1]
     str.w pol2, [ptr_p, #4*2]
-    str.w pol1, [ptr_p, #4*3]
+    str.w tmp2, [ptr_p, #4*3]
     str.w pol4, [ptr_p, #4*4]
-    str.w pol1, [ptr_p, #4*5]
+    str.w tmp2, [ptr_p, #4*5]
     str.w pol6, [ptr_p, #4*6]
-    str.w pol1, [ptr_p, #4*7]
+    str.w tmp2, [ptr_p, #4*7]
     str.w pol0, [ptr_p], #4*8
 
   cmp.w ptr_p, ctrn

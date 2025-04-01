@@ -136,10 +136,8 @@ void polyr_nonneg(int64_t *r, const int64_t *a, int64_t m)
 }
 
 extern void polyr_reduce_asm(int64_t *r, const int64_t *a); 
+// With conditional addition to reduce results in [0,q)
 void polyr_reduce(int64_t *r, const int64_t *a)
 {
     polyr_reduce_asm(r,a);
-#if RACC_D==32
-    polyr_reduce_asm(r,r);
-#endif
 }

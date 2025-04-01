@@ -51,8 +51,7 @@ static void expand_aij( int64_t aij[RACC_N], int i_k, int i_ell,
 }
 
 //  Decode(): Collapse shares
-
-static void racc_decode(int64_t r[RACC_N], const int64_t m[RACC_D][RACC_N])
+void racc_decode(int64_t r[RACC_N], const int64_t m[RACC_D][RACC_N])
 {
 #if RACC_D == 1
     polyr_copy(r, m[0]);
@@ -68,7 +67,7 @@ static void racc_decode(int64_t r[RACC_N], const int64_t m[RACC_D][RACC_N])
 
 //  Decode(): Collapse shares (possibly split CRT arithmetic)
 
-static void racc_ntt_decode(int64_t r[RACC_N], const int64_t m[RACC_D][RACC_N])
+void racc_ntt_decode(int64_t r[RACC_N], const int64_t m[RACC_D][RACC_N])
 {
 #if RACC_D == 1
     polyr_copy(r, m[0]);
@@ -85,7 +84,7 @@ static void racc_ntt_decode(int64_t r[RACC_N], const int64_t m[RACC_D][RACC_N])
 //  ZeroEncoding(d) -> [[z]]d
 //  in-place version
 
-static void zero_encoding(int64_t z[RACC_D][RACC_N], mask_random_t *mrg)
+void zero_encoding(int64_t z[RACC_D][RACC_N], mask_random_t *mrg)
 {
 #if RACC_D == 1
     (void) mrg;
@@ -117,7 +116,7 @@ static void zero_encoding(int64_t z[RACC_D][RACC_N], mask_random_t *mrg)
 
 //  Refresh([[x]]) -> [[x]]′
 
-static void racc_refresh(int64_t x[RACC_D][RACC_N], mask_random_t *mrg)
+void racc_refresh(int64_t x[RACC_D][RACC_N], mask_random_t *mrg)
 {
 #if RACC_D == 1
     (void) x;
@@ -138,7 +137,7 @@ static void racc_refresh(int64_t x[RACC_D][RACC_N], mask_random_t *mrg)
 
 //  Refresh([[x]]) -> [[x]]′ ( NTT domain )
 
-static void racc_ntt_refresh(int64_t x[RACC_D][RACC_N], mask_random_t *mrg)
+void racc_ntt_refresh(int64_t x[RACC_D][RACC_N], mask_random_t *mrg)
 {
 #if RACC_D == 1
     (void) x;
@@ -161,7 +160,7 @@ static void racc_ntt_refresh(int64_t x[RACC_D][RACC_N], mask_random_t *mrg)
 //  AddRepNoise([[v]], u, rep) -> [[v]]
 //  Add repeated noise to a polynomial (vector at index i_v)
 
-static void add_rep_noise(  int64_t vi[RACC_D][RACC_N],
+void add_rep_noise(  int64_t vi[RACC_D][RACC_N],
                             int i_v, int u, mask_random_t *mrg)
 {
     int i_rep, j;

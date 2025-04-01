@@ -22,6 +22,14 @@ extern "C" {
 typedef struct {
 #ifdef MASK_RANDOM_ASCON
     uint64_t s[RACC_D - 1][5];  //  Ascon state
+#elif defined(MASK_RANDOM_TRNG)
+    union
+    {
+        uint32_t asint32[2];
+        uint64_t asint64;/* TRNG random data for one Raccoon polynomial */
+    } s;
+    
+    uint32_t i;
 #else
     uint64_t s[RACC_D - 1][2];  //  LFSR-127 state
 #endif

@@ -80,6 +80,9 @@ void polyr2_split(int64_t *v);
 //  2x32 CRT: Split into two-prime representation (in-place). Produce coefficients that are negative of the correct results.
 void polyr2_split_neg(int64_t *v);
 
+// barrett reduce for q2
+void polyr2_reduce_q2(int64_t *r, const int64_t *a);
+
 // barrett reduce for q1 and q2
 void polyr2_reduce(int64_t *r, const int64_t *a);
 

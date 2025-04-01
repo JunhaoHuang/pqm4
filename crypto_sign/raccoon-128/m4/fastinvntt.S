@@ -1,7 +1,7 @@
 .syntax unified
 #include "macros.i"
 
-// void polyr_intt(int64_t p[N]) in-place impl
+// void polyr_intt(int64_t p[N]) in-place impl; wit output in [-2q,2q]
 .global raccoon_invntt
 .type raccoon_invntt,%function
 .align 2
@@ -85,12 +85,24 @@ raccoon_invntt:
     ldr.w pol1, [ptr_p, #5*distance/4]
     ldr.w pol6, [ptr_p, #6*distance/4]
     ldr.w pol3, [ptr_p, #7*distance/4]
+    
+    reduce_q1_asm pol4, q, temp_l
+    reduce_q1_asm pol1, q, temp_l
+    reduce_q1_asm pol6, q, temp_l
+    reduce_q1_asm pol3, q, temp_l
+
     _3_layer_inv_butterfly_light_fast_first pol0, pol1, pol2, pol3, pol4, pol5, pol6, pol7, s2, s3, s4, s5, s6, s7, s8, zeta, qinv, q, temp_h, temp_l
     
     ldr.w pol0, [ptr_p]
     ldr.w pol1, [ptr_p, #1*distance/4]
     ldr.w pol2, [ptr_p, #2*distance/4]
     ldr.w pol3, [ptr_p, #3*distance/4]
+
+    reduce_q1_asm pol0, q, temp_l
+    reduce_q1_asm pol1, q, temp_l
+    reduce_q1_asm pol2, q, temp_l
+    reduce_q1_asm pol3, q, temp_l
+
     _3_layer_inv_butterfly_light_fast_second pol0, pol1, pol2, pol3, pol4, pol5, pol6, pol7, s2, s3, s4, s5, s6, s7, s8, zeta, qinv, q, temp_h, temp_l
 
     str.w pol1, [ptr_p, #1*distance/4]
@@ -177,15 +189,6 @@ raccoon_invntt:
     
     _3_layer_inv_twist_CT_32 pol0, pol1, pol2, pol3, pol4, pol5, pol6, pol7, s11, s12, s13, s14, s15, s16, s17, s18, zeta, qinv, q, temp_h, temp_l
 
-    mont32_cadd_asm pol0, q, temp_l
-    mont32_cadd_asm pol1, q, temp_l
-    mont32_cadd_asm pol2, q, temp_l
-    mont32_cadd_asm pol3, q, temp_l
-    mont32_cadd_asm pol4, q, temp_l
-    mont32_cadd_asm pol5, q, temp_l
-    mont32_cadd_asm pol6, q, temp_l
-    mont32_cadd_asm pol7, q, temp_l
-    
     str.w pol1, [ptr_p, #1*distance/4]
     str.w pol2, [ptr_p, #2*distance/4]
     str.w pol3, [ptr_p, #3*distance/4]
@@ -260,12 +263,23 @@ raccoon_invntt:
     ldr.w pol1, [ptr_p, #5*distance/4]
     ldr.w pol6, [ptr_p, #6*distance/4]
     ldr.w pol3, [ptr_p, #7*distance/4]
+
+    reduce_q2_asm pol4, q, temp_l
+    reduce_q2_asm pol1, q, temp_l
+    reduce_q2_asm pol6, q, temp_l
+    reduce_q2_asm pol3, q, temp_l
+
     _3_layer_inv_butterfly_light_fast_first pol0, pol1, pol2, pol3, pol4, pol5, pol6, pol7, s2, s3, s4, s5, s6, s7, s8, zeta, qinv, q, temp_h, temp_l
     
     ldr.w pol0, [ptr_p]
     ldr.w pol1, [ptr_p, #1*distance/4]
     ldr.w pol2, [ptr_p, #2*distance/4]
     ldr.w pol3, [ptr_p, #3*distance/4]
+
+    reduce_q2_asm pol0, q, temp_l
+    reduce_q2_asm pol1, q, temp_l
+    reduce_q2_asm pol2, q, temp_l
+    reduce_q2_asm pol3, q, temp_l
     _3_layer_inv_butterfly_light_fast_second pol0, pol1, pol2, pol3, pol4, pol5, pol6, pol7, s2, s3, s4, s5, s6, s7, s8, zeta, qinv, q, temp_h, temp_l
 
     str.w pol1, [ptr_p, #1*distance/4]
@@ -351,15 +365,6 @@ raccoon_invntt:
     _3_layer_inv_CT_32 pol0, pol1, pol2, pol3, pol4, pol5, pol6, pol7, s2, s3, s4, s5, s6, s7, s8, zeta, qinv, q, temp_h, temp_l
     
     _3_layer_inv_twist_CT_32 pol0, pol1, pol2, pol3, pol4, pol5, pol6, pol7, s11, s12, s13, s14, s15, s16, s17, s18, zeta, qinv, q, temp_h, temp_l
-
-    mont32_cadd_asm pol0, q, temp_l
-    mont32_cadd_asm pol1, q, temp_l
-    mont32_cadd_asm pol2, q, temp_l
-    mont32_cadd_asm pol3, q, temp_l
-    mont32_cadd_asm pol4, q, temp_l
-    mont32_cadd_asm pol5, q, temp_l
-    mont32_cadd_asm pol6, q, temp_l
-    mont32_cadd_asm pol7, q, temp_l
     
     str.w pol1, [ptr_p, #1*distance/4]
     str.w pol2, [ptr_p, #2*distance/4]
@@ -379,8 +384,6 @@ raccoon_invntt:
   // ****************** poly_join and normalize **************** //
   // qinv: q1; q:q2
   ldr qinv, #ntt_asm_q1
-  smull pol6, pol7, q, qinv // q1*q2
-
   add.w zeta, ptr_p, #4096
   1:
     ldr.w pol0, [ptr_p]
@@ -392,8 +395,6 @@ raccoon_invntt:
     smlal pol0, pol4, pol1, qinv
     smull pol2, pol5, pol2, q
     smlal pol2, pol5, pol3, qinv
-    mont64_csub_asm pol0, pol4, pol6, pol7, temp_l, temp_h
-    mont64_csub_asm pol2, pol5, pol6, pol7, temp_l, temp_h
 
     str.w pol4, [ptr_p, #4*1]
     str.w pol2, [ptr_p, #4*2]
@@ -406,10 +407,7 @@ raccoon_invntt:
   vpop.w {s16-s23}
   pop {R4-R11, PC}
 
-
 .ltorg
-
-
 // .align 2
 // ntt_asm_minus_qinv1:
 // .word 16515071

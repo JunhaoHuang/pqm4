@@ -1,1 +1,2 @@
-../ref/param_select.h
+#define RACCOON_M4
+#define MASK_RANDOM_TRNG

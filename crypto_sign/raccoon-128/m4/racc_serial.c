@@ -222,17 +222,14 @@ size_t racc_decode_sk_l(int64_t sk[RACC_D][RACC_N], const uint8_t *b, size_t i, 
 
     return ls;
 }
-#else
+#endif
 //  Encode secret key "sk" to bytes "b". Return length in bytes.
 size_t racc_encode_sk(uint8_t *b, const racc_sk_t *sk)
 {
-    size_t i, j, l;
+    size_t i, j, l=0;
     uint8_t buf[RACC_MK_SZ + 8];
     int64_t r[RACC_N], s0[RACC_ELL][RACC_N];
     int64_t t[RACC_N];
-
-    //  encode public key
-    l = racc_encode_pk(b, &sk->pk);
 
     //  make a copy of share 0
     for (i = 0; i < RACC_ELL; i++)
@@ -321,7 +318,6 @@ size_t racc_decode_sk(racc_sk_t *sk, const uint8_t *b)
 
     return l;
 }
-#endif
 
 //  macro for encoding n bits from y
 //  (note -- returns from function on overflow)

@@ -13,7 +13,7 @@ extern "C" {
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
-
+#include "mask_random.h"
 #include "racc_param.h"
 
 //  === Global namespace prefix
@@ -49,7 +49,7 @@ typedef struct {
 
 //  Generate a public-secret keypair ("pk", "sk").
 #if MEM_OPT>0
-int racc_core_keygen(unsigned char *pk, unsigned char *sk);
+int racc_core_keygen(unsigned char *pk, racc_sk_t *sk);
 #else
 void racc_core_keygen(racc_pk_t *pk, racc_sk_t *sk);
 #endif
@@ -57,7 +57,7 @@ void racc_core_keygen(racc_pk_t *pk, racc_sk_t *sk);
 //  Create a detached signature "sig" for digest "mu" using secret key "sk".
 #if MEM_OPT > 0
 int racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
-                       const uint8_t *sk);
+                    racc_sk_t *sk);
 #else
 void racc_core_sign(racc_sig_t *sig, const uint8_t mu[RACC_MU_SZ],
                     racc_sk_t *sk);
@@ -69,6 +69,25 @@ bool racc_core_verify(const racc_sig_t *sig,
                         const uint8_t mu[RACC_MU_SZ],
                         const racc_pk_t *pk);
 
+
+// for benchmarking
+void racc_decode(int64_t r[RACC_N], const int64_t m[RACC_D][RACC_N]);
+void racc_ntt_decode(int64_t r[RACC_N], const int64_t m[RACC_D][RACC_N]);
+void zero_encoding(int64_t z[RACC_D][RACC_N], mask_random_t *mrg);
+void racc_refresh(int64_t x[RACC_D][RACC_N], mask_random_t *mrg);
+#if MEM_OPT != 2
+// x is negative; remain the same sign -x-z
+void racc_ntt_refresh(int64_t x[RACC_D][RACC_N], mask_random_t *mrg);
+#endif
+void racc_ntt_refresh_neg(int64_t x[RACC_D][RACC_N], mask_random_t *mrg);
+#if MEM_OPT > 0
+// use the noise in precomputed buffer
+// coefficient grows by ||vi||+rep*RACC_U{W,T}+rep*log(d)*q;
+void add_rep_noise_buf(int64_t vi[RACC_D][RACC_N],
+                       int i_v, int u, uint8_t *in, mask_random_t *mrg);
+#endif
+void add_rep_noise(int64_t vi[RACC_D][RACC_N],
+                       int i_v, int u, mask_random_t *mrg);
 #ifdef __cplusplus
 }
 #endif

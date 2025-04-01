@@ -33,6 +33,11 @@ size_t racc_encode_pk(uint8_t *b, const racc_pk_t *pk);
 //  Decode a public key from "b" to "pk". Return length in bytes.
 size_t racc_decode_pk(racc_pk_t *pk, const uint8_t *b);
 
+//  Encode secret key "sk" to bytes "b". Return length in bytes.
+size_t racc_encode_sk(uint8_t *b, const racc_sk_t *sk);
+
+//  Decode a secret key from "b" to "sk". Return length in bytes.
+size_t racc_decode_sk(racc_sk_t *sk, const uint8_t *b);
 
 //  Encode signature "sig" to "*b" of max "b_sz" bytes. Return length in
 //  bytes or zero in case of overflow.
@@ -56,13 +61,6 @@ size_t racc_decode_sk_l(int64_t sk[RACC_D][RACC_N], const uint8_t *b, size_t i, 
 
 size_t racc_encode_pk_k(uint8_t *b, const int64_t *t, size_t l);
 size_t racc_decode_pk_k(int64_t pk[RACC_N], const uint8_t *b, size_t l);
-#else
-//  Encode secret key "sk" to bytes "b". Return length in bytes.
-size_t racc_encode_sk(uint8_t *b, const racc_sk_t *sk);
-
-//  Decode a secret key from "b" to "sk". Return length in bytes.
-size_t racc_decode_sk(racc_sk_t *sk, const uint8_t *b);
-
 #endif
 
 #ifdef __cplusplus
