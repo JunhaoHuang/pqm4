@@ -57,7 +57,7 @@ void polyr_center(int64_t *r, const int64_t *a, int64_t m);
 //  Move from range -m <= x < m to non-negative range 0 <= x < m.
 void polyr_nonneg(int64_t *r, const int64_t *a, int64_t m);
 
-void polyr_reduce(int64_t *r, const int64_t *a);
+void polyr_reduce(int64_t *r);
 //  Scalar multiplication:  r = a * c,  Montgomery reduction.
 void polyr_ntt_smul(int64_t *r, const int64_t *a, int32_t c1, int32_t c2);
 
@@ -86,6 +86,8 @@ void polyr2_reduce_q2(int64_t *r, const int64_t *a);
 // barrett reduce for q1 and q2
 void polyr2_reduce(int64_t *r, const int64_t *a);
 
+void polyr2_full_reduce(int64_t *r, const int64_t *a);
+
 //  2x32 CRT: Join two-prime into 64-bit integer representation (in-place).
 //  Use scale factors (s1, s2). Normalizes to 0 <= x < q.
 void polyr2_join(int64_t *v, int32_t s1, int32_t s2);
@@ -98,6 +100,9 @@ void polyr2_addq(int64_t *r, const int64_t *a, const int64_t *b);
 
 //  2x32 CRT: Subtract polynomials:  r = a - b.
 void polyr2_sub(int64_t *r, const int64_t *a, const int64_t *b);
+
+//  2x32 CRT: Subtract polynomials:  r = a - b mod q1, q2.
+void polyr2_subq(int64_t *r, const int64_t *a, const int64_t *b);
 
 //  2x32 CRT: negate polynomials:  r = -a.
 void polyr2_neg(int64_t *r, const int64_t *a);

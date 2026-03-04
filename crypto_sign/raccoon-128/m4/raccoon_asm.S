@@ -281,10 +281,10 @@ polyr2_add_asm:
   pop {R4-R11, PC}
 
 // void polyr2_ntt_addq(int64_t *r, const int64_t *a, const int64_t *b)
-.global polyr2_ntt_addq_asm
-.type polyr2_ntt_addq_asm,%function
+.global polyr2_addq_asm
+.type polyr2_addq_asm,%function
 .align 2
-polyr2_ntt_addq_asm:
+polyr2_addq_asm:
   //bind aliases
   ptr_p     .req R0
   ptr_a     .req R1
@@ -461,6 +461,74 @@ polyr2_reduce_asm:
   bne 1b
 
   pop {R4-R11, PC}
+
+.global polyr2_full_reduce_asm
+.type polyr2_full_reduce_asm,%function
+.align 2
+polyr2_full_reduce_asm:
+  //bind aliases
+  ptr_p     .req R0
+  ptr_a     .req R1
+  tmp       .req R2
+  pol4      .req R3
+  pol5      .req R4
+  pol0      .req R5
+  pol1      .req R6
+  pol2      .req R7
+  pol3      .req R8
+  pol6      .req R9
+  ctrn      .req R10
+  pol7      .req R11
+  q         .req R12
+  qq2       .req R14
+
+  push {R4-R11, R14}
+
+  ldr.w q, ntt_asm_q1
+  ldr.w qq2, ntt_asm_q2
+
+  add.w ctrn, ptr_p, #4096
+  1:
+    ldr.w pol1, [ptr_a, #4*1]
+    ldr.w pol2, [ptr_a, #4*2]
+    ldr.w pol3, [ptr_a, #4*3]
+    ldr.w pol4, [ptr_a, #4*4]
+    ldr.w pol5, [ptr_a, #4*5]
+    ldr.w pol6, [ptr_a, #4*6]
+    ldr.w pol7, [ptr_a, #4*7]
+    ldr.w pol0, [ptr_a], #4*8
+
+    reduce_q1_asm pol0, q, tmp
+    reduce_q1_asm pol2, q, tmp
+    reduce_q1_asm pol4, q, tmp
+    reduce_q1_asm pol6, q, tmp
+    reduce_q2_asm pol1, qq2, tmp
+    reduce_q2_asm pol3, qq2, tmp
+    reduce_q2_asm pol5, qq2, tmp
+    reduce_q2_asm pol7, qq2, tmp
+
+    mont32_cadd_asm pol0, q, tmp
+    mont32_cadd_asm pol2, q, tmp
+    mont32_cadd_asm pol4, q, tmp
+    mont32_cadd_asm pol6, q, tmp
+    mont32_cadd_asm pol1, qq2, tmp
+    mont32_cadd_asm pol3, qq2, tmp
+    mont32_cadd_asm pol5, qq2, tmp
+    mont32_cadd_asm pol7, qq2, tmp
+
+    str.w pol1, [ptr_p, #4*1]
+    str.w pol2, [ptr_p, #4*2]
+    str.w pol3, [ptr_p, #4*3]
+    str.w pol4, [ptr_p, #4*4]
+    str.w pol5, [ptr_p, #4*5]
+    str.w pol6, [ptr_p, #4*6]
+    str.w pol7, [ptr_p, #4*7]
+    str.w pol0, [ptr_p], #4*8
+
+  cmp.w ptr_p, ctrn
+  bne 1b
+
+  pop {R4-R11, PC}
   .unreq tmp
 
 .ltorg
@@ -511,10 +579,63 @@ polyr2_sub_asm:
   cmp.w ptr_p, ctrn
   bne 1b
   pop {R4-R11, PC}
+
+
+
+// void polyr2_subq(int64_t *r, const int64_t *a, const int64_t *b)
+.global polyr2_subq_asm
+.type polyr2_subq_asm,%function
+.align 2
+polyr2_subq_asm:
+  //bind aliases
+  ptr_p     .req R0
+  ptr_a     .req R1
+  ptr_b     .req R2
+  pol4      .req R3
+  pol5      .req R4
+  pol0      .req R5
+  pol1      .req R6
+  pol2      .req R7
+  pol3      .req R8
+  pol6      .req R9
+  ctrn      .req R10
+  pol7      .req R11
+  q         .req R12
+  qq2       .req R14
+  push {R4-R11, R14}
+
+  ldr.w q, ntt_asm_q1
+  ldr.w qq2, ntt_asm_q2
+  add.w ctrn, ptr_p, #4096
+  1:
+    ldr.w pol1, [ptr_a, #4*1]
+    ldr.w pol2, [ptr_a, #4*2]
+    ldr.w pol3, [ptr_a, #4*3]
+    ldr.w pol0, [ptr_a], #4*4
+    ldr.w pol5, [ptr_b, #4*1]
+    ldr.w pol6, [ptr_b, #4*2]
+    ldr.w pol7, [ptr_b, #4*3]
+    ldr.w pol4, [ptr_b], #4*4
+
+    sub pol0, pol4
+    sub pol1, pol5
+    sub pol2, pol6
+    sub pol3, pol7
+    mont32_cadd_asm pol0, q, pol4
+    mont32_cadd_asm pol2, q, pol4
+    mont32_cadd_asm pol1, qq2, pol4
+    mont32_cadd_asm pol3, qq2, pol4
+
+    str.w pol1, [ptr_p, #4*1]
+    str.w pol2, [ptr_p, #4*2]
+    str.w pol3, [ptr_p, #4*3]
+    str.w pol0, [ptr_p], #4*4
+
+  cmp.w ptr_p, ctrn
+  bne 1b
+  pop {R4-R11, PC}
   .unreq ptr_b
-
-
-// void polyr_reduce(int64_t *r, const int64_t *a)
+// void polyr_reduce(int64_t *r)
 .global polyr_reduce_asm
 .type polyr_reduce_asm,%function
 .align 2
@@ -543,12 +664,12 @@ polyr_reduce_asm:
 
   add.w ctrn, ptr_p, #4096-4*4
   1:
-    ldr.w pol1, [ptr_a, #4*1]
-    ldr.w pol2, [ptr_a, #4*2]
-    ldr.w pol3, [ptr_a, #4*3]
-    ldr.w pol4, [ptr_a, #4*4]
-    ldr.w pol5, [ptr_a, #4*5]
-    ldr.w pol0, [ptr_a], #4*6
+    ldr.w pol1, [ptr_p, #4*1]
+    ldr.w pol2, [ptr_p, #4*2]
+    ldr.w pol3, [ptr_p, #4*3]
+    ldr.w pol4, [ptr_p, #4*4]
+    ldr.w pol5, [ptr_p, #4*5]
+    ldr.w pol0, [ptr_p]
 
     reduce64_asm pol0, pol1, q, qq2, tmp, pol6, pol7
     reduce64_asm pol2, pol3, q, qq2, tmp, pol6, pol7
@@ -567,10 +688,10 @@ polyr_reduce_asm:
   cmp.w ptr_p, ctrn
   bne 1b
 
-  ldr.w pol1, [ptr_a, #4*1]
-  ldr.w pol2, [ptr_a, #4*2]
-  ldr.w pol3, [ptr_a, #4*3]
-  ldr.w pol0, [ptr_a], #4*4
+  ldr.w pol1, [ptr_p, #4*1]
+  ldr.w pol2, [ptr_p, #4*2]
+  ldr.w pol3, [ptr_p, #4*3]
+  ldr.w pol0, [ptr_p]
 
   reduce64_asm pol0, pol1, q, qq2, tmp, pol6, pol7
   reduce64_asm pol2, pol3, q, qq2, tmp, pol6, pol7

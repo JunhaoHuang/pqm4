@@ -44,6 +44,7 @@
 #endif
 
 #define RACC_QMSK   ((1LL << RACC_Q_BITS) - 1)
+#define RACC_Q1MSK ((1LL << (RACC_Q_BITS-1)) - 1)
 #define RACC_LGW    (RACC_Q_BITS - RACC_NUW)
 #define RACC_QT     (RACC_Q >> RACC_NUT)
 #define RACC_QW     (RACC_Q >> RACC_NUW)

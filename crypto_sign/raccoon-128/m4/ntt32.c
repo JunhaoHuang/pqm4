@@ -38,10 +38,10 @@ void polyr2_add(int64_t *r, const int64_t *a, const int64_t *b)
     polyr2_add_asm(r,a,b);
 }
 
-extern void polyr2_ntt_addq_asm(int64_t *r, const int64_t *a, const int64_t *b);
+extern void polyr2_addq_asm(int64_t *r, const int64_t *a, const int64_t *b);
 void polyr2_addq(int64_t *r, const int64_t *a, const int64_t *b)
 {
-    polyr2_ntt_addq_asm(r, a, b);
+    polyr2_addq_asm(r, a, b);
 }
 
 //  2x32 CRT: Subtract polynomials:  r = a - b.
@@ -49,6 +49,12 @@ extern void polyr2_sub_asm(int64_t *r, const int64_t *a, const int64_t *b);
 void polyr2_sub(int64_t *r, const int64_t *a, const int64_t *b)
 {
     polyr2_sub_asm(r,a,b);
+}
+
+extern void polyr2_subq_asm(int64_t *r, const int64_t *a, const int64_t *b);
+void polyr2_subq(int64_t *r, const int64_t *a, const int64_t *b)
+{
+    polyr2_subq_asm(r, a, b);
 }
 
 void polyr2_neg_asm(int64_t *r, const int64_t *a);
@@ -85,15 +91,25 @@ void polyr2_reduce_q2(int64_t *r, const int64_t *a)
     polyr2_reduce_q2_asm(r,a);
 }
 
+// output range (-q_i,q_i)
 extern void polyr2_reduce_asm(int64_t *r, const int64_t *a);
 void polyr2_reduce(int64_t *r, const int64_t *a)
 {
     polyr2_reduce_asm(r,a);
 }
+
+// output range [0,q_i)
+extern void polyr2_full_reduce_asm(int64_t *r, const int64_t *a);
+void polyr2_full_reduce(int64_t *r, const int64_t *a)
+{
+    polyr2_full_reduce_asm(r, a);
+}
+
 //  2x32 CRT: Forward NTT (x^n+1). Input is 64-bit, output is 2x32 CRT. Produce coefficients that are negative of the correct results.
 extern void raccoon_ntt(int64_t p[512]);
 void polyr_fntt(int64_t *v)
 {
+    polyr2_split_neg_asm(v);
     raccoon_ntt(v);
 }
 

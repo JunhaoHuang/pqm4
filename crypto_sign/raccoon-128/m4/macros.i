@@ -292,6 +292,7 @@
     addSub4 \c0, \c4, \c1, \c5, \c2, \c6, \c3, \c7
 .endm
 
+.ltorg
 .align 2
 ntt_asm_qinv1:
 .word 4278452225

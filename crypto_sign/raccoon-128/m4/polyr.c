@@ -135,9 +135,9 @@ void polyr_nonneg(int64_t *r, const int64_t *a, int64_t m)
     polyr_nonneg_asm(r,a,m);
 }
 
-extern void polyr_reduce_asm(int64_t *r, const int64_t *a); 
+extern void polyr_reduce_asm(int64_t *r); 
 // With conditional addition to reduce results in [0,q)
-void polyr_reduce(int64_t *r, const int64_t *a)
+void polyr_reduce(int64_t *r)
 {
-    polyr_reduce_asm(r,a);
+    polyr_reduce_asm(r);
 }

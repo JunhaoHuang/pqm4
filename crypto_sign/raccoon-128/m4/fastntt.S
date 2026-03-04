@@ -29,45 +29,45 @@ raccoon_ntt:
   //polyr2_split
   ldr.w qinv, ntt_asm_qinv1
   ldr.w q, ntt_asm_q1
-  ldr.w zeta, ntt_asm_qinv2
-  ldr.w pol6, ntt_asm_q2
-
-  add.w temp_l, ptr_p, #4096-4*4
-  1:
-    ldr.w pol0, [ptr_p]
-    ldr.w pol1, [ptr_p, #4*1]
-    ldr.w pol2, [ptr_p, #4*2]
-    ldr.w pol3, [ptr_p, #4*3]
-    ldr.w pol4, [ptr_p, #4*4]
-    ldr.w pol5, [ptr_p, #4*5]
-
-    montgomery_redc_v3 pol0, pol1, qinv, q, zeta, pol6, pol7, temp_h
-    montgomery_redc_v3 pol2, pol3, qinv, q, zeta, pol6, pol7, temp_h
-    montgomery_redc_v3 pol4, pol5, qinv, q, zeta, pol6, pol7, temp_h
-
-    str.w pol1, [ptr_p, #4*1]
-    str.w pol2, [ptr_p, #4*2]
-    str.w pol3, [ptr_p, #4*3]
-    str.w pol4, [ptr_p, #4*4]
-    str.w pol5, [ptr_p, #4*5]
-    str.w pol0, [ptr_p], #4*6
-  cmp.w ptr_p, temp_l
-  bne 1b
-
-  ldr.w pol0, [ptr_p]
-  ldr.w pol1, [ptr_p, #4*1]
-  ldr.w pol2, [ptr_p, #4*2]
-  ldr.w pol3, [ptr_p, #4*3]
-
-  montgomery_redc_v3 pol0, pol1, qinv, q, zeta, pol6, pol7, temp_h
-  montgomery_redc_v3 pol2, pol3, qinv, q, zeta, pol6, pol7, temp_h
-
-  str.w pol1, [ptr_p, #4*1]
-  str.w pol2, [ptr_p, #4*2]
-  str.w pol3, [ptr_p, #4*3]
-  str.w pol0, [ptr_p], #4*4
-
-  sub ptr_p, #4096
+//  ldr.w zeta, ntt_asm_qinv2
+//  ldr.w pol6, ntt_asm_q2
+//
+//  add.w temp_l, ptr_p, #4096-4*4
+//  1:
+//    ldr.w pol0, [ptr_p]
+//    ldr.w pol1, [ptr_p, #4*1]
+//    ldr.w pol2, [ptr_p, #4*2]
+//    ldr.w pol3, [ptr_p, #4*3]
+//    ldr.w pol4, [ptr_p, #4*4]
+//    ldr.w pol5, [ptr_p, #4*5]
+//
+//    montgomery_redc_v3 pol0, pol1, qinv, q, zeta, pol6, pol7, temp_h
+//    montgomery_redc_v3 pol2, pol3, qinv, q, zeta, pol6, pol7, temp_h
+//    montgomery_redc_v3 pol4, pol5, qinv, q, zeta, pol6, pol7, temp_h
+//
+//    str.w pol1, [ptr_p, #4*1]
+//    str.w pol2, [ptr_p, #4*2]
+//    str.w pol3, [ptr_p, #4*3]
+//    str.w pol4, [ptr_p, #4*4]
+//    str.w pol5, [ptr_p, #4*5]
+//    str.w pol0, [ptr_p], #4*6
+//  cmp.w ptr_p, temp_l
+//  bne 1b
+//
+//  ldr.w pol0, [ptr_p]
+//  ldr.w pol1, [ptr_p, #4*1]
+//  ldr.w pol2, [ptr_p, #4*2]
+//  ldr.w pol3, [ptr_p, #4*3]
+//
+//  montgomery_redc_v3 pol0, pol1, qinv, q, zeta, pol6, pol7, temp_h
+//  montgomery_redc_v3 pol2, pol3, qinv, q, zeta, pol6, pol7, temp_h
+//
+//  str.w pol1, [ptr_p, #4*1]
+//  str.w pol2, [ptr_p, #4*2]
+//  str.w pol3, [ptr_p, #4*3]
+//  str.w pol0, [ptr_p], #4*4
+//
+//  sub ptr_p, #4096
 
   //poly_ntt for RACC_Q1
   // state 1-3
@@ -76,7 +76,7 @@ raccoon_ntt:
 
   // neg qinv; get zetas1 
   neg.w qinv, qinv
-  ldr ptr_zeta, =#racc_w1_32_asm
+  ldr.w ptr_zeta, =#racc_w1_32_asm
   vldm ptr_zeta!, {s2-s8}
   vmov s0, ptr_zeta
 
@@ -189,7 +189,7 @@ raccoon_ntt:
   // get q, qinv, zetas2
   ldr.w qinv, ntt_asm_minus_qinv2
   ldr.w q, ntt_asm_q2
-  ldr ptr_zeta, =#racc_w2_32_asm
+  ldr.w ptr_zeta, =#racc_w2_32_asm
 
   // state 1-3
   .equ distance, 2048
@@ -303,26 +303,24 @@ raccoon_ntt:
   //restore registers
   pop {R4-R11, PC}
 
-// .align 2
-// ntt_asm_minus_qinv1:
-// .word 16515071
-// .align 2
-// ntt_asm_q1:
-// .word 16515073
-// .align 2
-// ntt_asm_minus_qinv2:
-// .word 33292287
-// .align 2
-// ntt_asm_q2:
-// .word 33292289
-// .align 2
-// ntt_asm_qinv1:
-// .word 4278452225
-// .align 2
-// ntt_asm_qinv2:
-// .word 4261675009
+.unreq ptr_p   
+.unreq ptr_zeta
+.unreq zeta    
+.unreq q       
+.unreq qinv    
+.unreq pol4    
+.unreq pol0    
+.unreq pol1    
+.unreq pol2    
+.unreq pol3    
+.unreq temp_h  
+.unreq temp_l  
+.unreq pol5    
+.unreq pol6    
+.unreq pol7    
 
 .section .rodata
+
 .type racc_w1_32_asm, %object
 .align 2
 racc_w1_32_asm:

@@ -1,43 +1,47 @@
 import numpy as np
 import os
+import sys
 import glob
 def process_clock_cycles(file_path):
-    # 使用字典存储每个函数的时钟周期数据
     data = {
         'keypair cycles:': [],
         'sign cycles:': [],
-        'verify cycles:': []
+        'verify cycles:': [],
+        'keypair stack usage:': [],
+        'sign stack usage:': [],
+        'verify stack usage:': []
     }
 
-    # 定义有效的函数名集合
-    valid_functions = {'keypair cycles:', 'sign cycles:', 'verify cycles:'}
+    valid_functions = {
+        'keypair cycles:', 
+        'sign cycles:', 
+        'verify cycles:',
+        'keypair stack usage:',
+        'sign stack usage:',
+        'verify stack usage:'
+        }
 
-    # 读取文件并提取时钟周期数据
     with open(file_path, 'r') as f:
         lines = f.readlines()
 
-    # 遍历每一对函数名和时钟周期
     i=0
-    while i < len(lines):
+    while i + 2 < len(lines):
         function = lines[i].strip()
-        # 仅处理有效的函数名
         if function in valid_functions:
             try:
-                cycles = int(lines[i + 1].strip())  # 转换为整数
+                cycles = int(lines[i + 1].strip())  
                 data[function].append(cycles)
                 i+=2
             except ValueError:
-                # 如果时钟周期不是有效的整数，跳过该项
                 print(f"Invalid cycle value for function {function}: {lines[i + 1].strip()}")
                 continue
         else:
             i+=1
             # print(f"Invalid function name: {function}")
 
-    # 计算每个函数的总时钟周期、平均值和中位数
     results = {}
     for function, cycles_list in data.items():
-        if cycles_list:  # 仅计算存在数据的函数
+        if cycles_list: 
             total_cycles = sum(cycles_list)
             average_cycles = np.mean(cycles_list)
             median_cycles = np.median(cycles_list)
@@ -53,31 +57,96 @@ def process_clock_cycles(file_path):
                 'average': 0,
                 'median': 0
             }
+    if 'stack' in file_path:
+        return results, len(data['keypair stack usage:'])
+    else:
+        return results, len(data['keypair cycles:'])
 
-    return results, len(data['keypair cycles:'])
-
-def search_files_in_directory(directory, keyword="speed"):
-    # 使用glob搜索所有包含 "speed" 的文件，忽略子目录
-    pattern = os.path.join(directory, f"*{keyword}*.txt")
+def search_files_in_directory(directory, keyword):
+    pattern = os.path.join(directory, f"{keyword}*.txt")
     files = glob.glob(pattern)
     return files
 
-def main(directory):
-    # 搜索目录下所有包含 "speed" 的文件
-    files = search_files_in_directory(directory)
+
+def res_to_tex(file_path, results):
+    tex_lines = []
+    line = "\\newcommand{"
+    if 'RACCOON_128' in file_path:
+        line+= "\\RACCI"
+    elif 'RACCOON_192' in file_path:
+        line+= "\\RACCII"
+    elif 'RACCOON_256' in file_path:
+        line+= "\\RACCIII"
+
+    if '_1_' in file_path:
+        line+= "A"
+    elif '_2_' in file_path:
+        line+= "B"
+    elif '_4_' in file_path:
+        line+= "C"
+    elif '_8_' in file_path:
+        line+= "D"
+    elif '_16_' in file_path:
+        line+= "E"
+    elif '_32_' in file_path:
+        line+= "F"
+    
+    if '_m4' in file_path:
+        line+= "opt"
+    elif '_ref' in file_path:
+        line+= "ref"
+
+    for function, stats in results.items():
+        if "speed" in file_path:
+            if function == 'sign cycles:':
+                sign=line + "sign}{"
+                sign+= f"{stats['average'] / 1000:.0f}k}}"
+                tex_lines.append(sign)
+            if function == 'verify cycles:':
+                verify=line + "verify}{"
+                verify+= f"{stats['average'] / 1000:.0f}k}}"
+                tex_lines.append(verify)
+            if function == 'keypair cycles:':
+                keygen=line + "keygen}{"
+                keygen+= f"{stats['average'] / 1000:.0f}k}}"
+                tex_lines.append(keygen)
+        elif "stack" in file_path:
+            if function == 'sign stack usage:':
+                sign=line + "signStack}{"
+                sign+= f"{stats['average']:.0f}}}"
+                tex_lines.append(sign)
+            if function == 'verify stack usage:':
+                verify=line + "verifyStack}{"
+                verify+= f"{stats['average']:.0f}}}"
+                tex_lines.append(verify)
+            if function == 'keypair stack usage:':
+                keygen=line + "keygenStack}{"
+                keygen+= f"{stats['average']:.0f}}}"
+                tex_lines.append(keygen)
+    return tex_lines
+
+def main(directory, type):
+    files = search_files_in_directory(directory, keyword=type)
 
     if not files:
-        print(f"No files found in {directory} containing '{keyword}' in their name.")
+        print(f"No files found in {directory} containing '{type}' in their name.")
         return
 
-    # 遍历所有找到的文件进行统计
     for file_path in files:
-        print(f"Processing file: {file_path}")
+        # print(f"Processing file: {file_path}")
         results, len = process_clock_cycles(file_path)
-        print(f"Results for {file_path} with {len} elements")
-        for function, stats in results.items():
-            print(f"{function} {stats['average']/1000:.0f}k")
+        
+        # for function, stats in results.items():
+        #     print(f"{function} {stats['average']/1000:.0f}k")
+        # if len==1:
+        print(f"% Results for {file_path} with {len} elements")
+        for tex in res_to_tex(file_path, results):
+            print(tex)
+    
 
-# 使用示例
-directory_path = 'RACC/'  # 当前目录，替换为你需要的目录路径
-main(directory_path)
+directory_path = 'RACC/' 
+if len(sys.argv) < 2:
+     print("Usage: python3 average.py <type>")
+     sys.exit(1)
+type = sys.argv[1]
+main(directory_path, type)

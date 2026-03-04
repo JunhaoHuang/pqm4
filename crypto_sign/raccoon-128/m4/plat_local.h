@@ -230,6 +230,13 @@ static inline uint64_t get64u_le(const uint8_t* v)
            (((uint64_t)v[6]) << 48) | (((uint64_t)v[7]) << 56);
 }
 
+static inline uint64_t get48u_le(const uint8_t* v)
+{
+    return ((uint64_t)v[0]) | (((uint64_t)v[1]) << 8) |
+           (((uint64_t)v[2]) << 16) | (((uint64_t)v[3]) << 24) |
+           (((uint64_t)v[4]) << 32) | (((uint64_t)v[5]) << 40);
+}
+
 static inline void put64u_le(uint8_t* v, uint64_t x)
 {
     v[0] = x;

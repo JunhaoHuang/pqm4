@@ -14,7 +14,7 @@
 #include "randombytes.h"
 #include "mask_random.h"
 #include "racc_serial.h"
-
+// #define XDEBUG 1
 #ifdef XDEBUG
 #include <stdio.h>
 #include "sendfn.h"
@@ -57,7 +57,7 @@ static void check_overflow(int64_t *x, unsigned long long xlen, int64_t m, char 
 
 //  ExpandA(): Use domain separated XOF to create matrix elements
 
-static void expand_aij(int64_t aij[RACC_N], int i_k, int i_ell,
+void expand_aij(int64_t aij[RACC_N], int i_k, int i_ell,
                        const uint8_t seed[RACC_AS_SZ])
 {
     uint8_t buf[RACC_AS_SZ + 8];
@@ -84,10 +84,10 @@ void racc_decode(int64_t r[RACC_N], const int64_t m[RACC_D][RACC_N])
     polyr_copy(r, m[0]);
 #else
     int i;
-    polyr_add(r, m[0], m[1]);
+    polyr_addq(r, m[0], m[1]);
     for (i = 2; i < RACC_D; i++)
     {
-        polyr_add(r, r, m[i]);
+        polyr_addq(r, r, m[i]);
     }
 #endif
 }
@@ -98,24 +98,12 @@ void racc_ntt_decode(int64_t r[RACC_N], const int64_t m[RACC_D][RACC_N])
 {
 #if RACC_D == 1
     polyr_copy(r, m[0]);
-#elif RACC_D == 32
-    int i;
-    polyr2_add(r, m[0], m[1]);
-    for (i = 2; i < 21; i++)
-    {
-        polyr2_add(r, r, m[i]);
-    }
-    polyr2_reduce_q2(r, r);
-    for (i = 21; i < RACC_D; i++)
-    {
-        polyr2_add(r, r, m[i]);
-    }
 #else
     int i;
-    polyr2_add(r, m[0], m[1]);
+    polyr2_addq(r, m[0], m[1]);
     for (i = 2; i < RACC_D; i++)
     {
-        polyr2_add(r, r, m[i]);
+        polyr2_addq(r, r, m[i]);
     }
 #endif
 }
@@ -123,6 +111,34 @@ void racc_ntt_decode(int64_t r[RACC_N], const int64_t m[RACC_D][RACC_N])
 //  ZeroEncoding(d) -> [[z]]d
 //  in-place version
 // coefficient grows by log(d)*q; maximum: 5q for d=32
+#ifdef NEW_ZERO_ENCODING
+void zero_encoding(int64_t z[RACC_D][RACC_N], mask_random_t *mrg)
+{
+    int i, j, d;
+    polyr_zero(z[0]);
+    
+#if RACC_D == 1
+    (void)mrg;
+#else
+    int64_t r[RACC_N];
+    // j=0; i=1
+    for (i=1; i< RACC_D; i++)
+    {
+        mask_random_poly(mrg, z[i], i);
+        polyr_sub(z[0], z[0], z[i]);
+    }
+    for (j=1; j< RACC_D-1; j++)
+    {
+        for (i = j+1; i < RACC_D; i++)
+        {
+            mask_random_poly(mrg, r, i);
+            polyr_add(z[i], z[i], r);
+            polyr_sub(z[j], z[j], r);
+        }
+    }
+#endif
+}
+#else
 void zero_encoding(int64_t z[RACC_D][RACC_N], mask_random_t *mrg)
 {
 #if RACC_D == 1
@@ -136,7 +152,7 @@ void zero_encoding(int64_t z[RACC_D][RACC_N], mask_random_t *mrg)
     for (i = 0; i < RACC_D; i += 2)
     {
         mask_random_poly(mrg, z[i], i);
-        polyr_neg(z[i + 1], z[i]);
+        polyr_negm(z[i + 1], z[i], RACC_Q);
     }
 
     //  d = 4, 8, ..
@@ -148,14 +164,15 @@ void zero_encoding(int64_t z[RACC_D][RACC_N], mask_random_t *mrg)
             for (j = i; j < i + d; j++)
             {
                 mask_random_poly(mrg, r, j);
-                polyr_add(z[j], z[j], r);
-                polyr_sub(z[j + d], z[j + d], r);
+                polyr_addq(z[j], z[j], r);
+                polyr_subq(z[j + d], z[j + d], r);
             }
         }
         d <<= 1;
     }
 #endif
 }
+#endif
 
 //  Refresh([[x]]) -> [[x]]′
 // coefficient grows by ||x||+log(d)*q;
@@ -174,7 +191,7 @@ void racc_refresh(int64_t x[RACC_D][RACC_N], mask_random_t *mrg)
     //  --- 2.  return [[x]]' := [[x]] + [[z]]
     for (i = 0; i < RACC_D; i++)
     {
-        polyr_add(x[i], x[i], z[i]);
+        polyr_addq(x[i], x[i], z[i]);
     }
 #endif
 }
@@ -198,7 +215,7 @@ void racc_ntt_refresh(int64_t x[RACC_D][RACC_N], mask_random_t *mrg)
     for (i = 0; i < RACC_D; i++)
     {
         polyr2_split_neg(z[i]);
-        polyr2_add(x[i], x[i], z[i]);
+        polyr2_addq(x[i], x[i], z[i]);
     }
 #endif
 }
@@ -222,7 +239,7 @@ void racc_ntt_refresh_neg(int64_t x[RACC_D][RACC_N], mask_random_t *mrg)
     for (i = 0; i < RACC_D; i++)
     {
         polyr2_split(z[i]);
-        polyr2_sub(x[i], z[i], x[i]);
+        polyr2_subq(x[i], z[i], x[i]);
     }
 #endif
 }
@@ -259,7 +276,7 @@ void add_rep_noise_buf(int64_t vi[RACC_D][RACC_N],
 
             //  --- 6.  v_ij <- v_ij + SampleU(hdr_u, sigma, u)
             xof_sample_u(r, u, buf, RACC_SEC + 8);
-            polyr_add(vi[j], vi[j], r);
+            polyr_addq(vi[j], vi[j], r);
         }
         // hal_send_str("racc_refresh begin");
         //  --- [[v_i]] <- Refresh([[v_i]])
@@ -300,7 +317,7 @@ void add_rep_noise(int64_t vi[RACC_D][RACC_N],
 
             //  --- 6.  v_ij <- v_ij + SampleU(hdr_u, sigma, u)
             xof_sample_u(r, u, buf, RACC_SEC + 8);
-            polyr_add(vi[j], vi[j], r);
+            polyr_addq(vi[j], vi[j], r);
         }
 
         //  --- [[v_i]] <- Refresh([[v_i]])
@@ -516,7 +533,7 @@ int racc_core_keygen(unsigned char *pk, racc_sk_t *sk)
 
         //  --- 7.  t := Decode([[t]])
         racc_decode(t, mt);
-        polyr_reduce(t, t);
+        // polyr_reduce(t, t);
         //  --- 8.  t := round( t_m )_q->q_t
         polyr_shrm42_asm(t, RACC_QT); // 49-42=7-bit
 
@@ -583,7 +600,7 @@ void racc_core_keygen(racc_pk_t *pk, racc_sk_t *sk)
 
         //  --- 7.  t := Decode([[t]])
         racc_decode(pk->t[i], mt);
-        polyr_reduce(pk->t[i], pk->t[i]);
+        // polyr_reduce(pk->t[i], pk->t[i]);
 
         //  --- 8.  t := round( t_m )_q->q_t
         polyr_shrm42_asm(pk->t[i], RACC_QT); // 49-42=7-bit
@@ -681,7 +698,7 @@ int racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
 
                 //  --- 8.  w := Decode([[w]])
                 racc_decode(vw[i], mw);
-                polyr_reduce(vw[i], vw[i]);
+                // polyr_reduce(vw[i], vw[i]);
                 //  --- 9.  w := round( w )_q->q_w
                 polyr_shrm44_asm(vw[i], RACC_QW);
             }
@@ -713,6 +730,7 @@ int racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
                     //  due to 2x Montgomery
                     polyr_ntt_smul(u, mr[j], MONT_RI1, MONT_RI2);
                     polyr_ntt_mula(mr[j], c_poly, sk->s[i][j], u);
+                    polyr2_full_reduce(mr[j], mr[j]);
                 }
 
                 //  --- 15. [[r]] <- Refresh([[r]])
@@ -723,12 +741,10 @@ int racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
 
                 //  Two consecutive multiplications: Montgomery adjustment
                 polyr_ntt_smul(vz[i], z, -MONT_RRR1, -MONT_RRR2); // negative & normal domain
-#if RACC_D > 2
-                polyr2_reduce(z, z);
-#endif
+
                 //  Decode for signature
                 polyr_intt(z);
-                polyr_reduce(z, z);
+                // polyr_reduce(z, z);
                 // check bounds and decode on-the-fly
                 racc_check_bounds_z(&z22, &zoo, z);
                 l_sig = racc_encode_sig_z(sig, CRYPTO_BYTES, l_sig, &pre_z, &pre_k, z);
@@ -751,7 +767,7 @@ int racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
                 polyr_ntt_cmul(u, u, c_poly);
                 polyr2_sub(y, y, u);
                 polyr_intt(y);
-                polyr_reduce(y, y);
+                // polyr_reduce(y, y);
 
                 //  --- 18. h := w - round( y )_q->q_w
                 polyr_shrm44_asm(y, RACC_QW);
@@ -851,7 +867,7 @@ int racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
 
                 //  --- 8.  w := Decode([[w]])
                 racc_decode(vw[i], mw);
-                polyr_reduce(vw[i], vw[i]);
+                // polyr_reduce(vw[i], vw[i]);
                 //  --- 9.  w := round( w )_q->q_w
                 polyr_shrm44_asm(vw[i], RACC_QW);
             }
@@ -878,6 +894,7 @@ int racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
                     //  due to 2x Montgomery
                     polyr_ntt_smul(u, mr[i][j], MONT_RI1, MONT_RI2);
                     polyr_ntt_mula(mr[i][j], c_poly, sk->s[i][j], u);
+                    polyr2_full_reduce(mr[i][j], mr[i][j]);
                 }
 
                 //  --- 15. [[r]] <- Refresh([[r]])
@@ -885,15 +902,13 @@ int racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
 
                 //  --- 16. z := Decode([[z]])
                 racc_ntt_decode(z[i], mr[i]);
-#if RACC_D > 2
-                polyr2_reduce(z[i], z[i]);
-#endif
+
                 //  Two consecutive multiplications: Montgomery adjustment
                 polyr_ntt_smul(vz[i], z[i], -MONT_RRR1, -MONT_RRR2);
 
                 //  Decode for signature
                 polyr_intt(z[i]);
-                polyr_reduce(z[i], z[i]);
+                // polyr_reduce(z[i], z[i]);
             }
 
             for (i = 0; i < RACC_K; i++)
@@ -912,7 +927,7 @@ int racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
                 polyr_ntt_cmul(u, u, c_poly);
                 polyr2_sub(y, y, u);
                 polyr_intt(y);
-                polyr_reduce(y, y);
+                // polyr_reduce(y, y);
 
                 //  --- 18. h := w - round( y )_q->q_w
                 polyr_shrm44_asm(y, RACC_QW);
@@ -1003,7 +1018,7 @@ void racc_core_sign(racc_sig_t *sig, const uint8_t mu[RACC_MU_SZ],
 
             //  --- 8.  w := Decode([[w]])
             racc_decode(vw[i], mw);
-            polyr_reduce(vw[i], vw[i]);
+            // polyr_reduce(vw[i], vw[i]);
 
             //  --- 9.  w := round( w )_q->q_w
             polyr_shrm44_asm(vw[i], RACC_QW);
@@ -1031,6 +1046,7 @@ void racc_core_sign(racc_sig_t *sig, const uint8_t mu[RACC_MU_SZ],
                 //  due to 2x Montgomery
                 polyr_ntt_smul(u, mr[i][j], MONT_RI1, MONT_RI2);
                 polyr_ntt_mula(mr[i][j], c_poly, sk->s[i][j], u);
+                polyr2_full_reduce(mr[i][j], mr[i][j]);
             }
 
             //  --- 15. [[r]] <- Refresh([[r]])
@@ -1038,15 +1054,13 @@ void racc_core_sign(racc_sig_t *sig, const uint8_t mu[RACC_MU_SZ],
 
             //  --- 16. z := Decode([[z]])
             racc_ntt_decode(sig->z[i], mr[i]);
-#if RACC_D > 2
-            polyr2_reduce(sig->z[i], sig->z[i]);
-#endif
+
             //  Two consecutive multiplications: Montgomery adjustment
             polyr_ntt_smul(vz[i], sig->z[i], -MONT_RRR1, -MONT_RRR2);
 
             //  Decode for signature
             polyr_intt(sig->z[i]);
-            polyr_reduce(sig->z[i], sig->z[i]);
+            // polyr_reduce(sig->z[i], sig->z[i]);
         }
 
         for (i = 0; i < RACC_K; i++)
@@ -1064,7 +1078,7 @@ void racc_core_sign(racc_sig_t *sig, const uint8_t mu[RACC_MU_SZ],
             polyr_ntt_cmul(u, u, c_poly);
             polyr2_sub(y, y, u);
             polyr_intt(y);
-            polyr_reduce(y, y);
+            // polyr_reduce(y, y);
 
             //  --- 18. h := w - round( y )_q->q_w
             polyr_shrm44_asm(y, RACC_QW);
@@ -1141,7 +1155,7 @@ bool racc_core_verify(const racc_sig_t *sig,
         polyr_ntt_cmul(u, u, c_poly); //  .. Cpoly ..
         polyr2_sub(vw[i], t, u);
         polyr_intt(vw[i]);
-        polyr_reduce(vw[i], vw[i]);
+        // polyr_reduce(vw[i], vw[i]);
 
         //  --- 7.  w' = round( y )_q->q_w + h
         polyr_shrm44_asm(vw[i], RACC_QW);

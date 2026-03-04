@@ -191,6 +191,13 @@ pqcrystals_dilithium_asm_rej_uniform:
     ble.w end
 
     ldr r5, [r2], #3
+    // UBFX (Unsigned Bit Field Extract) extracts a bit field from the source register
+    // and zero-extends it to the destination register.
+    // Syntax: ubfx <Rd>, <Rn>, #<lsb>, #<width>
+    // In this case: r5 = (r5 >> 0) & ((1 << 23) - 1)
+    // Extracts 23 bits from r5 starting at bit position 0 and stores the zero-extended
+    // result back in r5. Since the start position is 0, this effectively masks r5 to
+    // keep only the lower 23 bits, clearing all higher bits.
     ubfx r5, r5, #0, #23
 
     cmp.n r5, r12

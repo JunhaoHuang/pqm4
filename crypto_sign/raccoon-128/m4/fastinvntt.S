@@ -384,6 +384,7 @@ raccoon_invntt:
   // ****************** poly_join and normalize **************** //
   // qinv: q1; q:q2
   ldr qinv, #ntt_asm_q1
+  smull pol6, pol7, qinv, q  // q1*q2
   add.w zeta, ptr_p, #4096
   1:
     ldr.w pol0, [ptr_p]
@@ -395,6 +396,11 @@ raccoon_invntt:
     smlal pol0, pol4, pol1, qinv
     smull pol2, pol5, pol2, q
     smlal pol2, pol5, pol3, qinv
+    
+    reduce64_asm pol0, pol4, pol6, pol7, temp_h, temp_l, pol1
+    reduce64_asm pol2, pol5, pol6, pol7, temp_h, temp_l, pol1
+    mont64_cadd_asm pol0, pol4, pol6, pol7, temp_h, temp_l
+    mont64_cadd_asm pol2, pol5, pol6, pol7, temp_h, temp_l
 
     str.w pol4, [ptr_p, #4*1]
     str.w pol2, [ptr_p, #4*2]
@@ -406,21 +412,23 @@ raccoon_invntt:
   //restore registers
   vpop.w {s16-s23}
   pop {R4-R11, PC}
+.unreq ptr_p   
+.unreq ptr_zeta
+.unreq zeta    
+.unreq q       
+.unreq qinv    
+.unreq pol4    
+.unreq pol0    
+.unreq pol1    
+.unreq pol2    
+.unreq pol3    
+.unreq temp_h  
+.unreq temp_l  
+.unreq pol5    
+.unreq pol6    
+.unreq pol7    
 
-.ltorg
-// .align 2
-// ntt_asm_minus_qinv1:
-// .word 16515071
-// .align 2
-// ntt_asm_q1:
-// .word 16515073
-// .align 2
-// ntt_asm_minus_qinv2:
-// .word 33292287
-// 
-// .align 2
-// ntt_asm_q2:
-// .word 33292289
+
 
 .section .rodata
 .type intt_w1_32_asm, %object

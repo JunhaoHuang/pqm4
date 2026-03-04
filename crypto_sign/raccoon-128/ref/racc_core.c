@@ -31,7 +31,7 @@ static void printbytes(const unsigned char *x, unsigned long long xlen)
 
 //  ExpandA(): Use domain separated XOF to create matrix elements
 
-static void expand_aij( int64_t aij[RACC_N], int i_k, int i_ell,
+void expand_aij( int64_t aij[RACC_N], int i_k, int i_ell,
                         const uint8_t seed[RACC_AS_SZ])
 {
     uint8_t buf[RACC_AS_SZ + 8];
