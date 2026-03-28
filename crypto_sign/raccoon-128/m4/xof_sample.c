@@ -65,33 +65,6 @@ void xof_sample_q_old(int64_t r[RACC_N], const uint8_t *seed, size_t seed_sz)
  * Returns number of sampled coefficients. Can be smaller than len if not enough
  * random bytes were given.
  **************************************************/
-// static unsigned int rej_uniform_8(int64_t *a,
-//                                 unsigned int len,
-//                                 const uint8_t *buf,
-//                                 unsigned int buflen)
-// {
-//     unsigned int ctr, pos;
-//     int64_t t=0;
-//     ctr = pos = 0;
-//     while (ctr < len && pos + 49 <= buflen)
-//     {
-//         uint8_t b0=buf[pos++];//8 bits with each bit as the significant bits in the following 8 6-byte values
-//         for(int i=0;i<8;i++)
-//         {
-//             t=get48u_le(buf+pos);
-//             t=(((uint64_t)b0<<48) | t) & RACC_QMSK;
-//             b0 >>= 1;
-//             pos += 6;
-
-//             if (t < RACC_Q)
-//                 a[ctr++] = t;
-//             t=0;
-//         }
-//     }
-
-//     return ctr;
-// }
-
 static unsigned int rej_uniform(int64_t *a,
                                 unsigned int len,
                                 const uint8_t *buf,

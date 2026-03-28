@@ -32,6 +32,7 @@ KEM_SCHEMES := \
 SIGN_SCHEMES := \
 	crypto_sign/falcon-512-tree/m4-ct \
 	crypto_sign/perk-192-fast-3/m4 \
+	crypto_sign/hawk512/m4 \
 	crypto_sign/raccoon-128/m4 \
 	crypto_sign/raccoon-128/ref \
 	crypto_sign/perk-256-fast-5/m4 \
@@ -44,6 +45,7 @@ SIGN_SCHEMES := \
 	crypto_sign/ov-Ip-pkc/m4fstack \
 	crypto_sign/masked_dilithium3/m4 \
 	crypto_sign/dilithium3/m4f \
+	crypto_sign/hawk256/m4 \
 	crypto_sign/ov-Ip-pkc-skc/m4fspeed \
 	crypto_sign/ov-Ip-pkc-skc/m4fstack \
 	crypto_sign/dilithium5/m4f \
@@ -57,6 +59,7 @@ SIGN_SCHEMES := \
 	crypto_sign/dilithium2/m4f \
 	crypto_sign/haetae5/m4f \
 	crypto_sign/ov-Ip/m4f \
+	crypto_sign/hawk1024/m4 \
 	crypto_sign/haetae2/m4f \
 	crypto_sign/haetae3/m4f \
 	crypto_sign/falcon-512/m4-ct \
@@ -66,14 +69,128 @@ SIGN_SCHEMES := \
 	crypto_sign/raccoon-192/m4 \
 	crypto_sign/raccoon-192/ref \
 	crypto_sign/perk-128-fast-3/m4 \
-	mupq/crypto_sign/falcon-512-tree/opt-leaktime \
-	mupq/crypto_sign/falcon-512-tree/opt-ct \
-	mupq/crypto_sign/falcon-1024-tree/opt-leaktime \
-	mupq/crypto_sign/falcon-1024-tree/opt-ct \
-	mupq/crypto_sign/falcon-1024/opt-leaktime \
-	mupq/crypto_sign/falcon-1024/opt-ct \
-	mupq/crypto_sign/falcon-512/opt-leaktime \
-	mupq/crypto_sign/falcon-512/opt-ct \
+	mupq/crypto_sign/mirith_hypercube_Ib_fast/opt \
+	mupq/crypto_sign/mirith_hypercube_Ib_fast/ref \
+	mupq/crypto_sign/mirith_hypercube_Va_fast/ref \
+	mupq/crypto_sign/aimer192s/mem_opt \
+	mupq/crypto_sign/aimer192s/ref \
+	mupq/crypto_sign/cross-sha2-r-sdp-3-small/ref \
+	mupq/crypto_sign/mirith_IIIa_fast/ref \
+	mupq/crypto_sign/aimer128s/mem_opt \
+	mupq/crypto_sign/aimer128s/ref \
+	mupq/crypto_sign/mirith_Ia_fast/ref \
+	mupq/crypto_sign/mirith_hypercube_IIIa_shorter/ref \
+	mupq/crypto_sign/perk-192-fast-3/ref \
+	mupq/crypto_sign/mqom_cat3_gf251_short/ref \
+	mupq/crypto_sign/aimer256f/mem_opt \
+	mupq/crypto_sign/aimer256f/ref \
+	mupq/crypto_sign/snova-49-11-16-3-ssk/ref \
+	mupq/crypto_sign/snova-37-8-16-4-esk/ref \
+	mupq/crypto_sign/hawk512/ref \
+	mupq/crypto_sign/mirith_IIIb_fast/ref \
+	mupq/crypto_sign/mqom_cat1_gf251_fast/ref \
+	mupq/crypto_sign/cross-sha2-r-sdpg-1-small/ref \
+	mupq/crypto_sign/perk-256-fast-5/ref \
+	mupq/crypto_sign/aimer192f/mem_opt \
+	mupq/crypto_sign/aimer192f/ref \
+	mupq/crypto_sign/perk-192-short-5/ref \
+	mupq/crypto_sign/cross-sha2-r-sdp-3-fast/ref \
+	mupq/crypto_sign/mirith_hypercube_IIIb_shorter/ref \
+	mupq/crypto_sign/mirith_Va_short/ref \
+	mupq/crypto_sign/cross-sha2-r-sdpg-3-small/ref \
+	mupq/crypto_sign/perk-192-fast-5/ref \
+	mupq/crypto_sign/perk-256-fast-3/ref \
+	mupq/crypto_sign/perk-128-short-3/ref \
+	mupq/crypto_sign/cross-sha3-r-sdp-3-fast/ref \
+	mupq/crypto_sign/mirith_Vb_short/ref \
+	mupq/crypto_sign/mirith_Ia_short/ref \
+	mupq/crypto_sign/mqom_cat3_gf31_fast/ref \
+	mupq/crypto_sign/snova-66-15-16-3-ssk/ref \
+	mupq/crypto_sign/snova-25-8-16-3-esk/ref \
+	mupq/crypto_sign/snova-24-5-16-4-esk/ref \
+	mupq/crypto_sign/cross-sha3-r-sdpg-5-fast/ref \
+	mupq/crypto_sign/ov-Ip-pkc/ref \
+	mupq/crypto_sign/mirith_hypercube_Vb_short/ref \
+	mupq/crypto_sign/mirith_hypercube_IIIb_short/ref \
+	mupq/crypto_sign/snova-61-33-16-2-esk/ref \
+	mupq/crypto_sign/mirith_hypercube_Ib_shorter/ref \
+	mupq/crypto_sign/cross-sha3-r-sdp-1-fast/ref \
+	mupq/crypto_sign/mirith_hypercube_Ia_fast/opt \
+	mupq/crypto_sign/mirith_hypercube_Ia_fast/ref \
+	mupq/crypto_sign/snova-28-17-16-2-esk/ref \
+	mupq/crypto_sign/mqom_cat1_gf31_short/ref \
+	mupq/crypto_sign/cross-sha2-r-sdpg-5-small/ref \
+	mupq/crypto_sign/hawk256/ref \
+	mupq/crypto_sign/mirith_hypercube_Vb_fast/ref \
+	mupq/crypto_sign/ov-Ip-pkc-skc/ref \
+	mupq/crypto_sign/aimer256s/mem_opt \
+	mupq/crypto_sign/aimer256s/ref \
+	mupq/crypto_sign/perk-256-short-5/ref \
+	mupq/crypto_sign/snova-24-5-16-4-ssk/ref \
+	mupq/crypto_sign/fndsa_provisional-512/ref \
+	mupq/crypto_sign/perk-192-short-3/ref \
+	mupq/crypto_sign/cross-sha3-r-sdpg-5-small/ref \
+	mupq/crypto_sign/perk-128-fast-5/ref \
+	mupq/crypto_sign/perk-256-short-3/ref \
+	mupq/crypto_sign/cross-sha3-r-sdp-3-small/ref \
+	mupq/crypto_sign/perk-128-short-5/ref \
+	mupq/crypto_sign/snova-66-15-16-3-esk/ref \
+	mupq/crypto_sign/mirith_IIIb_short/ref \
+	mupq/crypto_sign/fndsa_provisional-1024/ref \
+	mupq/crypto_sign/mirith_hypercube_Va_short/ref \
+	mupq/crypto_sign/cross-sha2-r-sdpg-3-fast/ref \
+	mupq/crypto_sign/mirith_Va_fast/ref \
+	mupq/crypto_sign/snova-61-33-16-2-ssk/ref \
+	mupq/crypto_sign/cross-sha3-r-sdp-5-fast/ref \
+	mupq/crypto_sign/cross-sha2-r-sdp-1-small/ref \
+	mupq/crypto_sign/snova-28-17-16-2-ssk/ref \
+	mupq/crypto_sign/mqom_cat1_gf31_fast/ref \
+	mupq/crypto_sign/snova-43-25-16-2-esk/ref \
+	mupq/crypto_sign/mayo1/ref \
+	mupq/crypto_sign/cross-sha3-r-sdp-5-small/ref \
+	mupq/crypto_sign/cross-sha2-r-sdp-5-small/ref \
+	mupq/crypto_sign/mirith_hypercube_IIIa_fast/ref \
+	mupq/crypto_sign/snova-60-10-16-4-esk/ref \
+	mupq/crypto_sign/cross-sha3-r-sdpg-3-fast/ref \
+	mupq/crypto_sign/mayo3/ref \
+	mupq/crypto_sign/snova-37-8-16-4-ssk/ref \
+	mupq/crypto_sign/snova-43-25-16-2-ssk/ref \
+	mupq/crypto_sign/haetae5/ref \
+	mupq/crypto_sign/snova-60-10-16-4-ssk/ref \
+	mupq/crypto_sign/cross-sha2-r-sdpg-1-fast/ref \
+	mupq/crypto_sign/mirith_hypercube_Vb_shorter/ref \
+	mupq/crypto_sign/mirith_Ib_short/ref \
+	mupq/crypto_sign/mirith_Vb_fast/ref \
+	mupq/crypto_sign/cross-sha3-r-sdpg-1-fast/ref \
+	mupq/crypto_sign/mirith_hypercube_Va_shorter/ref \
+	mupq/crypto_sign/mirith_hypercube_Ia_shorter/ref \
+	mupq/crypto_sign/cross-sha3-r-sdp-1-small/ref \
+	mupq/crypto_sign/mirith_Ib_fast/ref \
+	mupq/crypto_sign/mirith_hypercube_Ib_short/ref \
+	mupq/crypto_sign/mqom_cat5_gf251_fast/ref \
+	mupq/crypto_sign/ov-Ip/ref \
+	mupq/crypto_sign/cross-sha3-r-sdpg-1-small/ref \
+	mupq/crypto_sign/mqom_cat5_gf251_short/ref \
+	mupq/crypto_sign/cross-sha3-r-sdpg-3-small/ref \
+	mupq/crypto_sign/mqom_cat1_gf251_short/ref \
+	mupq/crypto_sign/cross-sha2-r-sdp-5-fast/ref \
+	mupq/crypto_sign/hawk1024/ref \
+	mupq/crypto_sign/mqom_cat3_gf251_fast/ref \
+	mupq/crypto_sign/cross-sha2-r-sdpg-5-fast/ref \
+	mupq/crypto_sign/haetae2/ref \
+	mupq/crypto_sign/mqom_cat3_gf31_short/ref \
+	mupq/crypto_sign/haetae3/ref \
+	mupq/crypto_sign/mirith_hypercube_IIIb_fast/ref \
+	mupq/crypto_sign/mirith_hypercube_Ia_short/ref \
+	mupq/crypto_sign/snova-49-11-16-3-esk/ref \
+	mupq/crypto_sign/mirith_IIIa_short/ref \
+	mupq/crypto_sign/mirith_hypercube_IIIa_short/ref \
+	mupq/crypto_sign/aimer128f/mem_opt \
+	mupq/crypto_sign/aimer128f/ref \
+	mupq/crypto_sign/mayo2/ref \
+	mupq/crypto_sign/snova-25-8-16-3-ssk/ref \
+	mupq/crypto_sign/cross-sha2-r-sdp-1-fast/ref \
+	mupq/crypto_sign/perk-128-fast-3/ref \
 	mupq/pqclean/crypto_sign/sphincs-shake256-128s-robust/clean \
 	mupq/pqclean/crypto_sign/sphincs-shake256-192s-simple/clean \
 	mupq/pqclean/crypto_sign/sphincs-sha256-192s-simple/clean \

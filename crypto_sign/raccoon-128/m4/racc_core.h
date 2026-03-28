@@ -25,6 +25,11 @@ extern "C" {
 
 //  === Internal structures ===
 
+// mask compression polynomial representation:
+typedef struct {
+    int64_t x0[RACC_N]; //  store the first polynomial
+    uint8_t z[RACC_D-1][RACC_AS_SZ]; //  only store the random seed for the mask polynomials
+} poly_mask_compress_t;
 //  raccoon public key
 typedef struct {
     uint8_t a_seed[RACC_AS_SZ];             //  seed for a

@@ -110,35 +110,6 @@ void racc_ntt_decode(int64_t r[RACC_N], const int64_t m[RACC_D][RACC_N])
 
 //  ZeroEncoding(d) -> [[z]]d
 //  in-place version
-// coefficient grows by log(d)*q; maximum: 5q for d=32
-#ifdef NEW_ZERO_ENCODING
-void zero_encoding(int64_t z[RACC_D][RACC_N], mask_random_t *mrg)
-{
-    int i, j, d;
-    polyr_zero(z[0]);
-    
-#if RACC_D == 1
-    (void)mrg;
-#else
-    int64_t r[RACC_N];
-    // j=0; i=1
-    for (i=1; i< RACC_D; i++)
-    {
-        mask_random_poly(mrg, z[i], i);
-        polyr_sub(z[0], z[0], z[i]);
-    }
-    for (j=1; j< RACC_D-1; j++)
-    {
-        for (i = j+1; i < RACC_D; i++)
-        {
-            mask_random_poly(mrg, r, i);
-            polyr_add(z[i], z[i], r);
-            polyr_sub(z[j], z[j], r);
-        }
-    }
-#endif
-}
-#else
 void zero_encoding(int64_t z[RACC_D][RACC_N], mask_random_t *mrg)
 {
 #if RACC_D == 1
@@ -172,7 +143,6 @@ void zero_encoding(int64_t z[RACC_D][RACC_N], mask_random_t *mrg)
     }
 #endif
 }
-#endif
 
 //  Refresh([[x]]) -> [[x]]′
 // coefficient grows by ||x||+log(d)*q;
@@ -242,6 +212,47 @@ void racc_ntt_refresh_neg(int64_t x[RACC_D][RACC_N], mask_random_t *mrg)
         polyr2_subq(x[i], z[i], x[i]);
     }
 #endif
+}
+
+// NI-secure mask compression implementation.
+// compress x 
+void racc_mask_compress(poly_mask_compress_t *r, int64_t x[RACC_D][RACC_N])
+{
+    polyr_copy(r->x0,x[0]);
+#if RACC_D>1
+    int64_t t[RACC_N];
+    for(int i=1;i<RACC_D;i++){
+        randombytes(r->z[i-1], RACC_AS_SZ);
+        xof_sample_q(t, r->z[i-1], RACC_AS_SZ);
+        polyr_subq(r->x0, r->x0, t);
+        polyr_addq(r->x0, r->x0, x[i]);
+    }
+#endif
+}
+
+// Get i-th share of the maske
+void racc_load_share(int64_t r[RACC_N], poly_mask_compress_t *x, int i)
+{
+    if (i==0){
+        polyr_copy(r, x->x0);
+    }
+    else{
+        int64_t t[RACC_N];
+        xof_sample_q(r, x->z[i-1], RACC_AS_SZ);
+        randombytes(x->z[i-1], RACC_AS_SZ);
+        xof_sample_q(t, x->z[i-1], RACC_AS_SZ);
+        polyr_subq(x->x0, x->x0, t);
+        polyr_addq(x->x0, x->x0, r);
+    }
+}
+
+void racc_load_fullshare(int64_t r[RACC_D][RACC_N], poly_mask_compress_t *x)
+{
+    int i;
+    for (i = 0; i < RACC_D; i++)
+    {
+        racc_load_share(r[i], x, i);
+    }
 }
 
 #if MEM_OPT == 2

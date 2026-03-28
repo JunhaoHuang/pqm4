@@ -26,56 +26,14 @@ raccoon_ntt:
   //preserve registers
   push {R4-R11, R14}
 
-  //polyr2_split
-  ldr.w qinv, ntt_asm_qinv1
+  ldr.w qinv, ntt_asm_minus_qinv1
   ldr.w q, ntt_asm_q1
-//  ldr.w zeta, ntt_asm_qinv2
-//  ldr.w pol6, ntt_asm_q2
-//
-//  add.w temp_l, ptr_p, #4096-4*4
-//  1:
-//    ldr.w pol0, [ptr_p]
-//    ldr.w pol1, [ptr_p, #4*1]
-//    ldr.w pol2, [ptr_p, #4*2]
-//    ldr.w pol3, [ptr_p, #4*3]
-//    ldr.w pol4, [ptr_p, #4*4]
-//    ldr.w pol5, [ptr_p, #4*5]
-//
-//    montgomery_redc_v3 pol0, pol1, qinv, q, zeta, pol6, pol7, temp_h
-//    montgomery_redc_v3 pol2, pol3, qinv, q, zeta, pol6, pol7, temp_h
-//    montgomery_redc_v3 pol4, pol5, qinv, q, zeta, pol6, pol7, temp_h
-//
-//    str.w pol1, [ptr_p, #4*1]
-//    str.w pol2, [ptr_p, #4*2]
-//    str.w pol3, [ptr_p, #4*3]
-//    str.w pol4, [ptr_p, #4*4]
-//    str.w pol5, [ptr_p, #4*5]
-//    str.w pol0, [ptr_p], #4*6
-//  cmp.w ptr_p, temp_l
-//  bne 1b
-//
-//  ldr.w pol0, [ptr_p]
-//  ldr.w pol1, [ptr_p, #4*1]
-//  ldr.w pol2, [ptr_p, #4*2]
-//  ldr.w pol3, [ptr_p, #4*3]
-//
-//  montgomery_redc_v3 pol0, pol1, qinv, q, zeta, pol6, pol7, temp_h
-//  montgomery_redc_v3 pol2, pol3, qinv, q, zeta, pol6, pol7, temp_h
-//
-//  str.w pol1, [ptr_p, #4*1]
-//  str.w pol2, [ptr_p, #4*2]
-//  str.w pol3, [ptr_p, #4*3]
-//  str.w pol0, [ptr_p], #4*4
-//
-//  sub ptr_p, #4096
-
+  
   //poly_ntt for RACC_Q1
   // state 1-3
   .equ distance, 2048
   .equ strincr, 8
 
-  // neg qinv; get zetas1 
-  neg.w qinv, qinv
   ldr.w ptr_zeta, =#racc_w1_32_asm
   vldm ptr_zeta!, {s2-s8}
   vmov s0, ptr_zeta

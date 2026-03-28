@@ -1,0 +1,1 @@
+../../hawk256/m4/hawk_inner.h
