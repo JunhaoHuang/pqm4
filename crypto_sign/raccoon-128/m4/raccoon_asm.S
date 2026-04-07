@@ -1540,7 +1540,7 @@ polyr_shrm44_asm:
   bne 1b
   pop {R4-R11, PC}
 
-  // void polyr_negm(int64_t *r, int64_t *a, int64_t m)
+  // void polyr_negm(int64_t *r, int64_t *a, int64_t* m)
 .global polyr_negm_asm
 .type polyr_negm_asm,%function
 .align 2
@@ -1563,7 +1563,7 @@ polyr_negm_asm:
 
   push {R4-R11, R14}
 
-  // ldrd qLo, qHi, [qLo]
+  ldrd.w qLo, qHi, [qLo]
   add.w ctrn, ptr_p, #4096
   vmov s0, ctrn
   1:

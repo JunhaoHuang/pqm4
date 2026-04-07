@@ -1,0 +1,90 @@
+% Results for RACC/poly_speed_RACCOON_128_16_m4.txt with 100 elements
+\newcommand{\MGEopt}{6962k}
+\newcommand{\SKEEopt}{20684k}
+\newcommand{\SKDEopt}{19250261}
+\newcommand{\ZEEopt}{777047}
+\newcommand{\REEopt}{926768}
+\newcommand{\RENTTEopt}{1013332}
+\newcommand{\DEEopt}{135065}
+\newcommand{\ARNEopt}{9174k}
+% Results for RACC/poly_speed_RACCOON_128_1_m4.txt with 100 elements
+\newcommand{\MGAopt}{6962k}
+\newcommand{\SKEAopt}{168k}
+\newcommand{\SKDAopt}{543171}
+\newcommand{\ZEAopt}{3642}
+\newcommand{\REAopt}{53}
+\newcommand{\RENTTAopt}{53}
+\newcommand{\DEAopt}{7227}
+\newcommand{\ARNAopt}{2166k}
+% Results for RACC/poly_speed_RACCOON_128_4_ref.txt with 10 elements
+\newcommand{\MGCref}{15547k}
+\newcommand{\SKECref}{8813k}
+\newcommand{\SKDCref}{8722668}
+\newcommand{\ZECref}{100744}
+\newcommand{\RECref}{143992}
+\newcommand{\RENTTCref}{193275}
+\newcommand{\DECref}{32422}
+\newcommand{\ARNCref}{4879k}
+% Results for RACC/poly_speed_RACCOON_128_2_m4.txt with 100 elements
+\newcommand{\MGBopt}{6962k}
+\newcommand{\SKEBopt}{1533k}
+\newcommand{\SKDBopt}{1746156}
+\newcommand{\ZEBopt}{16167}
+\newcommand{\REBopt}{34169}
+\newcommand{\RENTTBopt}{44986}
+\newcommand{\DEBopt}{9046}
+\newcommand{\ARNBopt}{2303k}
+% Results for RACC/poly_speed_RACCOON_128_1_ref.txt with 10 elements
+\newcommand{\MGAref}{15547k}
+\newcommand{\SKEAref}{281k}
+\newcommand{\SKDAref}{738824}
+\newcommand{\ZEAref}{3643}
+\newcommand{\REAref}{54}
+\newcommand{\RENTTAref}{54}
+\newcommand{\DEAref}{7226}
+\newcommand{\ARNAref}{4592k}
+% Results for RACC/poly_speed_RACCOON_128_8_ref.txt with 10 elements
+\newcommand{\MGDref}{15547k}
+\newcommand{\SKEDref}{20200k}
+\newcommand{\SKDDref}{19457782}
+\newcommand{\ZEDref}{325951}
+\newcommand{\REDref}{412358}
+\newcommand{\RENTTDref}{510758}
+\newcommand{\DEDref}{75588}
+\newcommand{\ARNDref}{17187k}
+% Results for RACC/poly_speed_RACCOON_128_16_ref.txt with 10 elements
+\newcommand{\MGEref}{15547k}
+\newcommand{\SKEEref}{43074k}
+\newcommand{\SKDEref}{40966339}
+\newcommand{\ZEEref}{900507}
+\newcommand{\REEref}{1087332}
+\newcommand{\RENTTEref}{1291291}
+\newcommand{\DEEref}{161901}
+\newcommand{\ARNEref}{17708k}
+% Results for RACC/poly_speed_RACCOON_128_8_m4.txt with 100 elements
+\newcommand{\MGDopt}{6962k}
+\newcommand{\SKEDopt}{9731k}
+\newcommand{\SKDDopt}{9247058}
+\newcommand{\ZEDopt}{280562}
+\newcommand{\REDopt}{352616}
+\newcommand{\RENTTDopt}{395912}
+\newcommand{\DEDopt}{63066}
+\newcommand{\ARNDopt}{8732k}
+% Results for RACC/poly_speed_RACCOON_128_4_m4.txt with 100 elements
+\newcommand{\MGCopt}{6962k}
+\newcommand{\SKECopt}{4268k}
+\newcommand{\SKDCopt}{4238453}
+\newcommand{\ZECopt}{86285}
+\newcommand{\RECopt}{122331}
+\newcommand{\RENTTCopt}{143965}
+\newcommand{\DECopt}{27055}
+\newcommand{\ARNCopt}{2411k}
+% Results for RACC/poly_speed_RACCOON_128_2_ref.txt with 10 elements
+\newcommand{\MGBref}{15547k}
+\newcommand{\SKEBref}{3122k}
+\newcommand{\SKDBref}{3367237}
+\newcommand{\ZEBref}{19375}
+\newcommand{\REBref}{40912}
+\newcommand{\RENTTBref}{65521}
+\newcommand{\DEBref}{10836}
+\newcommand{\ARNBref}{4755k}

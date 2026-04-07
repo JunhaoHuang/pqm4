@@ -79,10 +79,10 @@ void polyr_subm(int64_t *r, const int64_t *a, const int64_t *b, int64_t m)
 }
 
 //  Negate a polynomial mod m:  r = -a, add m on underflow.
-extern void polyr_negm_asm(int64_t *r, int64_t *a, int64_t m);
+extern void polyr_negm_asm(int64_t *r, int64_t *a, int64_t* m);
 void polyr_negm(int64_t *r, int64_t *a, int64_t m)
 {
-    polyr_negm_asm(r,a,m);
+    polyr_negm_asm(r,a,&m);
 }
 extern void polyr_neg_asm(int64_t *r, const int64_t *a);
 void polyr_neg(int64_t *r, int64_t *a)

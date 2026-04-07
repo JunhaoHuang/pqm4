@@ -1,52 +1,72 @@
-% Results for RACC/stack_RACCOON_128_1_m4.txt with 1 elements
-\newcommand{\RACCIAoptkeygenStack}{86248}
-\newcommand{\RACCIAoptsignStack}{233760}
-\newcommand{\RACCIAoptverifyStack}{114976}
 % Results for RACC/stack_RACCOON_256_4_m4.txt with 1 elements
-\newcommand{\RACCIIICoptkeygenStack}{181548}
-\newcommand{\RACCIIICoptsignStack}{578984}
-\newcommand{\RACCIIICoptverifyStack}{189748}
-% Results for RACC/stack_RACCOON_192_4_m4.txt with 1 elements
-\newcommand{\RACCIICoptkeygenStack}{201204}
-\newcommand{\RACCIICoptsignStack}{487932}
-\newcommand{\RACCIICoptverifyStack}{147816}
+\newcommand{\RACCIIICoptkeygenStack}{192968}
+\newcommand{\RACCIIICoptsignStack}{312056}
+\newcommand{\RACCIIICoptverifyStack}{87364}
 % Results for RACC/stack_RACCOON_192_2_m4.txt with 1 elements
-\newcommand{\RACCIIBoptkeygenStack}{140524}
-\newcommand{\RACCIIBoptsignStack}{389496}
-\newcommand{\RACCIIBoptverifyStack}{147816}
-% Results for RACC/stack_RACCOON_256_2_m4.txt with 1 elements
-\newcommand{\RACCIIIBoptkeygenStack}{181548}
-\newcommand{\RACCIIIBoptsignStack}{578876}
-\newcommand{\RACCIIIBoptverifyStack}{189748}
-% Results for RACC/stack_RACCOON_256_1_m4.txt with 1 elements
-\newcommand{\RACCIIIAoptkeygenStack}{143712}
-\newcommand{\RACCIIIAoptsignStack}{225279}
-\newcommand{\RACCIIIAoptverifyStack}{189748}
-% Results for RACC/stack_RACCOON_192_1_m4.txt with 1 elements
-\newcommand{\RACCIIAoptkeygenStack}{110880}
-\newcommand{\RACCIIAoptsignStack}{336224}
-\newcommand{\RACCIIAoptverifyStack}{147816}
-% Results for RACC/stack_RACCOON_128_2_m4.txt with 1 elements
-\newcommand{\RACCIBoptkeygenStack}{111788}
-\newcommand{\RACCIBoptsignStack}{122879}
-\newcommand{\RACCIBoptverifyStack}{114868}
+\newcommand{\RACCIIBoptkeygenStack}{140508}
+\newcommand{\RACCIIBoptsignStack}{389472}
+\newcommand{\RACCIIBoptverifyStack}{147792}
 % Results for RACC/stack_RACCOON_128_16_m4.txt with 1 elements
-\newcommand{\RACCIEoptkeygenStack}{422536}
-\newcommand{\RACCIEoptsignStack}{611680}
-\newcommand{\RACCIEoptverifyStack}{114984}
+\newcommand{\RACCIEoptkeygenStack}{422512}
+\newcommand{\RACCIEoptsignStack}{511999}
+\newcommand{\RACCIEoptverifyStack}{57592}
 % Results for RACC/stack_RACCOON_192_8_m4.txt with 1 elements
-\newcommand{\RACCIIDoptkeygenStack}{266764}
-\newcommand{\RACCIIDoptsignStack}{407320}
-\newcommand{\RACCIIDoptverifyStack}{147816}
-% Results for RACC/stack_RACCOON_128_8_m4.txt with 1 elements
-\newcommand{\RACCIDoptkeygenStack}{262776}
-\newcommand{\RACCIDoptsignStack}{557736}
-\newcommand{\RACCIDoptverifyStack}{114976}
+\newcommand{\RACCIIDoptkeygenStack}{266856}
+\newcommand{\RACCIIDoptsignStack}{407296}
+\newcommand{\RACCIIDoptverifyStack}{70008}
+% Results for RACC/stack_RACCOON_256_2_m4.txt with 1 elements
+\newcommand{\RACCIIIBoptkeygenStack}{181640}
+\newcommand{\RACCIIIBoptsignStack}{578844}
+\newcommand{\RACCIIIBoptverifyStack}{189724}
+% Results for RACC/stack_RACCOON_256_32_m4.txt with 1 elements
+\newcommand{\RACCIIIFoptkeygenStack}{323008}
+\newcommand{\RACCIIIFoptsignStack}{337676}
+\newcommand{\RACCIIIFoptverifyStack}{87364}
+% Results for RACC/stack_RACCOON_128_32_m4.txt with 1 elements
+\newcommand{\RACCIFoptkeygenStack}{303920}
+\newcommand{\RACCIFoptsignStack}{365672}
+\newcommand{\RACCIFoptverifyStack}{57648}
+% Results for RACC/stack_RACCOON_192_1_m4.txt with 1 elements
+\newcommand{\RACCIIAoptkeygenStack}{110856}
+\newcommand{\RACCIIAoptsignStack}{336192}
+\newcommand{\RACCIIAoptverifyStack}{147752}
 % Results for RACC/stack_RACCOON_128_4_m4.txt with 1 elements
-\newcommand{\RACCICoptkeygenStack}{164276}
-\newcommand{\RACCICoptsignStack}{360892}
-\newcommand{\RACCICoptverifyStack}{114976}
+\newcommand{\RACCICoptkeygenStack}{164256}
+\newcommand{\RACCICoptsignStack}{360872}
+\newcommand{\RACCICoptverifyStack}{114952}
+% Results for RACC/stack_RACCOON_192_16_m4.txt with 1 elements
+\newcommand{\RACCIIEoptkeygenStack}{177432}
+\newcommand{\RACCIIEoptsignStack}{256320}
+\newcommand{\RACCIIEoptverifyStack}{70008}
+% Results for RACC/stack_RACCOON_192_32_m4.txt with 1 elements
+\newcommand{\RACCIIFoptkeygenStack}{310672}
+\newcommand{\RACCIIFoptsignStack}{342588}
+\newcommand{\RACCIIFoptverifyStack}{70008}
+% Results for RACC/stack_RACCOON_128_1_m4.txt with 1 elements
+\newcommand{\RACCIAoptkeygenStack}{86224}
+\newcommand{\RACCIAoptsignStack}{233728}
+\newcommand{\RACCIAoptverifyStack}{114952}
+% Results for RACC/stack_RACCOON_256_16_m4.txt with 1 elements
+\newcommand{\RACCIIIEoptkeygenStack}{188104}
+\newcommand{\RACCIIIEoptsignStack}{236300}
+\newcommand{\RACCIIIEoptverifyStack}{87364}
+% Results for RACC/stack_RACCOON_128_2_m4.txt with 1 elements
+\newcommand{\RACCIBoptkeygenStack}{111772}
+\newcommand{\RACCIBoptsignStack}{286528}
+\newcommand{\RACCIBoptverifyStack}{114952}
+% Results for RACC/stack_RACCOON_256_1_m4.txt with 1 elements
+\newcommand{\RACCIIIAoptkeygenStack}{143680}
+\newcommand{\RACCIIIAoptsignStack}{509188}
+\newcommand{\RACCIIIAoptverifyStack}{189724}
 % Results for RACC/stack_RACCOON_256_8_m4.txt with 1 elements
-\newcommand{\RACCIIIDoptkeygenStack}{340632}
-\newcommand{\RACCIIIDoptsignStack}{504656}
-\newcommand{\RACCIIIDoptverifyStack}{189748}
+\newcommand{\RACCIIIDoptkeygenStack}{340608}
+\newcommand{\RACCIIIDoptsignStack}{504648}
+\newcommand{\RACCIIIDoptverifyStack}{87364}
+% Results for RACC/stack_RACCOON_192_4_m4.txt with 1 elements
+\newcommand{\RACCIICoptkeygenStack}{201184}
+\newcommand{\RACCIICoptsignStack}{487912}
+\newcommand{\RACCIICoptverifyStack}{147792}
+% Results for RACC/stack_RACCOON_128_8_m4.txt with 1 elements
+\newcommand{\RACCIDoptkeygenStack}{262640}
+\newcommand{\RACCIDoptsignStack}{557720}
+\newcommand{\RACCIDoptverifyStack}{114952}

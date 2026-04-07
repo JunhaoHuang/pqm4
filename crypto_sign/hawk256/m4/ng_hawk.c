@@ -64,12 +64,42 @@ regen_fg_8(int8_t *restrict f, int8_t *restrict g, const void *seed)
 {
 	size_t seed_len = 16;
 	for (size_t j = 0; j < 4; j ++) {
+#ifdef ONE_SHOT_SHAKE
+		uint8_t buf[seed_len + 1];
+		memcpy(buf, seed, seed_len);
+		buf[seed_len] = (uint8_t)j;
+		uint8_t qb[64];
+		shake256(qb, sizeof(qb), buf, sizeof(buf));
+		for (size_t u = 0; u < 512; u += 64)
+		{
+			// uint8_t qb[8];
+			// shake_extract(&sc, qb, 8);
+			uint64_t q = dec64le(qb + (u / 64) * 8);
+			q = (q & (uint64_t)0x5555555555555555) + ((q >> 1) & (uint64_t)0x5555555555555555);
+			q = (q & (uint64_t)0x3333333333333333) + ((q >> 2) & (uint64_t)0x3333333333333333);
+			int8_t vv[16];
+			for (int i = 0; i < 16; i++)
+			{
+				vv[i] = (int)(q & 0x0F) - 2;
+				q >>= 4;
+			}
+			if (u < 256)
+			{
+				memcpy(f + u + (j << 4), vv, 16);
+			}
+			else
+			{
+				memcpy(g + (u - 256) + (j << 4), vv, 16);
+			}
+		}
+#else
 		shake_context sc;
 		shake_init(&sc, 256);
 		shake_inject(&sc, seed, seed_len);
 		uint8_t jx = (uint8_t)j;
 		shake_inject(&sc, &jx, 1);
 		shake_flip(&sc);
+
 		for (size_t u = 0; u < 512; u += 64) {
 			uint8_t qb[8];
 			shake_extract(&sc, qb, 8);
@@ -89,6 +119,7 @@ regen_fg_8(int8_t *restrict f, int8_t *restrict g, const void *seed)
 				memcpy(g + (u - 256) + (j << 4), vv, 16);
 			}
 		}
+#endif
 	}
 }
 
@@ -97,6 +128,36 @@ regen_fg_9(int8_t *restrict f, int8_t *restrict g, const void *seed)
 {
 	size_t seed_len = 24;
 	for (size_t j = 0; j < 4; j ++) {
+#ifdef ONE_SHOT_SHAKE
+		uint8_t buf[seed_len + 1];
+		memcpy(buf, seed, seed_len);
+		buf[seed_len] = (uint8_t)j;
+		uint8_t qb[256];
+		shake256(qb, sizeof(qb), buf, sizeof(buf));
+		for (size_t u = 0; u < 1024; u += 32)
+		{
+			// uint8_t qb[8];
+			// shake_extract(&sc, qb, 8);
+			uint64_t q = dec64le(qb + (u / 32) * 8);
+			q = (q & (uint64_t)0x5555555555555555) + ((q >> 1) & (uint64_t)0x5555555555555555);
+			q = (q & (uint64_t)0x3333333333333333) + ((q >> 2) & (uint64_t)0x3333333333333333);
+			q = (q & (uint64_t)0x0F0F0F0F0F0F0F0F) + ((q >> 4) & (uint64_t)0x0F0F0F0F0F0F0F0F);
+			int8_t vv[8];
+			for (int i = 0; i < 8; i++)
+			{
+				vv[i] = (int)(q & 0xFF) - 4;
+				q >>= 8;
+			}
+			if (u < 512)
+			{
+				memcpy(f + u + (j << 3), vv, 8);
+			}
+			else
+			{
+				memcpy(g + (u - 512) + (j << 3), vv, 8);
+			}
+		}
+#else
 		shake_context sc;
 		shake_init(&sc, 256);
 		shake_inject(&sc, seed, seed_len);
@@ -124,6 +185,7 @@ regen_fg_9(int8_t *restrict f, int8_t *restrict g, const void *seed)
 				memcpy(g + (u - 512) + (j << 3), vv, 8);
 			}
 		}
+#endif
 	}
 }
 
@@ -132,6 +194,38 @@ regen_fg_10(int8_t *restrict f, int8_t *restrict g, const void *seed)
 {
 	size_t seed_len = 40;
 	for (size_t j = 0; j < 4; j ++) {
+
+#ifdef ONE_SHOT_SHAKE
+		uint8_t buf[seed_len + 1];
+		memcpy(buf, seed, seed_len);
+		buf[seed_len] = (uint8_t)j;
+		uint8_t qb[1024];
+		shake256(qb, sizeof(qb), buf, sizeof(buf));
+		for (size_t u = 0; u < 2048; u += 16)
+		{
+			// uint8_t qb[8];
+			// shake_extract(&sc, qb, 8);
+			uint64_t q = dec64le(qb + (u / 16) * 8);
+			q = (q & (uint64_t)0x5555555555555555) + ((q >> 1) & (uint64_t)0x5555555555555555);
+			q = (q & (uint64_t)0x3333333333333333) + ((q >> 2) & (uint64_t)0x3333333333333333);
+			q = (q & (uint64_t)0x0F0F0F0F0F0F0F0F) + ((q >> 4) & (uint64_t)0x0F0F0F0F0F0F0F0F);
+			q = (q & (uint64_t)0x00FF00FF00FF00FF) + ((q >> 8) & (uint64_t)0x00FF00FF00FF00FF);
+			int8_t vv[4];
+			for (int i = 0; i < 4; i++)
+			{
+				vv[i] = (int)(q & 0xFFFF) - 8;
+				q >>= 16;
+			}
+			if (u < 1024)
+			{
+				memcpy(f + u + (j << 2), vv, 4);
+			}
+			else
+			{
+				memcpy(g + (u - 1024) + (j << 2), vv, 4);
+			}
+		}
+#else
 		shake_context sc;
 		shake_init(&sc, 256);
 		shake_inject(&sc, seed, seed_len);
@@ -161,14 +255,24 @@ regen_fg_10(int8_t *restrict f, int8_t *restrict g, const void *seed)
 				memcpy(g + (u - 1024) + (j << 2), vv, 4);
 			}
 		}
+#endif
 	}
 }
 
+// #include "hal.h"
+// #include "sendfn.h"
 /* see ntrugen.h */
+#ifdef ONE_SHOT_SHAKE
+#include "hal.h"
+extern unsigned long long one_shot_shake_cycles;
+#endif
 void
 Hawk_regen_fg(unsigned logn,
 	int8_t *restrict f, int8_t *restrict g, const void *seed)
 {
+#ifdef ONE_SHOT_SHAKE
+	uint64_t t0 = hal_get_time();
+#endif
 	switch (logn) {
 	case 8:
 		regen_fg_8(f, g, seed);
@@ -180,7 +284,10 @@ Hawk_regen_fg(unsigned logn,
 		regen_fg_10(f, g, seed);
 		break;
 	}
-
+#ifdef ONE_SHOT_SHAKE
+	uint64_t t1 = hal_get_time();
+	one_shot_shake_cycles += (t1 - t0);
+#endif
 #if 0
 	const uint16_t *tab;
 	switch (logn) {
@@ -435,6 +542,7 @@ Hawk_keygen(unsigned logn,
 		/*
 		 * Generate f and g.
 		 */
+		
 		rng(rng_context, seed_buf, seed_len);
 		Hawk_regen_fg(logn, f, g, seed_buf);
 

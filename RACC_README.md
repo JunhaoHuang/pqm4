@@ -20,8 +20,9 @@ The results for polynomial arithmetic can use the following command:
 ./racc_poly_speed.sh poly_speed
 ```
 
-The output will be temporarily stored in /RACC directory. To analyse the results for stack and speed, we also provide a python script to get the averaged results and translate to latex command so that we can easily integrate our results in the paper.
+The output will be temporarily stored in /RACC directory. To analyse the results for polynomial arithmetic, stack and speed, we provide python scripts to get the averaged results and translate to latex command so that we can easily integrate our results in the paper.
 
 ```
-python3 average.py speed/stack
+python3 average_poly.py poly_speed # polynomial arithmetic.
+python3 average.py speed/stack # speed and stack of the schemes.
 ```

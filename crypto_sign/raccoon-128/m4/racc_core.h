@@ -9,7 +9,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+#include "api.h"
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
@@ -25,11 +25,7 @@ extern "C" {
 
 //  === Internal structures ===
 
-// mask compression polynomial representation:
-typedef struct {
-    int64_t x0[RACC_N]; //  store the first polynomial
-    uint8_t z[RACC_D-1][RACC_AS_SZ]; //  only store the random seed for the mask polynomials
-} poly_mask_compress_t;
+
 //  raccoon public key
 typedef struct {
     uint8_t a_seed[RACC_AS_SZ];             //  seed for a
@@ -50,17 +46,35 @@ typedef struct {
     int64_t z[RACC_ELL][RACC_N];            //  signature data
 } racc_sig_t;
 
+#if MEM_OPT == 2
+// mask compression polynomial representation:
+typedef struct
+{
+    int64_t x0[RACC_N];                //  store the first polynomial
+    uint8_t z[RACC_D - 1][RACC_MK_SZ]; //  only store the random seed for the mask polynomials
+} poly_mask_compress_t;
+typedef struct
+{
+    uint8_t pk[CRYPTO_PUBLICKEYBYTES];                 //  copy of public key
+    poly_mask_compress_t s[RACC_ELL];                  //  compressed d-masked secret key vector
+} racc_sk_compress_t;
+#endif
 //  === Core API ===
 
 //  Generate a public-secret keypair ("pk", "sk").
-#if MEM_OPT>0
+#if MEM_OPT==2
+int racc_core_keygen(unsigned char *pk, racc_sk_compress_t *sk);
+#elif MEM_OPT==1
 int racc_core_keygen(unsigned char *pk, racc_sk_t *sk);
 #else
 void racc_core_keygen(racc_pk_t *pk, racc_sk_t *sk);
 #endif
 
 //  Create a detached signature "sig" for digest "mu" using secret key "sk".
-#if MEM_OPT > 0
+#if MEM_OPT == 2
+int racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
+                    racc_sk_compress_t *sk);
+#elif MEM_OPT == 1
 int racc_core_sign(uint8_t *sig, const uint8_t mu[RACC_MU_SZ],
                     racc_sk_t *sk);
 #else
@@ -70,10 +84,15 @@ void racc_core_sign(racc_sig_t *sig, const uint8_t mu[RACC_MU_SZ],
 
 //  Verify that the signature "sig" is valid for digest "mu".
 //  Returns true iff signature is valid, false if not valid.
+#if MEM_OPT > 0
+bool racc_core_verify(const uint8_t *sig,
+                      const uint8_t mu[RACC_MU_SZ],
+                      const uint8_t pk[CRYPTO_PUBLICKEYBYTES]);
+#else
 bool racc_core_verify(const racc_sig_t *sig,
                         const uint8_t mu[RACC_MU_SZ],
                         const racc_pk_t *pk);
-
+#endif
 
 // for benchmarking
 void expand_aij(int64_t aij[RACC_N], int i_k, int i_ell,

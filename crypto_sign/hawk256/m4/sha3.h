@@ -12,7 +12,7 @@ extern "C" {
 #define shake_inject(sc, data, len) shake256_inc_absorb(sc, data, len)
 #define shake_flip(sc) shake256_inc_finalize(sc);
 #define shake_extract(sc, out, len) shake256_inc_squeeze(out, len, sc)
-
+#define shake256(out, outlen, in, inlen) shake256(out, outlen, in, inlen)
 #ifdef __cplusplus
 }
 #endif

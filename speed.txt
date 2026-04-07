@@ -1,84 +1,108 @@
-% Results for RACC/speed_RACCOON_256_2_ref.txt with 100 elements
-\newcommand{\RACCIIIBrefkeygen}{85630k}
-\newcommand{\RACCIIIBrefsign}{134997k}
-\newcommand{\RACCIIIBrefverify}{60865k}
-% Results for RACC/speed_RACCOON_192_8_m4.txt with 100 elements
-\newcommand{\RACCIIDoptkeygen}{77831k}
-\newcommand{\RACCIIDoptsign}{490807k}
-\newcommand{\RACCIIDoptverify}{17414k}
-% Results for RACC/speed_RACCOON_192_4_ref.txt with 100 elements
-\newcommand{\RACCIICrefkeygen}{67980k}
-\newcommand{\RACCIICrefsign}{107862k}
-\newcommand{\RACCIICrefverify}{35691k}
-% Results for RACC/speed_RACCOON_192_4_m4.txt with 100 elements
-\newcommand{\RACCIICoptkeygen}{31997k}
-\newcommand{\RACCIICoptsign}{56507k}
-\newcommand{\RACCIICoptverify}{17425k}
-% Results for RACC/speed_RACCOON_192_1_m4.txt with 100 elements
-\newcommand{\RACCIIAoptkeygen}{20430k}
-\newcommand{\RACCIIAoptsign}{44710k}
-\newcommand{\RACCIIAoptverify}{17420k}
-% Results for RACC/speed_RACCOON_256_2_m4.txt with 100 elements
-\newcommand{\RACCIIIBoptkeygen}{39471k}
-\newcommand{\RACCIIIBoptsign}{70330k}
-\newcommand{\RACCIIIBoptverify}{29414k}
-% Results for RACC/speed_RACCOON_128_4_m4.txt with 100 elements
-\newcommand{\RACCICoptkeygen}{21736k}
-\newcommand{\RACCICoptsign}{41681k}
-\newcommand{\RACCICoptverify}{10939k}
-% Results for RACC/speed_RACCOON_192_2_ref.txt with 100 elements
-\newcommand{\RACCIIBrefkeygen}{53865k}
-\newcommand{\RACCIIBrefsign}{103498k}
-\newcommand{\RACCIIBrefverify}{35708k}
-% Results for RACC/speed_RACCOON_128_2_m4.txt with 100 elements
-\newcommand{\RACCIBoptkeygen}{16342k}
-\newcommand{\RACCIBoptsign}{35056k}
-\newcommand{\RACCIBoptverify}{10940k}
-% Results for RACC/speed_RACCOON_128_1_ref.txt with 100 elements
-\newcommand{\RACCIArefkeygen}{29045k}
-\newcommand{\RACCIArefsign}{65256k}
-\newcommand{\RACCIArefverify}{21857k}
-% Results for RACC/speed_RACCOON_256_1_m4.txt with 100 elements
-\newcommand{\RACCIIIAoptkeygen}{33270k}
-\newcommand{\RACCIIIAoptsign}{63384k}
-\newcommand{\RACCIIIAoptverify}{29296k}
-% Results for RACC/speed_RACCOON_256_4_m4.txt with 100 elements
-\newcommand{\RACCIIICoptkeygen}{49636k}
-\newcommand{\RACCIIICoptsign}{174740k}
-\newcommand{\RACCIIICoptverify}{29410k}
-% Results for RACC/speed_RACCOON_128_2_ref.txt with 100 elements
-\newcommand{\RACCIBrefkeygen}{35363k}
-\newcommand{\RACCIBrefsign}{72428k}
-\newcommand{\RACCIBrefverify}{21864k}
-% Results for RACC/speed_RACCOON_128_8_ref.txt with 100 elements
-\newcommand{\RACCIDrefkeygen}{111407k}
-\newcommand{\RACCIDrefsign}{197363k}
-\newcommand{\RACCIDrefverify}{21860k}
+% Results for RACC/speed_RACCOON_192_16_m4.txt with 2 elements
+\newcommand{\RACCIIEoptkeygen}{318124k}
+\newcommand{\RACCIIEoptsign}{7441782k}
+\newcommand{\RACCIIEoptverify}{17209k}
 % Results for RACC/speed_RACCOON_128_1_m4.txt with 100 elements
-\newcommand{\RACCIAoptkeygen}{13027k}
-\newcommand{\RACCIAoptsign}{31244k}
-\newcommand{\RACCIAoptverify}{10945k}
+\newcommand{\RACCIAoptkeygen}{12859k}
+\newcommand{\RACCIAoptsign}{31044k}
+\newcommand{\RACCIAoptverify}{10785k}
+% Results for RACC/speed_RACCOON_256_8_m4.txt with 100 elements
+\newcommand{\RACCIIIDoptkeygen}{111297k}
+\newcommand{\RACCIIIDoptsign}{786728k}
+\newcommand{\RACCIIIDoptverify}{28901k}
+% Results for RACC/speed_RACCOON_192_32_m4.txt with 2 elements
+\newcommand{\RACCIIFoptkeygen}{1055217k}
+\newcommand{\RACCIIFoptsign}{29705278k}
+\newcommand{\RACCIIFoptverify}{17194k}
+% Results for RACC/speed_RACCOON_256_2_m4.txt with 100 elements
+\newcommand{\RACCIIIBoptkeygen}{38982k}
+\newcommand{\RACCIIIBoptsign}{69570k}
+\newcommand{\RACCIIIBoptverify}{29008k}
+% Results for RACC/speed_RACCOON_192_2_ref.txt with 100 elements
+\newcommand{\RACCIIBrefkeygen}{53488k}
+\newcommand{\RACCIIBrefsign}{103185k}
+\newcommand{\RACCIIBrefverify}{35665k}
+% Results for RACC/speed_RACCOON_128_4_m4.txt with 100 elements
+\newcommand{\RACCICoptkeygen}{21502k}
+\newcommand{\RACCICoptsign}{41365k}
+\newcommand{\RACCICoptverify}{10792k}
 % Results for RACC/speed_RACCOON_192_2_m4.txt with 100 elements
-\newcommand{\RACCIIBoptkeygen}{24845k}
-\newcommand{\RACCIIBoptsign}{49810k}
-\newcommand{\RACCIIBoptverify}{17424k}
-% Results for RACC/speed_RACCOON_128_8_m4.txt with 100 elements
-\newcommand{\RACCIDoptkeygen}{56199k}
-\newcommand{\RACCIDoptsign}{107027k}
-\newcommand{\RACCIDoptverify}{10949k}
+\newcommand{\RACCIIBoptkeygen}{24545k}
+\newcommand{\RACCIIBoptsign}{49479k}
+\newcommand{\RACCIIBoptverify}{17347k}
 % Results for RACC/speed_RACCOON_256_1_ref.txt with 100 elements
-\newcommand{\RACCIIIArefkeygen}{73869k}
-\newcommand{\RACCIIIArefsign}{122294k}
-\newcommand{\RACCIIIArefverify}{60879k}
-% Results for RACC/speed_RACCOON_192_1_ref.txt with 100 elements
-\newcommand{\RACCIIArefkeygen}{45497k}
-\newcommand{\RACCIIArefsign}{93883k}
-\newcommand{\RACCIIArefverify}{35716k}
-% Results for RACC/speed_RACCOON_128_16_m4.txt with 100 elements
-\newcommand{\RACCIEoptkeygen}{78999k}
-\newcommand{\RACCIEoptsign}{345206k}
-\newcommand{\RACCIEoptverify}{10884k}
+\newcommand{\RACCIIIArefkeygen}{73480k}
+\newcommand{\RACCIIIArefsign}{123262k}
+\newcommand{\RACCIIIArefverify}{60481k}
+% Results for RACC/speed_RACCOON_128_2_ref.txt with 100 elements
+\newcommand{\RACCIBrefkeygen}{35103k}
+\newcommand{\RACCIBrefsign}{72257k}
+\newcommand{\RACCIBrefverify}{21729k}
+% Results for RACC/speed_RACCOON_128_2_m4.txt with 100 elements
+\newcommand{\RACCIBoptkeygen}{16151k}
+\newcommand{\RACCIBoptsign}{34867k}
+\newcommand{\RACCIBoptverify}{10788k}
+% Results for RACC/speed_RACCOON_192_1_m4.txt with 100 elements
+\newcommand{\RACCIIAoptkeygen}{20178k}
+\newcommand{\RACCIIAoptsign}{44489k}
+\newcommand{\RACCIIAoptverify}{17352k}
+% Results for RACC/speed_RACCOON_256_4_m4.txt with 100 elements
+\newcommand{\RACCIIICoptkeygen}{49061k}
+\newcommand{\RACCIIICoptsign}{273524k}
+\newcommand{\RACCIIICoptverify}{28899k}
+% Results for RACC/speed_RACCOON_256_32_m4.txt with 2 elements
+\newcommand{\RACCIIIFoptkeygen}{1762570k}
+\newcommand{\RACCIIIFoptsign}{48356318k}
+\newcommand{\RACCIIIFoptverify}{28925k}
+% Results for RACC/speed_RACCOON_256_2_ref.txt with 100 elements
+\newcommand{\RACCIIIBrefkeygen}{84988k}
+\newcommand{\RACCIIIBrefsign}{135412k}
+\newcommand{\RACCIIIBrefverify}{60464k}
 % Results for RACC/speed_RACCOON_128_4_ref.txt with 100 elements
-\newcommand{\RACCICrefkeygen}{46031k}
-\newcommand{\RACCICrefsign}{84755k}
-\newcommand{\RACCICrefverify}{21863k}
+\newcommand{\RACCICrefkeygen}{45905k}
+\newcommand{\RACCICrefsign}{84595k}
+\newcommand{\RACCICrefverify}{21736k}
+% Results for RACC/speed_RACCOON_128_32_m4.txt with 2 elements
+\newcommand{\RACCIFoptkeygen}{659222k}
+\newcommand{\RACCIFoptsign}{18535522k}
+\newcommand{\RACCIFoptverify}{10607k}
+% Results for RACC/speed_RACCOON_192_8_m4.txt with 100 elements
+\newcommand{\RACCIIDoptkeygen}{77259k}
+\newcommand{\RACCIIDoptsign}{488002k}
+\newcommand{\RACCIIDoptverify}{17187k}
+% Results for RACC/speed_RACCOON_128_8_ref.txt with 100 elements
+\newcommand{\RACCIDrefkeygen}{111145k}
+\newcommand{\RACCIDrefsign}{198379k}
+\newcommand{\RACCIDrefverify}{21736k}
+% Results for RACC/speed_RACCOON_192_4_m4.txt with 100 elements
+\newcommand{\RACCIICoptkeygen}{31631k}
+\newcommand{\RACCIICoptsign}{56124k}
+\newcommand{\RACCIICoptverify}{17343k}
+% Results for RACC/speed_RACCOON_192_1_ref.txt with 100 elements
+\newcommand{\RACCIIArefkeygen}{45289k}
+\newcommand{\RACCIIArefsign}{93892k}
+\newcommand{\RACCIIArefverify}{35662k}
+% Results for RACC/speed_RACCOON_128_8_m4.txt with 100 elements
+\newcommand{\RACCIDoptkeygen}{55758k}
+\newcommand{\RACCIDoptsign}{106503k}
+\newcommand{\RACCIDoptverify}{10789k}
+% Results for RACC/speed_RACCOON_256_1_m4.txt with 100 elements
+\newcommand{\RACCIIIAoptkeygen}{32827k}
+\newcommand{\RACCIIIAoptsign}{62913k}
+\newcommand{\RACCIIIAoptverify}{29001k}
+% Results for RACC/speed_RACCOON_192_4_ref.txt with 100 elements
+\newcommand{\RACCIICrefkeygen}{67797k}
+\newcommand{\RACCIICrefsign}{108393k}
+\newcommand{\RACCIICrefverify}{35655k}
+% Results for RACC/speed_RACCOON_256_16_m4.txt with 2 elements
+\newcommand{\RACCIIIEoptkeygen}{525817k}
+\newcommand{\RACCIIIEoptsign}{12685267k}
+\newcommand{\RACCIIIEoptverify}{28912k}
+% Results for RACC/speed_RACCOON_128_1_ref.txt with 100 elements
+\newcommand{\RACCIArefkeygen}{28931k}
+\newcommand{\RACCIArefsign}{65251k}
+\newcommand{\RACCIArefverify}{21730k}
+% Results for RACC/speed_RACCOON_128_16_m4.txt with 100 elements
+\newcommand{\RACCIEoptkeygen}{78391k}
+\newcommand{\RACCIEoptsign}{342402k}
+\newcommand{\RACCIEoptverify}{10722k}

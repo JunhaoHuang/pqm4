@@ -401,11 +401,18 @@ static const uint64_t sig_gauss_lo_Hawk_1024[] = {
  * NULL, then it should be a non-flipped SHAKE context which will be used
  * as basis for the four instances; otherwise, empty contexts will be used.
  */
+#ifdef PROFILE_HASHING
+#include "hal.h"
+extern unsigned long long gauss_cycles;
+#endif
 static uint32_t
 sig_gauss(unsigned logn,
-	void (*rng)(void *ctx, void *dst, size_t len), void *rng_context,
-	const shake_context *sc_extra, int8_t *x, const uint8_t *t)
+		  void (*rng)(void *ctx, void *dst, size_t len), void *rng_context,
+		  const shake_context *sc_extra, int8_t *x, const uint8_t *t)
 {
+#ifdef PROFILE_HASHING
+	uint64_t t0 = hal_get_time();
+#endif
 	const uint16_t *tab_hi;
 	const uint64_t *tab_lo;
 	size_t hi_len, lo_len;
@@ -522,6 +529,10 @@ sig_gauss(unsigned logn,
 			}
 		}
 	}
+#ifdef PROFILE_HASHING
+	uint64_t t1 = hal_get_time();
+	gauss_cycles += (t1 - t0);
+#endif
 	return sn;
 
 }
@@ -538,6 +549,7 @@ sig_gauss_alt(unsigned logn,
 	void (*rng)(void *ctx, void *dst, size_t len), void *rng_context,
 	int8_t *x, const uint8_t *t)
 {
+	
 	const uint16_t *tab_hi;
 	const uint64_t *tab_lo;
 	size_t hi_len, lo_len;

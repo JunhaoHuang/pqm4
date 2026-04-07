@@ -182,7 +182,6 @@ size_t racc_encode_sk_l(uint8_t *b, const int64_t s[RACC_D][RACC_N], size_t i, s
         polyr2_join(r, MONT_D2Q1, MONT_D2Q2);
         polyr_addq(s0, s0, r); //    s0 <- s0 + s_j
     }
-    // polyr_reduce(s0,s0);
     //  encode the zeroth share (in full)
     ls += inline_encode_bits(b + ls, s0, RACC_Q_BITS);
 
@@ -224,6 +223,72 @@ size_t racc_decode_sk_l(int64_t sk[RACC_D][RACC_N], const uint8_t *b, size_t i, 
 }
 #endif
 //  Encode secret key "sk" to bytes "b". Return length in bytes.
+#if MEM_OPT==2
+size_t racc_encode_sk(uint8_t *b, const racc_sk_compress_t *sk)
+{
+    uint8_t buf[RACC_MK_SZ + 8];
+    size_t i, j, l=0;
+    int64_t t1[RACC_N], t2[RACC_N], s0[RACC_ELL][RACC_N];
+    for(i=0;i<RACC_ELL;i++){
+        polyr_copy(s0[i], sk->s[i].x0);
+    }
+    memset(buf, 0x00, 8); //   domain header template
+    buf[0] = 'K';
+    for (j = 1; j < RACC_D; j++)
+    {
+        randombytes(b + l, RACC_MK_SZ);     //   key_i
+        //  XOF( 'K' || index i || share j || key_j )
+        for (i = 0; i < RACC_ELL; i++)
+        {
+            buf[1] = i; // update domain header
+            buf[2] = j;
+
+            memcpy(buf + 8, sk->s[i].z[j-1], RACC_MK_SZ); // randombytes in original sk
+            xof_sample_q(t1, buf, RACC_MK_SZ + 8);
+            
+            memcpy(buf+8, b+l, RACC_MK_SZ); // new randombytes for encoding
+            xof_sample_q(t2, buf, RACC_MK_SZ + 8);
+            polyr_subq(s0[i], s0[i], t2); //    x0 <- x0 - t2
+            polyr_addq(s0[i], s0[i], t1); //    x0 <- x0 + xj
+        }
+        l += RACC_MK_SZ;
+    }
+    //  encode the zeroth share (in full)
+    for (i = 0; i < RACC_ELL; i++)
+    {
+        l += inline_encode_bits(b + l, s0[i], RACC_Q_BITS);
+    }
+    return l;
+}
+//  Decode secret key "sk" to bytes "b". Return length in bytes.
+size_t racc_decode_sk(racc_sk_compress_t *sk, const uint8_t *b)
+{
+    size_t i, j, l=0;
+    //  decode public key
+    // l = racc_decode_pk(&sk->pk, b);
+    memcpy(sk->pk, b, CRYPTO_PUBLICKEYBYTES);
+    l += CRYPTO_PUBLICKEYBYTES;
+
+    //  expand shares 1, 2, ..., d-1 from keys
+    for (j = 1; j < RACC_D; j++)
+    {
+        //  copy key
+        for (i = 0; i < RACC_ELL; i++)
+        {
+            memcpy(sk->s[i].z[j - 1], b + l, RACC_MK_SZ); // store in secret key
+        }
+        l += RACC_MK_SZ;
+    }
+
+    //  decode the zeroth share (in full)
+    for (i = 0; i < RACC_ELL; i++)
+    {
+        l += inline_decode_bits(sk->s[i].x0, b + l, RACC_Q_BITS, false);
+    }
+
+    return l;
+}
+#else
 size_t racc_encode_sk(uint8_t *b, const racc_sk_t *sk)
 {
     size_t i, j, l=0;
@@ -244,7 +309,6 @@ size_t racc_encode_sk(uint8_t *b, const racc_sk_t *sk)
     //  shares 1, 2, ..., d-1
     for (j = 1; j < RACC_D; j++)
     {
-
         randombytes(b + l, RACC_MK_SZ);     //   key_j
         memcpy(buf + 8, b + l, RACC_MK_SZ); // store in secret key
         l += RACC_MK_SZ;
@@ -262,7 +326,6 @@ size_t racc_encode_sk(uint8_t *b, const racc_sk_t *sk)
             polyr_addq(s0[i], s0[i], t); //    s0 <- s0 + s_j
         }
     }
-    // polyr_reduce(s0[i], s0[i]);
     //  encode the zeroth share (in full)
     for (i = 0; i < RACC_ELL; i++)
     {
@@ -271,7 +334,6 @@ size_t racc_encode_sk(uint8_t *b, const racc_sk_t *sk)
 
     return l;
 }
-
 //  Decode secret key "sk" to bytes "b". Return length in bytes.
 size_t racc_decode_sk(racc_sk_t *sk, const uint8_t *b)
 {
@@ -318,6 +380,8 @@ size_t racc_decode_sk(racc_sk_t *sk, const uint8_t *b)
 
     return l;
 }
+#endif
+
 
 //  macro for encoding n bits from y
 //  (note -- returns from function on overflow)
@@ -337,7 +401,7 @@ size_t racc_decode_sk(racc_sk_t *sk, const uint8_t *b)
     }                           \
 }
 
-#if MEM_OPT == 2 // on-the-fly decode/encode; encode/decode h before z.
+#if MEM_OPT >0 // on-the-fly decode/encode; encode/decode h before z.
 size_t racc_encode_sig_h(uint8_t *b, size_t i, size_t b_sz, size_t l_h, uint8_t *pre_z, size_t *pre_k, const int64_t sig_h[RACC_N])
 {
     size_t j, k, l, n;
@@ -459,116 +523,116 @@ size_t racc_encode_sig_z(uint8_t *b, size_t b_sz, size_t l_z, uint8_t *pre_z, si
 
     return l;
 }
-#elif MEM_OPT == 1 // follow the origin signature encode/decode
-size_t racc_encode_sig_zh(uint8_t *b, size_t b_sz, const int64_t sig_h[RACC_K][RACC_N], const int64_t sig_z[RACC_ELL][RACC_N])
-{
-    size_t i, j, k, l, n;
-    int64_t x, y, s;
-    uint8_t z;
+// #elif MEM_OPT == 1 // follow the origin signature encode/decode
+// size_t racc_encode_sig_zh(uint8_t *b, size_t b_sz, const int64_t sig_h[RACC_K][RACC_N], const int64_t sig_z[RACC_ELL][RACC_N])
+// {
+//     size_t i, j, k, l, n;
+//     int64_t x, y, s;
+//     uint8_t z;
 
-    l = RACC_CH_SZ; //  byte position (length)
-    k = 0;          //  bit position 0..7
-    z = 0x00;       //  byte fraction
+//     l = RACC_CH_SZ; //  byte position (length)
+//     k = 0;          //  bit position 0..7
+//     z = 0x00;       //  byte fraction
 
-    //  encode hint
-    for (i = 0; i < RACC_K; i++)
-    {
-        for (j = 0; j < RACC_N; j++)
-        {
+//     //  encode hint
+//     for (i = 0; i < RACC_K; i++)
+//     {
+//         for (j = 0; j < RACC_N; j++)
+//         {
 
-            //  normalize
-            x = sig_h[i][j];
-            while (x < -RACC_Q / 2)
-                x += RACC_Q;
-            while (x > RACC_Q / 2)
-                x -= RACC_Q;
+//             //  normalize
+//             x = sig_h[i][j];
+//             while (x < -RACC_Q / 2)
+//                 x += RACC_Q;
+//             while (x > RACC_Q / 2)
+//                 x -= RACC_Q;
 
-            if (x == 0)
-            {
-                //  zero is encoded just as one zero bit
-                y = 0;
-                n = 1;
-            }
-            else
-            {
-                //  set sign
-                if (x < 0)
-                {
-                    x = -x;
-                    s = 1;
-                }
-                else
-                {
-                    s = 0;
-                }
-                //  abs(x) reps of 1, followed by 0 stop bit and sign
-                y = ((1LL << x) - 1) | (s << (x + 1));
-                n = x + 2;
-            }
+//             if (x == 0)
+//             {
+//                 //  zero is encoded just as one zero bit
+//                 y = 0;
+//                 n = 1;
+//             }
+//             else
+//             {
+//                 //  set sign
+//                 if (x < 0)
+//                 {
+//                     x = -x;
+//                     s = 1;
+//                 }
+//                 else
+//                 {
+//                     s = 0;
+//                 }
+//                 //  abs(x) reps of 1, followed by 0 stop bit and sign
+//                 y = ((1LL << x) - 1) | (s << (x + 1));
+//                 n = x + 2;
+//             }
 
-            //  encode n bits from y
-            ENC_SIG_PUT_BITS(y, n);
-        }
-    }
+//             //  encode n bits from y
+//             ENC_SIG_PUT_BITS(y, n);
+//         }
+//     }
 
-    //  encode z
-    for (i = 0; i < RACC_ELL; i++)
-    {
-        for (j = 0; j < RACC_N; j++)
-        {
-            x = sig_z[i][j];
+//     //  encode z
+//     for (i = 0; i < RACC_ELL; i++)
+//     {
+//         for (j = 0; j < RACC_N; j++)
+//         {
+//             x = sig_z[i][j];
 
-            //  normalize
-            while (x < -RACC_Q / 2)
-                x += RACC_Q;
-            while (x > RACC_Q / 2)
-                x -= RACC_Q;
+//             //  normalize
+//             while (x < -RACC_Q / 2)
+//                 x += RACC_Q;
+//             while (x > RACC_Q / 2)
+//                 x -= RACC_Q;
 
-            //  set sign
-            if (x < 0)
-            {
-                x = -x;
-                s = 1;
-            }
-            else
-            {
-                s = 0;
-            }
+//             //  set sign
+//             if (x < 0)
+//             {
+//                 x = -x;
+//                 s = 1;
+//             }
+//             else
+//             {
+//                 s = 0;
+//             }
 
-            //  low bits
-            y = x & ((1LL << RACC_ZLBITS) - 1);
-            x >>= RACC_ZLBITS;
+//             //  low bits
+//             y = x & ((1LL << RACC_ZLBITS) - 1);
+//             x >>= RACC_ZLBITS;
 
-            //  high bits (run of 1's)
-            y |= ((1LL << x) - 1) << RACC_ZLBITS;
+//             //  high bits (run of 1's)
+//             y |= ((1LL << x) - 1) << RACC_ZLBITS;
 
-            if (y == 0)
-            {
-                //  stop bit, no sign
-                n = RACC_ZLBITS + 1;
-            }
-            else
-            {
-                //  stop bit (0) and sign
-                y |= s << (RACC_ZLBITS + x + 1);
-                n = RACC_ZLBITS + x + 2;
-            }
+//             if (y == 0)
+//             {
+//                 //  stop bit, no sign
+//                 n = RACC_ZLBITS + 1;
+//             }
+//             else
+//             {
+//                 //  stop bit (0) and sign
+//                 y |= s << (RACC_ZLBITS + x + 1);
+//                 n = RACC_ZLBITS + x + 2;
+//             }
 
-            //  encode n bits from y
-            ENC_SIG_PUT_BITS(y, n);
-        }
-    }
+//             //  encode n bits from y
+//             ENC_SIG_PUT_BITS(y, n);
+//         }
+//     }
 
-    //  fractional byte
-    if (k > 0)
-    {
-        if (l >= b_sz)
-            return 0;
-        b[l++] = z;
-    }
+//     //  fractional byte
+//     if (k > 0)
+//     {
+//         if (l >= b_sz)
+//             return 0;
+//         b[l++] = z;
+//     }
 
-    return l;
-}
+//     return l;
+// }
 
 #else
 //  Encode signature "sig" to "*b" of max "b_sz" bytes. Return length in
@@ -704,7 +768,7 @@ size_t racc_encode_sig(uint8_t *b, size_t b_sz, const racc_sig_t *sig)
 
 //  decode bytes "b" into signature "sig". Return length in bytes.
 // different decode sequence for memory optimization
-#if MEM_OPT == 2
+#if MEM_OPT > 0
 // separately decode z to reduce memory for vz.
 size_t racc_decode_sig_z(int64_t sig_z[RACC_N], size_t b_sz, size_t l_z, uint8_t *pre_z, size_t *pre_k, const uint8_t *b)
 {
@@ -713,8 +777,10 @@ size_t racc_decode_sig_z(int64_t sig_z[RACC_N], size_t b_sz, size_t l_z, uint8_t
     int64_t x;
 
     l = l_z;
-
-    z = *pre_z;
+    if (l == RACC_CH_SZ)
+        z=b[l++];
+    else
+        z = *pre_z;
     k = *pre_k;
     //  decode z
     for (j = 0; j < RACC_N; j++)
@@ -744,6 +810,44 @@ size_t racc_decode_sig_z(int64_t sig_z[RACC_N], size_t b_sz, size_t l_z, uint8_t
             }
         }
         sig_z[j] = x;
+    }
+    *pre_z = z;
+    *pre_k = k;
+    return l;
+}
+size_t racc_decode_sig_h(int64_t sig_h[RACC_N], size_t b_sz, size_t l_h, uint8_t *pre_z, size_t *pre_k, const uint8_t *b)
+{
+    size_t j, k, l;
+    uint8_t bit, z;
+    int64_t x;
+
+    l = l_h;
+
+    z = *pre_z;
+    k = *pre_k;
+    //  decode h
+    for (j = 0; j < RACC_N; j++)
+    {
+        x = 0; //  run length and stop bit
+        DEC_SIG_GET_BIT(bit)
+        while (bit == 1)
+        {
+            x++;
+            DEC_SIG_GET_BIT(bit)
+        }
+        if (x > RACC_BOO_H)
+        { //  infinity norm check
+            return 0;
+        }
+        if (x != 0)
+        {
+            DEC_SIG_GET_BIT(bit) //  use sign bit if x != 0
+            if (bit)
+            {
+                x = -x;
+            }
+        }
+        sig_h[j] = x;
     }
     *pre_z = z;
     *pre_k = k;

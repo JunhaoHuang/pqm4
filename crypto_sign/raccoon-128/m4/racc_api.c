@@ -16,8 +16,11 @@ int
 crypto_sign_keypair(  unsigned char *pk, unsigned char *sk)
 {
     bool ret;
-#if (MEM_OPT >0)
-    racc_sk_t r_sk;
+#if MEM_OPT == 2
+    racc_sk_compress_t r_sk; //  compressed internal-format secret key
+    ret = racc_core_keygen(pk, &r_sk); //  generate keypair
+#elif MEM_OPT == 1
+    racc_sk_t r_sk; //  internal-format secret key
     ret = racc_core_keygen(pk, &r_sk); //  generate keypair
 #else
     racc_pk_t r_pk; //  internal-format public key
@@ -44,7 +47,26 @@ crypto_sign(unsigned char *sm, unsigned int *smlen,
             const unsigned char *m, unsigned int mlen,
             const unsigned char *sk)
 {
-#if (MEM_OPT > 0)
+#if MEM_OPT == 2
+    racc_sk_compress_t r_sk; //  internal-format compressed secret key
+    uint8_t mu[RACC_MU_SZ];
+    uint8_t tr[RACC_TR_SZ];
+    int ret = 0;
+    //  deserialize secret key
+    if (CRYPTO_SECRETKEYBYTES != racc_decode_sk(&r_sk, sk))
+        return -1;
+    // compute pk.tr
+    shake256(tr, RACC_TR_SZ, r_sk.pk, CRYPTO_PUBLICKEYBYTES);
+    xof_chal_mu(mu, tr, m, mlen); //  compute mu
+
+    ret = racc_core_sign(sm, mu, &r_sk); //  create signature
+
+    memcpy(sm + CRYPTO_BYTES, m, mlen); //  add the message
+
+    *smlen = mlen + CRYPTO_BYTES;
+
+    return ret;
+#elif MEM_OPT == 1
     racc_sk_t r_sk; //  internal-format secret key
     uint8_t mu[RACC_MU_SZ];
     int ret = 0;
@@ -99,28 +121,44 @@ crypto_sign_open(unsigned char *m, unsigned int *mlen,
                  const unsigned char *sm, unsigned int smlen,
                  const unsigned char *pk)
 {
+    size_t m_sz;
+    uint8_t mu[RACC_MU_SZ];
+    m_sz = smlen - CRYPTO_BYTES;
+#if MEM_OPT > 0
+    uint8_t tr[RACC_TR_SZ];
+
+    if (smlen < CRYPTO_BYTES)
+        return -1;
+    // compute pk.tr
+    shake256(tr, RACC_TR_SZ, pk, CRYPTO_PUBLICKEYBYTES);
+    // compute mu
+    xof_chal_mu(mu, tr, sm + CRYPTO_BYTES, m_sz);
+
+    if (!racc_core_verify(sm, mu, pk))
+        return -1;
+    
+#else
     racc_pk_t   r_pk;           //  internal-format public key
     racc_sig_t  r_sig;          //  internal-format signature
-    size_t      m_sz;
-    uint8_t     mu[RACC_MU_SZ];
 
     //  deserialize public key, signature with a consistency check
     if (smlen < CRYPTO_BYTES ||
         CRYPTO_PUBLICKEYBYTES != racc_decode_pk(&r_pk, pk) ||
-        CRYPTO_BYTES != racc_decode_sig(&r_sig, sm)){
-            return -1;
-        }
-        
-    m_sz = smlen - CRYPTO_BYTES;
+        CRYPTO_BYTES != racc_decode_sig(&r_sig, sm))
+    {
+        return -1;
+    }
 
     //  compute mu
     xof_chal_mu(mu, r_pk.tr, sm + CRYPTO_BYTES, m_sz);
 
     //  verification
-    if (!racc_core_verify(&r_sig, mu, &r_pk)){
+    if (!racc_core_verify(&r_sig, mu, &r_pk))
+    {
         return -1;
     }
-        
+#endif
+    
     //  store the length and move the "opened" message
     memcpy(m, sm + CRYPTO_BYTES, m_sz);
     *mlen = m_sz;

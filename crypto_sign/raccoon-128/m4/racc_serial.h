@@ -9,7 +9,7 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
-
+#include "racc_core.h"
 #include "racc_param.h"
 
 //  === Global namespace prefix
@@ -34,25 +34,34 @@ size_t racc_encode_pk(uint8_t *b, const racc_pk_t *pk);
 size_t racc_decode_pk(racc_pk_t *pk, const uint8_t *b);
 
 //  Encode secret key "sk" to bytes "b". Return length in bytes.
-size_t racc_encode_sk(uint8_t *b, const racc_sk_t *sk);
+#if MEM_OPT == 2
+	size_t racc_encode_sk(uint8_t *b, const racc_sk_compress_t *sk);
+#else
+	size_t racc_encode_sk(uint8_t *b, const racc_sk_t *sk);
+#endif
 
 //  Decode a secret key from "b" to "sk". Return length in bytes.
-size_t racc_decode_sk(racc_sk_t *sk, const uint8_t *b);
+#if MEM_OPT == 2
+	size_t racc_decode_sk(racc_sk_compress_t *sk, const uint8_t *b);
+#else
+	size_t racc_decode_sk(racc_sk_t *sk, const uint8_t *b);
+#endif
 
 //  Encode signature "sig" to "*b" of max "b_sz" bytes. Return length in
 //  bytes or zero in case of overflow.
-#if MEM_OPT ==2  // on-the-fly decode/encode; encode/decode h before z.
+#if MEM_OPT > 0  // on-the-fly decode/encode; encode/decode h before z.
 size_t racc_encode_sig_h(uint8_t *b, size_t i, size_t b_sz, size_t l_h, uint8_t *pre_z, size_t *pre_k, const int64_t sig_h[RACC_N]);
 size_t racc_encode_sig_z(uint8_t *b, size_t b_sz, size_t l_z, uint8_t *pre_z, size_t *pre_k, const int64_t sig_z[RACC_N]);
 size_t racc_decode_sig_z(int64_t sig_z[RACC_N], size_t b_sz, size_t l_z, uint8_t *pre_z, size_t *pre_k, const uint8_t *b);
-#elif MEM_OPT == 1
-size_t racc_encode_sig_zh(uint8_t *b, size_t b_sz, const int64_t h[RACC_K][RACC_N], const int64_t z[RACC_ELL][RACC_N]);
+size_t racc_decode_sig_h(int64_t sig_h[RACC_N], size_t b_sz, size_t l_h, uint8_t *pre_z, size_t *pre_k, const uint8_t *b);
+// #elif MEM_OPT == 1
+	// size_t racc_encode_sig_zh(uint8_t *b, size_t b_sz, const int64_t h[RACC_K][RACC_N], const int64_t z[RACC_ELL][RACC_N]);
 #else
 size_t racc_encode_sig(uint8_t *b, size_t b_sz, const racc_sig_t *sig);
 #endif
 
-	//  decode bytes "b" into signature "sig". Return length in bytes.
-	size_t racc_decode_sig(racc_sig_t *sig, const uint8_t *b);
+//  decode bytes "b" into signature "sig". Return length in bytes.
+size_t racc_decode_sig(racc_sig_t *sig, const uint8_t *b);
 
 #if MEM_OPT > 0
 // on-the-fly version of the above functions for memory optimizations

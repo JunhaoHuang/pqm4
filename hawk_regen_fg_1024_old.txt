@@ -1,0 +1,422 @@
+==========================
+keypair cycles:
+353937515
+keypair hash cycles:
+2992025
+keypair regen_fg cycles:
+0
+sign cycles:
+4444212
+sign hash cycles:
+2180327
+sign regen_fg cycles:
+0
+verify cycles:
+2707028
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+190272386
+keypair hash cycles:
+3391355
+keypair regen_fg cycles:
+0
+sign cycles:
+4444307
+sign hash cycles:
+2180327
+sign regen_fg cycles:
+0
+verify cycles:
+2708541
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+188730007
+keypair hash cycles:
+2193254
+keypair regen_fg cycles:
+0
+sign cycles:
+4444230
+sign hash cycles:
+2180327
+sign regen_fg cycles:
+0
+verify cycles:
+2707654
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+==========================
+keypair cycles:
+186614603
+keypair hash cycles:
+540742
+keypair regen_fg cycles:
+391230
+sign cycles:
+4341559
+sign hash cycles:
+2125281
+sign regen_fg cycles:
+391230
+verify cycles:
+2710458
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+187014253
+keypair hash cycles:
+885066
+keypair regen_fg cycles:
+782464
+sign cycles:
+4341497
+sign hash cycles:
+2125281
+sign regen_fg cycles:
+391230
+verify cycles:
+2707592
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+189473491
+keypair hash cycles:
+2951010
+keypair regen_fg cycles:
+3129849
+sign cycles:
+4341436
+sign hash cycles:
+2125281
+sign regen_fg cycles:
+391230
+verify cycles:
+2707260
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+274341777
+keypair hash cycles:
+885066
+keypair regen_fg cycles:
+782466
+sign cycles:
+4341464
+sign hash cycles:
+2125281
+sign regen_fg cycles:
+391230
+verify cycles:
+2707178
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+377469853
+keypair hash cycles:
+4672630
+keypair regen_fg cycles:
+5086007
+sign cycles:
+4341499
+sign hash cycles:
+2125281
+sign regen_fg cycles:
+391230
+verify cycles:
+2710005
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+186614479
+keypair hash cycles:
+540782
+keypair regen_fg cycles:
+391233
+sign cycles:
+4341498
+sign hash cycles:
+2125281
+sign regen_fg cycles:
+391230
+verify cycles:
+2708655
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+275142078
+keypair hash cycles:
+1573714
+keypair regen_fg cycles:
+1564928
+sign cycles:
+4341500
+sign hash cycles:
+2125321
+sign regen_fg cycles:
+391230
+verify cycles:
+2707913
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+426434089
+keypair hash cycles:
+8460194
+keypair regen_fg cycles:
+9389552
+sign cycles:
+4341501
+sign hash cycles:
+2125321
+sign regen_fg cycles:
+391230
+verify cycles:
+2708394
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+189906707
+keypair hash cycles:
+3295334
+keypair regen_fg cycles:
+3521078
+sign cycles:
+4341480
+sign hash cycles:
+2125281
+sign regen_fg cycles:
+391230
+verify cycles:
+2708472
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+187823680
+keypair hash cycles:
+1573714
+keypair regen_fg cycles:
+1564926
+sign cycles:
+4341499
+sign hash cycles:
+2125281
+sign regen_fg cycles:
+391230
+verify cycles:
+2709095
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+#
+==========================
+keypair cycles:
+187733980
+keypair hash cycles:
+1394523
+keypair regen_fg cycles:
+1484297
+sign cycles:
+4444653
+sign hash cycles:
+2180326
+sign regen_fg cycles:
+494764
+verify cycles:
+2709371
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+187221711
+keypair hash cycles:
+995155
+keypair regen_fg cycles:
+989532
+sign cycles:
+4444647
+sign hash cycles:
+2180363
+sign regen_fg cycles:
+494764
+verify cycles:
+2706412
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+190765083
+keypair hash cycles:
+3790731
+keypair regen_fg cycles:
+4452889
+sign cycles:
+4444626
+sign hash cycles:
+2180326
+sign regen_fg cycles:
+494764
+verify cycles:
+2707825
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+186718515
+keypair hash cycles:
+595787
+keypair regen_fg cycles:
+494767
+sign cycles:
+4444638
+sign hash cycles:
+2180326
+sign regen_fg cycles:
+494764
+verify cycles:
+2708263
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+186717949
+keypair hash cycles:
+595787
+keypair regen_fg cycles:
+494767
+sign cycles:
+4444635
+sign hash cycles:
+2180326
+sign regen_fg cycles:
+494764
+verify cycles:
+2707446
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+186718457
+keypair hash cycles:
+595787
+keypair regen_fg cycles:
+494767
+sign cycles:
+4444654
+sign hash cycles:
+2180326
+sign regen_fg cycles:
+494764
+verify cycles:
+2708177
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+270172671
+keypair hash cycles:
+5787571
+keypair regen_fg cycles:
+6926717
+sign cycles:
+4444610
+sign hash cycles:
+2180326
+sign regen_fg cycles:
+494764
+verify cycles:
+2707081
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+189253575
+keypair hash cycles:
+2592627
+keypair regen_fg cycles:
+2968594
+sign cycles:
+4444712
+sign hash cycles:
+2180326
+sign regen_fg cycles:
+494764
+verify cycles:
+2708710
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++
+keypair cycles:
+267620626
+keypair hash cycles:
+3790731
+keypair regen_fg cycles:
+4452890
+sign cycles:
+4444654
+sign hash cycles:
+2180326
+sign regen_fg cycles:
+494764
+verify cycles:
+2706850
+verify hash cycles:
+231413
+verify regen_fg cycles:
+0
++

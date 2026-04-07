@@ -29,7 +29,8 @@
 static void sig_perk_gen_commitment(perk_signature_t *signature, sig_perk_hash_state_t *h1_state,
                                     sig_perk_hash_state_t *h2_state, perm_t pi_0[PARAM_TAU], seed_t mseed,
                                     const uint8_t *m, const uint64_t mlen, const uint8_t *pk_bytes, const perm_t pi,
-                                    const mat_t H) {
+                                    const mat_t H)
+{
     uint8_t rand_bytes[SEED_BYTES + SALT_BYTES] = {0};
     sig_perk_prg_state_t prg_state;
     vect1_t v = {0};
@@ -50,7 +51,8 @@ static void sig_perk_gen_commitment(perk_signature_t *signature, sig_perk_hash_s
     SIG_PERK_VERBOSE_PRINT_uint8_t_array("mseed", mseed, SEED_BYTES);
     SIG_PERK_VERBOSE_PRINT_uint8_t_array("salt", signature->salt, SALT_BYTES);
 
-    for (uint8_t e = 0; e < PARAM_TAU; ++e) {
+    for (uint8_t e = 0; e < PARAM_TAU; ++e)
+    {
         perm_t pi_1;
         perm_t pi_comp;
         cmt_t cmt_1_i;
@@ -67,7 +69,8 @@ static void sig_perk_gen_commitment(perk_signature_t *signature, sig_perk_hash_s
         uint16_t rnd_buffer_pi_i[PARAM_N1];
         uint16_t rnd_buff_v_i[PRNG_BLOCK_SIZE / 2];
 
-        for (int i = PARAM_N - 1; i > 0; i--) {  // i ∈ {N, . . . , 2}
+        for (int i = PARAM_N - 1; i > 0; i--)
+        { // i ∈ {N, . . . , 2}
             perm_t pi_i;
             uint8_t idx = i;
 
@@ -81,10 +84,13 @@ static void sig_perk_gen_commitment(perk_signature_t *signature, sig_perk_hash_s
             sig_perk_gen_one_pi_i_and_compose(pi_1, pi_i, signature->salt, rnd_buffer_pi_i, &p_state,
                                               theta_tree[THETA_SEEDS_OFFSET + i]);
 
-            if (i == (PARAM_N - 1)) {
+            if (i == (PARAM_N - 1))
+            {
                 memcpy(v, v_i, sizeof(vect1_t));
                 memcpy(pi_comp, pi_i, sizeof(perm_t));
-            } else {
+            }
+            else
+            {
                 sig_perk_perm_vect_permute(v_i, pi_comp, v_i);
                 sig_perk_vect1_add(v, v, v_i);
                 sig_perk_perm_compose(pi_comp, pi_comp, pi_i);
@@ -118,33 +124,52 @@ static void sig_perk_gen_commitment(perk_signature_t *signature, sig_perk_hash_s
         SIG_PERK_VERBOSE_PRINT_theta_cmt_1_and_v(theta_tree[0], cmt_1_i, v, e + 1);
     }
 }
-
+#ifdef PROFILE_HASHING
+#include "hal.h"
+extern unsigned long long one_shot_shake_cycles;
+#endif
 static void sig_perk_gen_first_challenge_s(challenge_t challenge[PARAM_TAU], sig_perk_hash_state_t *h1_state,
-                                           digest_t h1) {
+                                           digest_t h1)
+{
+#ifdef PROFILE_HASHING
+    uint64_t t0 = hal_get_time();
+#endif
     sig_perk_prg_state_t prg_state;
     uint16_t tmp_kappa;
 
     sig_perk_hash_final(h1_state, h1, H1);
 
     sig_perk_prg_init(&prg_state, PRG1, NULL, h1);
-    for (int i = 0; i < PARAM_TAU; ++i) {
+    for (int i = 0; i < PARAM_TAU; ++i)
+    {
         uint16_t nonzero_check = 0;
-        do {
-            for (int j = 0; j < PARAM_T; ++j) {
-                do {
+        do
+        {
+            for (int j = 0; j < PARAM_T; ++j)
+            {
+                do
+                {
                     sig_perk_prg(&prg_state, (uint8_t *)&tmp_kappa, sizeof(tmp_kappa));
                     tmp_kappa = tmp_kappa & PARAM_Q_MASK;
-                } while (tmp_kappa >= PARAM_Q);  // 0 <= tmp_kappa < PARAM_Q
+                } while (tmp_kappa >= PARAM_Q); // 0 <= tmp_kappa < PARAM_Q
                 challenge[i].kappa[j] = tmp_kappa;
                 nonzero_check |= tmp_kappa;
             }
         } while (!nonzero_check);
     }
+#ifdef PROFILE_HASHING
+    uint64_t t1 = hal_get_time();
+    one_shot_shake_cycles += (t1 - t0);
+#endif
 }
 
 void sig_perk_gen_first_challenge(challenge_t challenge[PARAM_TAU], sig_perk_hash_state_t *saved_state, digest_t h1,
                                   const salt_t salt, const uint8_t *m, const uint64_t mlen, const uint8_t *pk_bytes,
-                                  const perk_instance_t instances[PARAM_TAU]) {
+                                  const perk_instance_t instances[PARAM_TAU])
+{
+#ifdef PROFILE_HASHING
+    uint64_t t0 = hal_get_time();
+#endif
     sig_perk_hash_state_t hash_state;
     sig_perk_prg_state_t prg_state;
     uint16_t tmp_kappa;
@@ -153,7 +178,8 @@ void sig_perk_gen_first_challenge(challenge_t challenge[PARAM_TAU], sig_perk_has
     sig_perk_hash_update(&hash_state, m, mlen);
     sig_perk_hash_update(&hash_state, pk_bytes, PUBLIC_KEY_BYTES);
     memcpy(saved_state, &hash_state, sizeof(hash_state));
-    for (int i = 0; i < PARAM_TAU; ++i) {
+    for (int i = 0; i < PARAM_TAU; ++i)
+    {
         // absorb cmt_1_N to cmt_1_1
         // Commitments are stored in reverse order: from element (PARAM_N-1) down to element 0.
         sig_perk_hash_update(&hash_state, (uint8_t *)instances[i].cmt_1_i, sizeof(cmt_t) * PARAM_N);
@@ -162,19 +188,27 @@ void sig_perk_gen_first_challenge(challenge_t challenge[PARAM_TAU], sig_perk_has
     sig_perk_hash_final(&hash_state, h1, H1);
 
     sig_perk_prg_init(&prg_state, PRG1, NULL, h1);
-    for (int i = 0; i < PARAM_TAU; ++i) {
+    for (int i = 0; i < PARAM_TAU; ++i)
+    {
         uint16_t nonzero_check = 0;
-        do {
-            for (int j = 0; j < PARAM_T; ++j) {
-                do {
+        do
+        {
+            for (int j = 0; j < PARAM_T; ++j)
+            {
+                do
+                {
                     sig_perk_prg(&prg_state, (uint8_t *)&tmp_kappa, sizeof(tmp_kappa));
                     tmp_kappa = tmp_kappa & PARAM_Q_MASK;
-                } while (tmp_kappa >= PARAM_Q);  // 0 <= tmp_kappa < PARAM_Q
+                } while (tmp_kappa >= PARAM_Q); // 0 <= tmp_kappa < PARAM_Q
                 challenge[i].kappa[j] = tmp_kappa;
                 nonzero_check |= tmp_kappa;
             }
         } while (!nonzero_check);
     }
+#ifdef PROFILE_HASHING
+    uint64_t t1 = hal_get_time();
+    one_shot_shake_cycles += (t1 - t0);
+#endif
 }
 
 /**
@@ -186,7 +220,8 @@ void sig_perk_gen_first_challenge(challenge_t challenge[PARAM_TAU], sig_perk_has
  */
 static void sig_perk_gen_first_response(sig_perk_hash_state_t *h2_state, digest_t h1, const perm_t pi_0[PARAM_TAU],
                                         const seed_t mseed, salt_t salt, const challenge_t challenges[PARAM_TAU],
-                                        const vect1_t x[PARAM_T]) {
+                                        const vect1_t x[PARAM_T])
+{
     sig_perk_prg_state_t prg_state;
 
     sig_perk_hash_update(h2_state, h1, sizeof(digest_t));
@@ -197,16 +232,18 @@ static void sig_perk_gen_first_response(sig_perk_hash_state_t *h2_state, digest_
     uint16_t rnd_buffer_pi_i[PARAM_N1];
     uint16_t rnd_buff_v_i[PRNG_BLOCK_SIZE / 2];
 
-    for (int e = 0; e < PARAM_TAU; ++e) {
+    for (int e = 0; e < PARAM_TAU; ++e)
+    {
         vect1_t tmp;
-        vect1_t v_i;  // TODO:  tmp and v_i can share memory??
+        vect1_t v_i; // TODO:  tmp and v_i can share memory??
         vect1_t s_0;
         vect1_t s_i;
         perk_theta_seeds_tree_t theta_tree;
 
         // compute s_0
         sig_perk_vect1_mult_scalar_vect(s_0, challenges[e].kappa[0], x[0]);
-        for (int j = 1; j < PARAM_T; j++) {
+        for (int j = 1; j < PARAM_T; j++)
+        {
             sig_perk_vect1_mult_scalar_vect(tmp, challenges[e].kappa[j], x[j]);
             sig_perk_vect1_add(s_0, s_0, tmp);
         }
@@ -222,7 +259,8 @@ static void sig_perk_gen_first_response(sig_perk_hash_state_t *h2_state, digest_
 
         sig_perk_hash_update(h2_state, (uint8_t *)s_i, sizeof(vect1_t));
 
-        for (int i = 1; i < PARAM_N; ++i) {
+        for (int i = 1; i < PARAM_N; ++i)
+        {
             perm_t pi_i;
 
             // sample p_i and v_i
@@ -242,37 +280,56 @@ static void sig_perk_gen_first_response(sig_perk_hash_state_t *h2_state, digest_
 }
 
 static void sig_perk_gen_second_challenge_s(digest_t h2, challenge_t challenge[PARAM_TAU],
-                                            sig_perk_hash_state_t *h2_state) {
+                                            sig_perk_hash_state_t *h2_state)
+{
+#ifdef PROFILE_HASHING
+    uint64_t t0 = hal_get_time();
+#endif
     sig_perk_prg_state_t prg_state;
     uint16_t tmp_alpha;
 
     sig_perk_hash_final(h2_state, h2, H2);
 
     sig_perk_prg_init(&prg_state, PRG1, NULL, h2);
-    for (int i = 0; i < PARAM_TAU; ++i) {
+    for (int i = 0; i < PARAM_TAU; ++i)
+    {
         sig_perk_prg(&prg_state, (uint8_t *)&tmp_alpha, sizeof(tmp_alpha));
-        tmp_alpha = (tmp_alpha & PARAM_N_MASK) + 1;  // 0 < tmp_alpha <= PARAM_N
+        tmp_alpha = (tmp_alpha & PARAM_N_MASK) + 1; // 0 < tmp_alpha <= PARAM_N
         challenge[i].alpha = tmp_alpha;
     }
+#ifdef PROFILE_HASHING
+    uint64_t t1 = hal_get_time();
+    one_shot_shake_cycles += (t1 - t0);
+#endif
 }
 
 void sig_perk_gen_second_challenge(digest_t h2, challenge_t challenge[PARAM_TAU], sig_perk_hash_state_t *saved_state,
-                                   const digest_t h1, perk_instance_t instances[PARAM_TAU]) {
+                                   const digest_t h1, perk_instance_t instances[PARAM_TAU])
+{
+#ifdef PROFILE_HASHING
+    uint64_t t0 = hal_get_time();
+#endif
     sig_perk_prg_state_t prg_state;
     uint16_t tmp_alpha;
 
     sig_perk_hash_update(saved_state, h1, sizeof(digest_t));
-    for (int i = 0; i < PARAM_TAU; ++i) {
+    for (int i = 0; i < PARAM_TAU; ++i)
+    {
         sig_perk_hash_update(saved_state, (uint8_t *)instances[i].s_i[1], sizeof(vect1_t) * PARAM_N);
     }
     sig_perk_hash_final(saved_state, h2, H2);
 
     sig_perk_prg_init(&prg_state, PRG1, NULL, h2);
-    for (int i = 0; i < PARAM_TAU; ++i) {
+    for (int i = 0; i < PARAM_TAU; ++i)
+    {
         sig_perk_prg(&prg_state, (uint8_t *)&tmp_alpha, sizeof(tmp_alpha));
-        tmp_alpha = (tmp_alpha & PARAM_N_MASK) + 1;  // 0 < tmp_alpha <= PARAM_N
+        tmp_alpha = (tmp_alpha & PARAM_N_MASK) + 1; // 0 < tmp_alpha <= PARAM_N
         challenge[i].alpha = tmp_alpha;
     }
+#ifdef PROFILE_HASHING
+    uint64_t t1 = hal_get_time();
+    one_shot_shake_cycles += (t1 - t0);
+#endif
 }
 
 /**
@@ -284,7 +341,8 @@ void sig_perk_gen_second_challenge(digest_t h2, challenge_t challenge[PARAM_TAU]
  */
 static void sig_perk_gen_second_response(perk_signature_t *signature, const seed_t mseed,
                                          const challenge_t challenges[PARAM_TAU], const vect1_t x[PARAM_T],
-                                         const perm_t pi_0[PARAM_TAU]) {
+                                         const perm_t pi_0[PARAM_TAU])
+{
     sig_perk_prg_state_t prg_state;
 
     sig_perk_prg_init(&prg_state, PRG1, signature->salt, mseed);
@@ -294,9 +352,10 @@ static void sig_perk_gen_second_response(perk_signature_t *signature, const seed
     uint16_t rnd_buffer_pi_i[PARAM_N1];
     uint16_t rnd_buff_v_i[PRNG_BLOCK_SIZE / 2];
 
-    for (uint8_t e = 0; e < PARAM_TAU; ++e) {
+    for (uint8_t e = 0; e < PARAM_TAU; ++e)
+    {
         vect1_t tmp;
-        vect1_t v_i;  // TODO:  tmp and v_i can share memory??
+        vect1_t v_i; // TODO:  tmp and v_i can share memory??
         vect1_t s_0;
         vect1_t s_i;
         perk_theta_seeds_tree_t theta_tree;
@@ -304,7 +363,8 @@ static void sig_perk_gen_second_response(perk_signature_t *signature, const seed
 
         // compute s_0
         sig_perk_vect1_mult_scalar_vect(s_0, challenges[e].kappa[0], x[0]);
-        for (int j = 1; j < PARAM_T; j++) {
+        for (int j = 1; j < PARAM_T; j++)
+        {
             sig_perk_vect1_mult_scalar_vect(tmp, challenges[e].kappa[j], x[j]);
             sig_perk_vect1_add(s_0, s_0, tmp);
         }
@@ -317,7 +377,8 @@ static void sig_perk_gen_second_response(perk_signature_t *signature, const seed
 
         sig_perk_perm_vect_permute(tmp, pi_0[e], s_0);
         sig_perk_vect1_add(s_i, tmp, v_i);
-        for (int i = 1; i < alpha; ++i) {
+        for (int i = 1; i < alpha; ++i)
+        {
             perm_t pi_i;
 
             // sample p_i and v_i
@@ -329,10 +390,14 @@ static void sig_perk_gen_second_response(perk_signature_t *signature, const seed
         }
         memcpy(signature->responses[e].z1, s_i, sizeof(vect1_t));
 
-        if (alpha != 1) {
+        if (alpha != 1)
+        {
             memcpy(signature->responses[e].z2_pi, pi_0[e], sizeof(perm_t));
-        } else {
-            for (int j = 0; j < PARAM_N1; j++) {
+        }
+        else
+        {
+            for (int j = 0; j < PARAM_N1; j++)
+            {
                 signature->responses[e].z2_pi[j] = j;
             }
         }
@@ -340,7 +405,8 @@ static void sig_perk_gen_second_response(perk_signature_t *signature, const seed
 
         uint8_t idx = alpha - 1;
         sig_perk_hash_init(&h_state, signature->salt, &e, &idx);
-        if (alpha == 1) {
+        if (alpha == 1)
+        {
             sig_perk_hash_update(&h_state, pi_0[e], PARAM_N1);
         }
         sig_perk_hash_update(&h_state, theta_tree[THETA_SEEDS_OFFSET + idx], sizeof(theta_t));
@@ -354,17 +420,19 @@ static void sig_perk_gen_second_response(perk_signature_t *signature, const seed
 }
 
 uint8_t sig_perk_sign(perk_signature_t *signature, const perk_private_key_t *sk, const uint8_t *message_bytes,
-                      const uint64_t message_length) {
+                      const uint64_t message_length)
+{
     perk_public_key_t pk;
     perm_t pi_0[PARAM_TAU];
     challenge_t challenges[PARAM_TAU] = {0};
     sig_perk_hash_state_t h1_state;
-    sig_perk_hash_state_t h2_state;  // initialized with a copy of h1_state after absorbing salt, m and pk_bytes
+    sig_perk_hash_state_t h2_state; // initialized with a copy of h1_state after absorbing salt, m and pk_bytes
     seed_t mseed = {0};
 
     SIG_PERK_VERBOSE_PRINT_uint8_t_array("message m", message_bytes, message_length);
 
-    if (EXIT_SUCCESS != sig_perk_public_key_from_bytes(&pk, sk->pk_bytes)) {
+    if (EXIT_SUCCESS != sig_perk_public_key_from_bytes(&pk, sk->pk_bytes))
+    {
         return EXIT_FAILURE;
     }
 
