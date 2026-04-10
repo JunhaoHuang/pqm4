@@ -1,0 +1,360 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  us/call  us/call  name    
+ 22.97      1.92     1.92 38400512     0.05     0.05  base_mul
+ 20.81      3.66     1.74  4700134     0.37     0.37  KeccakF1600_StatePermute
+ 14.00      4.83     1.17 12800512     0.09     0.09  base_inv
+  8.85      5.57     0.74 12800512     0.06     0.06  base_mul_mq
+  7.18      6.17     0.60   400008     1.50     1.50  mq_poly_ntt
+  5.86      6.66     0.49   300004     1.63     1.63  mq_poly_intt
+  3.11      6.92     0.26   700028     0.37     0.37  Mul_in_R2_n
+  2.75      7.15     0.23   100004     2.30     5.90  FastInversion
+  2.39      7.35     0.20   200003     1.00     1.00  decode_pk
+  2.03      7.52     0.17   100005     1.70     1.70  mq_poly_ntt_mq
+  1.32      7.63     0.11   300004     0.37     6.77  mq_poly_pointwise_mul
+  1.20      7.73     0.10   700028     0.14     0.14  Mulf_in_R2_N2
+  0.96      7.81     0.08   200003     0.40    13.38  PKE_Encrypt
+  0.96      7.89     0.08   100001     0.80    11.50  PKE_Decrypt
+  0.96      7.97     0.08   100001     0.80     0.80  decode_ct
+  0.84      8.04     0.07   600019     0.12     2.21  shake256_squeezeblocks
+  0.84      8.11     0.07   200003     0.35     0.35  encode_ct
+  0.72      8.17     0.06   300012     0.20     2.41  ternary_sample_f
+  0.60      8.22     0.05   100004     0.50     0.50  encode_pk
+  0.36      8.25     0.03   400016     0.07     0.07  check_poly_inv_Z2
+  0.36      8.28     0.03   200003     0.15     2.36  ternary_sample_se
+  0.24      8.30     0.02   200008     0.10     0.10  check_poly_inv_Zq
+  0.24      8.32     0.02   200003     0.10     0.47  sha3_512
+  0.24      8.34     0.02   100004     0.20     2.41  ternary_sample_fgk
+  0.12      8.35     0.01   100004     0.10    38.83  PKE_KeyGen
+  0.12      8.36     0.01   100001     0.10     0.10  decode_f
+  0.00      8.36     0.00   400009     0.00     0.74  sha3_256
+  0.00      8.36     0.00   300007     0.00     0.37  shake256_absorb_once
+  0.00      8.36     0.00   200003     0.00     0.00  poly_round
+  0.00      8.36     0.00   100004     0.00    40.07  KEM_KeyGen
+  0.00      8.36     0.00   100004     0.00     0.00  encode_f
+  0.00      8.36     0.00   100004     0.00    11.70  mq_poly_inv_ntt
+  0.00      8.36     0.00   100004     0.00     7.40  mq_poly_pointwise_mul_mq
+  0.00      8.36     0.00   100002     0.00    16.34  KEM_Enc
+  0.00      8.36     0.00   100001     0.00    27.19  KEM_Dec
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2024 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 0.12% of 8.36 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00    8.36                 main [1]
+                0.00    4.01  100004/100004      KEM_KeyGen [2]
+                0.00    2.72  100001/100001      KEM_Dec [4]
+                0.00    1.63  100002/100002      KEM_Enc [9]
+                0.00    0.00       1/100005      mq_poly_ntt_mq [25]
+-----------------------------------------------
+                0.00    4.01  100004/100004      main [1]
+[2]     47.9    0.00    4.01  100004         KEM_KeyGen [2]
+                0.01    3.87  100004/100004      PKE_KeyGen [3]
+                0.00    0.07  100004/400009      sha3_256 [21]
+                0.05    0.00  100004/100004      encode_pk [31]
+                0.00    0.00  100004/100004      encode_f [36]
+-----------------------------------------------
+                0.01    3.87  100004/100004      KEM_KeyGen [2]
+[3]     46.4    0.01    3.87  100004         PKE_KeyGen [3]
+                0.00    1.17  100004/100004      mq_poly_inv_ntt [12]
+                0.00    0.74  100004/100004      mq_poly_pointwise_mul_mq [15]
+                0.06    0.66  300012/300012      ternary_sample_f [16]
+                0.23    0.36  100004/100004      FastInversion [18]
+                0.02    0.22  100004/100004      ternary_sample_fgk [23]
+                0.17    0.00  100004/100005      mq_poly_ntt_mq [25]
+                0.15    0.00  100004/400008      mq_poly_ntt [17]
+                0.00    0.04  100004/300007      shake256_absorb_once [26]
+                0.03    0.00  400016/400016      check_poly_inv_Z2 [32]
+                0.02    0.00  200008/200008      check_poly_inv_Zq [33]
+-----------------------------------------------
+                0.00    2.72  100001/100001      main [1]
+[4]     32.5    0.00    2.72  100001         KEM_Dec [4]
+                0.04    1.30  100001/200003      PKE_Encrypt [5]
+                0.08    1.07  100001/100001      PKE_Decrypt [13]
+                0.10    0.00  100001/200003      decode_pk [24]
+                0.00    0.07  100001/400009      sha3_256 [21]
+                0.01    0.04  100001/200003      sha3_512 [28]
+                0.01    0.00  100001/100001      decode_f [34]
+-----------------------------------------------
+                0.04    1.30  100001/200003      KEM_Dec [4]
+                0.04    1.30  100002/200003      KEM_Enc [9]
+[5]     32.0    0.08    2.60  200003         PKE_Encrypt [5]
+                0.07    1.28  200003/300004      mq_poly_pointwise_mul [6]
+                0.03    0.44  200003/200003      ternary_sample_se [20]
+                0.33    0.00  200003/300004      mq_poly_intt [19]
+                0.30    0.00  200003/400008      mq_poly_ntt [17]
+                0.00    0.07  200003/300007      shake256_absorb_once [26]
+                0.07    0.00  200003/200003      encode_ct [30]
+                0.00    0.00  200003/200003      poly_round [35]
+-----------------------------------------------
+                0.04    0.64  100001/300004      PKE_Decrypt [13]
+                0.07    1.28  200003/300004      PKE_Encrypt [5]
+[6]     24.3    0.11    1.92  300004         mq_poly_pointwise_mul [6]
+                1.92    0.00 38400512/38400512     base_mul [7]
+-----------------------------------------------
+                1.92    0.00 38400512/38400512     mq_poly_pointwise_mul [6]
+[7]     23.0    1.92    0.00 38400512         base_mul [7]
+-----------------------------------------------
+                             3200075             KeccakF1600_StatePermute [8]
+                0.07    0.00  200003/4700134     sha3_512 [28]
+                0.11    0.00  300007/4700134     shake256_absorb_once [26]
+                0.30    0.00  800018/4700134     sha3_256 [21]
+                1.26    0.00 3400106/4700134     shake256_squeezeblocks [10]
+[8]     20.8    1.74    0.00 4700134+3200075 KeccakF1600_StatePermute [8]
+                             3200075             KeccakF1600_StatePermute [8]
+-----------------------------------------------
+                0.00    1.63  100002/100002      main [1]
+[9]     19.5    0.00    1.63  100002         KEM_Enc [9]
+                0.04    1.30  100002/200003      PKE_Encrypt [5]
+                0.00    0.15  200004/400009      sha3_256 [21]
+                0.10    0.00  100002/200003      decode_pk [24]
+                0.01    0.04  100002/200003      sha3_512 [28]
+-----------------------------------------------
+                0.01    0.21  100004/600019      ternary_sample_fgk [23]
+                0.02    0.42  200003/600019      ternary_sample_se [20]
+                0.04    0.63  300012/600019      ternary_sample_f [16]
+[10]    15.9    0.07    1.26  600019         shake256_squeezeblocks [10]
+                1.26    0.00 3400106/4700134     KeccakF1600_StatePermute [8]
+-----------------------------------------------
+                1.17    0.00 12800512/12800512     mq_poly_inv_ntt [12]
+[11]    14.0    1.17    0.00 12800512         base_inv [11]
+-----------------------------------------------
+                0.00    1.17  100004/100004      PKE_KeyGen [3]
+[12]    14.0    0.00    1.17  100004         mq_poly_inv_ntt [12]
+                1.17    0.00 12800512/12800512     base_inv [11]
+-----------------------------------------------
+                0.08    1.07  100001/100001      KEM_Dec [4]
+[13]    13.8    0.08    1.07  100001         PKE_Decrypt [13]
+                0.04    0.64  100001/300004      mq_poly_pointwise_mul [6]
+                0.16    0.00  100001/300004      mq_poly_intt [19]
+                0.15    0.00  100001/400008      mq_poly_ntt [17]
+                0.08    0.00  100001/100001      decode_ct [29]
+-----------------------------------------------
+                0.74    0.00 12800512/12800512     mq_poly_pointwise_mul_mq [15]
+[14]     8.9    0.74    0.00 12800512         base_mul_mq [14]
+-----------------------------------------------
+                0.00    0.74  100004/100004      PKE_KeyGen [3]
+[15]     8.9    0.00    0.74  100004         mq_poly_pointwise_mul_mq [15]
+                0.74    0.00 12800512/12800512     base_mul_mq [14]
+-----------------------------------------------
+                0.06    0.66  300012/300012      PKE_KeyGen [3]
+[16]     8.7    0.06    0.66  300012         ternary_sample_f [16]
+                0.04    0.63  300012/600019      shake256_squeezeblocks [10]
+-----------------------------------------------
+                0.15    0.00  100001/400008      PKE_Decrypt [13]
+                0.15    0.00  100004/400008      PKE_KeyGen [3]
+                0.30    0.00  200003/400008      PKE_Encrypt [5]
+[17]     7.2    0.60    0.00  400008         mq_poly_ntt [17]
+-----------------------------------------------
+                0.23    0.36  100004/100004      PKE_KeyGen [3]
+[18]     7.1    0.23    0.36  100004         FastInversion [18]
+                0.26    0.00  700028/700028      Mul_in_R2_n [22]
+                0.10    0.00  700028/700028      Mulf_in_R2_N2 [27]
+-----------------------------------------------
+                0.16    0.00  100001/300004      PKE_Decrypt [13]
+                0.33    0.00  200003/300004      PKE_Encrypt [5]
+[19]     5.9    0.49    0.00  300004         mq_poly_intt [19]
+-----------------------------------------------
+                0.03    0.44  200003/200003      PKE_Encrypt [5]
+[20]     5.7    0.03    0.44  200003         ternary_sample_se [20]
+                0.02    0.42  200003/600019      shake256_squeezeblocks [10]
+-----------------------------------------------
+                0.00    0.07  100001/400009      KEM_Dec [4]
+                0.00    0.07  100004/400009      KEM_KeyGen [2]
+                0.00    0.15  200004/400009      KEM_Enc [9]
+[21]     3.5    0.00    0.30  400009         sha3_256 [21]
+                0.30    0.00  800018/4700134     KeccakF1600_StatePermute [8]
+-----------------------------------------------
+                0.26    0.00  700028/700028      FastInversion [18]
+[22]     3.1    0.26    0.00  700028         Mul_in_R2_n [22]
+-----------------------------------------------
+                0.02    0.22  100004/100004      PKE_KeyGen [3]
+[23]     2.9    0.02    0.22  100004         ternary_sample_fgk [23]
+                0.01    0.21  100004/600019      shake256_squeezeblocks [10]
+-----------------------------------------------
+                0.10    0.00  100001/200003      KEM_Dec [4]
+                0.10    0.00  100002/200003      KEM_Enc [9]
+[24]     2.4    0.20    0.00  200003         decode_pk [24]
+-----------------------------------------------
+                0.00    0.00       1/100005      main [1]
+                0.17    0.00  100004/100005      PKE_KeyGen [3]
+[25]     2.0    0.17    0.00  100005         mq_poly_ntt_mq [25]
+-----------------------------------------------
+                0.00    0.04  100004/300007      PKE_KeyGen [3]
+                0.00    0.07  200003/300007      PKE_Encrypt [5]
+[26]     1.3    0.00    0.11  300007         shake256_absorb_once [26]
+                0.11    0.00  300007/4700134     KeccakF1600_StatePermute [8]
+-----------------------------------------------
+                0.10    0.00  700028/700028      FastInversion [18]
+[27]     1.2    0.10    0.00  700028         Mulf_in_R2_N2 [27]
+-----------------------------------------------
+                0.01    0.04  100001/200003      KEM_Dec [4]
+                0.01    0.04  100002/200003      KEM_Enc [9]
+[28]     1.1    0.02    0.07  200003         sha3_512 [28]
+                0.07    0.00  200003/4700134     KeccakF1600_StatePermute [8]
+-----------------------------------------------
+                0.08    0.00  100001/100001      PKE_Decrypt [13]
+[29]     1.0    0.08    0.00  100001         decode_ct [29]
+-----------------------------------------------
+                0.07    0.00  200003/200003      PKE_Encrypt [5]
+[30]     0.8    0.07    0.00  200003         encode_ct [30]
+-----------------------------------------------
+                0.05    0.00  100004/100004      KEM_KeyGen [2]
+[31]     0.6    0.05    0.00  100004         encode_pk [31]
+-----------------------------------------------
+                0.03    0.00  400016/400016      PKE_KeyGen [3]
+[32]     0.4    0.03    0.00  400016         check_poly_inv_Z2 [32]
+-----------------------------------------------
+                0.02    0.00  200008/200008      PKE_KeyGen [3]
+[33]     0.2    0.02    0.00  200008         check_poly_inv_Zq [33]
+-----------------------------------------------
+                0.01    0.00  100001/100001      KEM_Dec [4]
+[34]     0.1    0.01    0.00  100001         decode_f [34]
+-----------------------------------------------
+                0.00    0.00  200003/200003      PKE_Encrypt [5]
+[35]     0.0    0.00    0.00  200003         poly_round [35]
+-----------------------------------------------
+                0.00    0.00  100004/100004      KEM_KeyGen [2]
+[36]     0.0    0.00    0.00  100004         encode_f [36]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2024 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [18] FastInversion          [14] base_mul_mq            [25] mq_poly_ntt_mq
+   [4] KEM_Dec                [32] check_poly_inv_Z2       [6] mq_poly_pointwise_mul
+   [9] KEM_Enc                [33] check_poly_inv_Zq      [15] mq_poly_pointwise_mul_mq
+   [2] KEM_KeyGen             [29] decode_ct              [35] poly_round
+   [8] KeccakF1600_StatePermute [34] decode_f             [21] sha3_256
+  [22] Mul_in_R2_n            [24] decode_pk              [28] sha3_512
+  [27] Mulf_in_R2_N2          [30] encode_ct              [26] shake256_absorb_once
+  [13] PKE_Decrypt            [36] encode_f               [10] shake256_squeezeblocks
+   [5] PKE_Encrypt            [31] encode_pk              [16] ternary_sample_f
+   [3] PKE_KeyGen             [19] mq_poly_intt           [23] ternary_sample_fgk
+  [11] base_inv               [12] mq_poly_inv_ntt        [20] ternary_sample_se
+   [7] base_mul               [17] mq_poly_ntt

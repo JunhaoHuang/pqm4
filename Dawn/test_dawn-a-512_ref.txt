@@ -1,0 +1,92 @@
+==========================
+DONE key pair generation!
+DONE encapsulation!
+DONE decapsulation!
+OK KEYS
+
+DONE key pair generation!
+DONE encapsulation!
+DONE decapsulation!
+OK KEYS
+
+DONE key pair generation!
+DONE encapsulation!
+DONE decapsulation!
+OK KEYS
+
+DONE key pair generation!
+DONE encapsulation!
+DONE decapsulation!
+OK KEYS
+
+DONE key pair generation!
+DONE encapsulation!
+DONE decapsulation!
+OK KEYS
+
+DONE key pair generation!
+DONE encapsulation!
+DONE decapsulation!
+OK KEYS
+
+DONE key pair generation!
+DONE encapsulation!
+DONE decapsulation!
+OK KEYS
+
+DONE key pair generation!
+DONE encapsulation!
+DONE decapsulation!
+OK KEYS
+
+DONE key pair generation!
+DONE encapsulation!
+DONE decapsulation!
+OK KEYS
+
+DONE key pair generation!
+DONE encapsulation!
+DONE decapsulation!
+OK KEYS
+
+OK invalid sk_a
+
+OK invalid sk_a
+
+OK invalid sk_a
+
+OK invalid sk_a
+
+OK invalid sk_a
+
+OK invalid sk_a
+
+OK invalid sk_a
+
+OK invalid sk_a
+
+OK invalid sk_a
+
+OK invalid sk_a
+
+OK invalid ciphertext
+
+OK invalid ciphertext
+
+OK invalid ciphertext
+
+OK invalid ciphertext
+
+OK invalid ciphertext
+
+OK invalid ciphertext
+
+OK invalid ciphertext
+
+OK invalid ciphertext
+
+OK invalid ciphertext
+
+OK invalid ciphertext
+
+#
