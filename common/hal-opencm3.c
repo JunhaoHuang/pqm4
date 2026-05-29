@@ -390,7 +390,7 @@ uint64_t hal_get_time()
 extern char end;
 static char* heap_end = &end;
 
-void* __wrap__sbrk (int incr)
+void* __attribute__((used, externally_visible)) __wrap__sbrk(int incr)
 {
   char* prev_heap_end;
 

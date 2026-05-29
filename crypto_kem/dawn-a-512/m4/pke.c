@@ -5,80 +5,32 @@
 #include <time.h>
 #include "param.h"
 #include "sample.h"
-#include "mq_ntt.h"
 #include "poly.h"
 #include "code.h"
-#include "mq_ntt_param.h"
-
-inline int16_t montgomery_reduce(int32_t a)
-{
-  int32_t t;
-  int16_t u;
-
-  u = a * QINV;
-  t = (int32_t)u * Q;
-  t = a - t;
-  t >>= 16;
-  return t;
-}
-
-int16_t FindOneIdx(int16_t *a, int16_t n, int16_t *idx)
-{
-    int i;
-    int16_t ONENUM = 0;
-    for(i = 0; i < n; i++)
-    {
-        if(a[i])
-        {
-            idx[ONENUM++] = i;
-        }
-    }
-    return ONENUM;
-}
 
 void Mul_in_R2_n(int16_t *a, int16_t *b, int16_t n, int16_t *res)
 {
-    int16_t tmp_b[2 * n], idx[n];
-    int16_t i, j, ONENUM;
-    int16_t *v;
-
-    for(i = 0; i < n; i++)
-    {
-        tmp_b[i] = b[i];
-    }
+    int16_t tmp_b[2 * n];
+    memcpy(tmp_b, b, n * sizeof(int16_t));
     memcpy(tmp_b + n, b, n * sizeof(int16_t));
-    ONENUM = FindOneIdx(a, n, idx);
+    memset(res, 0, n * sizeof(int16_t));
+    Mul_in_R2_n_asm(res,a,tmp_b,n);
+}
+
+void Mul_in_R2_n2(int16_t *a, int16_t *b, int16_t n, int16_t *res)
+{
+    int16_t tmp_b[2 * n];
+    memcpy(tmp_b, b, n * sizeof(int16_t));
+    memcpy(tmp_b + n, b, n * sizeof(int16_t));
 
     memset(res, 0, n * sizeof(int16_t));
-    
-    for(i = 0; i < ONENUM; i++)
-    {
-        v = tmp_b + n - idx[i];
-        for(j = 0; j < n; j++)
-        {
-            res[j] ^= v[j];
-        }
-    }
+    Mul_in_R2_2_asm(res, a, tmp_b, n);
 }
 
 void Mulf_in_R2_N2(int16_t *a, int16_t *b, int16_t *res)
 {
-    int16_t idx[N_2];
-    int16_t i, j, ONENUM;
-    int16_t *v;
-
-    ONENUM = FindOneIdx(a, N_2, idx);
-
     memset(res, 0, N_2 * sizeof(int16_t));
-    
-    for(i = 0; i < ONENUM; i++)
-    {
-        v = b + N_2 - idx[i];
-        for(j = 0; j < N_2; j++)
-        {
-            res[j] ^= v[j];
-        }
-    }
+    Mul_in_R2_n_asm(res, a, b, N_2);
 }
 
 int FastInversion(int16_t *f, int16_t *f_inv)
@@ -86,10 +38,8 @@ int FastInversion(int16_t *f, int16_t *f_inv)
     int16_t l, i, j, n;
     int16_t k[N_2] = {0}, b[N_2] = {0}, tmp_f[2 * N_2], tmp[N_2];
 
-    for(i = 0; i < N_2; i++)
-    {
-        tmp_f[i] = f[i];
-    }
+
+    memcpy(tmp_f, f, N_2 * sizeof(int16_t));
     memcpy(tmp_f + N_2, tmp_f, N_2 * sizeof(int16_t));
 
     k[0] = f[0];
@@ -131,8 +81,14 @@ int FastInversion(int16_t *f, int16_t *f_inv)
                 tmp[i] ^= k[j];
             }
         }
-        Mul_in_R2_n(f_inv, tmp, n, b);
-
+        if(n==2){
+            Mul_in_R2_n2(f_inv, tmp, n, b);
+        }
+        else
+        {
+            Mul_in_R2_n(f_inv, tmp, n, b);
+        }
+        
         Mulf_in_R2_N2(b, tmp_f, tmp);
 
         for(j = 0; j < N_2; j++)
@@ -176,10 +132,8 @@ void PKE_KeyGen(uint8_t *seed, int16_t *pk, int16_t *f, uint8_t *f2, uint8_t *k)
     for(;;)
     {
         memcpy(f_N, f, DIM_N * sizeof(int16_t));
-        for(i = 0; i < N_2; i++)
-        {
-            f_N[i] = (f_N[i] & 1) ^ (f_N[i + N_2] & 1) ^ (f_N[i + 2 * N_2] & 1) ^ (f_N[i + 3 * N_2] & 1);
-        }
+
+        poly_xor4(f_N, f_N);
         if(check_poly_inv_Z2(f_N))
         {
             ternary_sample_f(f, &state);
@@ -195,14 +149,8 @@ void PKE_KeyGen(uint8_t *seed, int16_t *pk, int16_t *f, uint8_t *f2, uint8_t *k)
 
         mq_poly_inv_ntt(f_inv, f);
         FastInversion(f_N, temp);
-        for(i = 7; i >= 0; i--)
-        {
-            for(j = 0; j < SKF2LEN; j++)
-            {
-                f2[j] = (f2[j] << 1);
-                f2[j] += temp[i * SKF2LEN + j];
-            }
-        }
+
+        poly_pack_f2(f2, temp);
 
         break;
     }
@@ -230,29 +178,17 @@ void PKE_Encrypt(uint8_t *c, int16_t *pk, uint8_t *m, uint8_t *seed)
 
     ternary_sample_se(s, e, &state);
 
-    for(i = 0; i < 8; i++)
-    {
-        for(j = 0; j < MESSLEN; j++)
-        {
-            tmp1[i * MESSLEN + j] = (m[j] & 1);
-            m[j] = (m[j] >> 1);
-        }
-    }
+    poly_unpack_f2(tmp1, m);
 
-    for(i = 0; i < N_2; i++)
-    {
-        tmp1[i] = tmp1[i + 128] = tmp1[i + 256] = tmp1[i + 384] = tmp1[i] * 385;
-    }
+    poly_mul385(tmp1);
 
     mq_poly_ntt(s);
     mq_poly_pointwise_mul(tmp2, pk, s);
     mq_poly_intt(tmp2);
 
-    for(i = 0; i < DIM_N; i++)
-    {
-        tmp1[i] = montgomery_reduce((tmp2[i] + e[i] + tmp1[i]) * 171);
-        tmp1[i] += (tmp1[i] >> 15) & Q;
-    }
+    poly_add(tmp1, tmp1, tmp2);
+    poly_add(tmp1, tmp1, e);
+    mq_poly_reduce_mq(tmp1, DIM_N);
 
     poly_round(tmp1);
     encode_ct(tmp1, c);
@@ -266,59 +202,21 @@ void PKE_Decrypt(uint8_t *c, int16_t *f, uint8_t *f2, uint8_t *m)
 
     decode_ct(c, tmp1);
 
-    for(i = 0; i < DIM_N; i++)
-    {
-        tmp1[i] = tmp1[i] * 7 + 1;
-    }
-
-    // for(i = 0; i < DIM_N; i++)
-    // {
-    //     printf("%d,", f[i]);
-    // }
-    // printf("\n\n");
+    poly_unround(tmp1);
 
     mq_poly_ntt(tmp1);
     mq_poly_pointwise_mul(tmp2, tmp1, f);
     mq_poly_intt(tmp2);
 
-    // for(i = 0; i < DIM_N; i++)
-    // {
-    //     printf("%d,", tmp2[i]);
-    // }
-    // printf("\n\n");
-
-
-    for(i = 0; i < N; i++)
-    {
-        cp[i] = montgomery_reduce((tmp2[i + N] - tmp2[i]) * 171);
-    }
-
-    for(i = N; i < DIM_N; i++)
-    {
-        cp[i] = montgomery_reduce((tmp2[i - N] + tmp2[i]) * 171);
-    }
-
-    for(i = 0; i < N; i++)
-    {
-        tmp2[i] = (cp[i] & 1) ^ (cp[i + N] & 1);
-    }
+    poly_cp(cp, tmp2);
 
     memset(tmp_f2 + N_2, 0, N_2 * sizeof(int16_t));
-    for(i = 0; i < 8; i++)
-    {
-        for(j = 0; j < SKF2LEN; j++)
-        {
-            tmp_f2[i * SKF2LEN + j] = (f2[j] & 1);
-            f2[j] = (f2[j] >> 1);
-        }
-    }
+
+    poly_unpack_f2(tmp_f2, f2);
 
     Mul_in_R2_n(tmp2, tmp_f2, N, mp);
 
-    for(i = 0; i < N_2; i++)
-    {
-        ep[i] = (cp[i] & 1) ^ (cp[i +128] & 1) ^ (cp[i + 256] & 1) ^ (cp[i + 384] & 1);
-    }
+    poly_xor4(ep, cp);
 
     idx = 0;
     for(i = 0; i < N_2; i++)
@@ -355,25 +253,11 @@ void PKE_Decrypt(uint8_t *c, int16_t *f, uint8_t *f2, uint8_t *m)
 
     if(j)
     {
-        for(i = 7; i >= 0; i--)
-        {
-            for(j = 0; j < MESSLEN; j++)
-            {
-                m[j] = (m[j] << 1);
-                m[j] += tmp2[i * MESSLEN + j];
-            }
-        }
+        poly_pack_f2(m, tmp2);
     }
     else
     {
-        for(i = 7; i >= 0; i--)
-        {
-            for(j = 0; j < MESSLEN; j++)
-            {
-                m[j] = (m[j] << 1);
-                m[j] += mp[i * MESSLEN + j];
-            }
-        }
+        poly_pack_f2(m, mp);
     }
     
 }

@@ -1,0 +1,632 @@
+==========================
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10756
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10974
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65301
+shake256 136 bytes cycles:
+10756
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+shake128 168 bytes cycles:
+10936
+shake128 1024 bytes cycles:
+65261
+shake256 136 bytes cycles:
+10755
+shake256 1024 bytes cycles:
+74866
+dke1_xof 96 bytes cycles:
+10947
+dke1_xof 1024 bytes cycles:
+107824
++
+keypair cycles:
+404064
+encaps cycles:
+582147
+decaps cycles:
+591857
+OK KEYS
++
+keypair cycles:
+404295
+encaps cycles:
+582314
+decaps cycles:
+592024
+OK KEYS
++
+keypair cycles:
+437282
+encaps cycles:
+615301
+decaps cycles:
+625011
+OK KEYS
++
+keypair cycles:
+415385
+encaps cycles:
+593405
+decaps cycles:
+603115
+OK KEYS
++
+keypair cycles:
+404299
+encaps cycles:
+582318
+decaps cycles:
+592028
+OK KEYS
++
+keypair cycles:
+415230
+encaps cycles:
+593249
+decaps cycles:
+602959
+OK KEYS
++
+keypair cycles:
+426417
+encaps cycles:
+604436
+decaps cycles:
+614146
+OK KEYS
++
+keypair cycles:
+415258
+encaps cycles:
+593277
+decaps cycles:
+602987
+OK KEYS
++
+keypair cycles:
+415260
+encaps cycles:
+593279
+decaps cycles:
+602989
+OK KEYS
++
+keypair cycles:
+415384
+encaps cycles:
+593403
+decaps cycles:
+603113
+OK KEYS
++
+keypair cycles:
+415260
+encaps cycles:
+593279
+decaps cycles:
+602989
+OK KEYS
++
+keypair cycles:
+437245
+encaps cycles:
+615265
+decaps cycles:
+624975
+OK KEYS
++
+keypair cycles:
+415227
+encaps cycles:
+593246
+decaps cycles:
+602956
+OK KEYS
++
+keypair cycles:
+426271
+encaps cycles:
+604290
+decaps cycles:
+614000
+OK KEYS
++
+keypair cycles:
+415378
+encaps cycles:
+593437
+decaps cycles:
+603108
+OK KEYS
++
+keypair cycles:
+437246
+encaps cycles:
+615266
+decaps cycles:
+624976
+OK KEYS
++
+keypair cycles:
+404192
+encaps cycles:
+582211
+decaps cycles:
+591921
+OK KEYS
++
+keypair cycles:
+404225
+encaps cycles:
+582244
+decaps cycles:
+591954
+OK KEYS
++
+keypair cycles:
+415287
+encaps cycles:
+593306
+decaps cycles:
+603016
+OK KEYS
++
+keypair cycles:
+404129
+encaps cycles:
+582148
+decaps cycles:
+591858
+OK KEYS
++
+keypair cycles:
+415552
+encaps cycles:
+593572
+decaps cycles:
+603282
+OK KEYS
++
+keypair cycles:
+426336
+encaps cycles:
+604355
+decaps cycles:
+614065
+OK KEYS
++
+keypair cycles:
+415329
+encaps cycles:
+593348
+decaps cycles:
+603095
+OK KEYS
++
+keypair cycles:
+404265
+encaps cycles:
+582284
+decaps cycles:
+591994
+OK KEYS
++
+keypair cycles:
+404288
+encaps cycles:
+582307
+decaps cycles:
+592017
+OK KEYS
++
+keypair cycles:
+426406
+encaps cycles:
+604426
+decaps cycles:
+614136
+OK KEYS
++
+keypair cycles:
+426335
+encaps cycles:
+604354
+decaps cycles:
+614064
+OK KEYS
++
+keypair cycles:
+426456
+encaps cycles:
+604475
+decaps cycles:
+614185
+OK KEYS
++
+keypair cycles:
+415282
+encaps cycles:
+593301
+decaps cycles:
+603011
+OK KEYS
++
+keypair cycles:
+404345
+encaps cycles:
+582364
+decaps cycles:
+592074
+OK KEYS
++
+#

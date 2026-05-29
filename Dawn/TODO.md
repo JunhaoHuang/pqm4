@@ -41,10 +41,58 @@ Each sample counts as 0.01 seconds.
   0.00      5.21     0.00   100002     0.00     7.92  KEM_Enc
   0.00      5.21     0.00   100001     0.00    19.60  KEM_Dec
 
+## AI profiling
+
+The main cost in `PKE_Decrypt()` is the polynomial multiply path at [pke.c](/home/hjh/Documents/project/pqm4/crypto_kem/dawn-b-1024/ref/pke.c:257):
+
+- [pke.c:264](/home/hjh/Documents/project/pqm4/crypto_kem/dawn-b-1024/ref/pke.c:264) `mq_poly_ntt(tmp1)`
+- [pke.c:265](/home/hjh/Documents/project/pqm4/crypto_kem/dawn-b-1024/ref/pke.c:265) `mq_poly_pointwise_mul(tmp2, tmp1, f)`
+- [pke.c:266](/home/hjh/Documents/project/pqm4/crypto_kem/dawn-b-1024/ref/pke.c:266) `mq_poly_intt(tmp2)`
+
+Those three calls are the decryption hotspot by a wide margin.
+
+Why they dominate:
+- `mq_poly_ntt()` does 7 NTT stages over `DIM_N = 1024`, with one modular multiply per butterfly: about 3584 `fqmul()` calls. See [mq_ntt.c:25]( /home/hjh/Documents/project/pqm4/crypto_kem/dawn-b-1024/ref/mq_ntt.c:25 ).
+- `mq_poly_pointwise_mul()` is especially expensive. It calls `base_mul()` 128 times, and each `base_mul()` performs many `fqmul()` operations. See [mq_ntt.c:183]( /home/hjh/Documents/project/pqm4/crypto_kem/dawn-b-1024/ref/mq_ntt.c:183 ) and [mq_ntt.c:100]( /home/hjh/Documents/project/pqm4/crypto_kem/dawn-b-1024/ref/mq_ntt.c:100 ). This is likely the single heaviest step inside decryption.
+- `mq_poly_intt()` does another full inverse transform plus final scaling, about 4608 more `fqmul()` calls. See [mq_ntt.c:73]( /home/hjh/Documents/project/pqm4/crypto_kem/dawn-b-1024/ref/mq_ntt.c:73 ).
+
+The next most relevant decryption costs are:
+
+- [pke.c:262](/home/hjh/Documents/project/pqm4/crypto_kem/dawn-b-1024/ref/pke.c:262) `decode_pk(c, tmp1)`  
+  `decode_pk()` has a lot of packing/unpacking plus many `%` and `/` operations by `86` and `3`; on embedded targets those divisions can be relatively costly. See [code.c:125]( /home/hjh/Documents/project/pqm4/crypto_kem/dawn-b-1024/ref/code.c:125 ).
+- [pke.c:268](/home/hjh/Documents/project/pqm4/crypto_kem/dawn-b-1024/ref/pke.c:268 ) to [pke.c:276]( /home/hjh/Documents/project/pqm4/crypto_kem/dawn-b-1024/ref/pke.c:276 )  
+  Two 512-iteration loops with `montgomery_reduce()`. Noticeable, but still much smaller than the NTT/multiply/INTT block.
+- [pke.c:293](/home/hjh/Documents/project/pqm4/crypto_kem/dawn-b-1024/ref/pke.c:293) `Mul_in_R2_n(tmp2, tmp_f2, N, mp)`  
+  This can become fairly heavy because it scans for `1` bits and then XORs length-512 vectors repeatedly. See [pke.c:39]( /home/hjh/Documents/project/pqm4/crypto_kem/dawn-b-1024/ref/pke.c:39 ). It is memory/XOR heavy, but still usually secondary to the modular-arithmetic block.
+
+Within all of `pke.c`, the slowest routines overall are:
+- `PKE_KeyGen()` first, because of repeated rejection loops plus [pke.c:194]( /home/hjh/Documents/project/pqm4/crypto_kem/dawn-b-1024/ref/pke.c:194 ) `mq_poly_inv_ntt()` and [pke.c:196]( /home/hjh/Documents/project/pqm4/crypto_kem/dawn-b-1024/ref/pke.c:196 ) `FastInversion()`.
+- `PKE_Decrypt()` next, dominated by lines 264 to 266.
+- `PKE_Encrypt()` after that, with the same NTT/mul/INTT structure but less extra work.
+
+If you want the short answer for decryption: focus on line `265` first, then `264` and `266`, then `decode_pk()`, then `Mul_in_R2_n()`.
+
+
 ## TODO optimizations
-1. hash for reference and m4 should be different? to highlight the Keccak optimization by our paper.
-2. 1024 version of KEM is wrong. kem_dec: pke_decrypt cannot end. try to not use 512 version of KEM, and self-create one.: the problem is that sk->f2 is modifed in PKE_Decrypt, which is quite strange. randombytes should also be deleted to use randombytes in pqm4.
+1. hash for reference and m4 should be different? to highlight the Keccak optimization by our paper. -- On embedded/board builds, pqm4 currently uses common/keccakf1600.S via mk/crypto.mk (line 6), not the C file. change this mk file to use .c version keccak.
+2. 1024 version of KEM is wrong. kem_dec: pke_decrypt cannot end. try to not use 512 version of KEM, and self-create one.: the problem is that sk->f2 is modifed in PKE_Decrypt, which is quite strange. randombytes should also be deleted to use randombytes in pqm4. 
 
 ![Parameter for Dawn](image.png)
 
-3. NTT, basemul, INTT.
+3. NTT, basemul, INTT. OK!
+4. fastinversion in R2.
+5. Mul_in_R2_n is the ripest target.
+It scans for set bits and then XORs full shifted vectors in nested loops in pke.c (line 25). Since this is binary arithmetic, a packed uint32_t or assembly bitset version should help much more than micro-tuning the current int16_t code.
+6. Fuse the cp build with reduction.
+Right now decryption does:
+build cp with two passes at pke.c (line 264)
+then run mq_poly_reduce(cp, DIM_N) (line 273)
+That is an extra full memory pass. A combined “add/sub + reduce” kernel would cut traffic.
+Merge the parity-extraction passes after reduction.
+After cp is reduced, you make separate passes for:
+tmp2[i] = (cp[i] & 1) ^ (cp[i + N] & 1) (line 275)
+ep[i] = ... (line 292)
+These can be merged into one 128-iteration pass.
+
+
+01010101 101010 11110000 1

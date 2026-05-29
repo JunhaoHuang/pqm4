@@ -1,0 +1,29 @@
+==========================
+PKE_KeyGen cycles:
+461395
+PKE_Encrypt cycles:
+230850
+PKE_Decrypt cycles:
+486665
+mq_poly_ntt cycles:
+45097
+mq_poly_ntt_mq cycles:
+55854
+mq_poly_pointwise_mul cycles:
+28628
+mq_poly_pointwise_mul_mq cycles:
+35352
+mq_poly_intt cycles:
+55232
+poly_cp cycles:
+11835
+mq_poly_inv_ntt cycles:
+138250
+poly_round cycles:
+5685
+check_poly_inv_Zq cycles:
+74
+check_poly_inv_Z2 cycles:
+1082
++
+#

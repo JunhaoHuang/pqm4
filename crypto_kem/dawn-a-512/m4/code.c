@@ -11,6 +11,70 @@ uint64_t ct_table[] = {
     1, 111, 12321, 1367631, 151807041
 };
 
+static inline uint16_t divmod769_tail(uint64_t *x)
+{
+    uint32_t v = (uint32_t)*x;
+    uint32_t q = ((uint64_t)v * 349071u) >> 28;
+    uint32_t r = v - q * 769u;
+
+    *x = q;
+    return (uint16_t)r;
+}
+
+static inline uint32_t div769_u26(uint32_t x, uint32_t *r)
+{
+    uint32_t q = ((uint64_t)x * 44681065u) >> 35;
+
+    *r = x - q * 769u;
+    return q;
+}
+
+static inline uint16_t divmod769_u48(uint64_t *x)
+{
+    uint64_t v = *x;
+    uint32_t r = 0;
+    uint32_t q2, q1, q0;
+
+    q2 = div769_u26((uint32_t)(v >> 32), &r);
+    q1 = div769_u26((r << 16) | ((uint32_t)(v >> 16) & 0xffffu), &r);
+    q0 = div769_u26((r << 16) | ((uint32_t)v & 0xffffu), &r);
+
+    *x = ((uint64_t)q2 << 32) | ((uint64_t)q1 << 16) | q0;
+    return (uint16_t)r;
+}
+
+static inline uint16_t divmod111_tail(uint64_t *x)
+{
+    uint32_t v = (uint32_t)*x;
+    uint32_t q = ((uint32_t)(v * 9447u)) >> 20;
+    uint32_t r = v - q * 111u;
+
+    *x = q;
+    return (uint16_t)r;
+}
+
+static inline uint32_t div111_u23(uint32_t x, uint32_t *r)
+{
+    uint32_t q = ((uint64_t)x * 4836675u) >> 29;
+
+    *r = x - q * 111u;
+    return q;
+}
+
+static inline uint16_t divmod111_u48(uint64_t *x)
+{
+    uint64_t v = *x;
+    uint32_t r = 0;
+    uint32_t q2, q1, q0;
+
+    q2 = div111_u23((uint32_t)(v >> 32), &r);
+    q1 = div111_u23((r << 16) | ((uint32_t)(v >> 16) & 0xffffu), &r);
+    q0 = div111_u23((r << 16) | ((uint32_t)v & 0xffffu), &r);
+
+    *x = ((uint64_t)q2 << 32) | ((uint64_t)q1 << 16) | q0;
+    return (uint16_t)r;
+}
+
 void encode_pk(int16_t *c, uint8_t *code_c)
 {
     int i, j, idx;
@@ -54,6 +118,7 @@ void encode_pk(int16_t *c, uint8_t *code_c)
 void decode_pk(uint8_t *code_c, int16_t *c)
 {
     int i, j, idx = 76;
+    int16_t t1;
     uint64_t *res, tmp[103] = {0}, t = 0;
 
     res = code_c;
@@ -75,8 +140,7 @@ void decode_pk(uint8_t *code_c, int16_t *c)
 
     for(i = 0; i < 2; i++)
     {
-        c[DIM_N - 2 + i] = (uint16_t)(tmp[102] % 769);
-        tmp[102] = tmp[102] / 769;
+        c[DIM_N - 2 + i] = divmod769_tail(&tmp[102]);
     }
 
     idx = 0;
@@ -84,8 +148,7 @@ void decode_pk(uint8_t *code_c, int16_t *c)
     {
         for(j = 0; j < 5; j++)
         {
-            c[i + j] = (uint16_t)(tmp[idx] % 769);
-            tmp[idx] = tmp[idx] / 769;
+            c[i + j] = divmod769_u48(&tmp[idx]);
         }
         idx++;
     }
@@ -180,8 +243,7 @@ void decode_ct(uint8_t *code_c, int16_t *c)
 
     for(i = 0; i < 2; i++)
     {
-        c[DIM_N - 2 + i] = (uint16_t)(tmp[102] % 111);
-        tmp[102] = tmp[102] / 111;
+        c[DIM_N - 2 + i] = divmod111_tail(&tmp[102]);
     }
 
     idx = 0;
@@ -189,8 +251,7 @@ void decode_ct(uint8_t *code_c, int16_t *c)
     {
         for(j = 0; j < 5; j++)
         {
-            c[i + j] = (uint16_t)(tmp[idx] % 111);
-            tmp[idx] = tmp[idx] / 111;
+            c[i + j] = divmod111_u48(&tmp[idx]);
         }
         idx++;
     }

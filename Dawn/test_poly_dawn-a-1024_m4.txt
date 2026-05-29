@@ -1,0 +1,492 @@
+==========================
+PKE_KeyGen cycles:
+549994
+PKE_Encrypt cycles:
+230423
+PKE_Decrypt cycles:
+701453
+mq_poly_ntt cycles:
+17737
+mq_poly_ntt_mq cycles:
+22473
+mq_poly_pointwise_mul cycles:
+19156
+mq_poly_pointwise_mul_mq cycles:
+25812
+mq_poly_intt cycles:
+18051
+poly_cp cycles:
+7512
+mq_poly_inv_ntt cycles:
+38297
+mq_poly_reduce cycles:
+4176
+mq_poly_reduce_mq cycles:
+6418
+poly_round cycles:
+2383
+check_poly_inv_Zq cycles:
+149
+check_poly_inv_Z2 cycles:
+745
+Mul_in_R2_n 4 cycles:
+309
+Mulf_in_R2_N2 cycles:
+62857
+poly_xor4 cycles:
+1616
+poly_xor4 cycles:
+1616
+poly_unpack_f2 cycles:
+986
+poly_pack_f2 cycles:
+776
+poly_mul385 cycles:
+1069
+poly_add cycles:
+3153
+poly_unround cycles:
+2380
++
+PKE_KeyGen cycles:
+788091
+PKE_Encrypt cycles:
+230423
+PKE_Decrypt cycles:
+683020
+mq_poly_ntt cycles:
+17737
+mq_poly_ntt_mq cycles:
+22473
+mq_poly_pointwise_mul cycles:
+19156
+mq_poly_pointwise_mul_mq cycles:
+25812
+mq_poly_intt cycles:
+18051
+poly_cp cycles:
+7512
+mq_poly_inv_ntt cycles:
+38297
+mq_poly_reduce cycles:
+4176
+mq_poly_reduce_mq cycles:
+6418
+poly_round cycles:
+2383
+check_poly_inv_Zq cycles:
+149
+check_poly_inv_Z2 cycles:
+745
+Mul_in_R2_n 4 cycles:
+323
+Mulf_in_R2_N2 cycles:
+59407
+poly_xor4 cycles:
+1616
+poly_xor4 cycles:
+1616
+poly_unpack_f2 cycles:
+986
+poly_pack_f2 cycles:
+776
+poly_mul385 cycles:
+1069
+poly_add cycles:
+3153
+poly_unround cycles:
+2380
++
+PKE_KeyGen cycles:
+558590
+PKE_Encrypt cycles:
+230423
+PKE_Decrypt cycles:
+673808
+mq_poly_ntt cycles:
+17737
+mq_poly_ntt_mq cycles:
+22473
+mq_poly_pointwise_mul cycles:
+19156
+mq_poly_pointwise_mul_mq cycles:
+25812
+mq_poly_intt cycles:
+18051
+poly_cp cycles:
+7512
+mq_poly_inv_ntt cycles:
+38297
+mq_poly_reduce cycles:
+4176
+mq_poly_reduce_mq cycles:
+6418
+poly_round cycles:
+2383
+check_poly_inv_Zq cycles:
+111
+check_poly_inv_Z2 cycles:
+745
+Mul_in_R2_n 4 cycles:
+307
+Mulf_in_R2_N2 cycles:
+67453
+poly_xor4 cycles:
+1616
+poly_xor4 cycles:
+1616
+poly_unpack_f2 cycles:
+986
+poly_pack_f2 cycles:
+776
+poly_mul385 cycles:
+1069
+poly_add cycles:
+3153
+poly_unround cycles:
+2380
++
+PKE_KeyGen cycles:
+808626
+PKE_Encrypt cycles:
+230423
+PKE_Decrypt cycles:
+765946
+mq_poly_ntt cycles:
+17737
+mq_poly_ntt_mq cycles:
+22473
+mq_poly_pointwise_mul cycles:
+19156
+mq_poly_pointwise_mul_mq cycles:
+25812
+mq_poly_intt cycles:
+18051
+poly_cp cycles:
+7512
+mq_poly_inv_ntt cycles:
+38297
+mq_poly_reduce cycles:
+4176
+mq_poly_reduce_mq cycles:
+6418
+poly_round cycles:
+2383
+check_poly_inv_Zq cycles:
+111
+check_poly_inv_Z2 cycles:
+745
+Mul_in_R2_n 4 cycles:
+290
+Mulf_in_R2_N2 cycles:
+58255
+poly_xor4 cycles:
+1616
+poly_xor4 cycles:
+1616
+poly_unpack_f2 cycles:
+986
+poly_pack_f2 cycles:
+776
+poly_mul385 cycles:
+1069
+poly_add cycles:
+3153
+poly_unround cycles:
+2380
++
+PKE_KeyGen cycles:
+560522
+PKE_Encrypt cycles:
+230423
+PKE_Decrypt cycles:
+719903
+mq_poly_ntt cycles:
+17737
+mq_poly_ntt_mq cycles:
+22473
+mq_poly_pointwise_mul cycles:
+19156
+mq_poly_pointwise_mul_mq cycles:
+25812
+mq_poly_intt cycles:
+18051
+poly_cp cycles:
+7512
+mq_poly_inv_ntt cycles:
+38297
+mq_poly_reduce cycles:
+4176
+mq_poly_reduce_mq cycles:
+6418
+poly_round cycles:
+2383
+check_poly_inv_Zq cycles:
+117
+check_poly_inv_Z2 cycles:
+745
+Mul_in_R2_n 4 cycles:
+323
+Mulf_in_R2_N2 cycles:
+69767
+poly_xor4 cycles:
+1616
+poly_xor4 cycles:
+1616
+poly_unpack_f2 cycles:
+986
+poly_pack_f2 cycles:
+776
+poly_mul385 cycles:
+1069
+poly_add cycles:
+3153
+poly_unround cycles:
+2380
++
+PKE_KeyGen cycles:
+568202
+PKE_Encrypt cycles:
+230423
+PKE_Decrypt cycles:
+655413
+mq_poly_ntt cycles:
+17737
+mq_poly_ntt_mq cycles:
+22473
+mq_poly_pointwise_mul cycles:
+19156
+mq_poly_pointwise_mul_mq cycles:
+25812
+mq_poly_intt cycles:
+18051
+poly_cp cycles:
+7512
+mq_poly_inv_ntt cycles:
+38297
+mq_poly_reduce cycles:
+4176
+mq_poly_reduce_mq cycles:
+6418
+poly_round cycles:
+2383
+check_poly_inv_Zq cycles:
+111
+check_poly_inv_Z2 cycles:
+745
+Mul_in_R2_n 4 cycles:
+290
+Mulf_in_R2_N2 cycles:
+59407
+poly_xor4 cycles:
+1616
+poly_xor4 cycles:
+1616
+poly_unpack_f2 cycles:
+986
+poly_pack_f2 cycles:
+776
+poly_mul385 cycles:
+1069
+poly_add cycles:
+3153
+poly_unround cycles:
+2380
++
+PKE_KeyGen cycles:
+567893
+PKE_Encrypt cycles:
+230461
+PKE_Decrypt cycles:
+701439
+mq_poly_ntt cycles:
+17737
+mq_poly_ntt_mq cycles:
+22473
+mq_poly_pointwise_mul cycles:
+19156
+mq_poly_pointwise_mul_mq cycles:
+25812
+mq_poly_intt cycles:
+18051
+poly_cp cycles:
+7512
+mq_poly_inv_ntt cycles:
+38297
+mq_poly_reduce cycles:
+4176
+mq_poly_reduce_mq cycles:
+6418
+poly_round cycles:
+2383
+check_poly_inv_Zq cycles:
+111
+check_poly_inv_Z2 cycles:
+745
+Mul_in_R2_n 4 cycles:
+290
+Mulf_in_R2_N2 cycles:
+52489
+poly_xor4 cycles:
+1616
+poly_xor4 cycles:
+1616
+poly_unpack_f2 cycles:
+986
+poly_pack_f2 cycles:
+776
+poly_mul385 cycles:
+1069
+poly_add cycles:
+3153
+poly_unround cycles:
+2380
++
+PKE_KeyGen cycles:
+1229874
+PKE_Encrypt cycles:
+230423
+PKE_Decrypt cycles:
+701449
+mq_poly_ntt cycles:
+17737
+mq_poly_ntt_mq cycles:
+22473
+mq_poly_pointwise_mul cycles:
+19156
+mq_poly_pointwise_mul_mq cycles:
+25812
+mq_poly_intt cycles:
+18051
+poly_cp cycles:
+7512
+mq_poly_inv_ntt cycles:
+38297
+mq_poly_reduce cycles:
+4176
+mq_poly_reduce_mq cycles:
+6418
+poly_round cycles:
+2383
+check_poly_inv_Zq cycles:
+117
+check_poly_inv_Z2 cycles:
+745
+Mul_in_R2_n 4 cycles:
+309
+Mulf_in_R2_N2 cycles:
+58255
+poly_xor4 cycles:
+1616
+poly_xor4 cycles:
+1616
+poly_unpack_f2 cycles:
+986
+poly_pack_f2 cycles:
+776
+poly_mul385 cycles:
+1069
+poly_add cycles:
+3153
+poly_unround cycles:
+2380
++
+PKE_KeyGen cycles:
+671745
+PKE_Encrypt cycles:
+230423
+PKE_Decrypt cycles:
+765944
+mq_poly_ntt cycles:
+17737
+mq_poly_ntt_mq cycles:
+22473
+mq_poly_pointwise_mul cycles:
+19156
+mq_poly_pointwise_mul_mq cycles:
+25812
+mq_poly_intt cycles:
+18051
+poly_cp cycles:
+7512
+mq_poly_inv_ntt cycles:
+38297
+mq_poly_reduce cycles:
+4176
+mq_poly_reduce_mq cycles:
+6418
+poly_round cycles:
+2383
+check_poly_inv_Zq cycles:
+155
+check_poly_inv_Z2 cycles:
+745
+Mul_in_R2_n 4 cycles:
+325
+Mulf_in_R2_N2 cycles:
+61707
+poly_xor4 cycles:
+1616
+poly_xor4 cycles:
+1616
+poly_unpack_f2 cycles:
+986
+poly_pack_f2 cycles:
+776
+poly_mul385 cycles:
+1069
+poly_add cycles:
+3153
+poly_unround cycles:
+2380
++
+PKE_KeyGen cycles:
+926813
+PKE_Encrypt cycles:
+230423
+PKE_Decrypt cycles:
+821217
+mq_poly_ntt cycles:
+17737
+mq_poly_ntt_mq cycles:
+22473
+mq_poly_pointwise_mul cycles:
+19156
+mq_poly_pointwise_mul_mq cycles:
+25812
+mq_poly_intt cycles:
+18051
+poly_cp cycles:
+7512
+mq_poly_inv_ntt cycles:
+38297
+mq_poly_reduce cycles:
+4176
+mq_poly_reduce_mq cycles:
+6418
+poly_round cycles:
+2383
+check_poly_inv_Zq cycles:
+111
+check_poly_inv_Z2 cycles:
+745
+Mul_in_R2_n 4 cycles:
+290
+Mulf_in_R2_N2 cycles:
+59399
+poly_xor4 cycles:
+1616
+poly_xor4 cycles:
+1616
+poly_unpack_f2 cycles:
+986
+poly_pack_f2 cycles:
+776
+poly_mul385 cycles:
+1069
+poly_add cycles:
+3153
+poly_unround cycles:
+2380
++
+#

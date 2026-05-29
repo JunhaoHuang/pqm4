@@ -7,7 +7,7 @@
 #define CRYPTO_PUBLICKEYBYTES  PKLEN
 #define CRYPTO_CIPHERTEXTBYTES CTLEN
 #define CRYPTO_BYTES           SYMBYTES
-
+#define M4
 #define CRYPTO_ALGNAME "Dawn-A-512"
 
 int crypto_kem_keypair(unsigned char *pk, unsigned char *sk);

@@ -2,18 +2,17 @@ KEM_SCHEMES := \
 	crypto_kem/bikel1/m4f \
 	crypto_kem/dawn-a-512/ref \
 	crypto_kem/dawn-a-512/m4 \
-	crypto_kem/dawn-b-512/ref \
-	crypto_kem/dawn-b-512/m4 \
 	crypto_kem/ml-kem-512/m4fstack \
 	crypto_kem/ml-kem-512/m4fspeed \
 	crypto_kem/ml-kem-768/m4fstack \
 	crypto_kem/ml-kem-768/m4fspeed \
 	crypto_kem/bikel3/m4f \
+	crypto_kem/DKE-128/ref \
+	crypto_kem/DKE-128/m4 \
 	crypto_kem/dawn-a-1024/ref \
 	crypto_kem/dawn-a-1024/m4 \
 	crypto_kem/ml-kem-1024/m4fstack \
 	crypto_kem/ml-kem-1024/m4fspeed \
-	crypto_kem/dawn-b-1024/ref \
 	mupq/crypto_kem/bikel1/opt \
 	mupq/crypto_kem/bikel3/opt \
 	mupq/pqclean/crypto_kem/mceliece8192128f/clean \
@@ -58,6 +57,7 @@ SIGN_SCHEMES := \
 	crypto_sign/aimer192s/m4speed \
 	crypto_sign/aimer128s/m4stack \
 	crypto_sign/aimer128s/m4speed \
+	crypto_sign/raccoon-128/ref_keccak \
 	crypto_sign/haetae3/m4f \
 	crypto_sign/haetae2/m4f \
 	crypto_sign/ml-dsa-44/m4fstack \

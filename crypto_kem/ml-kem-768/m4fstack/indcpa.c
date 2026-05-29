@@ -70,7 +70,6 @@ void indcpa_enc(unsigned char *c,
                const unsigned char *coins) {
     polyvec sp;
     poly bp;
-    poly *pkp = &bp;
     poly *k = &bp;
     poly *v = &sp.vec[0];
     const unsigned char *seed = pk+KYBER_POLYVECBYTES;
@@ -92,11 +91,10 @@ void indcpa_enc(unsigned char *c,
         poly_packcompress(c, &bp, i);
     }
 
-    poly_frombytes(pkp, pk);
-    poly_basemul(v, pkp, &sp.vec[0]);
-    for (i = 1; i < KYBER_K; i++) {
-        poly_frombytes(pkp, pk + i*KYBER_POLYBYTES);
-        poly_basemul_acc(v, pkp, &sp.vec[i]);
+    poly_frombytes_mul(v, &sp.vec[0], pk);
+    for (i = 1; i < KYBER_K; i++)
+    {
+        poly_frombytes_mul_acc(v, &sp.vec[i], pk + i * KYBER_POLYBYTES);
     }
 
     poly_invntt(v);
@@ -132,7 +130,6 @@ unsigned char indcpa_enc_cmp(const unsigned char *c,
     uint64_t rc = 0;
     polyvec sp;
     poly bp;
-    poly *pkp = &bp;
     poly *k = &bp;
     poly *v = &sp.vec[0];
     const unsigned char *seed = pk+KYBER_POLYVECBYTES;
@@ -154,13 +151,10 @@ unsigned char indcpa_enc_cmp(const unsigned char *c,
         rc |= cmp_poly_packcompress(c, &bp, i);
     }
 
-    poly_frombytes(pkp, pk);
-    poly_basemul(v, pkp, &sp.vec[0]);
-    for (i = 1; i < KYBER_K; i++) {
-        poly_frombytes(pkp, pk + i*KYBER_POLYBYTES);
-        poly_basemul_acc(v, pkp, &sp.vec[i]);
+    poly_frombytes_mul(v, &sp.vec[0], pk);
+    for(i=1;i<KYBER_K;i++){
+        poly_frombytes_mul_acc(v, &sp.vec[i],pk+i*KYBER_POLYBYTES);
     }
-
     poly_invntt(v);
 
     poly_addnoise(v, coins, nonce++);

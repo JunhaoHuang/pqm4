@@ -1,5 +1,9002 @@
 ==========================
 keypair cycles:
-1302483
+1162992
 encaps cycles:
-985777
+986954
+decaps cycles:
+2413604
+OK KEYS
+
++
+keypair cycles:
+1272611
+encaps cycles:
+986904
+decaps cycles:
+2456768
+OK KEYS
+
++
+keypair cycles:
+1317426
+encaps cycles:
+986812
+decaps cycles:
+2449352
+OK KEYS
+
++
+keypair cycles:
+1180021
+encaps cycles:
+986972
+decaps cycles:
+2471100
+OK KEYS
+
++
+keypair cycles:
+1146757
+encaps cycles:
+987120
+decaps cycles:
+2420946
+OK KEYS
+
++
+keypair cycles:
+1522257
+encaps cycles:
+986666
+decaps cycles:
+2528452
+OK KEYS
+
++
+keypair cycles:
+1263871
+encaps cycles:
+986942
+decaps cycles:
+2370443
+OK KEYS
+
++
+keypair cycles:
+1147696
+encaps cycles:
+986906
+decaps cycles:
+2463982
+OK KEYS
+
++
+keypair cycles:
+1748263
+encaps cycles:
+986748
+decaps cycles:
+2499764
+OK KEYS
+
++
+keypair cycles:
+1288009
+encaps cycles:
+986890
+decaps cycles:
+2471100
+OK KEYS
+
++
+keypair cycles:
+1392999
+encaps cycles:
+987062
+decaps cycles:
+2435244
+OK KEYS
+
++
+keypair cycles:
+1164501
+encaps cycles:
+986952
+decaps cycles:
+2499600
+OK KEYS
+
++
+keypair cycles:
+1152343
+encaps cycles:
+986822
+decaps cycles:
+2384808
+OK KEYS
+
++
+keypair cycles:
+1165362
+encaps cycles:
+986832
+decaps cycles:
+2471064
+OK KEYS
+
++
+keypair cycles:
+1621083
+encaps cycles:
+986666
+decaps cycles:
+2484950
+OK KEYS
+
++
+keypair cycles:
+1174076
+encaps cycles:
+987028
+decaps cycles:
+2421166
+OK KEYS
+
++
+keypair cycles:
+1127206
+encaps cycles:
+986600
+decaps cycles:
+2355698
+OK KEYS
+
++
+keypair cycles:
+1421343
+encaps cycles:
+986748
+decaps cycles:
+2470866
+OK KEYS
+
++
+keypair cycles:
+1154823
+encaps cycles:
+987006
+decaps cycles:
+2456862
+OK KEYS
+
++
+keypair cycles:
+1190694
+encaps cycles:
+986852
+decaps cycles:
+2478334
+OK KEYS
+
++
+keypair cycles:
+1288628
+encaps cycles:
+986954
+decaps cycles:
+2485670
+OK KEYS
+
++
+keypair cycles:
+1146486
+encaps cycles:
+986846
+decaps cycles:
+2399114
+OK KEYS
+
++
+keypair cycles:
+1420367
+encaps cycles:
+987002
+decaps cycles:
+2528805
+OK KEYS
+
++
+keypair cycles:
+1142214
+encaps cycles:
+986852
+decaps cycles:
+2435096
+OK KEYS
+
++
+keypair cycles:
+1154458
+encaps cycles:
+986948
+decaps cycles:
+2492448
+OK KEYS
+
++
+keypair cycles:
+1268821
+encaps cycles:
+986896
+decaps cycles:
+2413294
+OK KEYS
+
++
+keypair cycles:
+1400358
+encaps cycles:
+987014
+decaps cycles:
+2370440
+OK KEYS
+
++
+keypair cycles:
+1388734
+encaps cycles:
+986936
+decaps cycles:
+2464158
+OK KEYS
+
++
+keypair cycles:
+1149749
+encaps cycles:
+986666
+decaps cycles:
+2478132
+OK KEYS
+
++
+keypair cycles:
+1264390
+encaps cycles:
+986994
+decaps cycles:
+2514179
+OK KEYS
+
++
+keypair cycles:
+1273999
+encaps cycles:
+986756
+decaps cycles:
+2369976
+OK KEYS
+
++
+keypair cycles:
+1152957
+encaps cycles:
+987156
+decaps cycles:
+2492996
+OK KEYS
+
++
+keypair cycles:
+1155245
+encaps cycles:
+986744
+decaps cycles:
+2406256
+OK KEYS
+
++
+keypair cycles:
+1282273
+encaps cycles:
+986804
+decaps cycles:
+2542990
+OK KEYS
+
++
+keypair cycles:
+1490494
+encaps cycles:
+986818
+decaps cycles:
+2492746
+OK KEYS
+
++
+keypair cycles:
+1264810
+encaps cycles:
+986986
+decaps cycles:
+2363312
+OK KEYS
+
++
+keypair cycles:
+1265105
+encaps cycles:
+987192
+decaps cycles:
+2370526
+OK KEYS
+
++
+keypair cycles:
+1135689
+encaps cycles:
+986716
+decaps cycles:
+2420328
+OK KEYS
+
++
+keypair cycles:
+1274434
+encaps cycles:
+986920
+decaps cycles:
+2463874
+OK KEYS
+
++
+keypair cycles:
+1163251
+encaps cycles:
+987030
+decaps cycles:
+2384984
+OK KEYS
+
++
+keypair cycles:
+1143953
+encaps cycles:
+987060
+decaps cycles:
+2420898
+OK KEYS
+
++
+keypair cycles:
+1181551
+encaps cycles:
+987122
+decaps cycles:
+2485972
+OK KEYS
+
++
+keypair cycles:
+1167543
+encaps cycles:
+987076
+decaps cycles:
+2485746
+OK KEYS
+
++
+keypair cycles:
+1297541
+encaps cycles:
+987116
+decaps cycles:
+2507398
+OK KEYS
+
++
+keypair cycles:
+1151124
+encaps cycles:
+986872
+decaps cycles:
+2406136
+OK KEYS
+
++
+keypair cycles:
+1414851
+encaps cycles:
+986744
+decaps cycles:
+2341194
+OK KEYS
+
++
+keypair cycles:
+1381836
+encaps cycles:
+986840
+decaps cycles:
+2492654
+OK KEYS
+
++
+keypair cycles:
+1620746
+encaps cycles:
+986756
+decaps cycles:
+2492850
+OK KEYS
+
++
+keypair cycles:
+1150770
+encaps cycles:
+987038
+decaps cycles:
+2471478
+OK KEYS
+
++
+keypair cycles:
+1135409
+encaps cycles:
+986660
+decaps cycles:
+2391328
+OK KEYS
+
++
+keypair cycles:
+1275872
+encaps cycles:
+987022
+decaps cycles:
+2521596
+OK KEYS
+
++
+keypair cycles:
+1161489
+encaps cycles:
+987144
+decaps cycles:
+2356300
+OK KEYS
+
++
+keypair cycles:
+1265191
+encaps cycles:
+987108
+decaps cycles:
+2428519
+OK KEYS
+
++
+keypair cycles:
+1284747
+encaps cycles:
+986974
+decaps cycles:
+2435284
+OK KEYS
+
++
+keypair cycles:
+1292640
+encaps cycles:
+986752
+decaps cycles:
+2406398
+OK KEYS
+
++
+keypair cycles:
+1178167
+encaps cycles:
+986880
+decaps cycles:
+2327342
+OK KEYS
+
++
+keypair cycles:
+1157367
+encaps cycles:
+986924
+decaps cycles:
+2457076
+OK KEYS
+
++
+keypair cycles:
+1166243
+encaps cycles:
+986404
+decaps cycles:
+2355570
+OK KEYS
+
++
+keypair cycles:
+1190436
+encaps cycles:
+987046
+decaps cycles:
+2514502
+OK KEYS
+
++
+keypair cycles:
+1151518
+encaps cycles:
+986876
+decaps cycles:
+2442199
+OK KEYS
+
++
+keypair cycles:
+1288663
+encaps cycles:
+987024
+decaps cycles:
+2463962
+OK KEYS
+
++
+keypair cycles:
+1170946
+encaps cycles:
+986988
+decaps cycles:
+2406368
+OK KEYS
+
++
+keypair cycles:
+1163195
+encaps cycles:
+986718
+decaps cycles:
+2478291
+OK KEYS
+
++
+keypair cycles:
+1273022
+encaps cycles:
+986696
+decaps cycles:
+2513898
+OK KEYS
+
++
+keypair cycles:
+1137207
+encaps cycles:
+986840
+decaps cycles:
+2420708
+OK KEYS
+
++
+keypair cycles:
+1278909
+encaps cycles:
+986882
+decaps cycles:
+2535880
+OK KEYS
+
++
+keypair cycles:
+1163979
+encaps cycles:
+986726
+decaps cycles:
+2427744
+OK KEYS
+
++
+keypair cycles:
+1280764
+encaps cycles:
+986882
+decaps cycles:
+2557758
+OK KEYS
+
++
+keypair cycles:
+1165763
+encaps cycles:
+986882
+decaps cycles:
+2449524
+OK KEYS
+
++
+keypair cycles:
+1273048
+encaps cycles:
+986915
+decaps cycles:
+2435052
+OK KEYS
+
++
+keypair cycles:
+1639041
+encaps cycles:
+986614
+decaps cycles:
+2434866
+OK KEYS
+
++
+keypair cycles:
+1179147
+encaps cycles:
+986852
+decaps cycles:
+2442108
+OK KEYS
+
++
+keypair cycles:
+1151241
+encaps cycles:
+986870
+decaps cycles:
+2399276
+OK KEYS
+
++
+keypair cycles:
+1160439
+encaps cycles:
+986922
+decaps cycles:
+2442394
+OK KEYS
+
++
+keypair cycles:
+1152760
+encaps cycles:
+986564
+decaps cycles:
+2384224
+OK KEYS
+
++
+keypair cycles:
+1394704
+encaps cycles:
+986788
+decaps cycles:
+2449662
+OK KEYS
+
++
+keypair cycles:
+1381376
+encaps cycles:
+986852
+decaps cycles:
+2585866
+OK KEYS
+
++
+keypair cycles:
+1163174
+encaps cycles:
+986920
+decaps cycles:
+2464170
+OK KEYS
+
++
+keypair cycles:
+1177440
+encaps cycles:
+986596
+decaps cycles:
+2442106
+OK KEYS
+
++
+keypair cycles:
+1160700
+encaps cycles:
+987057
+decaps cycles:
+2500372
+OK KEYS
+
++
+keypair cycles:
+1399067
+encaps cycles:
+986782
+decaps cycles:
+2341598
+OK KEYS
+
++
+keypair cycles:
+1138310
+encaps cycles:
+986942
+decaps cycles:
+2507218
+OK KEYS
+
++
+keypair cycles:
+1165122
+encaps cycles:
+986640
+decaps cycles:
+2348829
+OK KEYS
+
++
+keypair cycles:
+1402880
+encaps cycles:
+986528
+decaps cycles:
+2492702
+OK KEYS
+
++
+keypair cycles:
+1409790
+encaps cycles:
+986962
+decaps cycles:
+2313082
+OK KEYS
+
++
+keypair cycles:
+1161044
+encaps cycles:
+986932
+decaps cycles:
+2420810
+OK KEYS
+
++
+keypair cycles:
+1510165
+encaps cycles:
+986682
+decaps cycles:
+2399266
+OK KEYS
+
++
+keypair cycles:
+1178031
+encaps cycles:
+986740
+decaps cycles:
+2420630
+OK KEYS
+
++
+keypair cycles:
+1601719
+encaps cycles:
+987140
+decaps cycles:
+2349112
+OK KEYS
+
++
+keypair cycles:
+1273722
+encaps cycles:
+986976
+decaps cycles:
+2413586
+OK KEYS
+
++
+keypair cycles:
+1163258
+encaps cycles:
+986720
+decaps cycles:
+2492478
+OK KEYS
+
++
+keypair cycles:
+1175477
+encaps cycles:
+986964
+decaps cycles:
+2435158
+OK KEYS
+
++
+keypair cycles:
+1269307
+encaps cycles:
+986568
+decaps cycles:
+2477977
+OK KEYS
+
++
+keypair cycles:
+1151735
+encaps cycles:
+987016
+decaps cycles:
+2413652
+OK KEYS
+
++
+keypair cycles:
+1299423
+encaps cycles:
+986892
+decaps cycles:
+2392220
+OK KEYS
+
++
+keypair cycles:
+1150939
+encaps cycles:
+987120
+decaps cycles:
+2442637
+OK KEYS
+
++
+keypair cycles:
+1642747
+encaps cycles:
+986952
+decaps cycles:
+2406422
+OK KEYS
+
++
+keypair cycles:
+1158203
+encaps cycles:
+986944
+decaps cycles:
+2427924
+OK KEYS
+
++
+keypair cycles:
+1496487
+encaps cycles:
+986876
+decaps cycles:
+2478310
+OK KEYS
+
++
+keypair cycles:
+1157761
+encaps cycles:
+987068
+decaps cycles:
+2457190
+OK KEYS
+
++
+keypair cycles:
+1146750
+encaps cycles:
+987030
+decaps cycles:
+2421132
+OK KEYS
+
++
+keypair cycles:
+1402638
+encaps cycles:
+986956
+decaps cycles:
+2485656
+OK KEYS
+
++
+keypair cycles:
+1269693
+encaps cycles:
+986776
+decaps cycles:
+2557306
+OK KEYS
+
++
+keypair cycles:
+1278495
+encaps cycles:
+986902
+decaps cycles:
+2413302
+OK KEYS
+
++
+keypair cycles:
+1159999
+encaps cycles:
+986896
+decaps cycles:
+2471090
+OK KEYS
+
++
+keypair cycles:
+1156821
+encaps cycles:
+986614
+decaps cycles:
+2499388
+OK KEYS
+
++
+keypair cycles:
+1514396
+encaps cycles:
+986976
+decaps cycles:
+2334512
+OK KEYS
+
++
+keypair cycles:
+1268810
+encaps cycles:
+986914
+decaps cycles:
+2499888
+OK KEYS
+
++
+keypair cycles:
+1189135
+encaps cycles:
+986932
+decaps cycles:
+2428330
+OK KEYS
+
++
+keypair cycles:
+1391618
+encaps cycles:
+986920
+decaps cycles:
+2406398
+OK KEYS
+
++
+keypair cycles:
+1501728
+encaps cycles:
+986838
+decaps cycles:
+2392230
+OK KEYS
+
++
+keypair cycles:
+1153222
+encaps cycles:
+986680
+decaps cycles:
+2413330
+OK KEYS
+
++
+keypair cycles:
+1150709
+encaps cycles:
+986871
+decaps cycles:
+2535802
+OK KEYS
+
++
+keypair cycles:
+1147606
+encaps cycles:
+986726
+decaps cycles:
+2420620
+OK KEYS
+
++
+keypair cycles:
+1482142
+encaps cycles:
+986874
+decaps cycles:
+2499582
+OK KEYS
+
++
+keypair cycles:
+1375067
+encaps cycles:
+986908
+decaps cycles:
+2463890
+OK KEYS
+
++
+keypair cycles:
+1275074
+encaps cycles:
+986976
+decaps cycles:
+2492790
+OK KEYS
+
++
+keypair cycles:
+1298928
+encaps cycles:
+987100
+decaps cycles:
+2471394
+OK KEYS
+
++
+keypair cycles:
+1166767
+encaps cycles:
+986986
+decaps cycles:
+2456907
+OK KEYS
+
++
+keypair cycles:
+1150356
+encaps cycles:
+986854
+decaps cycles:
+2398856
+OK KEYS
+
++
+keypair cycles:
+1142325
+encaps cycles:
+986848
+decaps cycles:
+2514250
+OK KEYS
+
++
+keypair cycles:
+1155388
+encaps cycles:
+986758
+decaps cycles:
+2449302
+OK KEYS
+
++
+keypair cycles:
+1426575
+encaps cycles:
+987004
+decaps cycles:
+2348894
+OK KEYS
+
++
+keypair cycles:
+1167016
+encaps cycles:
+986730
+decaps cycles:
+2391926
+OK KEYS
+
++
+keypair cycles:
+1286326
+encaps cycles:
+986756
+decaps cycles:
+2305608
+OK KEYS
+
++
+keypair cycles:
+1731064
+encaps cycles:
+986760
+decaps cycles:
+2334324
+OK KEYS
+
++
+keypair cycles:
+1522186
+encaps cycles:
+987010
+decaps cycles:
+2399252
+OK KEYS
+
++
+keypair cycles:
+1515913
+encaps cycles:
+987104
+decaps cycles:
+2478544
+OK KEYS
+
++
+keypair cycles:
+1382058
+encaps cycles:
+987070
+decaps cycles:
+2392402
+OK KEYS
+
++
+keypair cycles:
+1271767
+encaps cycles:
+986822
+decaps cycles:
+2391798
+OK KEYS
+
++
+keypair cycles:
+1133966
+encaps cycles:
+986906
+decaps cycles:
+2456506
+OK KEYS
+
++
+keypair cycles:
+1374811
+encaps cycles:
+986956
+decaps cycles:
+2456765
+OK KEYS
+
++
+keypair cycles:
+1138053
+encaps cycles:
+986884
+decaps cycles:
+2427962
+OK KEYS
+
++
+keypair cycles:
+1148622
+encaps cycles:
+987156
+decaps cycles:
+2363270
+OK KEYS
+
++
+keypair cycles:
+1862350
+encaps cycles:
+986736
+decaps cycles:
+2384890
+OK KEYS
+
++
+keypair cycles:
+1162134
+encaps cycles:
+987108
+decaps cycles:
+2435398
+OK KEYS
+
++
+keypair cycles:
+1168221
+encaps cycles:
+986712
+decaps cycles:
+2398944
+OK KEYS
+
++
+keypair cycles:
+1387094
+encaps cycles:
+987062
+decaps cycles:
+2529072
+OK KEYS
+
++
+keypair cycles:
+1152542
+encaps cycles:
+986958
+decaps cycles:
+2521488
+OK KEYS
+
++
+keypair cycles:
+1845978
+encaps cycles:
+986894
+decaps cycles:
+2536180
+OK KEYS
+
++
+keypair cycles:
+1280319
+encaps cycles:
+986932
+decaps cycles:
+2507446
+OK KEYS
+
++
+keypair cycles:
+1300950
+encaps cycles:
+986842
+decaps cycles:
+2406478
+OK KEYS
+
++
+keypair cycles:
+1288577
+encaps cycles:
+986660
+decaps cycles:
+2514070
+OK KEYS
+
++
+keypair cycles:
+1276846
+encaps cycles:
+986898
+decaps cycles:
+2442542
+OK KEYS
+
++
+keypair cycles:
+1147763
+encaps cycles:
+986838
+decaps cycles:
+2442670
+OK KEYS
+
++
+keypair cycles:
+1292904
+encaps cycles:
+986904
+decaps cycles:
+2420738
+OK KEYS
+
++
+keypair cycles:
+1160701
+encaps cycles:
+986742
+decaps cycles:
+2514138
+OK KEYS
+
++
+keypair cycles:
+1149069
+encaps cycles:
+986918
+decaps cycles:
+2492982
+OK KEYS
+
++
+keypair cycles:
+1156141
+encaps cycles:
+986778
+decaps cycles:
+2377408
+OK KEYS
+
++
+keypair cycles:
+1155183
+encaps cycles:
+986980
+decaps cycles:
+2226344
+OK KEYS
+
++
+keypair cycles:
+1178651
+encaps cycles:
+986908
+decaps cycles:
+2464118
+OK KEYS
+
++
+keypair cycles:
+1156377
+encaps cycles:
+986696
+decaps cycles:
+2485135
+OK KEYS
+
++
+keypair cycles:
+1163492
+encaps cycles:
+986988
+decaps cycles:
+2384636
+OK KEYS
+
++
+keypair cycles:
+1284870
+encaps cycles:
+986646
+decaps cycles:
+2492432
+OK KEYS
+
++
+keypair cycles:
+1282379
+encaps cycles:
+986860
+decaps cycles:
+2427938
+OK KEYS
+
++
+keypair cycles:
+1296302
+encaps cycles:
+986894
+decaps cycles:
+2513978
+OK KEYS
+
++
+keypair cycles:
+1254304
+encaps cycles:
+986746
+decaps cycles:
+2369994
+OK KEYS
+
++
+keypair cycles:
+1161583
+encaps cycles:
+986940
+decaps cycles:
+2464216
+OK KEYS
+
++
+keypair cycles:
+1164927
+encaps cycles:
+986706
+decaps cycles:
+2521344
+OK KEYS
+
++
+keypair cycles:
+1289111
+encaps cycles:
+986760
+decaps cycles:
+2478462
+OK KEYS
+
++
+keypair cycles:
+1744839
+encaps cycles:
+986938
+decaps cycles:
+2435156
+OK KEYS
+
++
+keypair cycles:
+1160556
+encaps cycles:
+986950
+decaps cycles:
+2428005
+OK KEYS
+
++
+keypair cycles:
+1136296
+encaps cycles:
+986674
+decaps cycles:
+2435218
+OK KEYS
+
++
+keypair cycles:
+1382635
+encaps cycles:
+987020
+decaps cycles:
+2284456
+OK KEYS
+
++
+keypair cycles:
+1620382
+encaps cycles:
+986864
+decaps cycles:
+2435190
+OK KEYS
+
++
+keypair cycles:
+1509384
+encaps cycles:
+986462
+decaps cycles:
+2485138
+OK KEYS
+
++
+keypair cycles:
+1173096
+encaps cycles:
+986968
+decaps cycles:
+2500240
+OK KEYS
+
++
+keypair cycles:
+1404345
+encaps cycles:
+986756
+decaps cycles:
+2399062
+OK KEYS
+
++
+keypair cycles:
+1139010
+encaps cycles:
+986924
+decaps cycles:
+2492692
+OK KEYS
+
++
+keypair cycles:
+1159374
+encaps cycles:
+987174
+decaps cycles:
+2392236
+OK KEYS
+
++
+keypair cycles:
+1267921
+encaps cycles:
+986470
+decaps cycles:
+2485052
+OK KEYS
+
++
+keypair cycles:
+1167699
+encaps cycles:
+987068
+decaps cycles:
+2528648
+OK KEYS
+
++
+keypair cycles:
+1145363
+encaps cycles:
+987006
+decaps cycles:
+2413764
+OK KEYS
+
++
+keypair cycles:
+1169744
+encaps cycles:
+986884
+decaps cycles:
+2478240
+OK KEYS
+
++
+keypair cycles:
+1175248
+encaps cycles:
+986760
+decaps cycles:
+2514262
+OK KEYS
+
++
+keypair cycles:
+1169025
+encaps cycles:
+987086
+decaps cycles:
+2449460
+OK KEYS
+
++
+keypair cycles:
+1159267
+encaps cycles:
+986778
+decaps cycles:
+2521326
+OK KEYS
+
++
+keypair cycles:
+1526282
+encaps cycles:
+986924
+decaps cycles:
+2499972
+OK KEYS
+
++
+keypair cycles:
+1281558
+encaps cycles:
+987074
+decaps cycles:
+2478588
+OK KEYS
+
++
+keypair cycles:
+1151264
+encaps cycles:
+986978
+decaps cycles:
+2363178
+OK KEYS
+
++
+keypair cycles:
+1170871
+encaps cycles:
+987010
+decaps cycles:
+2456764
+OK KEYS
+
++
+keypair cycles:
+1137007
+encaps cycles:
+986754
+decaps cycles:
+2492560
+OK KEYS
+
++
+keypair cycles:
+1271584
+encaps cycles:
+986908
+decaps cycles:
+2377682
+OK KEYS
+
++
+keypair cycles:
+1177161
+encaps cycles:
+986850
+decaps cycles:
+2398874
+OK KEYS
+
++
+keypair cycles:
+1156035
+encaps cycles:
+986960
+decaps cycles:
+2528804
+OK KEYS
+
++
+keypair cycles:
+1384572
+encaps cycles:
+986956
+decaps cycles:
+2435190
+OK KEYS
+
++
+keypair cycles:
+1299172
+encaps cycles:
+986764
+decaps cycles:
+2435416
+OK KEYS
+
++
+keypair cycles:
+1146327
+encaps cycles:
+986878
+decaps cycles:
+2543242
+OK KEYS
+
++
+keypair cycles:
+1406271
+encaps cycles:
+987160
+decaps cycles:
+2507348
+OK KEYS
+
++
+keypair cycles:
+1278301
+encaps cycles:
+987018
+decaps cycles:
+2449676
+OK KEYS
+
++
+keypair cycles:
+1159105
+encaps cycles:
+986930
+decaps cycles:
+2421014
+OK KEYS
+
++
+keypair cycles:
+1277756
+encaps cycles:
+986980
+decaps cycles:
+2492746
+OK KEYS
+
++
+keypair cycles:
+1152414
+encaps cycles:
+986810
+decaps cycles:
+2507042
+OK KEYS
+
++
+keypair cycles:
+1164683
+encaps cycles:
+986972
+decaps cycles:
+2464204
+OK KEYS
+
++
+keypair cycles:
+1163820
+encaps cycles:
+986830
+decaps cycles:
+2362889
+OK KEYS
+
++
+keypair cycles:
+1168377
+encaps cycles:
+986522
+decaps cycles:
+2477946
+OK KEYS
+
++
+keypair cycles:
+1386746
+encaps cycles:
+986850
+decaps cycles:
+2427956
+OK KEYS
+
++
+keypair cycles:
+1494876
+encaps cycles:
+986824
+decaps cycles:
+2492759
+OK KEYS
+
++
+keypair cycles:
+1162048
+encaps cycles:
+986782
+decaps cycles:
+2478428
+OK KEYS
+
++
+keypair cycles:
+1149488
+encaps cycles:
+986700
+decaps cycles:
+2398802
+OK KEYS
+
++
+keypair cycles:
+1525126
+encaps cycles:
+986814
+decaps cycles:
+2392238
+OK KEYS
+
++
+keypair cycles:
+1275446
+encaps cycles:
+987014
+decaps cycles:
+2341408
+OK KEYS
+
++
+keypair cycles:
+1305995
+encaps cycles:
+987024
+decaps cycles:
+2413686
+OK KEYS
+
++
+keypair cycles:
+1263522
+encaps cycles:
+986800
+decaps cycles:
+2399078
+OK KEYS
+
++
+keypair cycles:
+1143394
+encaps cycles:
+986402
+decaps cycles:
+2492225
+OK KEYS
+
++
+keypair cycles:
+1247076
+encaps cycles:
+986742
+decaps cycles:
+2442030
+OK KEYS
+
++
+keypair cycles:
+1516814
+encaps cycles:
+986862
+decaps cycles:
+2478284
+OK KEYS
+
++
+keypair cycles:
+1162907
+encaps cycles:
+987128
+decaps cycles:
+2464422
+OK KEYS
+
++
+keypair cycles:
+1281902
+encaps cycles:
+986902
+decaps cycles:
+2492710
+OK KEYS
+
++
+keypair cycles:
+1391241
+encaps cycles:
+987042
+decaps cycles:
+2478540
+OK KEYS
+
++
+keypair cycles:
+1167210
+encaps cycles:
+986796
+decaps cycles:
+2485492
+OK KEYS
+
++
+keypair cycles:
+1175674
+encaps cycles:
+986782
+decaps cycles:
+2456608
+OK KEYS
+
++
+keypair cycles:
+1153819
+encaps cycles:
+986954
+decaps cycles:
+2435244
+OK KEYS
+
++
+keypair cycles:
+1157630
+encaps cycles:
+987060
+decaps cycles:
+2435420
+OK KEYS
+
++
+keypair cycles:
+1267811
+encaps cycles:
+987201
+decaps cycles:
+2485708
+OK KEYS
+
++
+keypair cycles:
+1267419
+encaps cycles:
+986936
+decaps cycles:
+2514324
+OK KEYS
+
++
+keypair cycles:
+1151831
+encaps cycles:
+986708
+decaps cycles:
+2499446
+OK KEYS
+
++
+keypair cycles:
+1279144
+encaps cycles:
+987088
+decaps cycles:
+2420928
+OK KEYS
+
++
+keypair cycles:
+1865421
+encaps cycles:
+986942
+decaps cycles:
+2377600
+OK KEYS
+
++
+keypair cycles:
+1266392
+encaps cycles:
+986624
+decaps cycles:
+2535800
+OK KEYS
+
++
+keypair cycles:
+1370463
+encaps cycles:
+986844
+decaps cycles:
+2413799
+OK KEYS
+
++
+keypair cycles:
+1175408
+encaps cycles:
+986820
+decaps cycles:
+2392188
+OK KEYS
+
++
+keypair cycles:
+1159175
+encaps cycles:
+986701
+decaps cycles:
+2377640
+OK KEYS
+
++
+keypair cycles:
+1139320
+encaps cycles:
+986526
+decaps cycles:
+2377536
+OK KEYS
+
++
+keypair cycles:
+1157483
+encaps cycles:
+986738
+decaps cycles:
+2485270
+OK KEYS
+
++
+keypair cycles:
+1163505
+encaps cycles:
+987138
+decaps cycles:
+2349010
+OK KEYS
+
++
+keypair cycles:
+1167589
+encaps cycles:
+986871
+decaps cycles:
+2471052
+OK KEYS
+
++
+keypair cycles:
+1396722
+encaps cycles:
+986902
+decaps cycles:
+2435536
+OK KEYS
+
++
+keypair cycles:
+1525157
+encaps cycles:
+987096
+decaps cycles:
+2427980
+OK KEYS
+
++
+keypair cycles:
+1278037
+encaps cycles:
+986754
+decaps cycles:
+2500070
+OK KEYS
+
++
+keypair cycles:
+1167755
+encaps cycles:
+986684
+decaps cycles:
+2392167
+OK KEYS
+
++
+keypair cycles:
+1131216
+encaps cycles:
+987122
+decaps cycles:
+2349298
+OK KEYS
+
++
+keypair cycles:
+1279463
+encaps cycles:
+986670
+decaps cycles:
+2420464
+OK KEYS
+
++
+keypair cycles:
+1264151
+encaps cycles:
+986894
+decaps cycles:
+2536206
+OK KEYS
+
++
+keypair cycles:
+1161127
+encaps cycles:
+986816
+decaps cycles:
+2449450
+OK KEYS
+
++
+keypair cycles:
+1266283
+encaps cycles:
+986773
+decaps cycles:
+2521334
+OK KEYS
+
++
+keypair cycles:
+1139256
+encaps cycles:
+986638
+decaps cycles:
+2406160
+OK KEYS
+
++
+keypair cycles:
+1162362
+encaps cycles:
+987006
+decaps cycles:
+2391955
+OK KEYS
+
++
+keypair cycles:
+1390829
+encaps cycles:
+986900
+decaps cycles:
+2370440
+OK KEYS
+
++
+keypair cycles:
+1175437
+encaps cycles:
+986842
+decaps cycles:
+2334398
+OK KEYS
+
++
+keypair cycles:
+1179129
+encaps cycles:
+986888
+decaps cycles:
+2471073
+OK KEYS
+
++
+keypair cycles:
+1279432
+encaps cycles:
+987126
+decaps cycles:
+2500392
+OK KEYS
+
++
+keypair cycles:
+1155749
+encaps cycles:
+986992
+decaps cycles:
+2428114
+OK KEYS
+
++
+keypair cycles:
+1145115
+encaps cycles:
+986778
+decaps cycles:
+2435216
+OK KEYS
+
++
+keypair cycles:
+1133484
+encaps cycles:
+987026
+decaps cycles:
+2478346
+OK KEYS
+
++
+keypair cycles:
+1166613
+encaps cycles:
+986848
+decaps cycles:
+2499784
+OK KEYS
+
++
+keypair cycles:
+1125531
+encaps cycles:
+986938
+decaps cycles:
+2507144
+OK KEYS
+
++
+keypair cycles:
+1171527
+encaps cycles:
+986738
+decaps cycles:
+2312478
+OK KEYS
+
++
+keypair cycles:
+1146743
+encaps cycles:
+986786
+decaps cycles:
+2413504
+OK KEYS
+
++
+keypair cycles:
+1603375
+encaps cycles:
+986762
+decaps cycles:
+2528476
+OK KEYS
+
++
+keypair cycles:
+1512982
+encaps cycles:
+986874
+decaps cycles:
+2514621
+OK KEYS
+
++
+keypair cycles:
+1172796
+encaps cycles:
+987074
+decaps cycles:
+2406708
+OK KEYS
+
++
+keypair cycles:
+1275378
+encaps cycles:
+986932
+decaps cycles:
+2485624
+OK KEYS
+
++
+keypair cycles:
+1166881
+encaps cycles:
+986894
+decaps cycles:
+2435158
+OK KEYS
+
++
+keypair cycles:
+1289316
+encaps cycles:
+986780
+decaps cycles:
+2427890
+OK KEYS
+
++
+keypair cycles:
+1268515
+encaps cycles:
+986716
+decaps cycles:
+2420506
+OK KEYS
+
++
+keypair cycles:
+1287481
+encaps cycles:
+986970
+decaps cycles:
+2485582
+OK KEYS
+
++
+keypair cycles:
+1279181
+encaps cycles:
+986934
+decaps cycles:
+2442268
+OK KEYS
+
++
+keypair cycles:
+1162090
+encaps cycles:
+986681
+decaps cycles:
+2478110
+OK KEYS
+
++
+keypair cycles:
+1155394
+encaps cycles:
+986992
+decaps cycles:
+2485626
+OK KEYS
+
++
+keypair cycles:
+1162050
+encaps cycles:
+986752
+decaps cycles:
+2348705
+OK KEYS
+
++
+keypair cycles:
+1139125
+encaps cycles:
+986836
+decaps cycles:
+2521022
+OK KEYS
+
++
+keypair cycles:
+1153565
+encaps cycles:
+986664
+decaps cycles:
+2384842
+OK KEYS
+
++
+keypair cycles:
+1146050
+encaps cycles:
+987002
+decaps cycles:
+2413838
+OK KEYS
+
++
+keypair cycles:
+1148327
+encaps cycles:
+987088
+decaps cycles:
+2456928
+OK KEYS
+
++
+keypair cycles:
+1162394
+encaps cycles:
+986864
+decaps cycles:
+2471070
+OK KEYS
+
++
+keypair cycles:
+1380732
+encaps cycles:
+987028
+decaps cycles:
+2492894
+OK KEYS
+
++
+keypair cycles:
+1272461
+encaps cycles:
+986918
+decaps cycles:
+2349061
+OK KEYS
+
++
+keypair cycles:
+1384316
+encaps cycles:
+986922
+decaps cycles:
+2413626
+OK KEYS
+
++
+keypair cycles:
+1751822
+encaps cycles:
+986946
+decaps cycles:
+2348820
+OK KEYS
+
++
+keypair cycles:
+1266195
+encaps cycles:
+986914
+decaps cycles:
+2413586
+OK KEYS
+
++
+keypair cycles:
+1158081
+encaps cycles:
+986732
+decaps cycles:
+2499676
+OK KEYS
+
++
+keypair cycles:
+1402459
+encaps cycles:
+986930
+decaps cycles:
+2385092
+OK KEYS
+
++
+keypair cycles:
+1267467
+encaps cycles:
+986832
+decaps cycles:
+2420898
+OK KEYS
+
++
+keypair cycles:
+1141880
+encaps cycles:
+987020
+decaps cycles:
+2442434
+OK KEYS
+
++
+keypair cycles:
+1170913
+encaps cycles:
+987028
+decaps cycles:
+2435304
+OK KEYS
+
++
+keypair cycles:
+1144463
+encaps cycles:
+986900
+decaps cycles:
+2456696
+OK KEYS
+
++
+keypair cycles:
+1299785
+encaps cycles:
+986872
+decaps cycles:
+2356226
+OK KEYS
+
++
+keypair cycles:
+1411487
+encaps cycles:
+986838
+decaps cycles:
+2291250
+OK KEYS
+
++
+keypair cycles:
+1519055
+encaps cycles:
+986674
+decaps cycles:
+2392094
+OK KEYS
+
++
+keypair cycles:
+1262065
+encaps cycles:
+986850
+decaps cycles:
+2413526
+OK KEYS
+
++
+keypair cycles:
+1301148
+encaps cycles:
+986966
+decaps cycles:
+2449604
+OK KEYS
+
++
+keypair cycles:
+1165128
+encaps cycles:
+987032
+decaps cycles:
+2420854
+OK KEYS
+
++
+keypair cycles:
+1170888
+encaps cycles:
+986822
+decaps cycles:
+2370302
+OK KEYS
+
++
+keypair cycles:
+1147129
+encaps cycles:
+986724
+decaps cycles:
+2391808
+OK KEYS
+
++
+keypair cycles:
+1269750
+encaps cycles:
+986472
+decaps cycles:
+2427484
+OK KEYS
+
++
+keypair cycles:
+1266466
+encaps cycles:
+986742
+decaps cycles:
+2348764
+OK KEYS
+
++
+keypair cycles:
+1393636
+encaps cycles:
+986961
+decaps cycles:
+2499808
+OK KEYS
+
++
+keypair cycles:
+1387376
+encaps cycles:
+986928
+decaps cycles:
+2399372
+OK KEYS
+
++
+keypair cycles:
+1157164
+encaps cycles:
+986830
+decaps cycles:
+2449490
+OK KEYS
+
++
+keypair cycles:
+1185438
+encaps cycles:
+987152
+decaps cycles:
+2507704
+OK KEYS
+
++
+keypair cycles:
+1279368
+encaps cycles:
+986902
+decaps cycles:
+2499818
+OK KEYS
+
++
+keypair cycles:
+1379162
+encaps cycles:
+987028
+decaps cycles:
+2435190
+OK KEYS
+
++
+keypair cycles:
+1162517
+encaps cycles:
+986828
+decaps cycles:
+2442360
+OK KEYS
+
++
+keypair cycles:
+1510042
+encaps cycles:
+986872
+decaps cycles:
+2427916
+OK KEYS
+
++
+keypair cycles:
+1148283
+encaps cycles:
+986986
+decaps cycles:
+2507150
+OK KEYS
+
++
+keypair cycles:
+1513501
+encaps cycles:
+986992
+decaps cycles:
+2528520
+OK KEYS
+
++
+keypair cycles:
+1260582
+encaps cycles:
+987028
+decaps cycles:
+2478272
+OK KEYS
+
++
+keypair cycles:
+1300632
+encaps cycles:
+987012
+decaps cycles:
+2543188
+OK KEYS
+
++
+keypair cycles:
+1269132
+encaps cycles:
+986900
+decaps cycles:
+2370046
+OK KEYS
+
++
+keypair cycles:
+1183471
+encaps cycles:
+986898
+decaps cycles:
+2427816
+OK KEYS
+
++
+keypair cycles:
+1161339
+encaps cycles:
+986692
+decaps cycles:
+2449280
+OK KEYS
+
++
+keypair cycles:
+1147059
+encaps cycles:
+986940
+decaps cycles:
+2457014
+OK KEYS
+
++
+keypair cycles:
+1164360
+encaps cycles:
+986946
+decaps cycles:
+2427980
+OK KEYS
+
++
+keypair cycles:
+1287404
+encaps cycles:
+986722
+decaps cycles:
+2369952
+OK KEYS
+
++
+keypair cycles:
+1278378
+encaps cycles:
+986764
+decaps cycles:
+2435264
+OK KEYS
+
++
+keypair cycles:
+1636735
+encaps cycles:
+986818
+decaps cycles:
+2392176
+OK KEYS
+
++
+keypair cycles:
+1265042
+encaps cycles:
+986922
+decaps cycles:
+2557432
+OK KEYS
+
++
+keypair cycles:
+1390360
+encaps cycles:
+986302
+decaps cycles:
+2391622
+OK KEYS
+
++
+keypair cycles:
+1173244
+encaps cycles:
+986890
+decaps cycles:
+2428250
+OK KEYS
+
++
+keypair cycles:
+1263431
+encaps cycles:
+986938
+decaps cycles:
+2428248
+OK KEYS
+
++
+keypair cycles:
+1383203
+encaps cycles:
+986806
+decaps cycles:
+2355708
+OK KEYS
+
++
+keypair cycles:
+1188216
+encaps cycles:
+987003
+decaps cycles:
+2363042
+OK KEYS
+
++
+keypair cycles:
+1260833
+encaps cycles:
+986900
+decaps cycles:
+2399522
+OK KEYS
+
++
+keypair cycles:
+1139538
+encaps cycles:
+987070
+decaps cycles:
+2456858
+OK KEYS
+
++
+keypair cycles:
+1142685
+encaps cycles:
+986884
+decaps cycles:
+2435338
+OK KEYS
+
++
+keypair cycles:
+1159688
+encaps cycles:
+986688
+decaps cycles:
+2449384
+OK KEYS
+
++
+keypair cycles:
+1153128
+encaps cycles:
+986882
+decaps cycles:
+2384988
+OK KEYS
+
++
+keypair cycles:
+1288771
+encaps cycles:
+986940
+decaps cycles:
+2435198
+OK KEYS
+
++
+keypair cycles:
+1258694
+encaps cycles:
+987002
+decaps cycles:
+2392340
+OK KEYS
+
++
+keypair cycles:
+1503784
+encaps cycles:
+986826
+decaps cycles:
+2492532
+OK KEYS
+
++
+keypair cycles:
+1163663
+encaps cycles:
+986900
+decaps cycles:
+2485512
+OK KEYS
+
++
+keypair cycles:
+1620151
+encaps cycles:
+987048
+decaps cycles:
+2385218
+OK KEYS
+
++
+keypair cycles:
+1129149
+encaps cycles:
+987056
+decaps cycles:
+2327548
+OK KEYS
+
++
+keypair cycles:
+1281008
+encaps cycles:
+986910
+decaps cycles:
+2435134
+OK KEYS
+
++
+keypair cycles:
+1486346
+encaps cycles:
+986944
+decaps cycles:
+2406272
+OK KEYS
+
++
+keypair cycles:
+1258414
+encaps cycles:
+987098
+decaps cycles:
+2435367
+OK KEYS
+
++
+keypair cycles:
+1505293
+encaps cycles:
+987154
+decaps cycles:
+2442992
+OK KEYS
+
++
+keypair cycles:
+1151810
+encaps cycles:
+986982
+decaps cycles:
+2435264
+OK KEYS
+
++
+keypair cycles:
+1268631
+encaps cycles:
+986984
+decaps cycles:
+2392396
+OK KEYS
+
++
+keypair cycles:
+1150367
+encaps cycles:
+987100
+decaps cycles:
+2478514
+OK KEYS
+
++
+keypair cycles:
+1180138
+encaps cycles:
+986956
+decaps cycles:
+2456840
+OK KEYS
+
++
+keypair cycles:
+1276530
+encaps cycles:
+986944
+decaps cycles:
+2564610
+OK KEYS
+
++
+keypair cycles:
+1259831
+encaps cycles:
+986744
+decaps cycles:
+2442157
+OK KEYS
+
++
+keypair cycles:
+1157277
+encaps cycles:
+986804
+decaps cycles:
+2456416
+OK KEYS
+
++
+keypair cycles:
+1365459
+encaps cycles:
+986904
+decaps cycles:
+2384784
+OK KEYS
+
++
+keypair cycles:
+1372026
+encaps cycles:
+987070
+decaps cycles:
+2435360
+OK KEYS
+
++
+keypair cycles:
+1172199
+encaps cycles:
+986672
+decaps cycles:
+2536002
+OK KEYS
+
++
+keypair cycles:
+1278334
+encaps cycles:
+986642
+decaps cycles:
+2413322
+OK KEYS
+
++
+keypair cycles:
+1403459
+encaps cycles:
+986650
+decaps cycles:
+2513748
+OK KEYS
+
++
+keypair cycles:
+1146112
+encaps cycles:
+987046
+decaps cycles:
+2536006
+OK KEYS
+
++
+keypair cycles:
+1155683
+encaps cycles:
+986784
+decaps cycles:
+2535756
+OK KEYS
+
++
+keypair cycles:
+1624423
+encaps cycles:
+986960
+decaps cycles:
+2492810
+OK KEYS
+
++
+keypair cycles:
+1409075
+encaps cycles:
+987006
+decaps cycles:
+2384830
+OK KEYS
+
++
+keypair cycles:
+2013837
+encaps cycles:
+986916
+decaps cycles:
+2449516
+OK KEYS
+
++
+keypair cycles:
+1280942
+encaps cycles:
+986768
+decaps cycles:
+2420716
+OK KEYS
+
++
+keypair cycles:
+1157138
+encaps cycles:
+986562
+decaps cycles:
+2420640
+OK KEYS
+
++
+keypair cycles:
+1512490
+encaps cycles:
+987076
+decaps cycles:
+2428160
+OK KEYS
+
++
+keypair cycles:
+1395521
+encaps cycles:
+986906
+decaps cycles:
+2492644
+OK KEYS
+
++
+keypair cycles:
+1381800
+encaps cycles:
+987046
+decaps cycles:
+2392019
+OK KEYS
+
++
+keypair cycles:
+1141390
+encaps cycles:
+987000
+decaps cycles:
+2427994
+OK KEYS
+
++
+keypair cycles:
+1271608
+encaps cycles:
+986972
+decaps cycles:
+2420922
+OK KEYS
+
++
+keypair cycles:
+1166609
+encaps cycles:
+986906
+decaps cycles:
+2478224
+OK KEYS
+
++
+keypair cycles:
+1250176
+encaps cycles:
+987026
+decaps cycles:
+2435262
+OK KEYS
+
++
+keypair cycles:
+1251444
+encaps cycles:
+986886
+decaps cycles:
+2435170
+OK KEYS
+
++
+keypair cycles:
+1163696
+encaps cycles:
+986920
+decaps cycles:
+2564678
+OK KEYS
+
++
+keypair cycles:
+1161924
+encaps cycles:
+986950
+decaps cycles:
+2356024
+OK KEYS
+
++
+keypair cycles:
+1387899
+encaps cycles:
+986774
+decaps cycles:
+2470968
+OK KEYS
+
++
+keypair cycles:
+1526440
+encaps cycles:
+986920
+decaps cycles:
+2550594
+OK KEYS
+
++
+keypair cycles:
+1140984
+encaps cycles:
+986730
+decaps cycles:
+2514391
+OK KEYS
+
++
+keypair cycles:
+1168433
+encaps cycles:
+986910
+decaps cycles:
+2492804
+OK KEYS
+
++
+keypair cycles:
+1138954
+encaps cycles:
+986823
+decaps cycles:
+2478248
+OK KEYS
+
++
+keypair cycles:
+1290783
+encaps cycles:
+986834
+decaps cycles:
+2413598
+OK KEYS
+
++
+keypair cycles:
+1281562
+encaps cycles:
+987034
+decaps cycles:
+2478410
+OK KEYS
+
++
+keypair cycles:
+1271542
+encaps cycles:
+986712
+decaps cycles:
+2492840
+OK KEYS
+
++
+keypair cycles:
+1167419
+encaps cycles:
+986868
+decaps cycles:
+2456702
+OK KEYS
+
++
+keypair cycles:
+1168218
+encaps cycles:
+986808
+decaps cycles:
+2348742
+OK KEYS
+
++
+keypair cycles:
+1170279
+encaps cycles:
+987192
+decaps cycles:
+2421052
+OK KEYS
+
++
+keypair cycles:
+1181296
+encaps cycles:
+986990
+decaps cycles:
+2500274
+OK KEYS
+
++
+keypair cycles:
+1862797
+encaps cycles:
+986884
+decaps cycles:
+2456604
+OK KEYS
+
++
+keypair cycles:
+1355858
+encaps cycles:
+986484
+decaps cycles:
+2362978
+OK KEYS
+
++
+keypair cycles:
+1150837
+encaps cycles:
+987126
+decaps cycles:
+2420982
+OK KEYS
+
++
+keypair cycles:
+1165967
+encaps cycles:
+986956
+decaps cycles:
+2485364
+OK KEYS
+
++
+keypair cycles:
+1280965
+encaps cycles:
+986974
+decaps cycles:
+2384730
+OK KEYS
+
++
+keypair cycles:
+1139625
+encaps cycles:
+986834
+decaps cycles:
+2391996
+OK KEYS
+
++
+keypair cycles:
+1263660
+encaps cycles:
+987046
+decaps cycles:
+2521880
+OK KEYS
+
++
+keypair cycles:
+1295040
+encaps cycles:
+986900
+decaps cycles:
+2441986
+OK KEYS
+
++
+keypair cycles:
+1274440
+encaps cycles:
+986982
+decaps cycles:
+2363500
+OK KEYS
+
++
+keypair cycles:
+1374506
+encaps cycles:
+986914
+decaps cycles:
+2370566
+OK KEYS
+
++
+keypair cycles:
+1283903
+encaps cycles:
+986858
+decaps cycles:
+2355704
+OK KEYS
+
++
+keypair cycles:
+1140980
+encaps cycles:
+986978
+decaps cycles:
+2420534
+OK KEYS
+
++
+keypair cycles:
+1288425
+encaps cycles:
+986500
+decaps cycles:
+2477868
+OK KEYS
+
++
+keypair cycles:
+1287290
+encaps cycles:
+987122
+decaps cycles:
+2485832
+OK KEYS
+
++
+keypair cycles:
+1169614
+encaps cycles:
+987210
+decaps cycles:
+2471420
+OK KEYS
+
++
+keypair cycles:
+1155054
+encaps cycles:
+987036
+decaps cycles:
+2435312
+OK KEYS
+
++
+keypair cycles:
+1181868
+encaps cycles:
+986868
+decaps cycles:
+2499872
+OK KEYS
+
++
+keypair cycles:
+1163700
+encaps cycles:
+986690
+decaps cycles:
+2528442
+OK KEYS
+
++
+keypair cycles:
+1395139
+encaps cycles:
+987044
+decaps cycles:
+2485622
+OK KEYS
+
++
+keypair cycles:
+1260319
+encaps cycles:
+986926
+decaps cycles:
+2392230
+OK KEYS
+
++
+keypair cycles:
+1300314
+encaps cycles:
+986814
+decaps cycles:
+2449440
+OK KEYS
+
++
+keypair cycles:
+1289620
+encaps cycles:
+986758
+decaps cycles:
+2435182
+OK KEYS
+
++
+keypair cycles:
+1270297
+encaps cycles:
+987000
+decaps cycles:
+2356102
+OK KEYS
+
++
+keypair cycles:
+1146002
+encaps cycles:
+986948
+decaps cycles:
+2427996
+OK KEYS
+
++
+keypair cycles:
+1518450
+encaps cycles:
+986914
+decaps cycles:
+2341454
+OK KEYS
+
++
+keypair cycles:
+1182300
+encaps cycles:
+987012
+decaps cycles:
+2456878
+OK KEYS
+
++
+keypair cycles:
+1311058
+encaps cycles:
+986942
+decaps cycles:
+2334470
+OK KEYS
+
++
+keypair cycles:
+1264171
+encaps cycles:
+987072
+decaps cycles:
+2399536
+OK KEYS
+
++
+keypair cycles:
+1170425
+encaps cycles:
+987058
+decaps cycles:
+2442758
+OK KEYS
+
++
+keypair cycles:
+1397585
+encaps cycles:
+986838
+decaps cycles:
+2384772
+OK KEYS
+
++
+keypair cycles:
+1140880
+encaps cycles:
+986814
+decaps cycles:
+2399084
+OK KEYS
+
++
+keypair cycles:
+1378080
+encaps cycles:
+986914
+decaps cycles:
+2492736
+OK KEYS
+
++
+keypair cycles:
+1169380
+encaps cycles:
+986898
+decaps cycles:
+2471050
+OK KEYS
+
++
+keypair cycles:
+1284725
+encaps cycles:
+986946
+decaps cycles:
+2456765
+OK KEYS
+
++
+keypair cycles:
+1279023
+encaps cycles:
+986898
+decaps cycles:
+2463956
+OK KEYS
+
++
+keypair cycles:
+1139510
+encaps cycles:
+986918
+decaps cycles:
+2442642
+OK KEYS
+
++
+keypair cycles:
+1400044
+encaps cycles:
+987006
+decaps cycles:
+2507299
+OK KEYS
+
++
+keypair cycles:
+1150187
+encaps cycles:
+987080
+decaps cycles:
+2370566
+OK KEYS
+
++
+keypair cycles:
+1159945
+encaps cycles:
+986980
+decaps cycles:
+2427950
+OK KEYS
+
++
+keypair cycles:
+1155675
+encaps cycles:
+986840
+decaps cycles:
+2363058
+OK KEYS
+
++
+keypair cycles:
+1395084
+encaps cycles:
+987108
+decaps cycles:
+2377520
+OK KEYS
+
++
+keypair cycles:
+1152449
+encaps cycles:
+986790
+decaps cycles:
+2442296
+OK KEYS
+
++
+keypair cycles:
+1737208
+encaps cycles:
+987098
+decaps cycles:
+2406512
+OK KEYS
+
++
+keypair cycles:
+1286574
+encaps cycles:
+986930
+decaps cycles:
+2420825
+OK KEYS
+
++
+keypair cycles:
+1144126
+encaps cycles:
+987156
+decaps cycles:
+2557634
+OK KEYS
+
++
+keypair cycles:
+1291347
+encaps cycles:
+986834
+decaps cycles:
+2499884
+OK KEYS
+
++
+keypair cycles:
+1176641
+encaps cycles:
+986684
+decaps cycles:
+2485381
+OK KEYS
+
++
+keypair cycles:
+1170284
+encaps cycles:
+986840
+decaps cycles:
+2312676
+OK KEYS
+
++
+keypair cycles:
+1610039
+encaps cycles:
+986884
+decaps cycles:
+2420702
+OK KEYS
+
++
+keypair cycles:
+1404993
+encaps cycles:
+986892
+decaps cycles:
+2334392
+OK KEYS
+
++
+keypair cycles:
+1284483
+encaps cycles:
+986794
+decaps cycles:
+2427806
+OK KEYS
+
++
+keypair cycles:
+1283500
+encaps cycles:
+986674
+decaps cycles:
+2528788
+OK KEYS
+
++
+keypair cycles:
+1265566
+encaps cycles:
+986834
+decaps cycles:
+2435142
+OK KEYS
+
++
+keypair cycles:
+1401658
+encaps cycles:
+986829
+decaps cycles:
+2363020
+OK KEYS
+
++
+keypair cycles:
+1285283
+encaps cycles:
+986952
+decaps cycles:
+2348830
+OK KEYS
+
++
+keypair cycles:
+1282121
+encaps cycles:
+986894
+decaps cycles:
+2370388
+OK KEYS
+
++
+keypair cycles:
+1755938
+encaps cycles:
+986980
+decaps cycles:
+2449691
+OK KEYS
+
++
+keypair cycles:
+1876300
+encaps cycles:
+986920
+decaps cycles:
+2327166
+OK KEYS
+
++
+keypair cycles:
+1277574
+encaps cycles:
+986906
+decaps cycles:
+2442266
+OK KEYS
+
++
+keypair cycles:
+1408975
+encaps cycles:
+986726
+decaps cycles:
+2492841
+OK KEYS
+
++
+keypair cycles:
+1404825
+encaps cycles:
+987034
+decaps cycles:
+2392176
+OK KEYS
+
++
+keypair cycles:
+1278034
+encaps cycles:
+986938
+decaps cycles:
+2341754
+OK KEYS
+
++
+keypair cycles:
+1404221
+encaps cycles:
+987024
+decaps cycles:
+2442770
+OK KEYS
+
++
+keypair cycles:
+1392363
+encaps cycles:
+986720
+decaps cycles:
+2391724
+OK KEYS
+
++
+keypair cycles:
+1160354
+encaps cycles:
+987130
+decaps cycles:
+2536016
+OK KEYS
+
++
+keypair cycles:
+1169510
+encaps cycles:
+986920
+decaps cycles:
+2442352
+OK KEYS
+
++
+keypair cycles:
+1160123
+encaps cycles:
+986859
+decaps cycles:
+2413816
+OK KEYS
+
++
+keypair cycles:
+1188560
+encaps cycles:
+986986
+decaps cycles:
+2398868
+OK KEYS
+
++
+keypair cycles:
+1386518
+encaps cycles:
+987102
+decaps cycles:
+2464018
+OK KEYS
+
++
+keypair cycles:
+1383213
+encaps cycles:
+986884
+decaps cycles:
+2392153
+OK KEYS
+
++
+keypair cycles:
+1587737
+encaps cycles:
+986838
+decaps cycles:
+2355996
+OK KEYS
+
++
+keypair cycles:
+1148472
+encaps cycles:
+986976
+decaps cycles:
+2485584
+OK KEYS
+
++
+keypair cycles:
+1513125
+encaps cycles:
+986754
+decaps cycles:
+2449711
+OK KEYS
+
++
+keypair cycles:
+1155842
+encaps cycles:
+986914
+decaps cycles:
+2399272
+OK KEYS
+
++
+keypair cycles:
+1622620
+encaps cycles:
+986960
+decaps cycles:
+2449638
+OK KEYS
+
++
+keypair cycles:
+1261180
+encaps cycles:
+986812
+decaps cycles:
+2463852
+OK KEYS
+
++
+keypair cycles:
+1732645
+encaps cycles:
+986664
+decaps cycles:
+2391664
+OK KEYS
+
++
+keypair cycles:
+1174988
+encaps cycles:
+986910
+decaps cycles:
+2406602
+OK KEYS
+
++
+keypair cycles:
+1513849
+encaps cycles:
+986730
+decaps cycles:
+2391716
+OK KEYS
+
++
+keypair cycles:
+1165365
+encaps cycles:
+986808
+decaps cycles:
+2442158
+OK KEYS
+
++
+keypair cycles:
+1164622
+encaps cycles:
+986766
+decaps cycles:
+2449410
+OK KEYS
+
++
+keypair cycles:
+1308792
+encaps cycles:
+986806
+decaps cycles:
+2377688
+OK KEYS
+
++
+keypair cycles:
+1400351
+encaps cycles:
+986970
+decaps cycles:
+2449859
+OK KEYS
+
++
+keypair cycles:
+1284872
+encaps cycles:
+986728
+decaps cycles:
+2398972
+OK KEYS
+
++
+keypair cycles:
+1259002
+encaps cycles:
+986574
+decaps cycles:
+2513844
+OK KEYS
+
++
+keypair cycles:
+1248187
+encaps cycles:
+986984
+decaps cycles:
+2377712
+OK KEYS
+
++
+keypair cycles:
+1968269
+encaps cycles:
+986978
+decaps cycles:
+2399164
+OK KEYS
+
++
+keypair cycles:
+1278048
+encaps cycles:
+986936
+decaps cycles:
+2536160
+OK KEYS
+
++
+keypair cycles:
+1152956
+encaps cycles:
+986924
+decaps cycles:
+2427766
+OK KEYS
+
++
+keypair cycles:
+1259897
+encaps cycles:
+986678
+decaps cycles:
+2355604
+OK KEYS
+
++
+keypair cycles:
+1392513
+encaps cycles:
+986708
+decaps cycles:
+2384654
+OK KEYS
+
++
+keypair cycles:
+1282201
+encaps cycles:
+986802
+decaps cycles:
+2420782
+OK KEYS
+
++
+keypair cycles:
+1279028
+encaps cycles:
+986912
+decaps cycles:
+2507166
+OK KEYS
+
++
+keypair cycles:
+1164444
+encaps cycles:
+986724
+decaps cycles:
+2449040
+OK KEYS
+
++
+keypair cycles:
+1406715
+encaps cycles:
+986950
+decaps cycles:
+2435262
+OK KEYS
+
++
+keypair cycles:
+1167272
+encaps cycles:
+987102
+decaps cycles:
+2385100
+OK KEYS
+
++
+keypair cycles:
+1152737
+encaps cycles:
+987044
+decaps cycles:
+2334472
+OK KEYS
+
++
+keypair cycles:
+1146277
+encaps cycles:
+986844
+decaps cycles:
+2492626
+OK KEYS
+
++
+keypair cycles:
+1155035
+encaps cycles:
+986658
+decaps cycles:
+2420546
+OK KEYS
+
++
+keypair cycles:
+1279225
+encaps cycles:
+986926
+decaps cycles:
+2435368
+OK KEYS
+
++
+keypair cycles:
+1132849
+encaps cycles:
+986802
+decaps cycles:
+2384660
+OK KEYS
+
++
+keypair cycles:
+1177014
+encaps cycles:
+987020
+decaps cycles:
+2384874
+OK KEYS
+
++
+keypair cycles:
+1401356
+encaps cycles:
+986746
+decaps cycles:
+2420646
+OK KEYS
+
++
+keypair cycles:
+1395946
+encaps cycles:
+986708
+decaps cycles:
+2629226
+OK KEYS
+
++
+keypair cycles:
+1157351
+encaps cycles:
+986904
+decaps cycles:
+2471410
+OK KEYS
+
++
+keypair cycles:
+1384026
+encaps cycles:
+986700
+decaps cycles:
+2427868
+OK KEYS
+
++
+keypair cycles:
+1259395
+encaps cycles:
+987022
+decaps cycles:
+2550554
+OK KEYS
+
++
+keypair cycles:
+1374000
+encaps cycles:
+986790
+decaps cycles:
+2384730
+OK KEYS
+
++
+keypair cycles:
+1610694
+encaps cycles:
+986760
+decaps cycles:
+2363424
+OK KEYS
+
++
+keypair cycles:
+1157477
+encaps cycles:
+987070
+decaps cycles:
+2456880
+OK KEYS
+
++
+keypair cycles:
+1157998
+encaps cycles:
+987078
+decaps cycles:
+2428084
+OK KEYS
+
++
+keypair cycles:
+1277718
+encaps cycles:
+986992
+decaps cycles:
+2384864
+OK KEYS
+
++
+keypair cycles:
+1151942
+encaps cycles:
+987065
+decaps cycles:
+2471584
+OK KEYS
+
++
+keypair cycles:
+1151036
+encaps cycles:
+986746
+decaps cycles:
+2355640
+OK KEYS
+
++
+keypair cycles:
+1192971
+encaps cycles:
+986952
+decaps cycles:
+2391970
+OK KEYS
+
++
+keypair cycles:
+1151663
+encaps cycles:
+986986
+decaps cycles:
+2384895
+OK KEYS
+
++
+keypair cycles:
+1136155
+encaps cycles:
+986828
+decaps cycles:
+2449430
+OK KEYS
+
++
+keypair cycles:
+1292231
+encaps cycles:
+986916
+decaps cycles:
+2413634
+OK KEYS
+
++
+keypair cycles:
+1258948
+encaps cycles:
+986812
+decaps cycles:
+2478108
+OK KEYS
+
++
+keypair cycles:
+1151902
+encaps cycles:
+986842
+decaps cycles:
+2341792
+OK KEYS
+
++
+keypair cycles:
+1187196
+encaps cycles:
+986772
+decaps cycles:
+2420576
+OK KEYS
+
++
+keypair cycles:
+1381202
+encaps cycles:
+987144
+decaps cycles:
+2442638
+OK KEYS
+
++
+keypair cycles:
+1144404
+encaps cycles:
+986911
+decaps cycles:
+2435160
+OK KEYS
+
++
+keypair cycles:
+1616652
+encaps cycles:
+986980
+decaps cycles:
+2528742
+OK KEYS
+
++
+keypair cycles:
+1135377
+encaps cycles:
+986840
+decaps cycles:
+2464144
+OK KEYS
+
++
+keypair cycles:
+1175088
+encaps cycles:
+986752
+decaps cycles:
+2413561
+OK KEYS
+
++
+keypair cycles:
+1163534
+encaps cycles:
+987132
+decaps cycles:
+2349116
+OK KEYS
+
++
+keypair cycles:
+1158267
+encaps cycles:
+986710
+decaps cycles:
+2355740
+OK KEYS
+
++
+keypair cycles:
+1180664
+encaps cycles:
+986708
+decaps cycles:
+2370462
+OK KEYS
+
++
+keypair cycles:
+1144797
+encaps cycles:
+986982
+decaps cycles:
+2456780
+OK KEYS
+
++
+keypair cycles:
+1147830
+encaps cycles:
+986984
+decaps cycles:
+2377702
+OK KEYS
+
++
+keypair cycles:
+1170255
+encaps cycles:
+986872
+decaps cycles:
+2377578
+OK KEYS
+
++
+keypair cycles:
+1290775
+encaps cycles:
+986726
+decaps cycles:
+2406054
+OK KEYS
+
++
+keypair cycles:
+1171382
+encaps cycles:
+987004
+decaps cycles:
+2528492
+OK KEYS
+
++
+keypair cycles:
+1157071
+encaps cycles:
+986898
+decaps cycles:
+2471082
+OK KEYS
+
++
+keypair cycles:
+1154449
+encaps cycles:
+986728
+decaps cycles:
+2391877
+OK KEYS
+
++
+keypair cycles:
+1158108
+encaps cycles:
+987096
+decaps cycles:
+2406584
+OK KEYS
+
++
+keypair cycles:
+1629962
+encaps cycles:
+987180
+decaps cycles:
+2413564
+OK KEYS
+
++
+keypair cycles:
+1411103
+encaps cycles:
+986712
+decaps cycles:
+2442420
+OK KEYS
+
++
+keypair cycles:
+1131794
+encaps cycles:
+986826
+decaps cycles:
+2456876
+OK KEYS
+
++
+keypair cycles:
+1639978
+encaps cycles:
+986776
+decaps cycles:
+2464206
+OK KEYS
+
++
+keypair cycles:
+1160013
+encaps cycles:
+986938
+decaps cycles:
+2428018
+OK KEYS
+
++
+keypair cycles:
+1128378
+encaps cycles:
+987091
+decaps cycles:
+2514422
+OK KEYS
+
++
+keypair cycles:
+1154429
+encaps cycles:
+986434
+decaps cycles:
+2398646
+OK KEYS
+
++
+keypair cycles:
+1265265
+encaps cycles:
+986734
+decaps cycles:
+2478184
+OK KEYS
+
++
+keypair cycles:
+1260140
+encaps cycles:
+987072
+decaps cycles:
+2349040
+OK KEYS
+
++
+keypair cycles:
+1176175
+encaps cycles:
+987000
+decaps cycles:
+2442502
+OK KEYS
+
++
+keypair cycles:
+1281463
+encaps cycles:
+987000
+decaps cycles:
+2420864
+OK KEYS
+
++
+keypair cycles:
+1262065
+encaps cycles:
+986694
+decaps cycles:
+2413347
+OK KEYS
+
++
+keypair cycles:
+1633141
+encaps cycles:
+986978
+decaps cycles:
+2392326
+OK KEYS
+
++
+keypair cycles:
+1148173
+encaps cycles:
+987020
+decaps cycles:
+2463790
+OK KEYS
+
++
+keypair cycles:
+1286518
+encaps cycles:
+987062
+decaps cycles:
+2449630
+OK KEYS
+
++
+keypair cycles:
+1959746
+encaps cycles:
+987022
+decaps cycles:
+2449734
+OK KEYS
+
++
+keypair cycles:
+1153285
+encaps cycles:
+986964
+decaps cycles:
+2384884
+OK KEYS
+
++
+keypair cycles:
+1167395
+encaps cycles:
+986844
+decaps cycles:
+2514446
+OK KEYS
+
++
+keypair cycles:
+1180392
+encaps cycles:
+987010
+decaps cycles:
+2356116
+OK KEYS
+
++
+keypair cycles:
+1148557
+encaps cycles:
+986658
+decaps cycles:
+2478056
+OK KEYS
+
++
+keypair cycles:
+1157618
+encaps cycles:
+986300
+decaps cycles:
+2405800
+OK KEYS
+
++
+keypair cycles:
+1164109
+encaps cycles:
+986920
+decaps cycles:
+2427955
+OK KEYS
+
++
+keypair cycles:
+1257663
+encaps cycles:
+986850
+decaps cycles:
+2528620
+OK KEYS
+
++
+keypair cycles:
+1629821
+encaps cycles:
+986992
+decaps cycles:
+2485732
+OK KEYS
+
++
+keypair cycles:
+1254930
+encaps cycles:
+986808
+decaps cycles:
+2492704
+OK KEYS
+
++
+keypair cycles:
+1401027
+encaps cycles:
+987038
+decaps cycles:
+2536064
+OK KEYS
+
++
+keypair cycles:
+1275010
+encaps cycles:
+986998
+decaps cycles:
+2428080
+OK KEYS
+
++
+keypair cycles:
+1136299
+encaps cycles:
+986916
+decaps cycles:
+2377626
+OK KEYS
+
++
+keypair cycles:
+1272440
+encaps cycles:
+986955
+decaps cycles:
+2399426
+OK KEYS
+
++
+keypair cycles:
+1627330
+encaps cycles:
+986928
+decaps cycles:
+2471066
+OK KEYS
+
++
+keypair cycles:
+1164520
+encaps cycles:
+986660
+decaps cycles:
+2449266
+OK KEYS
+
++
+keypair cycles:
+1511550
+encaps cycles:
+987062
+decaps cycles:
+2277166
+OK KEYS
+
++
+keypair cycles:
+1276122
+encaps cycles:
+986958
+decaps cycles:
+2377578
+OK KEYS
+
++
+keypair cycles:
+1379555
+encaps cycles:
+987116
+decaps cycles:
+2406684
+OK KEYS
+
++
+keypair cycles:
+1167974
+encaps cycles:
+986582
+decaps cycles:
+2442094
+OK KEYS
+
++
+keypair cycles:
+1275931
+encaps cycles:
+986906
+decaps cycles:
+2463900
+OK KEYS
+
++
+keypair cycles:
+1520872
+encaps cycles:
+986894
+decaps cycles:
+2384652
+OK KEYS
+
++
+keypair cycles:
+1162126
+encaps cycles:
+987058
+decaps cycles:
+2406192
+OK KEYS
+
++
+keypair cycles:
+1308406
+encaps cycles:
+986814
+decaps cycles:
+2391714
+OK KEYS
+
++
+keypair cycles:
+1259673
+encaps cycles:
+986620
+decaps cycles:
+2499670
+OK KEYS
+
++
+keypair cycles:
+1270083
+encaps cycles:
+987022
+decaps cycles:
+2420834
+OK KEYS
+
++
+keypair cycles:
+1624274
+encaps cycles:
+986982
+decaps cycles:
+2478450
+OK KEYS
+
++
+keypair cycles:
+1149444
+encaps cycles:
+986930
+decaps cycles:
+2536202
+OK KEYS
+
++
+keypair cycles:
+1280693
+encaps cycles:
+986636
+decaps cycles:
+2470908
+OK KEYS
+
++
+keypair cycles:
+1495622
+encaps cycles:
+986980
+decaps cycles:
+2492726
+OK KEYS
+
++
+keypair cycles:
+1655075
+encaps cycles:
+986914
+decaps cycles:
+2392138
+OK KEYS
+
++
+keypair cycles:
+1278420
+encaps cycles:
+986688
+decaps cycles:
+2478060
+OK KEYS
+
++
+keypair cycles:
+1174812
+encaps cycles:
+986888
+decaps cycles:
+2478402
+OK KEYS
+
++
+keypair cycles:
+1148089
+encaps cycles:
+986876
+decaps cycles:
+2499808
+OK KEYS
+
++
+keypair cycles:
+1476309
+encaps cycles:
+986578
+decaps cycles:
+2341318
+OK KEYS
+
++
+keypair cycles:
+1408932
+encaps cycles:
+987132
+decaps cycles:
+2421046
+OK KEYS
+
++
+keypair cycles:
+1266936
+encaps cycles:
+986534
+decaps cycles:
+2441944
+OK KEYS
+
++
+keypair cycles:
+1148219
+encaps cycles:
+986932
+decaps cycles:
+2377382
+OK KEYS
+
++
+keypair cycles:
+1278690
+encaps cycles:
+987152
+decaps cycles:
+2442584
+OK KEYS
+
++
+keypair cycles:
+1184289
+encaps cycles:
+986979
+decaps cycles:
+2449436
+OK KEYS
+
++
+keypair cycles:
+1364995
+encaps cycles:
+986540
+decaps cycles:
+2442046
+OK KEYS
+
++
+keypair cycles:
+1157876
+encaps cycles:
+986936
+decaps cycles:
+2478258
+OK KEYS
+
++
+keypair cycles:
+1165313
+encaps cycles:
+986844
+decaps cycles:
+2406273
+OK KEYS
+
++
+keypair cycles:
+1264680
+encaps cycles:
+986820
+decaps cycles:
+2413610
+OK KEYS
+
++
+keypair cycles:
+1157506
+encaps cycles:
+986930
+decaps cycles:
+2392362
+OK KEYS
+
++
+keypair cycles:
+1162979
+encaps cycles:
+986988
+decaps cycles:
+2435514
+OK KEYS
+
++
+keypair cycles:
+1507593
+encaps cycles:
+987060
+decaps cycles:
+2464162
+OK KEYS
+
++
+keypair cycles:
+1156457
+encaps cycles:
+987150
+decaps cycles:
+2471438
+OK KEYS
+
++
+keypair cycles:
+1163279
+encaps cycles:
+986892
+decaps cycles:
+2427948
+OK KEYS
+
++
+keypair cycles:
+1128607
+encaps cycles:
+986721
+decaps cycles:
+2449314
+OK KEYS
+
++
+keypair cycles:
+1166733
+encaps cycles:
+986902
+decaps cycles:
+2413614
+OK KEYS
+
++
+keypair cycles:
+1759676
+encaps cycles:
+987118
+decaps cycles:
+2327632
+OK KEYS
+
++
+keypair cycles:
+1371444
+encaps cycles:
+986600
+decaps cycles:
+2456548
+OK KEYS
+
++
+keypair cycles:
+1286389
+encaps cycles:
+986906
+decaps cycles:
+2370426
+OK KEYS
+
++
+keypair cycles:
+1172557
+encaps cycles:
+986842
+decaps cycles:
+2435316
+OK KEYS
+
++
+keypair cycles:
+1259901
+encaps cycles:
+986826
+decaps cycles:
+2449186
+OK KEYS
+
++
+keypair cycles:
+1165934
+encaps cycles:
+986996
+decaps cycles:
+2442488
+OK KEYS
+
++
+keypair cycles:
+1184648
+encaps cycles:
+986996
+decaps cycles:
+2485588
+OK KEYS
+
++
+keypair cycles:
+1177182
+encaps cycles:
+986986
+decaps cycles:
+2543138
+OK KEYS
+
++
+keypair cycles:
+1153510
+encaps cycles:
+986956
+decaps cycles:
+2507074
+OK KEYS
+
++
+keypair cycles:
+1162685
+encaps cycles:
+986842
+decaps cycles:
+2463906
+OK KEYS
+
++
+keypair cycles:
+1165570
+encaps cycles:
+986784
+decaps cycles:
+2449660
+OK KEYS
+
++
+keypair cycles:
+1506953
+encaps cycles:
+986748
+decaps cycles:
+2485422
+OK KEYS
+
++
+keypair cycles:
+1146931
+encaps cycles:
+986858
+decaps cycles:
+2485754
+OK KEYS
+
++
+keypair cycles:
+1384664
+encaps cycles:
+987072
+decaps cycles:
+2449980
+OK KEYS
+
++
+keypair cycles:
+1381891
+encaps cycles:
+986948
+decaps cycles:
+2449654
+OK KEYS
+
++
+keypair cycles:
+1151797
+encaps cycles:
+986574
+decaps cycles:
+2449176
+OK KEYS
+
++
+keypair cycles:
+1420981
+encaps cycles:
+986740
+decaps cycles:
+2463844
+OK KEYS
+
++
+keypair cycles:
+1269173
+encaps cycles:
+986756
+decaps cycles:
+2478118
+OK KEYS
+
++
+keypair cycles:
+1157475
+encaps cycles:
+986740
+decaps cycles:
+2485308
+OK KEYS
+
++
+keypair cycles:
+1154307
+encaps cycles:
+986868
+decaps cycles:
+2478192
+OK KEYS
+
++
+keypair cycles:
+1176423
+encaps cycles:
+986604
+decaps cycles:
+2449506
+OK KEYS
+
++
+keypair cycles:
+1296143
+encaps cycles:
+987078
+decaps cycles:
+2536155
+OK KEYS
+
++
+keypair cycles:
+1851282
+encaps cycles:
+986902
+decaps cycles:
+2349138
+OK KEYS
+
++
+keypair cycles:
+1167798
+encaps cycles:
+986702
+decaps cycles:
+2485572
+OK KEYS
+
++
+keypair cycles:
+1269446
+encaps cycles:
+986842
+decaps cycles:
+2370108
+OK KEYS
+
++
+keypair cycles:
+1282770
+encaps cycles:
+986560
+decaps cycles:
+2377586
+OK KEYS
+
++
+keypair cycles:
+1187460
+encaps cycles:
+986586
+decaps cycles:
+2542528
+OK KEYS
+
++
+keypair cycles:
+1152712
+encaps cycles:
+986860
+decaps cycles:
+2456764
+OK KEYS
+
++
+keypair cycles:
+1392865
+encaps cycles:
+986740
+decaps cycles:
+2441860
+OK KEYS
+
++
+keypair cycles:
+1388549
+encaps cycles:
+986814
+decaps cycles:
+2384618
+OK KEYS
+
++
+keypair cycles:
+1264104
+encaps cycles:
+986954
+decaps cycles:
+2478340
+OK KEYS
+
++
+keypair cycles:
+1297056
+encaps cycles:
+987040
+decaps cycles:
+2442430
+OK KEYS
+
++
+keypair cycles:
+3148145
+encaps cycles:
+986876
+decaps cycles:
+2463996
+OK KEYS
+
++
+keypair cycles:
+1275017
+encaps cycles:
+986796
+decaps cycles:
+2341564
+OK KEYS
+
++
+keypair cycles:
+1164257
+encaps cycles:
+986731
+decaps cycles:
+2478092
+OK KEYS
+
++
+keypair cycles:
+1381266
+encaps cycles:
+987012
+decaps cycles:
+2420884
+OK KEYS
+
++
+keypair cycles:
+1285595
+encaps cycles:
+986968
+decaps cycles:
+2478444
+OK KEYS
+
++
+keypair cycles:
+1277212
+encaps cycles:
+986730
+decaps cycles:
+2442223
+OK KEYS
+
++
+keypair cycles:
+1191264
+encaps cycles:
+987070
+decaps cycles:
+2456912
+OK KEYS
+
++
+keypair cycles:
+1392088
+encaps cycles:
+987102
+decaps cycles:
+2377764
+OK KEYS
+
++
+keypair cycles:
+1133342
+encaps cycles:
+986956
+decaps cycles:
+2478273
+OK KEYS
+
++
+keypair cycles:
+1395115
+encaps cycles:
+986814
+decaps cycles:
+2449440
+OK KEYS
+
++
+keypair cycles:
+1409527
+encaps cycles:
+986634
+decaps cycles:
+2449222
+OK KEYS
+
++
+keypair cycles:
+1262417
+encaps cycles:
+986956
+decaps cycles:
+2471462
+OK KEYS
+
++
+keypair cycles:
+1162546
+encaps cycles:
+986768
+decaps cycles:
+2434994
+OK KEYS
+
++
+keypair cycles:
+1273676
+encaps cycles:
+986958
+decaps cycles:
+2413608
+OK KEYS
+
++
+keypair cycles:
+1175877
+encaps cycles:
+986732
+decaps cycles:
+2456628
+OK KEYS
+
++
+keypair cycles:
+1161143
+encaps cycles:
+986956
+decaps cycles:
+2471116
+OK KEYS
+
++
+keypair cycles:
+1150920
+encaps cycles:
+986748
+decaps cycles:
+2363396
+OK KEYS
+
++
+keypair cycles:
+1399016
+encaps cycles:
+986932
+decaps cycles:
+2514212
+OK KEYS
+
++
+keypair cycles:
+1275400
+encaps cycles:
+986792
+decaps cycles:
+2543203
+OK KEYS
+
++
+keypair cycles:
+1402281
+encaps cycles:
+987128
+decaps cycles:
+2435394
+OK KEYS
+
++
+keypair cycles:
+1265407
+encaps cycles:
+986866
+decaps cycles:
+2305978
+OK KEYS
+
++
+keypair cycles:
+1396911
+encaps cycles:
+986748
+decaps cycles:
+2449340
+OK KEYS
+
++
+keypair cycles:
+1268611
+encaps cycles:
+986798
+decaps cycles:
+2377466
+OK KEYS
+
++
+keypair cycles:
+1156446
+encaps cycles:
+987010
+decaps cycles:
+2464056
+OK KEYS
+
++
+keypair cycles:
+1133616
+encaps cycles:
+986840
+decaps cycles:
+2449450
+OK KEYS
+
++
+keypair cycles:
+1170256
+encaps cycles:
+986839
+decaps cycles:
+2399336
+OK KEYS
+
++
+keypair cycles:
+1176067
+encaps cycles:
+987020
+decaps cycles:
+2406776
+OK KEYS
+
++
+keypair cycles:
+1399579
+encaps cycles:
+987026
+decaps cycles:
+2449498
+OK KEYS
+
++
+keypair cycles:
+1168078
+encaps cycles:
+986830
+decaps cycles:
+2485263
+OK KEYS
+
++
+keypair cycles:
+1150231
+encaps cycles:
+986840
+decaps cycles:
+2557424
+OK KEYS
+
++
+keypair cycles:
+1291524
+encaps cycles:
+986720
+decaps cycles:
+2478130
+OK KEYS
+
++
+keypair cycles:
+1292983
+encaps cycles:
+986958
+decaps cycles:
+2399124
+OK KEYS
+
++
+keypair cycles:
+1124351
+encaps cycles:
+986920
+decaps cycles:
+2363500
+OK KEYS
+
++
+keypair cycles:
+1162671
+encaps cycles:
+986948
+decaps cycles:
+2392122
+OK KEYS
+
++
+keypair cycles:
+1160234
+encaps cycles:
+986980
+decaps cycles:
+2428038
+OK KEYS
+
++
+keypair cycles:
+1288283
+encaps cycles:
+986605
+decaps cycles:
+2413144
+OK KEYS
+
++
+keypair cycles:
+1150283
+encaps cycles:
+987034
+decaps cycles:
+2435292
+OK KEYS
+
++
+keypair cycles:
+1286757
+encaps cycles:
+986718
+decaps cycles:
+2348616
+OK KEYS
+
++
+keypair cycles:
+1400085
+encaps cycles:
+987070
+decaps cycles:
+2414101
+OK KEYS
+
++
+keypair cycles:
+1161808
+encaps cycles:
+987088
+decaps cycles:
+2399084
+OK KEYS
+
++
+keypair cycles:
+1398179
+encaps cycles:
+987004
+decaps cycles:
+2500042
+OK KEYS
+
++
+keypair cycles:
+1153884
+encaps cycles:
+986860
+decaps cycles:
+2463828
+OK KEYS
+
++
+keypair cycles:
+1156129
+encaps cycles:
+986974
+decaps cycles:
+2464082
+OK KEYS
+
++
+keypair cycles:
+1165574
+encaps cycles:
+986934
+decaps cycles:
+2499918
+OK KEYS
+
++
+keypair cycles:
+1278794
+encaps cycles:
+986864
+decaps cycles:
+2384744
+OK KEYS
+
++
+keypair cycles:
+1295398
+encaps cycles:
+986879
+decaps cycles:
+2449698
+OK KEYS
+
++
+keypair cycles:
+1381268
+encaps cycles:
+986870
+decaps cycles:
+2399340
+OK KEYS
+
++
+keypair cycles:
+1140775
+encaps cycles:
+986882
+decaps cycles:
+2420466
+OK KEYS
+
++
+keypair cycles:
+1280234
+encaps cycles:
+986904
+decaps cycles:
+2356054
+OK KEYS
+
++
+keypair cycles:
+1266179
+encaps cycles:
+987068
+decaps cycles:
+2413742
+OK KEYS
+
++
+keypair cycles:
+1173964
+encaps cycles:
+986828
+decaps cycles:
+2427826
+OK KEYS
+
++
+keypair cycles:
+1141048
+encaps cycles:
+987198
+decaps cycles:
+2464418
+OK KEYS
+
++
+keypair cycles:
+1740130
+encaps cycles:
+986822
+decaps cycles:
+2528854
+OK KEYS
+
++
+keypair cycles:
+1280695
+encaps cycles:
+986964
+decaps cycles:
+2399248
+OK KEYS
+
++
+keypair cycles:
+1373547
+encaps cycles:
+987154
+decaps cycles:
+2507248
+OK KEYS
+
++
+keypair cycles:
+1161051
+encaps cycles:
+986946
+decaps cycles:
+2514568
+OK KEYS
+
++
+keypair cycles:
+1143414
+encaps cycles:
+986826
+decaps cycles:
+2485716
+OK KEYS
+
++
+keypair cycles:
+1511396
+encaps cycles:
+987084
+decaps cycles:
+2421062
+OK KEYS
+
++
+keypair cycles:
+1291313
+encaps cycles:
+986872
+decaps cycles:
+2478174
+OK KEYS
+
++
+keypair cycles:
+1275586
+encaps cycles:
+986838
+decaps cycles:
+2564570
+OK KEYS
+
++
+keypair cycles:
+1153075
+encaps cycles:
+986666
+decaps cycles:
+2478150
+OK KEYS
+
++
+keypair cycles:
+1276507
+encaps cycles:
+986908
+decaps cycles:
+2471291
+OK KEYS
+
++
+keypair cycles:
+1166114
+encaps cycles:
+986948
+decaps cycles:
+2370264
+OK KEYS
+
++
+keypair cycles:
+1277575
+encaps cycles:
+986665
+decaps cycles:
+2521270
+OK KEYS
+
++
+keypair cycles:
+1154291
+encaps cycles:
+987024
+decaps cycles:
+2384938
+OK KEYS
+
++
+keypair cycles:
+1249911
+encaps cycles:
+986932
+decaps cycles:
+2456872
+OK KEYS
+
++
+keypair cycles:
+1184337
+encaps cycles:
+986906
+decaps cycles:
+2463972
+OK KEYS
+
++
+keypair cycles:
+1605843
+encaps cycles:
+986918
+decaps cycles:
+2442328
+OK KEYS
+
++
+keypair cycles:
+1284172
+encaps cycles:
+987034
+decaps cycles:
+2536010
+OK KEYS
+
++
+keypair cycles:
+1371838
+encaps cycles:
+986588
+decaps cycles:
+2434754
+OK KEYS
+
++
+keypair cycles:
+1156429
+encaps cycles:
+986800
+decaps cycles:
+2413238
+OK KEYS
+
++
+keypair cycles:
+1261851
+encaps cycles:
+986548
+decaps cycles:
+2506952
+OK KEYS
+
++
+keypair cycles:
+1172052
+encaps cycles:
+986790
+decaps cycles:
+2456690
+OK KEYS
+
++
+keypair cycles:
+1168839
+encaps cycles:
+986724
+decaps cycles:
+2507060
+OK KEYS
+
++
+keypair cycles:
+1259723
+encaps cycles:
+986890
+decaps cycles:
+2521136
+OK KEYS
+
++
+keypair cycles:
+1147185
+encaps cycles:
+986832
+decaps cycles:
+2406286
+OK KEYS
+
++
+keypair cycles:
+1379033
+encaps cycles:
+986792
+decaps cycles:
+2392222
+OK KEYS
+
++
+keypair cycles:
+1281466
+encaps cycles:
+986792
+decaps cycles:
+2312582
+OK KEYS
+
++
+keypair cycles:
+1157633
+encaps cycles:
+986949
+decaps cycles:
+2449514
+OK KEYS
+
++
+keypair cycles:
+1151920
+encaps cycles:
+986900
+decaps cycles:
+2521558
+OK KEYS
+
++
+keypair cycles:
+1381637
+encaps cycles:
+986906
+decaps cycles:
+2492802
+OK KEYS
+
++
+keypair cycles:
+1160066
+encaps cycles:
+987080
+decaps cycles:
+2334955
+OK KEYS
+
++
+keypair cycles:
+1502547
+encaps cycles:
+986950
+decaps cycles:
+2593390
+OK KEYS
+
++
+keypair cycles:
+1169224
+encaps cycles:
+986662
+decaps cycles:
+2492772
+OK KEYS
+
++
+keypair cycles:
+1271138
+encaps cycles:
+986646
+decaps cycles:
+2398663
+OK KEYS
+
++
+keypair cycles:
+1167248
+encaps cycles:
+987014
+decaps cycles:
+2305816
+OK KEYS
+
++
+keypair cycles:
+1179159
+encaps cycles:
+986745
+decaps cycles:
+2420812
+OK KEYS
+
++
+keypair cycles:
+1149373
+encaps cycles:
+986716
+decaps cycles:
+2463808
+OK KEYS
+
++
+keypair cycles:
+1398051
+encaps cycles:
+987060
+decaps cycles:
+2435106
+OK KEYS
+
++
+keypair cycles:
+1509106
+encaps cycles:
+986830
+decaps cycles:
+2507174
+OK KEYS
+
++
+keypair cycles:
+1156558
+encaps cycles:
+986846
+decaps cycles:
+2463820
+OK KEYS
+
++
+keypair cycles:
+1380462
+encaps cycles:
+986766
+decaps cycles:
+2384902
+OK KEYS
+
++
+keypair cycles:
+1380749
+encaps cycles:
+986856
+decaps cycles:
+2478184
+OK KEYS
+
++
+keypair cycles:
+1166788
+encaps cycles:
+986804
+decaps cycles:
+2600314
+OK KEYS
+
++
+keypair cycles:
+1153600
+encaps cycles:
+987114
+decaps cycles:
+2370700
+OK KEYS
+
++
+keypair cycles:
+1156619
+encaps cycles:
+986788
+decaps cycles:
+2535668
+OK KEYS
+
++
+keypair cycles:
+1166475
+encaps cycles:
+986804
+decaps cycles:
+2406504
+OK KEYS
+
++
+keypair cycles:
+1306112
+encaps cycles:
+987086
+decaps cycles:
+2449758
+OK KEYS
+
++
+keypair cycles:
+1168838
+encaps cycles:
+986838
+decaps cycles:
+2428124
+OK KEYS
+
++
+keypair cycles:
+1287304
+encaps cycles:
+986920
+decaps cycles:
+2514240
+OK KEYS
+
++
+keypair cycles:
+1406852
+encaps cycles:
+986810
+decaps cycles:
+2420662
+OK KEYS
+
++
+keypair cycles:
+1171991
+encaps cycles:
+986921
+decaps cycles:
+2420814
+OK KEYS
+
++
+keypair cycles:
+1396692
+encaps cycles:
+987006
+decaps cycles:
+2528740
+OK KEYS
+
++
+keypair cycles:
+1509923
+encaps cycles:
+986886
+decaps cycles:
+2428154
+OK KEYS
+
++
+keypair cycles:
+1155047
+encaps cycles:
+986866
+decaps cycles:
+2355729
+OK KEYS
+
++
+keypair cycles:
+1142293
+encaps cycles:
+986914
+decaps cycles:
+2514226
+OK KEYS
+
++
+keypair cycles:
+1147657
+encaps cycles:
+987018
+decaps cycles:
+2406738
+OK KEYS
+
++
+keypair cycles:
+1169118
+encaps cycles:
+986960
+decaps cycles:
+2435500
+OK KEYS
+
++
+keypair cycles:
+1145443
+encaps cycles:
+986940
+decaps cycles:
+2420952
+OK KEYS
+
++
+keypair cycles:
+1295527
+encaps cycles:
+986846
+decaps cycles:
+2391808
+OK KEYS
+
++
+keypair cycles:
+1121754
+encaps cycles:
+986716
+decaps cycles:
+2449616
+OK KEYS
+
++
+keypair cycles:
+1188634
+encaps cycles:
+986935
+decaps cycles:
+2471082
+OK KEYS
+
++
+keypair cycles:
+1164684
+encaps cycles:
+986784
+decaps cycles:
+2391918
+OK KEYS
+
++
+keypair cycles:
+1726581
+encaps cycles:
+986846
+decaps cycles:
+2478452
+OK KEYS
+
++
+keypair cycles:
+1515458
+encaps cycles:
+986880
+decaps cycles:
+2428044
+OK KEYS
+
++
+keypair cycles:
+1264646
+encaps cycles:
+986928
+decaps cycles:
+2377980
+OK KEYS
+
++
+keypair cycles:
+1175307
+encaps cycles:
+987120
+decaps cycles:
+2428202
+OK KEYS
+
++
+keypair cycles:
+1244866
+encaps cycles:
+986508
+decaps cycles:
+2434777
+OK KEYS
+
++
+keypair cycles:
+1171083
+encaps cycles:
+986814
+decaps cycles:
+2593520
+OK KEYS
+
++
+keypair cycles:
+1286040
+encaps cycles:
+987028
+decaps cycles:
+2471256
+OK KEYS
+
++
+keypair cycles:
+1152129
+encaps cycles:
+986926
+decaps cycles:
+2442634
+OK KEYS
+
++
+keypair cycles:
+1509790
+encaps cycles:
+986898
+decaps cycles:
+2427960
+OK KEYS
+
++
+keypair cycles:
+1131561
+encaps cycles:
+986536
+decaps cycles:
+2470488
+OK KEYS
+
++
+keypair cycles:
+1276995
+encaps cycles:
+986690
+decaps cycles:
+2420512
+OK KEYS
+
++
+keypair cycles:
+1502582
+encaps cycles:
+986602
+decaps cycles:
+2427812
+OK KEYS
+
++
+keypair cycles:
+1155457
+encaps cycles:
+986782
+decaps cycles:
+2413420
+OK KEYS
+
++
+keypair cycles:
+1177207
+encaps cycles:
+987148
+decaps cycles:
+2449804
+OK KEYS
+
++
+keypair cycles:
+1155293
+encaps cycles:
+986822
+decaps cycles:
+2377674
+OK KEYS
+
++
+keypair cycles:
+1163056
+encaps cycles:
+986766
+decaps cycles:
+2406406
+OK KEYS
+
++
+keypair cycles:
+1288393
+encaps cycles:
+986728
+decaps cycles:
+2471122
+OK KEYS
+
++
+keypair cycles:
+1635447
+encaps cycles:
+986870
+decaps cycles:
+2427562
+OK KEYS
+
++
+keypair cycles:
+1179458
+encaps cycles:
+986704
+decaps cycles:
+2320118
+OK KEYS
+
++
+keypair cycles:
+1175617
+encaps cycles:
+986666
+decaps cycles:
+2442136
+OK KEYS
+
++
+keypair cycles:
+1276985
+encaps cycles:
+986896
+decaps cycles:
+2406340
+OK KEYS
+
++
+keypair cycles:
+1167628
+encaps cycles:
+986870
+decaps cycles:
+2370318
+OK KEYS
+
++
+keypair cycles:
+1166933
+encaps cycles:
+987062
+decaps cycles:
+2500010
+OK KEYS
+
++
+keypair cycles:
+1165053
+encaps cycles:
+986574
+decaps cycles:
+2535616
+OK KEYS
+
++
+keypair cycles:
+1163193
+encaps cycles:
+986634
+decaps cycles:
+2456498
+OK KEYS
+
++
+keypair cycles:
+1138105
+encaps cycles:
+987000
+decaps cycles:
+2428080
+OK KEYS
+
++
+keypair cycles:
+1154130
+encaps cycles:
+986784
+decaps cycles:
+2492618
+OK KEYS
+
++
+keypair cycles:
+1281951
+encaps cycles:
+987000
+decaps cycles:
+2500274
+OK KEYS
+
++
+keypair cycles:
+1379235
+encaps cycles:
+987062
+decaps cycles:
+2500226
+OK KEYS
+
++
+keypair cycles:
+1137141
+encaps cycles:
+987094
+decaps cycles:
+2370522
+OK KEYS
+
++
+keypair cycles:
+1181372
+encaps cycles:
+986346
+decaps cycles:
+2442020
+OK KEYS
+
++
+keypair cycles:
+1145021
+encaps cycles:
+986756
+decaps cycles:
+2399234
+OK KEYS
+
++
+keypair cycles:
+1146012
+encaps cycles:
+986950
+decaps cycles:
+2428056
+OK KEYS
+
++
+keypair cycles:
+1409741
+encaps cycles:
+987210
+decaps cycles:
+2406728
+OK KEYS
+
++
+keypair cycles:
+1147949
+encaps cycles:
+987068
+decaps cycles:
+2413793
+OK KEYS
+
++
+keypair cycles:
+1378804
+encaps cycles:
+987034
+decaps cycles:
+2485650
+OK KEYS
+
++
+keypair cycles:
+1159595
+encaps cycles:
+987000
+decaps cycles:
+2471150
+OK KEYS
+
++
+keypair cycles:
+1151098
+encaps cycles:
+986878
+decaps cycles:
+2427946
+OK KEYS
+
++
+keypair cycles:
+1298137
+encaps cycles:
+986874
+decaps cycles:
+2485442
+OK KEYS
+
++
+keypair cycles:
+1154666
+encaps cycles:
+986518
+decaps cycles:
+2506926
+OK KEYS
+
++
+keypair cycles:
+1274781
+encaps cycles:
+987108
+decaps cycles:
+2478474
+OK KEYS
+
++
+keypair cycles:
+1162178
+encaps cycles:
+987188
+decaps cycles:
+2406586
+OK KEYS
+
++
+keypair cycles:
+1391978
+encaps cycles:
+987156
+decaps cycles:
+2471360
+OK KEYS
+
++
+keypair cycles:
+1171399
+encaps cycles:
+986928
+decaps cycles:
+2543418
+OK KEYS
+
++
+keypair cycles:
+1267069
+encaps cycles:
+986962
+decaps cycles:
+2385206
+OK KEYS
+
++
+keypair cycles:
+1737754
+encaps cycles:
+987006
+decaps cycles:
+2385086
+OK KEYS
+
++
+keypair cycles:
+1251585
+encaps cycles:
+986720
+decaps cycles:
+2377482
+OK KEYS
+
++
+keypair cycles:
+1168517
+encaps cycles:
+986904
+decaps cycles:
+2420819
+OK KEYS
+
++
+keypair cycles:
+1172821
+encaps cycles:
+986676
+decaps cycles:
+2514274
+OK KEYS
+
++
+keypair cycles:
+1382936
+encaps cycles:
+986832
+decaps cycles:
+2471312
+OK KEYS
+
++
+keypair cycles:
+1141250
+encaps cycles:
+986924
+decaps cycles:
+2363138
+OK KEYS
+
++
+keypair cycles:
+1153348
+encaps cycles:
+986812
+decaps cycles:
+2363090
+OK KEYS
+
++
+keypair cycles:
+1177388
+encaps cycles:
+986930
+decaps cycles:
+2392286
+OK KEYS
+
++
+keypair cycles:
+1254239
+encaps cycles:
+986956
+decaps cycles:
+2550538
+OK KEYS
+
++
+keypair cycles:
+1160015
+encaps cycles:
+986706
+decaps cycles:
+2485233
+OK KEYS
+
++
+keypair cycles:
+1160666
+encaps cycles:
+987098
+decaps cycles:
+2341850
+OK KEYS
+
++
+keypair cycles:
+1290459
+encaps cycles:
+987034
+decaps cycles:
+2464038
+OK KEYS
+
++
+keypair cycles:
+1615168
+encaps cycles:
+986932
+decaps cycles:
+2521871
+OK KEYS
+
++
+keypair cycles:
+1160399
+encaps cycles:
+986948
+decaps cycles:
+2449506
+OK KEYS
+
++
+keypair cycles:
+1277469
+encaps cycles:
+986938
+decaps cycles:
+2464080
+OK KEYS
+
++
+keypair cycles:
+1266063
+encaps cycles:
+986996
+decaps cycles:
+2500030
+OK KEYS
+
++
+keypair cycles:
+1181065
+encaps cycles:
+986560
+decaps cycles:
+2442110
+OK KEYS
+
++
+keypair cycles:
+1127240
+encaps cycles:
+986986
+decaps cycles:
+2456794
+OK KEYS
+
++
+keypair cycles:
+1148654
+encaps cycles:
+986976
+decaps cycles:
+2593752
+OK KEYS
+
++
+keypair cycles:
+1397704
+encaps cycles:
+987038
+decaps cycles:
+2557637
+OK KEYS
+
++
+keypair cycles:
+1250105
+encaps cycles:
+987070
+decaps cycles:
+2421272
+OK KEYS
+
++
+keypair cycles:
+1139670
+encaps cycles:
+987066
+decaps cycles:
+2485690
+OK KEYS
+
++
+keypair cycles:
+1386620
+encaps cycles:
+986556
+decaps cycles:
+2327008
+OK KEYS
+
++
+keypair cycles:
+1164035
+encaps cycles:
+987058
+decaps cycles:
+2521846
+OK KEYS
+
++
+keypair cycles:
+1155746
+encaps cycles:
+986842
+decaps cycles:
+2557408
+OK KEYS
+
++
+keypair cycles:
+1282985
+encaps cycles:
+986808
+decaps cycles:
+2392160
+OK KEYS
+
++
+keypair cycles:
+1132658
+encaps cycles:
+986894
+decaps cycles:
+2485532
+OK KEYS
+
++
+keypair cycles:
+1472235
+encaps cycles:
+986954
+decaps cycles:
+2406440
+OK KEYS
+
++
+keypair cycles:
+1282460
+encaps cycles:
+986618
+decaps cycles:
+2470860
+OK KEYS
+
++
+keypair cycles:
+1273017
+encaps cycles:
+986900
+decaps cycles:
+2521730
+OK KEYS
+
++
+keypair cycles:
+1261617
+encaps cycles:
+986544
+decaps cycles:
+2499552
+OK KEYS
+
++
+keypair cycles:
+1137621
+encaps cycles:
+986830
+decaps cycles:
+2420980
+OK KEYS
+
++
+keypair cycles:
+1146326
+encaps cycles:
+986954
+decaps cycles:
+2420843
+OK KEYS
+
++
+keypair cycles:
+1628769
+encaps cycles:
+986881
+decaps cycles:
+2413228
+OK KEYS
+
++
+keypair cycles:
+1277541
+encaps cycles:
+986590
+decaps cycles:
+2448988
+OK KEYS
+
++
+keypair cycles:
+1405364
+encaps cycles:
+986950
+decaps cycles:
+2478348
+OK KEYS
+
++
+keypair cycles:
+1507259
+encaps cycles:
+986868
+decaps cycles:
+2341584
+OK KEYS
+
++
+keypair cycles:
+1166815
+encaps cycles:
+986780
+decaps cycles:
+2507026
+OK KEYS
+
++
+keypair cycles:
+1387281
+encaps cycles:
+986766
+decaps cycles:
+2427638
+OK KEYS
+
++
+keypair cycles:
+1168057
+encaps cycles:
+986688
+decaps cycles:
+2391776
+OK KEYS
+
++
+keypair cycles:
+1164607
+encaps cycles:
+986924
+decaps cycles:
+2384492
+OK KEYS
+
++
+keypair cycles:
+1272213
+encaps cycles:
+986810
+decaps cycles:
+2528844
+OK KEYS
+
++
+keypair cycles:
+1159866
+encaps cycles:
+986636
+decaps cycles:
+2470839
+OK KEYS
+
++
+keypair cycles:
+1245494
+encaps cycles:
+987018
+decaps cycles:
+2406404
+OK KEYS
+
++
+keypair cycles:
+1152680
+encaps cycles:
+986756
+decaps cycles:
+2442532
+OK KEYS
+
++
+keypair cycles:
+1160802
+encaps cycles:
+986894
+decaps cycles:
+2377926
+OK KEYS
+
++
+keypair cycles:
+1158982
+encaps cycles:
+987098
+decaps cycles:
+2449790
+OK KEYS
+
++
+keypair cycles:
+1276372
+encaps cycles:
+986824
+decaps cycles:
+2456916
+OK KEYS
+
++
+keypair cycles:
+1299800
+encaps cycles:
+987122
+decaps cycles:
+2406564
+OK KEYS
+
++
+keypair cycles:
+1278018
+encaps cycles:
+986870
+decaps cycles:
+2471424
+OK KEYS
+
++
+keypair cycles:
+1162154
+encaps cycles:
+986922
+decaps cycles:
+2442298
+OK KEYS
+
++
+keypair cycles:
+1163848
+encaps cycles:
+986886
+decaps cycles:
+2449522
+OK KEYS
+
++
+keypair cycles:
+1147442
+encaps cycles:
+986828
+decaps cycles:
+2312833
+OK KEYS
+
++
+keypair cycles:
+1170071
+encaps cycles:
+986818
+decaps cycles:
+2427964
+OK KEYS
+
++
+keypair cycles:
+1136305
+encaps cycles:
+987042
+decaps cycles:
+2471140
+OK KEYS
+
++
+keypair cycles:
+1164587
+encaps cycles:
+986838
+decaps cycles:
+2536079
+OK KEYS
+
++
+keypair cycles:
+1369399
+encaps cycles:
+986852
+decaps cycles:
+2413576
+OK KEYS
+
++
+keypair cycles:
+1288385
+encaps cycles:
+986916
+decaps cycles:
+2435496
+OK KEYS
+
++
+keypair cycles:
+1291903
+encaps cycles:
+986890
+decaps cycles:
+2392034
+OK KEYS
+
++
+keypair cycles:
+1384806
+encaps cycles:
+986746
+decaps cycles:
+2435040
+OK KEYS
+
++
+keypair cycles:
+1152316
+encaps cycles:
+986906
+decaps cycles:
+2463728
+OK KEYS
+
++
+keypair cycles:
+1165413
+encaps cycles:
+986830
+decaps cycles:
+2399236
+OK KEYS
+
++
+keypair cycles:
+1275043
+encaps cycles:
+986926
+decaps cycles:
+2442372
+OK KEYS
+
++
+keypair cycles:
+1513335
+encaps cycles:
+986946
+decaps cycles:
+2420796
+OK KEYS
+
++
+keypair cycles:
+1189044
+encaps cycles:
+986966
+decaps cycles:
+2507112
+OK KEYS
+
++
+keypair cycles:
+1290761
+encaps cycles:
+986770
+decaps cycles:
+2377481
+OK KEYS
+
++
+keypair cycles:
+1401906
+encaps cycles:
+986862
+decaps cycles:
+2499766
+OK KEYS
+
++
+keypair cycles:
+1149398
+encaps cycles:
+986926
+decaps cycles:
+2406204
+OK KEYS
+
++
+keypair cycles:
+1623150
+encaps cycles:
+986922
+decaps cycles:
+2449230
+OK KEYS
+
++
+keypair cycles:
+1522480
+encaps cycles:
+986604
+decaps cycles:
+2485192
+OK KEYS
+
++
+keypair cycles:
+1169344
+encaps cycles:
+986700
+decaps cycles:
+2449656
+OK KEYS
+
++
+keypair cycles:
+1475970
+encaps cycles:
+986880
+decaps cycles:
+2478286
+OK KEYS
+
++
+keypair cycles:
+1285922
+encaps cycles:
+986976
+decaps cycles:
+2478138
+OK KEYS
+
++
+keypair cycles:
+1314789
+encaps cycles:
+986880
+decaps cycles:
+2492888
+OK KEYS
+
++
+keypair cycles:
+1268814
+encaps cycles:
+986612
+decaps cycles:
+2463890
+OK KEYS
+
++
+keypair cycles:
+1156007
+encaps cycles:
+986838
+decaps cycles:
+2492732
+OK KEYS
+
++
+keypair cycles:
+1167016
+encaps cycles:
+986830
+decaps cycles:
+2434918
+OK KEYS
+
++
+keypair cycles:
+1267385
+encaps cycles:
+986924
+decaps cycles:
+2499698
+OK KEYS
+
++
+keypair cycles:
+1168689
+encaps cycles:
+986868
+decaps cycles:
+2413549
+OK KEYS
+
++
+keypair cycles:
+1141429
+encaps cycles:
+986860
+decaps cycles:
+2507022
+OK KEYS
+
++
+keypair cycles:
+1404826
+encaps cycles:
+986750
+decaps cycles:
+2449438
+OK KEYS
+
++
+keypair cycles:
+1175234
+encaps cycles:
+986988
+decaps cycles:
+2507162
+OK KEYS
+
++
+keypair cycles:
+1500923
+encaps cycles:
+986968
+decaps cycles:
+2413464
+OK KEYS
+
++
+keypair cycles:
+1283227
+encaps cycles:
+986810
+decaps cycles:
+2485634
+OK KEYS
+
++
+keypair cycles:
+1170458
+encaps cycles:
+986592
+decaps cycles:
+2427676
+OK KEYS
+
++
+keypair cycles:
+1145534
+encaps cycles:
+986909
+decaps cycles:
+2413602
+OK KEYS
+
++
+keypair cycles:
+1294011
+encaps cycles:
+986576
+decaps cycles:
+2506990
+OK KEYS
+
++
+keypair cycles:
+1160662
+encaps cycles:
+986804
+decaps cycles:
+2406226
+OK KEYS
+
++
+keypair cycles:
+1270329
+encaps cycles:
+986616
+decaps cycles:
+2434558
+OK KEYS
+
++
+keypair cycles:
+1149590
+encaps cycles:
+986884
+decaps cycles:
+2463888
+OK KEYS
+
++
+keypair cycles:
+1158759
+encaps cycles:
+986976
+decaps cycles:
+2420570
+OK KEYS
+
++
+keypair cycles:
+1253233
+encaps cycles:
+986990
+decaps cycles:
+2492820
+OK KEYS
+
++
+keypair cycles:
+1497693
+encaps cycles:
+987136
+decaps cycles:
+2442558
+OK KEYS
+
++
+keypair cycles:
+1148135
+encaps cycles:
+987064
+decaps cycles:
+2500168
+OK KEYS
+
++
+keypair cycles:
+1627755
+encaps cycles:
+987024
+decaps cycles:
+2377754
+OK KEYS
+
++
+keypair cycles:
+1497198
+encaps cycles:
+986851
+decaps cycles:
+2456950
+OK KEYS
+
++
+keypair cycles:
+1173460
+encaps cycles:
+986966
+decaps cycles:
+2356462
+OK KEYS
+
++
+keypair cycles:
+1159927
+encaps cycles:
+986682
+decaps cycles:
+2434656
+OK KEYS
+
++
+keypair cycles:
+1138232
+encaps cycles:
+986726
+decaps cycles:
+2471081
+OK KEYS
+
++
+keypair cycles:
+1882507
+encaps cycles:
+986908
+decaps cycles:
+2499916
+OK KEYS
+
++
+keypair cycles:
+1725972
+encaps cycles:
+986844
+decaps cycles:
+2420982
+OK KEYS
+
++
+keypair cycles:
+1384373
+encaps cycles:
+987096
+decaps cycles:
+2385250
+OK KEYS
+
++
+keypair cycles:
+1124871
+encaps cycles:
+986920
+decaps cycles:
+2492790
+OK KEYS
+
++
+keypair cycles:
+1137095
+encaps cycles:
+986904
+decaps cycles:
+2427896
+OK KEYS
+
++
+keypair cycles:
+1168539
+encaps cycles:
+987038
+decaps cycles:
+2507522
+OK KEYS
+
++
+keypair cycles:
+1137351
+encaps cycles:
+987122
+decaps cycles:
+2478752
+OK KEYS
+
++
+keypair cycles:
+1254160
+encaps cycles:
+986962
+decaps cycles:
+2593760
+OK KEYS
+
++
+keypair cycles:
+1140290
+encaps cycles:
+986534
+decaps cycles:
+2485198
+OK KEYS
+
++
+keypair cycles:
+1503902
+encaps cycles:
+986708
+decaps cycles:
+2514024
+OK KEYS
+
++
+keypair cycles:
+1276756
+encaps cycles:
+987016
+decaps cycles:
+2413684
+OK KEYS
+
++
+keypair cycles:
+1503462
+encaps cycles:
+986732
+decaps cycles:
+2521280
+OK KEYS
+
++
+keypair cycles:
+1506870
+encaps cycles:
+986704
+decaps cycles:
+2449288
+OK KEYS
+
++
+keypair cycles:
+1275687
+encaps cycles:
+987066
+decaps cycles:
+2507552
+OK KEYS
+
++
+keypair cycles:
+1153339
+encaps cycles:
+986822
+decaps cycles:
+2478342
+OK KEYS
+
++
+keypair cycles:
+1136827
+encaps cycles:
+986756
+decaps cycles:
+2391906
+OK KEYS
+
++
+keypair cycles:
+1399038
+encaps cycles:
+986742
+decaps cycles:
+2420652
+OK KEYS
+
++
+keypair cycles:
+1159386
+encaps cycles:
+986592
+decaps cycles:
+2420344
+OK KEYS
+
++
+keypair cycles:
+1251035
+encaps cycles:
+986864
+decaps cycles:
+2456460
+OK KEYS
+
++
+keypair cycles:
+1167413
+encaps cycles:
+986629
+decaps cycles:
+2362856
+OK KEYS
+
++
+keypair cycles:
+1532292
+encaps cycles:
+986978
+decaps cycles:
+2514332
+OK KEYS
+
++
+keypair cycles:
+1177307
+encaps cycles:
+986782
+decaps cycles:
+2463552
+OK KEYS
+
++
+keypair cycles:
+1164360
+encaps cycles:
+987009
+decaps cycles:
+2478418
+OK KEYS
+
++
+keypair cycles:
+1151396
+encaps cycles:
+986872
+decaps cycles:
+2413400
+OK KEYS
+
++
+keypair cycles:
+1140179
+encaps cycles:
+986952
+decaps cycles:
+2485584
+OK KEYS
+
++
+keypair cycles:
+1160891
+encaps cycles:
+986626
+decaps cycles:
+2463689
+OK KEYS
+
++
+keypair cycles:
+1292700
+encaps cycles:
+986838
+decaps cycles:
+2413518
+OK KEYS
+
++
+keypair cycles:
+1145242
+encaps cycles:
+986700
+decaps cycles:
+2449600
+OK KEYS
+
++
+keypair cycles:
+1152252
+encaps cycles:
+986834
+decaps cycles:
+2406316
+OK KEYS
+
++
+keypair cycles:
+1272415
+encaps cycles:
+987238
+decaps cycles:
+2413888
+OK KEYS
+
++
+keypair cycles:
+1259276
+encaps cycles:
+987012
+decaps cycles:
+2449718
+OK KEYS
+
++
+keypair cycles:
+1619932
+encaps cycles:
+986926
+decaps cycles:
+2377638
+OK KEYS
+
++
+keypair cycles:
+2088890
+encaps cycles:
+986660
+decaps cycles:
+2463730
+OK KEYS
+
++
+keypair cycles:
+1410870
+encaps cycles:
+986794
+decaps cycles:
+2492842
+OK KEYS
+
++
+keypair cycles:
+1405279
+encaps cycles:
+986940
+decaps cycles:
+2528690
+OK KEYS
+
++
+keypair cycles:
+1169688
+encaps cycles:
+986660
+decaps cycles:
+2435001
+OK KEYS
+
++
+keypair cycles:
+1150665
+encaps cycles:
+987158
+decaps cycles:
+2471362
+OK KEYS
+
++
+keypair cycles:
+1268444
+encaps cycles:
+986746
+decaps cycles:
+2420580
+OK KEYS
+
++
+keypair cycles:
+1273057
+encaps cycles:
+986716
+decaps cycles:
+2356137
+OK KEYS
+
++
+keypair cycles:
+1137606
+encaps cycles:
+986862
+decaps cycles:
+2377794
+OK KEYS
+
++
+keypair cycles:
+1178309
+encaps cycles:
+986952
+decaps cycles:
+2349188
+OK KEYS
+
++
+keypair cycles:
+1410201
+encaps cycles:
+986834
+decaps cycles:
+2420698
+OK KEYS
+
++
+keypair cycles:
+1184854
+encaps cycles:
+987138
+decaps cycles:
+2493042
+OK KEYS
+
++
+keypair cycles:
+2544382
+encaps cycles:
+987126
+decaps cycles:
+2492926
+OK KEYS
+
++
+keypair cycles:
+1282086
+encaps cycles:
+986866
+decaps cycles:
+2521634
+OK KEYS
+
++
+keypair cycles:
+1394873
+encaps cycles:
+986914
+decaps cycles:
+2392006
+OK KEYS
+
++
+keypair cycles:
+1265305
+encaps cycles:
+987036
+decaps cycles:
+2399324
+OK KEYS
+
++
+keypair cycles:
+1159813
+encaps cycles:
+986766
+decaps cycles:
+2442154
+OK KEYS
+
++
+keypair cycles:
+1167171
+encaps cycles:
+986786
+decaps cycles:
+2370517
+OK KEYS
+
++
+keypair cycles:
+1260144
+encaps cycles:
+986992
+decaps cycles:
+2449670
+OK KEYS
+
++
+keypair cycles:
+1162103
+encaps cycles:
+986994
+decaps cycles:
+2442188
+OK KEYS
+
++
+keypair cycles:
+1144313
+encaps cycles:
+986976
+decaps cycles:
+2463968
+OK KEYS
+
++
+keypair cycles:
+1169600
+encaps cycles:
+986840
+decaps cycles:
+2463840
+OK KEYS
+
++
+keypair cycles:
+1281623
+encaps cycles:
+986902
+decaps cycles:
+2478344
+OK KEYS
+
++
+keypair cycles:
+1166798
+encaps cycles:
+987008
+decaps cycles:
+2406818
+OK KEYS
+
++
+keypair cycles:
+1531108
+encaps cycles:
+987000
+decaps cycles:
+2413556
+OK KEYS
+
++
+keypair cycles:
+1262757
+encaps cycles:
+986930
+decaps cycles:
+2363272
+OK KEYS
+
++
+keypair cycles:
+1285900
+encaps cycles:
+986690
+decaps cycles:
+2506880
+OK KEYS
+
++
+keypair cycles:
+1271870
+encaps cycles:
+987135
+decaps cycles:
+2384912
+OK KEYS
+
++
+keypair cycles:
+1292241
+encaps cycles:
+986650
+decaps cycles:
+2535640
+OK KEYS
+
++
+keypair cycles:
+1621831
+encaps cycles:
+986908
+decaps cycles:
+2463884
+OK KEYS
+
++
+keypair cycles:
+1138457
+encaps cycles:
+986742
+decaps cycles:
+2543165
+OK KEYS
+
++
+keypair cycles:
+1175778
+encaps cycles:
+986852
+decaps cycles:
+2442012
+OK KEYS
+
++
+keypair cycles:
+1175539
+encaps cycles:
+986510
+decaps cycles:
+2557346
+OK KEYS
+
++
+keypair cycles:
+1401640
+encaps cycles:
+986790
+decaps cycles:
+2449558
+OK KEYS
+
++
+keypair cycles:
+1267849
+encaps cycles:
+986690
+decaps cycles:
+2485586
+OK KEYS
+
++
+keypair cycles:
+1404321
+encaps cycles:
+986850
+decaps cycles:
+2406356
+OK KEYS
+
++
+keypair cycles:
+1401155
+encaps cycles:
+986888
+decaps cycles:
+2420806
+OK KEYS
+
++
+keypair cycles:
+1389731
+encaps cycles:
+986910
+decaps cycles:
+2507140
+OK KEYS
+
++
+keypair cycles:
+1271089
+encaps cycles:
+986780
+decaps cycles:
+2485406
+OK KEYS
+
++
+keypair cycles:
+1138100
+encaps cycles:
+986870
+decaps cycles:
+2492696
+OK KEYS
+
++
+keypair cycles:
+1174257
+encaps cycles:
+986728
+decaps cycles:
+2470888
+OK KEYS
+
++
+keypair cycles:
+1427530
+encaps cycles:
+987068
+decaps cycles:
+2485728
+OK KEYS
+
++
+keypair cycles:
+1879638
+encaps cycles:
+986864
+decaps cycles:
+2320358
+OK KEYS
+
++
+keypair cycles:
+1157459
+encaps cycles:
+986828
+decaps cycles:
+2463973
+OK KEYS
+
++
+keypair cycles:
+1368866
+encaps cycles:
+986688
+decaps cycles:
+2470948
+OK KEYS
+
++
+keypair cycles:
+1172457
+encaps cycles:
+986958
+decaps cycles:
+2399290
+OK KEYS
+
++
+keypair cycles:
+1163262
+encaps cycles:
+987144
+decaps cycles:
+2514542
+OK KEYS
+
++
+keypair cycles:
+1304207
+encaps cycles:
+986727
+decaps cycles:
+2456598
+OK KEYS
+
++
+keypair cycles:
+1139317
+encaps cycles:
+987126
+decaps cycles:
+2457272
+OK KEYS
+
++
+keypair cycles:
+1629197
+encaps cycles:
+987130
+decaps cycles:
+2485834
+OK KEYS
+
++
+keypair cycles:
+1151206
+encaps cycles:
+986819
+decaps cycles:
+2377602
+OK KEYS
+
++
+keypair cycles:
+1384084
+encaps cycles:
+986970
+decaps cycles:
+2413512
+OK KEYS
+
++
+keypair cycles:
+1162650
+encaps cycles:
+986754
+decaps cycles:
+2492582
+OK KEYS
+
++
+keypair cycles:
+1273571
+encaps cycles:
+986950
+decaps cycles:
+2442385
+OK KEYS
+
++
+keypair cycles:
+1390859
+encaps cycles:
+986968
+decaps cycles:
+2341732
+OK KEYS
+
++
+keypair cycles:
+1390611
+encaps cycles:
+986690
+decaps cycles:
+2442136
+OK KEYS
+
++
+keypair cycles:
+1271187
+encaps cycles:
+987018
+decaps cycles:
+2406733
+OK KEYS
+
++
+keypair cycles:
+1275672
+encaps cycles:
+986860
+decaps cycles:
+2427818
+OK KEYS
+
++
+keypair cycles:
+1124175
+encaps cycles:
+986674
+decaps cycles:
+2413324
+OK KEYS
+
++
+keypair cycles:
+1156132
+encaps cycles:
+986908
+decaps cycles:
+2435210
+OK KEYS
+
++
+keypair cycles:
+1385709
+encaps cycles:
+986946
+decaps cycles:
+2428016
+OK KEYS
+
++
+keypair cycles:
+1505280
+encaps cycles:
+986928
+decaps cycles:
+2485430
+OK KEYS
+
++
+keypair cycles:
+1165009
+encaps cycles:
+986772
+decaps cycles:
+2406208
+OK KEYS
+
++
+keypair cycles:
+1162257
+encaps cycles:
+986919
+decaps cycles:
+2420735
+OK KEYS
+
++
+keypair cycles:
+1393842
+encaps cycles:
+986824
+decaps cycles:
+2506938
+OK KEYS
+
++
+keypair cycles:
+1174353
+encaps cycles:
+986850
+decaps cycles:
+2449422
+OK KEYS
+
++
+keypair cycles:
+1154460
+encaps cycles:
+986814
+decaps cycles:
+2521360
+OK KEYS
+
++
+keypair cycles:
+1167411
+encaps cycles:
+986810
+decaps cycles:
+2327182
+OK KEYS
+
++
+keypair cycles:
+1259491
+encaps cycles:
+986758
+decaps cycles:
+2449726
+OK KEYS
+
++
+keypair cycles:
+1160834
+encaps cycles:
+986936
+decaps cycles:
+2442308
+OK KEYS
+
++
+keypair cycles:
+1286219
+encaps cycles:
+986482
+decaps cycles:
+2492470
+OK KEYS
+
++
+keypair cycles:
+1302706
+encaps cycles:
+986932
+decaps cycles:
+2435162
+OK KEYS
+
++
+keypair cycles:
+1164834
+encaps cycles:
+986862
+decaps cycles:
+2399116
+OK KEYS
+
++
+keypair cycles:
+1285762
+encaps cycles:
+986892
+decaps cycles:
+2413568
+OK KEYS
+
++
+keypair cycles:
+1165554
+encaps cycles:
+986788
+decaps cycles:
+2578880
+OK KEYS
+
++
+keypair cycles:
+1255415
+encaps cycles:
+987118
+decaps cycles:
+2406596
+OK KEYS
+
++
+keypair cycles:
+1255656
+encaps cycles:
+986808
+decaps cycles:
+2420670
+OK KEYS
+
++
+keypair cycles:
+1265452
+encaps cycles:
+986992
+decaps cycles:
+2456890
+OK KEYS
+
++
+keypair cycles:
+1635225
+encaps cycles:
+987058
+decaps cycles:
+2456878
+OK KEYS
+
++
+keypair cycles:
+1152892
+encaps cycles:
+986812
+decaps cycles:
+2305580
+OK KEYS
+
++
+keypair cycles:
+1863235
+encaps cycles:
+986788
+decaps cycles:
+2399346
+OK KEYS
+
++
+keypair cycles:
+1160811
+encaps cycles:
+986810
+decaps cycles:
+2428032
+OK KEYS
+
++
+keypair cycles:
+1173385
+encaps cycles:
+987084
+decaps cycles:
+2399364
+OK KEYS
+
++
+keypair cycles:
+1162330
+encaps cycles:
+987062
+decaps cycles:
+2327386
+OK KEYS
+
++
+keypair cycles:
+1266828
+encaps cycles:
+986666
+decaps cycles:
+2297976
+OK KEYS
+
++
+keypair cycles:
+1243225
+encaps cycles:
+986678
+decaps cycles:
+2492840
+OK KEYS
+
++
+keypair cycles:
+1291830
+encaps cycles:
+987104
+decaps cycles:
+2291815
+OK KEYS
+
++
+keypair cycles:
+1264000
+encaps cycles:
+986530
+decaps cycles:
+2261882
+OK KEYS
+
++
+keypair cycles:
+1161019
+encaps cycles:
+986654
+decaps cycles:
+2355998
+OK KEYS
+
++
+keypair cycles:
+1156913
+encaps cycles:
+987018
+decaps cycles:
+2442502
+OK KEYS
+
++
+keypair cycles:
+1130056
+encaps cycles:
+986980
+decaps cycles:
+2341672
+OK KEYS
+
++
+keypair cycles:
+1148254
+encaps cycles:
+986876
+decaps cycles:
+2413862
+OK KEYS
+
++
+keypair cycles:
+1163926
+encaps cycles:
+986792
+decaps cycles:
+2485344
+OK KEYS
+
++
+keypair cycles:
+1289634
+encaps cycles:
+986792
+decaps cycles:
+2406394
+OK KEYS
+
++
+keypair cycles:
+1522135
+encaps cycles:
+987010
+decaps cycles:
+2421086
+OK KEYS
+
++
+keypair cycles:
+1277800
+encaps cycles:
+986984
+decaps cycles:
+2406408
+OK KEYS
+
++
+keypair cycles:
+1144429
+encaps cycles:
+986892
+decaps cycles:
+2406379
+OK KEYS
+
++
+keypair cycles:
+1159206
+encaps cycles:
+986704
+decaps cycles:
+2384466
+OK KEYS
+
++
+keypair cycles:
+1151431
+encaps cycles:
+986952
+decaps cycles:
+2471266
+OK KEYS
+
++
+keypair cycles:
+1271363
+encaps cycles:
+987232
+decaps cycles:
+2413986
+OK KEYS
+
++
+keypair cycles:
+1287924
+encaps cycles:
+986862
+decaps cycles:
+2406266
+OK KEYS
+
++
+keypair cycles:
+1398211
+encaps cycles:
+986978
+decaps cycles:
+2391856
+OK KEYS
+
++
+keypair cycles:
+1160493
+encaps cycles:
+986912
+decaps cycles:
+2291280
+OK KEYS
+
++
+keypair cycles:
+1163135
+encaps cycles:
+987000
+decaps cycles:
+2420802
+OK KEYS
+
++
+keypair cycles:
+1430961
+encaps cycles:
+986912
+decaps cycles:
+2449530
+OK KEYS
+
++
+keypair cycles:
+1148312
+encaps cycles:
+987108
+decaps cycles:
+2485714
+OK KEYS
+
++
+keypair cycles:
+1368480
+encaps cycles:
+986890
+decaps cycles:
+2399104
+OK KEYS
+
++
+keypair cycles:
+1738738
+encaps cycles:
+986954
+decaps cycles:
+2406432
+OK KEYS
+
++
+#
