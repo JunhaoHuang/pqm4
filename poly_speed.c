@@ -63,7 +63,9 @@ static void surf(void)
 		{
 			sum += 0x9e3779b9;
 			MUSH(0, 5)
-			MUSH(1, 7) MUSH(2, 9) MUSH(3, 13)
+			MUSH(1, 7)
+			MUSH(2, 9)
+			MUSH(3, 13)
 				MUSH(4, 5) MUSH(5, 7) MUSH(6, 9) MUSH(7, 13)
 					MUSH(8, 5) MUSH(9, 7) MUSH(10, 9) MUSH(11, 13)
 		}
@@ -92,43 +94,44 @@ int randombytes(uint8_t *x, size_t xlen)
 	return 0;
 }
 #define NUM_BYTES 1280
-void test_shake256(){
-	int block=(NUM_BYTES+SHAKE256_RATE-1)/SHAKE256_RATE;
+void test_shake256()
+{
+	int block = (NUM_BYTES + SHAKE256_RATE - 1) / SHAKE256_RATE;
 	unsigned long long t0, t1;
 	shake256ctx ctx;
 	shake256incctx incctx;
 	int incsize;
 
-	uint8_t input[block*SHAKE256_RATE];
+	uint8_t input[block * SHAKE256_RATE];
 	randombytes(input, sizeof(input));
 
-	t0= hal_get_time();
+	t0 = hal_get_time();
 	shake256_absorb(&ctx, input, sizeof(input));
-	t1= hal_get_time();
+	t1 = hal_get_time();
 	printcycles("SHAKE256 Absorb cycles:", t1 - t0);
 
-	t0= hal_get_time();
+	t0 = hal_get_time();
 	shake256_squeezeblocks(input, block, &ctx);
-	t1= hal_get_time();
+	t1 = hal_get_time();
 	printcycles("SHAKE256 Squeeze cycles:", t1 - t0);
 
-	for(incsize=1; incsize<=SHAKE256_RATE; incsize++){
+	for (incsize = 1; incsize <= SHAKE256_RATE; incsize++)
+	{
 		shake256_inc_init(&incctx);
 
-		t0= hal_get_time();
+		t0 = hal_get_time();
 		for (int i = 0; i < block * SHAKE256_RATE; i += incsize)
 		{
 			int sz = incsize;
 			if (i + sz > block * SHAKE256_RATE)
 				sz = block * SHAKE256_RATE - i;
 			shake256_inc_absorb(&incctx, input + i, sz);
-
 		}
-		t1= hal_get_time();
+		t1 = hal_get_time();
 		printcycles("Incremental size: ", incsize);
 		printcycles("SHAKE256 Inc Absorb cycles:", t1 - t0);
 
-		t0= hal_get_time();
+		t0 = hal_get_time();
 		for (int i = 0; i < block * SHAKE256_RATE; i += incsize)
 		{
 			int sz = incsize;
@@ -137,12 +140,11 @@ void test_shake256(){
 			shake256_inc_squeeze(input, sz, &incctx);
 		}
 
-		t1= hal_get_time();
+		t1 = hal_get_time();
 		printcycles("SHAKE256 Inc Squeeze cycles:", t1 - t0);
 
 		shake256_inc_ctx_release(&incctx);
 	}
-
 }
 
 void timing_poly_operations()
@@ -158,6 +160,12 @@ void timing_poly_operations()
 
 	for (i = 0; i < MUPQ_ITERATIONS; i++)
 	{
+		// 32-bit NTT
+		t0 = hal_get_time();
+		polyr_fntt(a);
+		t1 = hal_get_time();
+		printcycles("polyr_fntt cycles:", t1 - t0);
+
 		// polynomial sampling
 		t0 = hal_get_time();
 		xof_sample_q(a, sseed, sizeof(sseed));
@@ -270,66 +278,66 @@ int main(void)
 
 	hal_send_str("==========================");
 
-	// timing_poly_operations();
+	timing_poly_operations();
 	test_shake256();
-// 	for (i = 0; i < MUPQ_ITERATIONS; i++)
-// 	{
-// 		// Masking gadgets and matrix operations
-// 		t0= hal_get_time();
-// 		for (k = 0; k < RACC_K; k++)
-// 		{
-// 			//  --- 2.  A := ExpandA(seed)
-// 			for (j = 0; j < RACC_ELL; j++)
-// 			{
-// 				expand_aij(ai[j], k, j, sseed);
-// 			}
-// 		}
-// 		t1= hal_get_time();
-// 		printcycles("gen_matrix cycles:", t1 - t0);
+	for (i = 0; i < MUPQ_ITERATIONS; i++)
+	{
+		// Masking gadgets and matrix operations
+		t0 = hal_get_time();
+		for (k = 0; k < RACC_K; k++)
+		{
+			//  --- 2.  A := ExpandA(seed)
+			for (j = 0; j < RACC_ELL; j++)
+			{
+				expand_aij(ai[j], k, j, sseed);
+			}
+		}
+		t1 = hal_get_time();
+		printcycles("gen_matrix cycles:", t1 - t0);
 
-// 		t0 = hal_get_time();
-// 		racc_encode_sk(b, &sk);
-// 		t1 = hal_get_time();
-// 		printcycles("racc_encode_sk cycles:", t1 - t0);
+		t0 = hal_get_time();
+		racc_encode_sk(b, &sk);
+		t1 = hal_get_time();
+		printcycles("racc_encode_sk cycles:", t1 - t0);
 
-// 		t0 = hal_get_time();
-// 		racc_decode_sk(&sk, b);
-// 		t1 = hal_get_time();
-// 		printcycles("racc_decode_sk cycles:", t1 - t0);
+		t0 = hal_get_time();
+		racc_decode_sk(&sk, b);
+		t1 = hal_get_time();
+		printcycles("racc_decode_sk cycles:", t1 - t0);
 
-// 		t0 = hal_get_time();
-// 		zero_encoding(c, &mrg);
-// 		t1 = hal_get_time();
-// 		printcycles("zero_encoding cycles:", t1 - t0);
+		t0 = hal_get_time();
+		zero_encoding(c, &mrg);
+		t1 = hal_get_time();
+		printcycles("zero_encoding cycles:", t1 - t0);
 
-// 		t0 = hal_get_time();
-// 		racc_refresh(c, &mrg);
-// 		t1 = hal_get_time();
-// 		printcycles("racc_refresh cycles:", t1 - t0);
+		t0 = hal_get_time();
+		racc_refresh(c, &mrg);
+		t1 = hal_get_time();
+		printcycles("racc_refresh cycles:", t1 - t0);
 
-// #if MEM_OPT != 2
-// 		t0 = hal_get_time();
-// 		racc_ntt_refresh(c, &mrg);
-// 		t1 = hal_get_time();
-// 		printcycles("racc_ntt_refresh cycles:", t1 - t0);
-// #else
-// 		t0 = hal_get_time();
-// 		racc_ntt_refresh_neg(c, &mrg);
-// 		t1 = hal_get_time();
-// 		printcycles("racc_ntt_refresh_neg cycles:", t1 - t0);
-// #endif
-// 		t0 = hal_get_time();
-// 		racc_decode(a, c);
-// 		t1 = hal_get_time();
-// 		printcycles("racc_decode cycles:", t1 - t0);
+#if MEM_OPT != 2
+		t0 = hal_get_time();
+		racc_ntt_refresh(c, &mrg);
+		t1 = hal_get_time();
+		printcycles("racc_ntt_refresh cycles:", t1 - t0);
+#else
+		t0 = hal_get_time();
+		racc_ntt_refresh_neg(c, &mrg);
+		t1 = hal_get_time();
+		printcycles("racc_ntt_refresh_neg cycles:", t1 - t0);
+#endif
+		t0 = hal_get_time();
+		racc_decode(a, c);
+		t1 = hal_get_time();
+		printcycles("racc_decode cycles:", t1 - t0);
 
-// 		t0 = hal_get_time();
-// 		add_rep_noise(c, 0, RACC_UW, &mrg);
-// 		t1 = hal_get_time();
-// 		printcycles("add_rep_noise cycles:", t1 - t0);
+		t0 = hal_get_time();
+		add_rep_noise(c, 0, RACC_UW, &mrg);
+		t1 = hal_get_time();
+		printcycles("add_rep_noise cycles:", t1 - t0);
 
-// 		hal_send_str("+");
-// 		}
+		hal_send_str("+");
+	}
 	hal_send_str("#");
 	return 0;
 }

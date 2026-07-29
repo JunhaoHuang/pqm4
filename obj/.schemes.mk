@@ -7,7 +7,6 @@ KEM_SCHEMES := \
 	crypto_kem/kyber1024/m4fstack \
 	crypto_kem/kyber1024/m4fspeed \
 	crypto_kem/bikel3/m4f \
-	crypto_kem/DKE-128/ref \
 	mupq/crypto_kem/bikel1/opt \
 	mupq/crypto_kem/bikel3/opt \
 	mupq/pqclean/crypto_kem/mceliece8192128f/clean \

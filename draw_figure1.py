@@ -26,7 +26,7 @@ base_absorb = int(base_absorb[0]) if base_absorb else None
 base_squeeze = int(base_squeeze[0]) if base_squeeze else None
 
 # =======================
-# 单位转换：cycles → 1000 cycles
+# cycles → 1000 cycles
 # =======================
 scale_factor = 10000
 inc_absorb_k = [v / scale_factor for v in inc_absorb]
