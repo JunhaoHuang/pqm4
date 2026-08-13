@@ -1364,18 +1364,15 @@ bool racc_core_verify(const uint8_t *sig,
     }
 
     // check zero padding in signature
-    if(pre_k > 0)
+    if (pre_k > 0 && (pre_z >> pre_k) != 0)
+        l_sig = 0;
+
+    while (l_sig < RACC_SIG_SZ)
     {
-        if((pre_z >> pre_k)!=0)//fractional bits
-            l_sig = 0;
-        while (l_sig < RACC_SIG_SZ)
+        if (sig[l_sig++] != 0)
         {
-            // zero padding
-            if(sig[l_sig++] != 0)
-            {
-                l_sig = 0;
-                break;
-            }
+            l_sig = 0;
+            break;
         }
     }
     rsp = racc_check_bounds_zh(z22, zoo, h22, hoo);

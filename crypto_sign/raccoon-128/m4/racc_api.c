@@ -58,11 +58,11 @@ crypto_sign(unsigned char *sm, unsigned int *smlen,
     // compute pk.tr
     shake256(tr, RACC_TR_SZ, r_sk.pk, CRYPTO_PUBLICKEYBYTES);
     xof_chal_mu(mu, tr, m, mlen); //  compute mu
+    memcpy(sm + CRYPTO_BYTES, m, mlen); //  add the message
 
     ret = racc_core_sign(sm, mu, &r_sk); //  create signature
 
-    memcpy(sm + CRYPTO_BYTES, m, mlen); //  add the message
-
+    
     *smlen = mlen + CRYPTO_BYTES;
 
     return ret;
@@ -76,10 +76,9 @@ crypto_sign(unsigned char *sm, unsigned int *smlen,
         return -1;
 
     xof_chal_mu(mu, r_sk.pk.tr, m, mlen); //  compute mu
+    memcpy(sm + CRYPTO_BYTES, m, mlen);   //  add the message
 
     ret = racc_core_sign(sm, mu, &r_sk); //  create signature
-
-    memcpy(sm + CRYPTO_BYTES, m, mlen);            //  add the message
 
     *smlen = mlen + CRYPTO_BYTES;
 
@@ -94,6 +93,7 @@ crypto_sign(unsigned char *sm, unsigned int *smlen,
         return -1;
 
     xof_chal_mu(mu, r_sk.pk.tr, m, mlen);           //  compute mu
+    memcpy(sm + CRYPTO_BYTES, m, mlen);             //  add the message
 
     //  several trials may be needed in case of signature size overflow
     do {
@@ -105,7 +105,6 @@ crypto_sign(unsigned char *sm, unsigned int *smlen,
     } while (sig_sz == 0);
 
     memset(sm + sig_sz, 0, CRYPTO_BYTES - sig_sz);  //  zero padding
-    memcpy(sm + CRYPTO_BYTES, m, mlen);             //  add the message
 
     *smlen = mlen + CRYPTO_BYTES;
 
