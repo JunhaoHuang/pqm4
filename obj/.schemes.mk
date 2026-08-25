@@ -45,6 +45,7 @@ SIGN_SCHEMES := \
 	crypto_sign/raccoon-192/m4 \
 	crypto_sign/ov-Ip-pkc-skc/m4fstack \
 	crypto_sign/ov-Ip-pkc-skc/m4fspeed \
+	crypto_sign/falcon-512/m4-fxp \
 	crypto_sign/falcon-512/m4-ct \
 	crypto_sign/perk-192-short-3/m4 \
 	crypto_sign/falcon-512-tree/m4-ct \
