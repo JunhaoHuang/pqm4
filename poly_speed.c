@@ -93,7 +93,7 @@ int randombytes(uint8_t *x, size_t xlen)
 	}
 	return 0;
 }
-#define NUM_BYTES 1280
+#define NUM_BYTES (136)
 void test_shake256()
 {
 	int block = (NUM_BYTES + SHAKE256_RATE - 1) / SHAKE256_RATE;
@@ -147,6 +147,7 @@ void test_shake256()
 	}
 }
 
+extern void polyr_shrm42_asm(int64_t *r, int32_t q);
 void timing_poly_operations()
 {
 	int64_t a[RACC_N], b[RACC_N], d[RACC_K][RACC_N];
@@ -227,11 +228,17 @@ void timing_poly_operations()
 		polyr_shlm(a, b, RACC_NUT, RACC_Q);
 		t1 = hal_get_time();
 		printcycles("polyr_shlm cycles:", t1 - t0);
-
+#ifdef RACCOON_M4
+		t0 = hal_get_time();
+		polyr_shrm42_asm(a, RACC_QT);
+		t1 = hal_get_time();
+		printcycles("polyr_shrm cycles:", t1 - t0);
+#else
 		t0 = hal_get_time();
 		polyr_shrm(a, b, RACC_NUT, RACC_Q);
 		t1 = hal_get_time();
 		printcycles("polyr_shrm cycles:", t1 - t0);
+#endif
 
 		t0 = hal_get_time();
 		polyr_fntt(a);
@@ -266,7 +273,11 @@ int main(void)
 	int64_t c[RACC_D][RACC_N], a[RACC_N];
 	int64_t ai[RACC_ELL][RACC_N];
 	uint8_t sseed[RACC_AS_SZ] = "Raccoon128";
+#if defined(RACCOON_M4) && MEM_OPT == 2
+	racc_sk_compress_t sk;
+#else
 	racc_sk_t sk;
+#endif
 	uint8_t b[CRYPTO_SECRETKEYBYTES];
 	mask_random_t mrg;
 	//  intialize the mask random generator

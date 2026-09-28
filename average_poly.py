@@ -126,13 +126,54 @@ def res_to_tex(file_path, results):
             tex_lines.append(sign)
     return tex_lines
 
-def main(directory, type):
+def update_tex(tex_path, tex_lines):
+    """Write every \\newcommand in tex_lines into tex_path.
+
+    Lines of the form \\newcommand{\\NAME}{value} that already exist in the tex
+    file get their value replaced in place. A macro that does not exist yet is
+    appended right after the last \\newcommand line of the file, so that the
+    table body can start using it. The rest of the file (table outline,
+    preamble, ...) is left untouched.
+    """
+    import re
+    with open(tex_path, 'r') as f:
+        content = f.read()
+    updated, added = 0, []
+    for tex in tex_lines:
+        m = re.match(r'\\newcommand\{(\\[A-Za-z]+)\}\{(.*)\}$', tex)
+        if not m:
+            continue
+        name, value = m.group(1), m.group(2)
+        pattern = re.compile(r'^(\\newcommand\{' + re.escape(name) + r'\})\{[^}]*\}', re.M)
+        content, n = pattern.subn(lambda mm: mm.group(1) + '{' + value + '}', content)
+        if n:
+            updated += n
+        else:
+            added.append(tex)
+    if added:
+        # insert after the last existing \newcommand line (or at the top if there is none)
+        last = None
+        for mm in re.finditer(r'^\\newcommand\{[^\n]*$', content, re.M):
+            last = mm
+        block = '\n'.join(added)
+        if last is not None:
+            content = content[:last.end()] + '\n' + block + content[last.end():]
+        else:
+            content = block + '\n' + content
+    with open(tex_path, 'w') as f:
+        f.write(content)
+    print(f"% {tex_path}: updated {updated} \\newcommand values, added {len(added)}", file=sys.stderr)
+    for tex in added:
+        print(f"% added {tex}", file=sys.stderr)
+
+def main(directory, type, tex_path):
     files = search_files_in_directory(directory, keyword=type)
 
     if not files:
         print(f"No files found in {directory} containing '{type}' in their name.")
         return
 
+    all_tex_lines = []
     for file_path in files:
         # print(f"Processing file: {file_path}")
         results, len = process_clock_cycles(file_path)
@@ -141,13 +182,23 @@ def main(directory, type):
         #     print(f"{function} {stats['average']/1000:.0f}k")
         # if len==1:
         print(f"% Results for {file_path} with {len} elements")
-        for tex in res_to_tex(file_path, results):
+        tex_lines = res_to_tex(file_path, results)
+        for tex in tex_lines:
             print(tex)
+        all_tex_lines += tex_lines
+
+    if tex_path:
+        update_tex(tex_path, all_tex_lines)
     
 
-directory_path = 'RACC/' 
+directory_path = 'RACC/'
 if len(sys.argv) < 2:
-     print("Usage: python3 average_poly.py poly_speed")
+     print("Usage: python3 average_poly.py poly_speed [tex_file]")
      sys.exit(1)
 type = sys.argv[1]
-main(directory_path, type)
+# tex file whose \newcommand values are replaced with the averaged results
+# (pass "-" as the second argument to only print the results)
+tex_path = sys.argv[2] if len(sys.argv) > 2 else 'racc_table3.tex'
+if tex_path == '-':
+    tex_path = None
+main(directory_path, type, tex_path)

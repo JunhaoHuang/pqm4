@@ -1,9 +1,20 @@
 #!/bin/bash
-# usage: racc_speed.sh poly_speed
+# usage: racc_poly_speed.sh poly_speed
+
+# poly_speed.c lives in the pqm4 root; the mupq build expects it in mupq/crypto_sign/.
+# Copy it there once if it is not present yet (never overwrite an existing copy).
+if [ ! -f mupq/crypto_sign/poly_speed.c ]; then
+	echo "[INFO] copying poly_speed.c to mupq/crypto_sign/"
+	cp poly_speed.c mupq/crypto_sign/poly_speed.c
+else
+	echo "[INFO] mupq/crypto_sign/poly_speed.c already exists, not copying"
+fi
+
 for dut in \
 	RACCOON_128_1	RACCOON_128_2	RACCOON_128_4	\
 	RACCOON_128_8	RACCOON_128_16	
 do
+	mkdir -p RACC 
 	make clean
 	logf=RACC/${1}_${dut}_m4.txt
 	path="raccoon-${dut:8:3}_m4"

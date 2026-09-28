@@ -500,6 +500,9 @@ static bool racc_check_bounds_zh(int64_t z22, int64_t zoo, int64_t h22, int64_t 
 }
 #endif
 
+#if MEM_OPT == 0
+//  only used by the MEM_OPT == 0 sign/verify paths; the streaming variants
+//  use racc_check_bounds_{z,h,zh} directly.
 static bool racc_check_bounds(const int64_t h[RACC_K][RACC_N],
                               const int64_t z[RACC_ELL][RACC_N])
 {
@@ -562,6 +565,7 @@ static bool racc_check_bounds(const int64_t h[RACC_K][RACC_N],
     //  --- 8.  return OK
     return true;
 }
+#endif // MEM_OPT == 0
 
 #if MEM_OPT == 2
 int racc_core_keygen(unsigned char *pk, racc_sk_compress_t *sk)
@@ -1288,7 +1292,7 @@ void racc_core_sign(racc_sig_t *sig, const uint8_t mu[RACC_MU_SZ],
 #if MEM_OPT > 0
 bool racc_core_verify(const uint8_t *sig,
                       const uint8_t mu[RACC_MU_SZ],
-                      const uint8_t *pk)
+                      const uint8_t pk[CRYPTO_PUBLICKEYBYTES])
 {
     int i, j, l_pk, l_sig;
     bool rsp = true;

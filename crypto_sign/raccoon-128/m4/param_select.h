@@ -1,3 +1,1 @@
 #define RACCOON_M4
-// #define MASK_RANDOM_TRNG
-// #define NEW_ZERO_ENCODING

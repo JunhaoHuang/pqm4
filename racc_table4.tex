@@ -1,0 +1,251 @@
+% Self-contained table of Raccoon Cortex-M4 results.
+% Cycle counts: averaged from RACC/speed_*.txt (run of 2026-09-24/25, python3 average.py speed).
+% Stack usage:  from RACC/stack_*.txt (python3 average.py stack, maximum over 2 iterations).
+% Build with: pdflatex racc_table4.tex
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xspace}
+
+% ---- macros used by the table ----
+\newcommand{\ins}[1]{\texttt{#1}}
+\newcommand{\Raccoon}{Raccoon\xspace}
+\newcommand{\Raccoons}{Raccoon-128\xspace}
+\newcommand{\Raccoonm}{Raccoon-192\xspace}
+\newcommand{\Raccoonl}{Raccoon-256\xspace}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\newcommand{\RACCIIEoptkeygen}{318852k}
+\newcommand{\RACCIIEoptsign}{7443943k}
+\newcommand{\RACCIIEoptverify}{17138k}
+\newcommand{\RACCIAoptkeygen}{12894k}
+\newcommand{\RACCIAoptsign}{31082k}
+\newcommand{\RACCIAoptverify}{10783k}
+\newcommand{\RACCIIIDoptkeygen}{111554k}
+\newcommand{\RACCIIIDoptsign}{788113k}
+\newcommand{\RACCIIIDoptverify}{28814k}
+\newcommand{\RACCIIFoptkeygen}{1057946k}
+\newcommand{\RACCIIFoptsign}{29706612k}
+\newcommand{\RACCIIFoptverify}{17116k}
+\newcommand{\RACCIIIBoptkeygen}{39038k}
+\newcommand{\RACCIIIBoptsign}{69850k}
+\newcommand{\RACCIIIBoptverify}{28972k}
+\newcommand{\RACCIIBrefkeygen}{53855k}
+\newcommand{\RACCIIBrefsign}{103488k}
+\newcommand{\RACCIIBrefverify}{35697k}
+\newcommand{\RACCICoptkeygen}{21536k}
+\newcommand{\RACCICoptsign}{41451k}
+\newcommand{\RACCICoptverify}{10779k}
+\newcommand{\RACCIIBoptkeygen}{24600k}
+\newcommand{\RACCIIBoptsign}{49526k}
+\newcommand{\RACCIIBoptverify}{17165k}
+\newcommand{\RACCIIIArefkeygen}{73864k}
+\newcommand{\RACCIIIArefsign}{122290k}
+\newcommand{\RACCIIIArefverify}{60874k}
+\newcommand{\RACCIBrefkeygen}{35374k}
+\newcommand{\RACCIBrefsign}{72439k}
+\newcommand{\RACCIBrefverify}{21877k}
+\newcommand{\RACCIBoptkeygen}{16187k}
+\newcommand{\RACCIBoptsign}{34871k}
+\newcommand{\RACCIBoptverify}{10779k}
+\newcommand{\RACCIIAoptkeygen}{20220k}
+\newcommand{\RACCIIAoptsign}{44460k}
+\newcommand{\RACCIIAoptverify}{17171k}
+\newcommand{\RACCIIICoptkeygen}{49139k}
+\newcommand{\RACCIIICoptsign}{273970k}
+\newcommand{\RACCIIICoptverify}{28812k}
+\newcommand{\RACCIIIFoptkeygen}{1767171k}
+\newcommand{\RACCIIIFoptsign}{48351433k}
+\newcommand{\RACCIIIFoptverify}{28732k}
+\newcommand{\RACCIIIBrefkeygen}{85656k}
+\newcommand{\RACCIIIBrefsign}{135020k}
+\newcommand{\RACCIIIBrefverify}{60883k}
+\newcommand{\RACCICrefkeygen}{46027k}
+\newcommand{\RACCICrefsign}{84751k}
+\newcommand{\RACCICrefverify}{21865k}
+\newcommand{\RACCIFoptkeygen}{660762k}
+\newcommand{\RACCIFoptsign}{18536032k}
+\newcommand{\RACCIFoptverify}{10669k}
+\newcommand{\RACCIIDoptkeygen}{77463k}
+\newcommand{\RACCIIDoptsign}{488840k}
+\newcommand{\RACCIIDoptverify}{17128k}
+\newcommand{\RACCIDrefkeygen}{111402k}
+\newcommand{\RACCIDrefsign}{197359k}
+\newcommand{\RACCIDrefverify}{21856k}
+\newcommand{\RACCIICoptkeygen}{31684k}
+\newcommand{\RACCIICoptsign}{56157k}
+\newcommand{\RACCIICoptverify}{17155k}
+\newcommand{\RACCIIArefkeygen}{45493k}
+\newcommand{\RACCIIArefsign}{93878k}
+\newcommand{\RACCIIArefverify}{35711k}
+\newcommand{\RACCIDoptkeygen}{55902k}
+\newcommand{\RACCIDoptsign}{106702k}
+\newcommand{\RACCIDoptverify}{10782k}
+\newcommand{\RACCIIIAoptkeygen}{32880k}
+\newcommand{\RACCIIIAoptsign}{62948k}
+\newcommand{\RACCIIIAoptverify}{28975k}
+\newcommand{\RACCIICrefkeygen}{67989k}
+\newcommand{\RACCIICrefsign}{107868k}
+\newcommand{\RACCIICrefverify}{35707k}
+\newcommand{\RACCIIIEoptkeygen}{527322k}
+\newcommand{\RACCIIIEoptsign}{12684801k}
+\newcommand{\RACCIIIEoptverify}{28788k}
+\newcommand{\RACCIArefkeygen}{29050k}
+\newcommand{\RACCIArefsign}{65260k}
+\newcommand{\RACCIArefverify}{21862k}
+\newcommand{\RACCIEoptkeygen}{78532k}
+\newcommand{\RACCIEoptsign}{342929k}
+\newcommand{\RACCIEoptverify}{10679k}
+\newcommand{\RACCIIICoptkeygenStack}{192964}
+\newcommand{\RACCIIICoptsignStack}{312052}
+\newcommand{\RACCIIICoptverifyStack}{87344}
+\newcommand{\RACCIIBoptkeygenStack}{140488}
+\newcommand{\RACCIIBoptsignStack}{389460}
+\newcommand{\RACCIIBoptverifyStack}{147780}
+\newcommand{\RACCIEoptkeygenStack}{422492}
+\newcommand{\RACCIEoptsignStack}{611644}
+\newcommand{\RACCIEoptverifyStack}{57628}
+\newcommand{\RACCIIDoptkeygenStack}{266836}
+\newcommand{\RACCIIDoptsignStack}{407284}
+\newcommand{\RACCIIDoptverifyStack}{69988}
+\newcommand{\RACCIIIBoptkeygenStack}{181620}
+\newcommand{\RACCIIIBoptsignStack}{578840}
+\newcommand{\RACCIIIBoptverifyStack}{189712}
+\newcommand{\RACCIIIFoptkeygenStack}{515788}
+\newcommand{\RACCIIIFoptsignStack}{436636}
+\newcommand{\RACCIIIFoptverifyStack}{87344}
+\newcommand{\RACCIFoptkeygenStack}{449580}
+\newcommand{\RACCIFoptsignStack}{369748}
+\newcommand{\RACCIFoptverifyStack}{57628}
+\newcommand{\RACCIIAoptkeygenStack}{110844}
+\newcommand{\RACCIIAoptsignStack}{336188}
+\newcommand{\RACCIIAoptverifyStack}{147780}
+\newcommand{\RACCIIIBrefkeygenStack}{181628}
+\newcommand{\RACCIIIBrefsignStack}{574956}
+\newcommand{\RACCIIIBrefverifyStack}{185804}
+\newcommand{\RACCICoptkeygenStack}{164244}
+\newcommand{\RACCICoptsignStack}{360956}
+\newcommand{\RACCICoptverifyStack}{114940}
+\newcommand{\RACCIICrefkeygenStack}{201168}
+\newcommand{\RACCIICrefsignStack}{487896}
+\newcommand{\RACCIICrefverifyStack}{144772}
+\newcommand{\RACCIIEoptkeygenStack}{248348}
+\newcommand{\RACCIIEoptsignStack}{260396}
+\newcommand{\RACCIIEoptverifyStack}{69988}
+\newcommand{\RACCIIFoptkeygenStack}{474780}
+\newcommand{\RACCIIFoptsignStack}{395564}
+\newcommand{\RACCIIFoptverifyStack}{69988}
+\newcommand{\RACCICrefkeygenStack}{164240}
+\newcommand{\RACCICrefsignStack}{360856}
+\newcommand{\RACCICrefverifyStack}{111932}
+\newcommand{\RACCIAoptkeygenStack}{86212}
+\newcommand{\RACCIAoptsignStack}{233684}
+\newcommand{\RACCIAoptverifyStack}{114940}
+\newcommand{\RACCIIIArefkeygenStack}{140692}
+\newcommand{\RACCIIIArefsignStack}{505300}
+\newcommand{\RACCIIIArefverifyStack}{185804}
+\newcommand{\RACCIIArefkeygenStack}{107868}
+\newcommand{\RACCIIArefsignStack}{333204}
+\newcommand{\RACCIIArefverifyStack}{144772}
+\newcommand{\RACCIIIEoptkeygenStack}{266188}
+\newcommand{\RACCIIIEoptsignStack}{298140}
+\newcommand{\RACCIIIEoptverifyStack}{87344}
+\newcommand{\RACCIBoptkeygenStack}{111752}
+\newcommand{\RACCIBoptsignStack}{286508}
+\newcommand{\RACCIBoptverifyStack}{114940}
+\newcommand{\RACCIIIAoptkeygenStack}{143676}
+\newcommand{\RACCIIIAoptsignStack}{509292}
+\newcommand{\RACCIIIAoptverifyStack}{189820}
+\newcommand{\RACCIIIDoptkeygenStack}{340604}
+\newcommand{\RACCIIIDoptsignStack}{504636}
+\newcommand{\RACCIIIDoptverifyStack}{87344}
+\newcommand{\RACCIICoptkeygenStack}{201276}
+\newcommand{\RACCIICoptsignStack}{488012}
+\newcommand{\RACCIICoptverifyStack}{147780}
+\newcommand{\RACCIDrefkeygenStack}{262740}
+\newcommand{\RACCIDrefsignStack}{557692}
+\newcommand{\RACCIDrefverifyStack}{111932}
+\newcommand{\RACCIDoptkeygenStack}{262636}
+\newcommand{\RACCIDoptsignStack}{557692}
+\newcommand{\RACCIDoptverifyStack}{114940}
+\newcommand{\RACCIBrefkeygenStack}{111980}
+\newcommand{\RACCIBrefsignStack}{284044}
+\newcommand{\RACCIBrefverifyStack}{111932}
+\newcommand{\RACCIIBrefkeygenStack}{140604}
+\newcommand{\RACCIIBrefsignStack}{386476}
+\newcommand{\RACCIIBrefverifyStack}{144772}
+\newcommand{\RACCIArefkeygenStack}{83204}
+\newcommand{\RACCIArefsignStack}{230740}
+\newcommand{\RACCIArefverifyStack}{111932}
+
+
+\begin{document}
+
+\renewcommand{\arraystretch}{1}
+\begin{table}[htb]
+    \caption{Cycle counts (cc) and stack usage (bytes) of \ins{keygen}, \ins{sign}, and \ins{verify} of \Raccoon on Cortex-M4. For implementations without mask compression, cycle counts were obtained by averaging 100 executions. Conversely, variants with mask compression were evaluated using an average of only two executions. Furthermore, because stack usage is constant, it was measured using a single execution.}
+    \label{table:racc_result}%
+    \centering
+    \resizebox{.975\textwidth}{!}{%
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+      \hline 
+      \multirow{2}{*}{}      & \multirow{2}{*}{Implementation} & \multicolumn{3}{c|}{\Raccoons} &  \multicolumn{3}{c|}{\Raccoonm} & \multicolumn{3}{c}{\Raccoonl} \\
+      \cline{3-11} &                     & \ins{keygen}  & \ins{sign}  & \ins{verify}   & \ins{keygen}  & \ins{sign}  & \ins{verify} & \ins{keygen}  & \ins{sign}  & \ins{verify}  \\
+      \hline
+      \multirow{4}{*}{\tabincell{c}{$d=1$}} & 
+      \multirow{2}{*}{\tabincell{c}{Ref.\cite{raccoon_doc}}}           & \RACCIArefkeygen$^a$  & \RACCIArefsign  & \RACCIArefverify & \RACCIIArefkeygen  & \RACCIIArefsign  & \RACCIIArefverify & \RACCIIIArefkeygen  & \RACCIIIArefsign  & \RACCIIIArefverify \\
+       & & \RACCIArefkeygenStack$^a$  & \RACCIArefsignStack  & \RACCIArefverifyStack & \RACCIIArefkeygenStack  & \RACCIIArefsignStack  & \RACCIIArefverifyStack & \RACCIIIArefkeygenStack  & \RACCIIIArefsignStack  & \RACCIIIArefverifyStack \\
+      \cline{2-11}    
+      & \multirow{2}{*}{\tabincell{c}{This work}}  & \RACCIAoptkeygen  & \RACCIAoptsign  & \RACCIAoptverify & \RACCIIAoptkeygen  & \RACCIIAoptsign  & \RACCIIAoptverify & \RACCIIIAoptkeygen  & \RACCIIIAoptsign  & \RACCIIIAoptverify \\
+      & & \RACCIAoptkeygenStack   &  \RACCIAoptsignStack  & \RACCIAoptverifyStack &  \RACCIIAoptkeygenStack   &  \RACCIIAoptsignStack  & \RACCIIAoptverifyStack  & \RACCIIIAoptkeygenStack   &  \RACCIIIAoptsignStack  & \RACCIIIAoptverifyStack \\
+      \hline
+      \multirow{4}{*}{\tabincell{c}{$d=2$}} & 
+      \multirow{2}{*}{\tabincell{c}{Ref.\cite{raccoon_doc}}}           & \RACCIBrefkeygen  & \RACCIBrefsign  & \RACCIBrefverify & \RACCIIBrefkeygen  & \RACCIIBrefsign  & \RACCIIBrefverify & \RACCIIIBrefkeygen  & \RACCIIIBrefsign  & \RACCIIIBrefverify \\
+      &  & \RACCIBrefkeygenStack  & \RACCIBrefsignStack  & \RACCIBrefverifyStack & \RACCIIBrefkeygenStack  & \RACCIIBrefsignStack  & \RACCIIBrefverifyStack & \RACCIIIBrefkeygenStack  & \RACCIIIBrefsignStack  & \RACCIIIBrefverifyStack \\
+      \cline{2-11}    
+      & \multirow{2}{*}{\tabincell{c}{This work}}  & \RACCIBoptkeygen  & \RACCIBoptsign  & \RACCIBoptverify & \RACCIIBoptkeygen  & \RACCIIBoptsign  & \RACCIIBoptverify & \RACCIIIBoptkeygen  & \RACCIIIBoptsign  & \RACCIIIBoptverify \\
+      & & \RACCIBoptkeygenStack   &  \RACCIBoptsignStack  & \RACCIBoptverifyStack &  \RACCIIBoptkeygenStack   &  \RACCIIBoptsignStack  & \RACCIIBoptverifyStack  & \RACCIIIBoptkeygenStack   &  \RACCIIIBoptsignStack  & \RACCIIIBoptverifyStack \\
+      \hline
+      \multirow{4}{*}{\tabincell{c}{$d=4$}} & 
+      \multirow{2}{*}{\tabincell{c}{Ref.\cite{raccoon_doc}}}           & \RACCICrefkeygen  & \RACCICrefsign  & \RACCICrefverify & \RACCIICrefkeygen  & \RACCIICrefsign  & \RACCIICrefverify & -  & - & - \\
+      &  & \RACCICrefkeygenStack  & \RACCICrefsignStack  & \RACCICrefverifyStack & \RACCIICrefkeygenStack  & \RACCIICrefsignStack  & \RACCIICrefverifyStack & -  & - & - \\
+      \cline{2-11}    
+      & \multirow{2}{*}{\tabincell{c}{This work}}  & \RACCICoptkeygen  & \RACCICoptsign  & \RACCICoptverify & \RACCIICoptkeygen  & \RACCIICoptsign  & \RACCIICoptverify & \RACCIIICoptkeygen  & \RACCIIICoptsign  & \RACCIIICoptverify \\
+      & & \RACCICoptkeygenStack   &  \RACCICoptsignStack  & \RACCICoptverifyStack &  \RACCIICoptkeygenStack   &  \RACCIICoptsignStack  & \RACCIICoptverifyStack  & \RACCIIICoptkeygenStack   &  \RACCIIICoptsignStack  & \RACCIIICoptverifyStack \\
+      \hline
+      \multirow{4}{*}{\tabincell{c}{$d=8$}} & 
+      \multirow{2}{*}{\tabincell{c}{Ref.\cite{raccoon_doc}}}           & \RACCIDrefkeygen  & \RACCIDrefsign  & \RACCIDrefverify & -    & -   & - &  - &  - & -  \\
+      & & \RACCIDrefkeygenStack  & \RACCIDrefsignStack  & \RACCIDrefverifyStack & -    & -   & - &  - &  - & -  \\
+      \cline{2-11}    
+      & \multirow{2}{*}{\tabincell{c}{This work}}  & \RACCIDoptkeygen  & \RACCIDoptsign  & \RACCIDoptverify & \RACCIIDoptkeygen  & \RACCIIDoptsign  & \RACCIIDoptverify & \RACCIIIDoptkeygen  & \RACCIIIDoptsign  & \RACCIIIDoptverify \\
+      & & \RACCIDoptkeygenStack   &  \RACCIDoptsignStack  & \RACCIDoptverifyStack &  \RACCIIDoptkeygenStack   &  \RACCIIDoptsignStack  & \RACCIIDoptverifyStack  & \RACCIIIDoptkeygenStack   &  \RACCIIIDoptsignStack  & \RACCIIIDoptverifyStack \\
+      \hline
+      \multirow{4}{*}{\tabincell{c}{$d=16$}} & 
+      \multirow{2}{*}{\tabincell{c}{Ref.\cite{raccoon_doc}}}           &-  & -  & - &   -  &  -  & - &  - & -  & -  \\
+      & &-  & -  & - &   -  &  -  & - &  - & -  & -  \\
+      \cline{2-11}    
+      & \multirow{2}{*}{\tabincell{c}{This work}}  & \RACCIEoptkeygen  & \RACCIEoptsign  & \RACCIEoptverify & \RACCIIEoptkeygen  & \RACCIIEoptsign  & \RACCIIEoptverify & \RACCIIIEoptkeygen  & \RACCIIIEoptsign  & \RACCIIIEoptverify \\
+      & & \RACCIEoptkeygenStack   &  \RACCIEoptsignStack  & \RACCIEoptverifyStack &  \RACCIIEoptkeygenStack   &  \RACCIIEoptsignStack  & \RACCIIEoptverifyStack  & \RACCIIIEoptkeygenStack   &  \RACCIIIEoptsignStack  & \RACCIIIEoptverifyStack \\  
+      \hline
+      \multirow{4}{*}{\tabincell{c}{$d=32$}} & 
+      \multirow{2}{*}{\tabincell{c}{Ref.\cite{raccoon_doc}}}           &-  & -  & - &   -  &  -  & - &  - & -  & -  \\
+      & &-  & -  & - &   -  &  -  & - &  - & -  & -  \\
+      \cline{2-11}    
+      & \multirow{2}{*}{\tabincell{c}{This work}}  & \RACCIFoptkeygen  & \RACCIFoptsign  & \RACCIFoptverify & \RACCIIFoptkeygen  & \RACCIIFoptsign  & \RACCIIFoptverify & \RACCIIIFoptkeygen  & \RACCIIIFoptsign  & \RACCIIIFoptverify \\
+      & & \RACCIFoptkeygenStack   &  \RACCIFoptsignStack  & \RACCIFoptverifyStack &  \RACCIIFoptkeygenStack   &  \RACCIIFoptsignStack  & \RACCIIFoptverifyStack  & \RACCIIIFoptkeygenStack   &  \RACCIIIFoptsignStack  & \RACCIIIFoptverifyStack \\
+      \hline
+      \end{tabular}
+    } 
+    \\
+    \raggedright\footnotesize $^a$The first row of each entry indicates the cycle count, and the second row refers to stack usage. 
+\end{table}%
+
+\begin{thebibliography}{1}
+\bibitem{raccoon_doc}
+R.~del Pino, T.~Espitau, S.~Katsumata, M.~Maller, F.~Mouhartem, T.~Prest, M.~Rossi, and M.-J. Saarinen.
+\newblock Raccoon: A side-channel secure signature scheme.
+\newblock Submission to the NIST Post-Quantum Cryptography: Additional Digital Signature Schemes, 2023.
+\end{thebibliography}
+
+\end{document}

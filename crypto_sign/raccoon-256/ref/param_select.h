@@ -1,2 +1,1 @@
-// #define RACCOON_256_2
-
+#define RACCOON_REF

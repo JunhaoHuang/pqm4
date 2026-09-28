@@ -1,0 +1,139 @@
+% Self-contained Table 3: masking gadgets, SKEncode and matrix generation of Raccoon-128 on Cortex-M4.
+% Cycle counts: from RACC/poly_speed_*.txt (python3 average_poly.py poly_speed); m4 averaged over 100
+% executions, ref over 10.
+% Build with: pdflatex racc_table3.tex
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xspace}
+
+% ---- macros used by the table ----
+\newcommand{\ins}[1]{\texttt{#1}}
+\newcommand{\Raccoon}{Raccoon\xspace}
+\newcommand{\Raccoons}{Raccoon-128\xspace}
+\newcommand{\Raccoonm}{Raccoon-192\xspace}
+\newcommand{\Raccoonl}{Raccoon-256\xspace}
+
+% ---- gadget cycle counts (cycles, or kilo-cycles where suffixed with k) ----
+\newcommand{\ARNAopt}{2170k}
+\newcommand{\ARNAref}{4591k}
+\newcommand{\ARNBopt}{2307k}
+\newcommand{\ARNBref}{4773k}
+\newcommand{\ARNCopt}{2415k}
+\newcommand{\ARNCref}{4893k}
+\newcommand{\ARNDopt}{8748k}
+\newcommand{\ARNDref}{17228k}
+\newcommand{\ARNEopt}{9190k}
+\newcommand{\ARNEref}{17737k}
+\newcommand{\DEAopt}{5691}
+\newcommand{\DEAref}{5691}
+\newcommand{\DEBopt}{9046}
+\newcommand{\DEBref}{11348}
+\newcommand{\DECopt}{27055}
+\newcommand{\DECref}{33958}
+\newcommand{\DEDopt}{63066}
+\newcommand{\DEDref}{79173}
+\newcommand{\DEEopt}{135067}
+\newcommand{\DEEref}{169581}
+\newcommand{\MGAopt}{6962k}
+\newcommand{\MGAref}{15680k}
+\newcommand{\MGBopt}{6962k}
+\newcommand{\MGBref}{15680k}
+\newcommand{\MGCopt}{6962k}
+\newcommand{\MGCref}{15680k}
+\newcommand{\MGDopt}{6962k}
+\newcommand{\MGDref}{15680k}
+\newcommand{\MGEopt}{6962k}
+\newcommand{\MGEref}{15680k}
+\newcommand{\REAopt}{54}
+\newcommand{\REAref}{54}
+\newcommand{\REBopt}{34169}
+\newcommand{\REBref}{45526}
+\newcommand{\RECopt}{122335}
+\newcommand{\RECref}{151164}
+\newcommand{\REDopt}{352630}
+\newcommand{\REDref}{422534}
+\newcommand{\REEopt}{926795}
+\newcommand{\REEref}{1102969}
+\newcommand{\RENTTAopt}{54}
+\newcommand{\RENTTAref}{54}
+\newcommand{\RENTTBopt}{44990}
+\newcommand{\RENTTBref}{69117}
+\newcommand{\RENTTCopt}{143969}
+\newcommand{\RENTTCref}{198341}
+\newcommand{\RENTTDopt}{395927}
+\newcommand{\RENTTDref}{516913}
+\newcommand{\RENTTEopt}{1013357}
+\newcommand{\RENTTEref}{1298728}
+\newcommand{\SKDAopt}{566914}
+\newcommand{\SKDAref}{767466}
+\newcommand{\SKDBopt}{1810330}
+\newcommand{\SKDBref}{3443895}
+\newcommand{\SKDCopt}{4308560}
+\newcommand{\SKDCref}{8803256}
+\newcommand{\SKDDopt}{9317400}
+\newcommand{\SKDDref}{19547784}
+\newcommand{\SKDEopt}{19327955}
+\newcommand{\SKDEref}{41008011}
+\newcommand{\SKEAopt}{162k}
+\newcommand{\SKEAref}{275k}
+\newcommand{\SKEBopt}{1529k}
+\newcommand{\SKEBref}{3110k}
+\newcommand{\SKECopt}{4265k}
+\newcommand{\SKECref}{8777k}
+\newcommand{\SKEDopt}{9736k}
+\newcommand{\SKEDref}{20121k}
+\newcommand{\SKEEopt}{20674k}
+\newcommand{\SKEEref}{42867k}
+\newcommand{\ZEAopt}{3643}
+\newcommand{\ZEAref}{3643}
+\newcommand{\ZEBopt}{16167}
+\newcommand{\ZEBref}{22921}
+\newcommand{\ZECopt}{86289}
+\newcommand{\ZECref}{105915}
+\newcommand{\ZEDopt}{280575}
+\newcommand{\ZEDref}{332072}
+\newcommand{\ZEEopt}{777077}
+\newcommand{\ZEEref}{904552}
+
+\begin{document}
+
+\renewcommand{\arraystretch}{1}
+\begin{table}[tb]
+    \caption{Cycle counts (cc) of the masking gadgets, \ins{SKEncode}, and matrix generation of \Raccoons on Cortex-M4. Note that the reported entries for matrix generation correspond to the unmasked operation, and thus only the case $d=1$ is considered.}
+    \label{table:racc_gadget_result}%
+    \centering
+    \resizebox{.975\textwidth}{!}{%
+      \begin{tabular}{cccccccc}
+        \hline 
+        \multirow{2}{*}{} & & \ins{ZeroEncoding} & \ins{AddRepNoise} & \ins{Refresh} &  \ins{Decode} & \ins{SKEecode}& \ins{MatrixGen} \\
+        \hline
+        \multirow{2}{*}{$d=1$} & Ref. \cite{raccoon_doc} & \ZEAref &  \ARNAref  &  \REAref  & \DEAref   &   \SKEAref  & \MGAref \\ 
+        & This work & \ZEAopt &  \ARNAopt  &  \REAopt  & \DEAopt   &   \SKEAopt  & \MGAopt \\ 
+        \hline 
+        \multirow{2}{*}{$d=2$} & Ref. \cite{raccoon_doc} & \ZEBref &  \ARNBref  &  \REBref  & \DEBref   &   \SKEBref  & - \\ 
+        & This work & \ZEBopt &  \ARNBopt  &  \REBopt  & \DEBopt   &   \SKEBopt  & - \\ 
+        \hline 
+        \multirow{2}{*}{$d=4$} & Ref. \cite{raccoon_doc} & \ZECref &  \ARNCref  &  \RECref  & \DECref   &   \SKECref  & - \\ 
+        & This work & \ZECopt &  \ARNCopt  &  \RECopt  & \DECopt   &   \SKECopt  & - \\ 
+        \hline 
+        \multirow{2}{*}{$d=8$} & Ref. \cite{raccoon_doc} & \ZEDref &  \ARNDref  &  \REDref  & \DEDref   &   \SKEDref  & - \\ 
+        & This work & \ZEDopt &  \ARNDopt  &  \REDopt  & \DEDopt   &   \SKEDopt  & - \\ 
+        \hline 
+        \multirow{2}{*}{$d=16$} & Ref. \cite{raccoon_doc} & \ZEEref &  \ARNEref  &  \REEref  & \DEEref   &   \SKEEref  & - \\ 
+        & This work & \ZEEopt &  \ARNEopt  &  \REEopt  & \DEEopt   &   \SKEEopt  & - \\ 
+        \hline 
+      \end{tabular}
+    }
+\end{table}
+
+\begin{thebibliography}{1}
+\bibitem{raccoon_doc}
+R.~del Pino, T.~Espitau, S.~Katsumata, M.~Maller, F.~Mouhartem, T.~Prest, M.~Rossi, and M.-J. Saarinen.
+\newblock Raccoon: A side-channel secure signature scheme.
+\newblock Submission to the NIST Post-Quantum Cryptography: Additional Digital Signature Schemes, 2023.
+\end{thebibliography}
+
+\end{document}
